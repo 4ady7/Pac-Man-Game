@@ -7,6 +7,19 @@
     <title>AS2</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
+    
+    <!-- 
+    #1 
+     something I was reminded of is to make sure that I am not starting with a capital letter for the word when calling/naming the my HTML, CSS, and JAVASCRIPT files as it is considered a better practice
+    
+    
+    #2
+    I think I got why we need to use defer now, so basically if we didn't use defer any changes we apply using JAVASCRIPT will theoretically have an effect on an empty file, because the JAVASCRIPT file has been read by the program, but the HTML file has not been read yet.
+    
+    And why the JAVASCRIPT file has been read first before the HTML file? that's because the JAVASCRIPT file is initialized in the head tag, and everything in the HTML file is written in the body tag, and the body tagcomes before the head tag.
+     
+    so why am I using JAVASCRIPT? I am using it apply changes that will have an effect on my website, or in this case my pacman game, and it will apply new interactions to my pacman game or to my website
+    -->
     <script src="script.js" defer></script>
 </head>
 
@@ -16,13 +29,15 @@
         <h1>Snack Man!</h1>
     </header>
 
+    <!-- I have wondered alot about if I can use a class and an id for same tag like here it's div or it could be anything else, and I think I have my answer now -->
     <div class="startDiv">
-        <div class="start">
+        <div class="start" id="start">
             <img src="images/icon.png" alt="logo">
             <h1>Start</h1>
         </div>
     </div>
 
+    <!-- to add more than one class to the same tag, in this case it is a div tag, you just separate them with a comma, and it would look something like this: <div class="leaderboard, start"> -->
     <div class="leaderboard">
         <h1>LeaderBoard:</h1>
         <ol>
@@ -35,6 +50,7 @@
         </ol>
     </div>
 
+    <!-- if I understand correctly we are not typing anything in main here in the HTML file, because we are targetting main in the JAVASCRIPT file and adding content from there -->
     <main>
     </main>
 

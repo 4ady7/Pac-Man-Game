@@ -3,6 +3,7 @@ let downPressed = false;
 let leftPressed = false;
 let rightPressed = false;
 
+// Here we are assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 const main = document.querySelector('main');
 
 //Player = 2, Wall = 1, Enemy = 3, Point = 0
@@ -103,3 +104,89 @@ setInterval(function() {
 
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let startBttn = document.querySelector('#start');
+
+function startGame() {
+    startBttn.style.opacity = 0;
+    
+    // document.addEventListener('keydown', keyDown);
+    // document.addEventListener('keyup', keyUp);
+}
+
+// #1 when you are expecting a function, and you get a blue colored instead of a yellow colored check if you have actually craeted a function, for example here with startGame.
+// #2 if I added document instead of startBttn then if I clicked anywhere on the website page, the start button will disapear
+startBttn.addEventListener("click", startGame);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// BrainStorming section for CSS
+// I think I might need to use innerHTML when the pacman gets hit, so the lives get reduced by 1, or loses one heart
+

@@ -17,8 +17,19 @@ body {
         "header header header"
         "lboard main score"
         "lboard main controls";
-    align-items: center;
+    align-items: center; 
+    /* align items affects the height of everything, maybe not everything I am unsure yet, but I know that it affects the height of main, where the game is written, and the height of the controls, and the height of the header. */ 
+
+
+
+    /* That's maybe because main has a height of 0, making it so close to the top */
+    /* or it has a margin that makes it so close to the top, I am not sure.  */
+
+
+
+
     justify-items: center;
+    /* justify items affects only the list of the leaderboard and the controls */
 }
 
 header {
@@ -230,3 +241,69 @@ button:nth-child(4) { grid-area: downArrow; }
 .hit {
     animation: hitAnimation 1.5s ease-in-out;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Using transition results in the fading effect for the Start button disapperance after the click */
+#start {
+    transition: 4s;
+    /* opacity: 1; */
+}
+
+
+
+
+
+
+
+/* #start .startDiv{
+    display: block;
+    opacity: 1;
+} 
+
+#start:target .startDiv{
+    display: none;
+    opacity: 0;
+}  */
+
+
+/* Here add my code */
