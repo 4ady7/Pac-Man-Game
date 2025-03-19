@@ -130,6 +130,7 @@ setInterval(function() {
 let startBttn = document.querySelector('#start');
 
 function startGame() {
+    // you can also use startBttn.style.display = 'none'
     startBttn.style.opacity = 0;
     
     // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 
