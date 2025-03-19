@@ -295,6 +295,12 @@ button:nth-child(4) { grid-area: downArrow; }
 
 
 
+
+
+
+
+/* Here add my code */
+
 /* #start .startDiv{
     display: block;
     opacity: 1;
@@ -306,4 +312,3 @@ button:nth-child(4) { grid-area: downArrow; }
 }  */
 
 
-/* Here add my code */

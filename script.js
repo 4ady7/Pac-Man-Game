@@ -102,9 +102,6 @@ setInterval(function() {
     }
 }, 10);
 
-document.addEventListener('keydown', keyDown);
-document.addEventListener('keyup', keyUp);
-
 
 
 
@@ -135,8 +132,9 @@ let startBttn = document.querySelector('#start');
 function startGame() {
     startBttn.style.opacity = 0;
     
-    // document.addEventListener('keydown', keyDown);
-    // document.addEventListener('keyup', keyUp);
+    // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 
+    document.addEventListener('keydown', keyDown);
+    document.addEventListener('keyup', keyUp);
 }
 
 // #1 when you are expecting a function, and you get a blue colored instead of a yellow colored check if you have actually craeted a function, for example here with startGame.
