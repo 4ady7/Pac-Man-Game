@@ -3,7 +3,7 @@ let downPressed = false;
 let leftPressed = false;
 let rightPressed = false;
 
-// Here we are assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
+// Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 const main = document.querySelector('main');
 
 //Player = 2, Wall = 1, Enemy = 3, Point = 0
@@ -23,29 +23,29 @@ let maze = [
 //Populates the maze in the HTML
 for (let y of maze) {
     for (let x of y) {
-        let block = document.createElement('div');
+        let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block 
         block.classList.add('block');
 
         switch (x) {
-            case 1:
-                block.classList.add('wall');
+            case 1: //walls are added by assigning walls to the locations of 1 in the maze 
+                block.classList.add('wall'); //the class wall is connectd to the case 1 block, which is the surroundings walls of the maze 
                 break;
-            case 2:
-                block.id = 'player';
-                let mouth = document.createElement('div');
-                mouth.classList.add('mouth');
-                block.appendChild(mouth);
+            case 2: //player added by assigning the player to the location of 2 in the maze
+                block.id = 'player'; //the id player is connectd to the case 2 block, which represnts the player. 
+                let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable mouth 
+                mouth.classList.add('mouth'); //the class mouth is connectd to the mouth of the player.
+                block.appendChild(mouth); //mouth for the player added to the structure of the HTML file.
                 break;
             case 3:
-                block.classList.add('enemy');
+                block.classList.add('enemy'); //enemies are added by assigning the enemies to the locations of 3 in the maze
                 break;
             default:
-                block.classList.add('point');
-                block.style.height = '1vh';
-                block.style.width = '1vh';
+                block.classList.add('point'); //the points to be collected by the player are added 
+                block.style.height = '1vh'; //the height of the points is adjusted down, because it seems that the the height was larger than 1vh
+                block.style.width = '1vh'; //the width of the points is adjusted, probably adjusted up
         }
 
-        main.appendChild(block);
+        main.appendChild(block); //block is created and added to the structure of the HTML file
     }
 }
 
@@ -130,7 +130,7 @@ setInterval(function() {
 let startBttn = document.querySelector('#start');
 
 function startGame() {
-    // you can also use startBttn.style.display = 'none'
+    // you can also use the following code __startBttn.style.display = 'none'__ This code will do same thing as opacity=0, which results in displaying nothing.  
     startBttn.style.opacity = 0;
     
     // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 

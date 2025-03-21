@@ -136,6 +136,7 @@ div p {
 }
 
 #player {
+    /* the player is yellow colored */
     background-color: yellow;
     border-radius: 100%;
     position: relative;
