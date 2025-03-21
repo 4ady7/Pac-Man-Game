@@ -49,25 +49,28 @@ for (let y of maze) {
     }
 }
 
-//Player movement. KeyUp means that the keyboard key has not been pressed 
-function keyUp(event) {
-    if (event.key === 'ArrowUp') {
+//Player movement.
+function keyUp(event) { //event here is a parameter inside the function 
+    // console.log(event.key) //Keyup event is being recorded only when the key is released. Most often, that happens only when you are stopping becuase you reached your final destiniation after you have collected all the points, or you are stopping because you are changing direction to the left, right, or doing a 180 and going in the opposite direction (backwards). 
+    if (event.key === 'ArrowUp') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowUp.
         console.log('stp moving up')
         upPressed = false;
-    } else if (event.key === 'ArrowDown') {
+    } else if (event.key === 'ArrowDown') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowDown.
         console.log('stp moving down')
         downPressed = false;
-    } else if (event.key === 'ArrowLeft') {
+    } else if (event.key === 'ArrowLeft') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowLeft.
         console.log('stp moving left')
         leftPressed = false;
-    } else if (event.key === 'ArrowRight') {
+        //event.key === 'ArrowRight' is not a representing the action; thus not checking the action. It is only checking which key is this, so in the following case it is checking if the key is the right arrow key or is it a different key like an arrow left, down, or up.
+    } else if (event.key === 'ArrowRight') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowRight.
         console.log('stp moving right')
         rightPressed = false;
     }
 }
 
-//KeyDown means that the keyboard key has been pressed 
-function keyDown(event) {
+function keyDown(event) { //event here is a parameter inside the function
+    //event.key is a representation of the key that was pressed
+    console.log(event.key) //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
     if (event.key === 'ArrowUp') {
         console.log('strt n keep moving up')
         upPressed = true;
@@ -143,8 +146,9 @@ function startGame() {
     startBttn.style.opacity = 0;
     
     // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 
-    document.addEventListener('keydown', keyDown);
-    document.addEventListener('keyup', keyUp);
+    document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
+    // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
+    document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
 }
 
 // #1 when you are expecting a function, and you get a blue colored instead of a yellow colored check if you have actually craeted a function, for example here with startGame.
