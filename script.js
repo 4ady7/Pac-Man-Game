@@ -8,36 +8,36 @@ const main = document.querySelector('main');
 
 //Player = 2, Wall = 1, Enemy = 3, Point = 0
 let maze = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 2, 0, 1, 0, 0, 0, 0, 3, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //the first row is filled with only walls 
+    [1, 2, 0, 1, 0, 0, 0, 0, 3, 1], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
     [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 0, 0, 0, 0, 0, 1], // 0 represents the points that the player should collect 
     [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 1, 0, 3, 0, 0, 0, 1],
+    [1, 0, 0, 1, 0, 3, 0, 0, 0, 1], //there is an enemy in the sixth column in this row
     [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 3, 1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    [1, 3, 1, 0, 0, 0, 0, 0, 0, 1], //there is an enemy in the second column in this row
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //the last row is also filled with only walls 
 ];
 
 //Populates the maze in the HTML
 for (let y of maze) {
     for (let x of y) {
-        let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block 
-        block.classList.add('block');
+        let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block, and this is the parent block div
+        block.classList.add('block'); //a class block is being connected to variable block that is going to be applied to all of the following cases 
 
         switch (x) {
             case 1: //walls are added by assigning walls to the locations of 1 in the maze 
-                block.classList.add('wall'); //the class wall is connectd to the case 1 block, which is the surroundings walls of the maze 
+                block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze 
                 break;
             case 2: //player added by assigning the player to the location of 2 in the maze
-                block.id = 'player'; //the id player is connectd to the case 2 block, which represnts the player. 
-                let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable mouth 
+                block.id = 'player'; //the id player is applied and connectd to the case 2 block, which represnts the player. 
+                let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
                 mouth.classList.add('mouth'); //the class mouth is connectd to the mouth of the player.
                 block.appendChild(mouth); //mouth for the player added to the structure of the HTML file.
                 break;
-            case 3:
-                block.classList.add('enemy'); //enemies are added by assigning the enemies to the locations of 3 in the maze
+            case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
+                block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze
                 break;
             default:
                 block.classList.add('point'); //the points to be collected by the player are added 
@@ -45,11 +45,11 @@ for (let y of maze) {
                 block.style.width = '1vh'; //the width of the points is adjusted, probably adjusted up
         }
 
-        main.appendChild(block); //block is created and added to the structure of the HTML file
+        main.appendChild(block); //block is created and added to the structure of the HTML file inisde the main tag. Block is a variable that contains the newly created div tag. 
     }
 }
 
-//Player movement
+//Player movement. KeyUp means that the keyboard key has not been pressed 
 function keyUp(event) {
     if (event.key === 'ArrowUp') {
         upPressed = false;
@@ -62,6 +62,7 @@ function keyUp(event) {
     }
 }
 
+//KeyDown means that the keyboard key has been pressed 
 function keyDown(event) {
     if (event.key === 'ArrowUp') {
         upPressed = true;
