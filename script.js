@@ -52,12 +52,16 @@ for (let y of maze) {
 //Player movement. KeyUp means that the keyboard key has not been pressed 
 function keyUp(event) {
     if (event.key === 'ArrowUp') {
+        console.log('stp moving up')
         upPressed = false;
     } else if (event.key === 'ArrowDown') {
+        console.log('stp moving down')
         downPressed = false;
     } else if (event.key === 'ArrowLeft') {
+        console.log('stp moving left')
         leftPressed = false;
     } else if (event.key === 'ArrowRight') {
+        console.log('stp moving right')
         rightPressed = false;
     }
 }
@@ -65,12 +69,16 @@ function keyUp(event) {
 //KeyDown means that the keyboard key has been pressed 
 function keyDown(event) {
     if (event.key === 'ArrowUp') {
+        console.log('strt n keep moving up')
         upPressed = true;
     } else if (event.key === 'ArrowDown') {
+        console.log('strt n keep moving down')
         downPressed = true;
     } else if (event.key === 'ArrowLeft') {
+        console.log('strt n keep moving left')
         leftPressed = true;
     } else if (event.key === 'ArrowRight') {
+        console.log('strt n keep moving right')
         rightPressed = true;
     }
 }
