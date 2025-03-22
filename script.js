@@ -112,7 +112,7 @@ setInterval(function() {
         player.style.left = playerLeft + 'px';
         playerMouth.classList = 'right';
     }
-}, 10);
+}, 9);
 
 
 
@@ -216,3 +216,10 @@ startBttn.addEventListener("click", startGame);
 // BrainStorming section for CSS
 // I think I might need to use innerHTML when the pacman gets hit, so the lives get reduced by 1, or loses one heart
 
+
+
+
+
+
+// Adavnced secion notes 
+// way to increase the level to be more harder is by changing the interval speed of the player movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
