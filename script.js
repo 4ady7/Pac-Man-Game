@@ -186,6 +186,12 @@ startBttn.addEventListener("click", startGame);
 
 
 
+// notes for enemy movement 
+// you will have to target each enemy seperately to allow different movement directions
+// you will have add the the action of the function in the start game function, so that the enemy will start movement after the start button has been pressed
+
+
+// code for the enemy movement 
 
 
 
@@ -197,6 +203,14 @@ startBttn.addEventListener("click", startGame);
 
 
 
+
+
+
+
+
+
+// BrainStorming section (General)
+// I think I could allow the start button to be activate also not only by clicking on it, but also by pressing the enter key on my keyboard
 
 
 // BrainStorming section for CSS
