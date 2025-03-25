@@ -154,15 +154,28 @@ setInterval(function() {
 
         playerMouth.classList = 'right';
     }
-    
+
 }, 9);
 
 
 
+//the idea I need to implement is tha tI need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
+let point = document.querySelectorAll('.point');
+console.log(point.length); //so now I know that we have 50 points in the maze. 
+// idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
 
-
-
-
+for(let i = 0; i < point.length; i++) {
+    let eachPointPosition = point[i].getBoundingClientRect();
+    if (
+        eachPointPosition.right > eachPointPosition.left &&
+        eachPointPosition.left < eachPointPosition.right &&
+        eachPointPosition.bottom > eachPointPosition.top &&
+        eachPointPosition.top < eachPointPosition.bottom
+    ) {
+        point[i].classList.remove('point');
+    }
+}
+ 
 
 
 
@@ -254,6 +267,7 @@ startBttn.addEventListener("click", startGame);
 
 // BrainStorming section (General)
 // I think I could allow the start button to be activate also not only by clicking on it, but also by pressing the enter key on my keyboard
+// idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
 
 
 // BrainStorming section for CSS
