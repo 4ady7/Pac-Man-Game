@@ -96,25 +96,65 @@ let playerLeft = 0;
 
 setInterval(function() {
     if(downPressed) {
-        playerTop++;
-        player.style.top = playerTop + 'px';
+        //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
+        let currentPositon = player.getBoundingClientRect()
+        let newBottom = currentPositon.bottom + 1;
+        let wallDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
+        // console.log(currentPositon.left)
+        let wallDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom)
+        if (wallDetectionBottomLeft.classList.contains('wall') == false && wallDetectionBottomRight.classList.contains('wall') == false) {
+            playerTop++;
+            player.style.top = playerTop + 'px';
+        }
+
         playerMouth.classList = 'down';
     }
+
     else if(upPressed) {
-        playerTop--;
-        player.style.top = playerTop + 'px';
+        let currentPositon = player.getBoundingClientRect()
+        let newUp = currentPositon.top + 1;
+        // wdul = wallDetectionUpLeft
+        let wdul = document.elementFromPoint(currentPositon.left, newUp)
+        // wdur = wallDetectionUpRight
+        let wdur = document.elementFromPoint(currentPositon.right, newUp)
+        if (wdul.classList.contains('wall') == false && wdur.classList.contains('wall') == false) {
+            playerTop--;
+            player.style.top = playerTop + 'px';
+        }
+ 
         playerMouth.classList = 'up';
     }
+
     else if(leftPressed) {
-        playerLeft--;
-        player.style.left = playerLeft + 'px';
+        let currentPositon = player.getBoundingClientRect()
+        let newLeft = currentPositon.left + 1;
+        // wdld = wallDetectionLeftDownward
+        let wdld = document.elementFromPoint(newLeft, currentPositon.bottom)
+        // wdlu = wallDetectionLeftUpward
+        let wdlu = document.elementFromPoint(newLeft, currentPositon.top)
+        if (wdld.classList.contains('wall') == false && wdlu.classList.contains('wall') == false) {
+            playerLeft--;
+            player.style.left = playerLeft + 'px';   
+        }
+
         playerMouth.classList = 'left';
     }
+
     else if(rightPressed) {
-        playerLeft++;
-        player.style.left = playerLeft + 'px';
+        let currentPositon = player.getBoundingClientRect()
+        let newRight = currentPositon.right + 1;
+        // wdrd = wallDetectionRightDownward
+        let wdrd = document.elementFromPoint(newRight, currentPositon.bottom)
+        // wdru = wallDetectionRightUpward
+        let wdru = document.elementFromPoint(newRight, currentPositon.top)
+        if (wdrd.classList.contains('wall') == false && wdru.classList.contains('wall') == false) {
+            playerLeft++;
+            player.style.left = playerLeft + 'px';
+        }
+
         playerMouth.classList = 'right';
     }
+    
 }, 9);
 
 
