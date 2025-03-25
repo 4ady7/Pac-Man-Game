@@ -157,7 +157,7 @@ setInterval(function() {
 
 }, 9);
 
-
+// let onePoint = document.querySelector('.point') //this line of code removes one point only  
 
 //the idea I need to implement is tha tI need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
 let point = document.querySelectorAll('.point');
@@ -172,11 +172,16 @@ for(let i = 0; i < point.length; i++) {
         eachPointPosition.bottom > eachPointPosition.top &&
         eachPointPosition.top < eachPointPosition.bottom
     ) {
-        point[i].classList.remove('point');
+        onePoint.classList.remove('point');
+        // point[i].classList.remove('point');
     }
 }
  
-
+// for (const onePoint of point) {
+//     onePoint.addEventListener('keydown', function removePoint() {
+//         point[i].classList.remove('point');
+//     })
+// }
 
 
 
