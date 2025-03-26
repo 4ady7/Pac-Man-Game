@@ -28,16 +28,16 @@ for (let y of maze) {
 
         switch (x) {
             case 1: //walls are added by assigning walls to the locations of 1 in the maze 
-                block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze 
+                block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze. Case 1 child block represents the wall.
                 break;
             case 2: //player added by assigning the player to the location of 2 in the maze
-                block.id = 'player'; //the id player is applied and connectd to the case 2 block, which represnts the player. 
+                block.id = 'player'; //the id player is applied and connectd to the case 2 block, which is one of the child blocks, and the second child block created. Case 2 child block represnts the player. 
                 let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
                 mouth.classList.add('mouth'); //the class mouth is connectd to the mouth of the player.
                 block.appendChild(mouth); //mouth for the player added to the structure of the HTML file.
                 break;
             case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
-                block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze
+                block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy 
                 break;
             default:
                 block.classList.add('point'); //the points to be collected by the player are added 
@@ -108,6 +108,7 @@ setInterval(function() {
         }
 
         playerMouth.classList = 'down';
+        pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
 
     else if(upPressed) {
@@ -123,6 +124,8 @@ setInterval(function() {
         }
  
         playerMouth.classList = 'up';
+        pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
+        // one of the mistake I landed on when I was coding that I opted for copying and pasting the function for the point colllection, and a line of comment explaining it, but it seemed that I have also copied a closing bracket, and the result after pasting resulted in a disapearance of the whole maze. It took me time to figure it out, but I finally did figure it out 
     }
 
     else if(leftPressed) {
@@ -138,6 +141,7 @@ setInterval(function() {
         }
 
         playerMouth.classList = 'left';
+        pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
 
     else if(rightPressed) {
@@ -153,35 +157,47 @@ setInterval(function() {
         }
 
         playerMouth.classList = 'right';
+        pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
 
 }, 9);
 
-// let onePoint = document.querySelector('.point') //this line of code removes one point only  
 
-//the idea I need to implement is tha tI need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
-let point = document.querySelectorAll('.point');
-console.log(point.length); //so now I know that we have 50 points in the maze. 
-// idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
 
-for(let i = 0; i < point.length; i++) {
-    let eachPointPosition = point[i].getBoundingClientRect();
-    if (
-        eachPointPosition.right > eachPointPosition.left &&
-        eachPointPosition.left < eachPointPosition.right &&
-        eachPointPosition.bottom > eachPointPosition.top &&
-        eachPointPosition.top < eachPointPosition.bottom
-    ) {
-        onePoint.classList.remove('point');
-        // point[i].classList.remove('point');
+
+
+
+
+function pointCollection() {
+    // let onePoint = document.querySelector('.point') //this line of code removes one point only  
+
+    //the idea I need to implement is that I need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
+    let point = document.querySelectorAll('.point');
+    console.log(point.length); //so now I know that we have 50 points in the maze. 
+    // idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
+    let playerPosition = player.getBoundingClientRect();
+    for(let i = 0; i < point.length; i++) {
+        let positionOfPoint = point[i].getBoundingClientRect();
+        if (
+            playerPosition.right > positionOfPoint.left &&
+            playerPosition.left < positionOfPoint.right &&
+            playerPosition.bottom > positionOfPoint.top &&
+            playerPosition.top < positionOfPoint.bottom
+        ) {
+            // onePoint.classList.remove('point');
+            point[i].classList.remove('point');
+            point[i].style.background = 'transparent';
+        }
     }
+    
+    // for (const onePoint of point) {
+    //     onePoint.addEventListener('keydown', function removePoint() {
+    //         point[i].classList.remove('point');
+    //     })
+    // }
+
 }
- 
-// for (const onePoint of point) {
-//     onePoint.addEventListener('keydown', function removePoint() {
-//         point[i].classList.remove('point');
-//     })
-// }
+
 
 
 
