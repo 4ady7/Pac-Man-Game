@@ -169,7 +169,7 @@ setInterval(function() {
 
 
 function pointCollection() {
-    // let onePoint = document.querySelector('.point') //this line of code removes one point only  
+    // let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
 
     //the idea I need to implement is that I need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
     let point = document.querySelectorAll('.point');
@@ -184,18 +184,11 @@ function pointCollection() {
             playerPosition.bottom > positionOfPoint.top &&
             playerPosition.top < positionOfPoint.bottom
         ) {
-            // onePoint.classList.remove('point');
+            //onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects.
             point[i].classList.remove('point');
             point[i].style.background = 'transparent';
         }
     }
-    
-    // for (const onePoint of point) {
-    //     onePoint.addEventListener('keydown', function removePoint() {
-    //         point[i].classList.remove('point');
-    //     })
-    // }
-
 }
 
 
