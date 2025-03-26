@@ -109,7 +109,7 @@ setInterval(function() {
 
         playerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
-        scoreCount()
+        // scoreCount()
     }
 
     else if(upPressed) {
@@ -127,6 +127,7 @@ setInterval(function() {
         playerMouth.classList = 'up';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
         // one of the mistake I landed on when I was coding that I opted for copying and pasting the function for the point colllection, and a line of comment explaining it, but it seemed that I have also copied a closing bracket, and the result after pasting resulted in a disapearance of the whole maze. It took me time to figure it out, but I finally did figure it out 
+        // scoreCount()
     }
 
     else if(leftPressed) {
@@ -143,6 +144,7 @@ setInterval(function() {
 
         playerMouth.classList = 'left';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
+        // scoreCount()
     }
 
     else if(rightPressed) {
@@ -159,19 +161,22 @@ setInterval(function() {
 
         playerMouth.classList = 'right';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
+        // scoreCount()
     }
 
 }, 9);
 
 
 
-let Pscore = document.querySelector('#Pscore');
+let Pscore = document.querySelector('#Pscore'); //selecting the score paragraph that was set to 0, initially.
 let totalPoints = 0;
 
-function scoreCount() {
-    console.log('the total is ' + totalPoints)
-    Pscore.innerHTML = totalPoints;
-}
+//uncommenting that function out for a more optimized way of increamenting the score. Instead of creating another function for the counting the score, I am going add the code I need for increamenting the score inside the point collection function. 
+// function to change the score number and assigning it to the value of the variable totalPoints
+// function scoreCount() {
+//     console.log('the total is ' + totalPoints) //checking the points collected in the console, too
+//     Pscore.innerHTML = totalPoints;
+// }
 
 
 function pointCollection() {
@@ -192,9 +197,8 @@ function pointCollection() {
         ) {
             //onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects.
             point[i].classList.remove('point');
-            totalPoints = totalPoints + 1; 
-            Pscore.innerHTML = totalPoints;
-            scoreCount()
+            totalPoints = totalPoints + 1; //increasing the value of the variable totalPoints by 1 for each point collected 
+            Pscore.innerHTML = totalPoints; //changing the score number and assigning it to the value of the variable totalPoints
         }
     }
 }
