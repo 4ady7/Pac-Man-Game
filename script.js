@@ -109,6 +109,7 @@ setInterval(function() {
 
         playerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
+        scoreCount()
     }
 
     else if(upPressed) {
@@ -164,8 +165,13 @@ setInterval(function() {
 
 
 
+let Pscore = document.querySelector('#Pscore');
+let totalPoints = 0;
 
-
+function scoreCount() {
+    console.log('the total is ' + totalPoints)
+    Pscore.innerHTML = totalPoints;
+}
 
 
 function pointCollection() {
@@ -181,12 +187,14 @@ function pointCollection() {
         if (
             playerPosition.right > positionOfPoint.left &&
             playerPosition.left < positionOfPoint.right &&
-            playerPosition.bottom > positionOfPoint.top &&
+            playerPosition.bottom > positionOfPoint.top && //this third line means that is the player’s bottom position below the point’s top position on the maze, which means that as a result of the player movement downwards, the player is now moving overlapping and over the point when the player's bottom position is larger than the point's top poistion
             playerPosition.top < positionOfPoint.bottom
         ) {
             //onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects.
             point[i].classList.remove('point');
-            point[i].style.background = 'transparent';
+            totalPoints = totalPoints + 1; 
+            Pscore.innerHTML = totalPoints;
+            scoreCount()
         }
     }
 }
