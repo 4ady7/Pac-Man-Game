@@ -203,6 +203,7 @@ function pointCollection() {
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
                 alert('Game has ended! All points have been collected!');
+                //setTimeout(alert('Game has ended! All points have been collected!'), 13000) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
             }
         }
     }
