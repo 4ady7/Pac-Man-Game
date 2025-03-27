@@ -199,6 +199,11 @@ function pointCollection() {
             point[i].classList.remove('point');
             totalPoints = totalPoints + 1; //increasing the value of the variable totalPoints by 1 for each point collected 
             Pscore.innerHTML = totalPoints; //changing the score number and assigning it to the value of the variable totalPoints
+
+            //checking if all the fifty points have been collected, and if true then display
+            if (totalPoints == 50) {
+                alert('Game has ended! All points have been collected!');
+            }
         }
     }
 }
