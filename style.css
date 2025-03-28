@@ -71,6 +71,8 @@ main {
     grid-area: main;
     display: grid;
     grid-template-columns: repeat(10, 10%);
+    /* using the grid and dividing the rows also into 10 square, and each square is 10% of the surface area of the whole maze */
+    grid-template-rows: repeat(10, 10%); 
     width: 80vh;
     height: 80vh;
     align-items: center;

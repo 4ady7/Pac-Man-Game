@@ -88,6 +88,8 @@ function keyDown(event) { //event here is a parameter inside the function
         console.log('strt n keep moving right')
         rightPressed = true;
     }
+
+    //Increasing or decreasing the speed of the playyer 
     switch (event.key) {
         case '1':
             playerSpeed = 1.05
@@ -119,20 +121,26 @@ function keyDown(event) { //event here is a parameter inside the function
     }
 }
 
-const player = document.querySelector('#player');
-const playerMouth = player.querySelector('.mouth');
-let playerTop = 0;
-let playerLeft = 0;
+
+
+
+
+
+
+const player = document.querySelector('#player'); //selecting the player
+const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player
+let playerTop = 0; //initializing a variable
+let playerLeft = 0; //initializing a variable
 
 setInterval(function() {
-    if(downPressed) {
+    if(downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
         let currentPositon = player.getBoundingClientRect()
         let newBottom = currentPositon.bottom + 1;
-        let wallDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
+        let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
         // console.log(currentPositon.left)
-        let wallDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom)
-        if (wallDetectionBottomLeft.classList.contains('wall') == false && wallDetectionBottomRight.classList.contains('wall') == false) {
+        let playerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom)
+        if (playerCollisionDetectionBottomLeft.classList.contains('wall') == false && playerCollisionDetectionBottomRight.classList.contains('wall') == false) {
             playerTop = playerTop + playerSpeed;
             player.style.top = playerTop + 'px';
         }
@@ -142,14 +150,14 @@ setInterval(function() {
         // scoreCount()
     }
 
-    else if(upPressed) {
+    else if(upPressed == true) {
         let currentPositon = player.getBoundingClientRect()
         let newUp = currentPositon.top + 1;
-        // wdul = wallDetectionUpLeft
-        let wdul = document.elementFromPoint(currentPositon.left, newUp)
-        // wdur = wallDetectionUpRight
-        let wdur = document.elementFromPoint(currentPositon.right, newUp)
-        if (wdul.classList.contains('wall') == false && wdur.classList.contains('wall') == false) {
+        // pcdul = playerCollisionDetectionUpLeft
+        let pcdul = document.elementFromPoint(currentPositon.left, newUp)
+        // pcdur = playerCollisionDetectionUpRight
+        let pcdur = document.elementFromPoint(currentPositon.right, newUp)
+        if (pcdul.classList.contains('wall') == false && pcdur.classList.contains('wall') == false) {
             playerTop = playerTop - playerSpeed;
             player.style.top = playerTop + 'px';
         }
@@ -160,14 +168,14 @@ setInterval(function() {
         // scoreCount()
     }
 
-    else if(leftPressed) {
+    else if(leftPressed == true) {
         let currentPositon = player.getBoundingClientRect()
         let newLeft = currentPositon.left + 1;
-        // wdld = wallDetectionLeftDownward
-        let wdld = document.elementFromPoint(newLeft, currentPositon.bottom)
-        // wdlu = wallDetectionLeftUpward
-        let wdlu = document.elementFromPoint(newLeft, currentPositon.top)
-        if (wdld.classList.contains('wall') == false && wdlu.classList.contains('wall') == false) {
+        // pcdld = playerCollisionDetectionLeftDownward
+        let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom)
+        // pcdlu = playerCollisionDetectionLeftUpward
+        let pcdlu = document.elementFromPoint(newLeft, currentPositon.top)
+        if (pcdld.classList.contains('wall') == false && pcdlu.classList.contains('wall') == false) {
             playerLeft = playerLeft - playerSpeed;
             player.style.left = playerLeft + 'px';   
         }
@@ -177,16 +185,17 @@ setInterval(function() {
         // scoreCount()
     }
 
-    else if(rightPressed) {
+    else if(rightPressed == true) {
         let currentPositon = player.getBoundingClientRect()
         let newRight = currentPositon.right + 1;
-        // wdrd = wallDetectionRightDownward
-        let wdrd = document.elementFromPoint(newRight, currentPositon.bottom)
-        // wdru = wallDetectionRightUpward
-        let wdru = document.elementFromPoint(newRight, currentPositon.top)
-        if (wdrd.classList.contains('wall') == false && wdru.classList.contains('wall') == false) {
+        // pcdrd = playerCollisionDetectionRightDownward
+        let pcdrd = document.elementFromPoint(newRight, currentPositon.bottom)
+        // pcdru = playerCollisionDetectionRightUpward
+        let pcdru = document.elementFromPoint(newRight, currentPositon.top)
+        if (pcdrd.classList.contains('wall') == false && pcdru.classList.contains('wall') == false) {
             playerLeft = playerLeft + playerSpeed;
             player.style.left = playerLeft + 'px';
+            console.log(playerLeft)
         }
 
         playerMouth.classList = 'right';
@@ -324,46 +333,7 @@ function ubttnClicked() {
 
 
 
-// function buttonClicked() {
-//     if (upButton.addEventListener('click', function() {
-//         console.log('clicked: strt n keep moving up')
-//         upPressed = true;        
-//         downPressed = false;
-//         leftPressed = false;
-//         rightPressed = false;
-//     })) { 
 
-        
-//     } 
-//     if (downButton.addEventListener('click', function() {
-//         console.log('clicked: strt n keep moving down')
-//         downPressed = true;      
-//         upPressed = false;
-//         leftPressed = false;
-//         rightPressed = false;
-//     })) {
-  
-
-//     } else if (leftButton.addEventListener('click', function() {
-//         console.log('clicked: strt n keep moving left')
-//         leftPressed = true;     
-//         downPressed = false;
-//         upPressed = false;
-//         rightPressed = false;
-//     })) {
-   
-
-//     } else if (rightButton.addEventListener('click', function() {
-//         console.log('clicked: strt n keep moving right')
-//         rightPressed = true;        
-//         downPressed = false;
-//         leftPressed = false;
-//         upPressed = false;
-//     })) {
-
-
-//     }
-// }
 
 
 
