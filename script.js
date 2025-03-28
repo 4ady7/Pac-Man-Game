@@ -2,6 +2,7 @@ let upPressed = false;
 let downPressed = false;
 let leftPressed = false;
 let rightPressed = false;
+let playerSpeed = 1.25; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 const main = document.querySelector('main');
@@ -87,6 +88,35 @@ function keyDown(event) { //event here is a parameter inside the function
         console.log('strt n keep moving right')
         rightPressed = true;
     }
+    switch (event.key) {
+        case '1':
+            playerSpeed = 1.05
+            break;
+        case '2':
+            playerSpeed = 1.10
+            break;
+        case '3':
+            playerSpeed = 1.15
+            break;
+        case '4':
+            playerSpeed = 1.20
+            break;
+        case '5':
+            playerSpeed = 1.25
+            break;
+        case '6':
+            playerSpeed = 1.30
+            break;
+        case '7':
+            playerSpeed = 1.35
+            break;
+        case '8':
+            playerSpeed = 1.40
+            break;
+        case '9':
+            playerSpeed = 1.45
+            break;
+    }
 }
 
 const player = document.querySelector('#player');
@@ -103,7 +133,7 @@ setInterval(function() {
         // console.log(currentPositon.left)
         let wallDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom)
         if (wallDetectionBottomLeft.classList.contains('wall') == false && wallDetectionBottomRight.classList.contains('wall') == false) {
-            playerTop++;
+            playerTop = playerTop + playerSpeed;
             player.style.top = playerTop + 'px';
         }
 
@@ -120,7 +150,7 @@ setInterval(function() {
         // wdur = wallDetectionUpRight
         let wdur = document.elementFromPoint(currentPositon.right, newUp)
         if (wdul.classList.contains('wall') == false && wdur.classList.contains('wall') == false) {
-            playerTop--;
+            playerTop = playerTop - playerSpeed;
             player.style.top = playerTop + 'px';
         }
  
@@ -138,7 +168,7 @@ setInterval(function() {
         // wdlu = wallDetectionLeftUpward
         let wdlu = document.elementFromPoint(newLeft, currentPositon.top)
         if (wdld.classList.contains('wall') == false && wdlu.classList.contains('wall') == false) {
-            playerLeft--;
+            playerLeft = playerLeft - playerSpeed;
             player.style.left = playerLeft + 'px';   
         }
 
@@ -155,7 +185,7 @@ setInterval(function() {
         // wdru = wallDetectionRightUpward
         let wdru = document.elementFromPoint(newRight, currentPositon.top)
         if (wdrd.classList.contains('wall') == false && wdru.classList.contains('wall') == false) {
-            playerLeft++;
+            playerLeft = playerLeft + playerSpeed;
             player.style.left = playerLeft + 'px';
         }
 
