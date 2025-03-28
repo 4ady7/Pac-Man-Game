@@ -285,38 +285,85 @@ let rightButton = document.querySelector('#rbttn');
 let downButton = document.querySelector('#dbttn');
 let upButton = document.querySelector('#ubttn');
 
-// leftButton.addEventListener('click', buttonClicked);
-rightButton.addEventListener('click', buttonClicked);
-upButton.addEventListener('click', buttonClicked);
-downButton.addEventListener('click', buttonClicked);
+leftButton.addEventListener('click', lbttnClicked);
+rightButton.addEventListener('click', rbttnClicked);
+upButton.addEventListener('click', ubttnClicked);
+downButton.addEventListener('click', dbttnClicked);
 
 
-
-
-function buttonClicked() {
-    if (upButton.addEventListener('click', function() {
-        console.log('clicked: strt n keep moving up')
-        upPressed = true;
-    })) {
-
-    } 
-    if (downButton.addEventListener('click', function() {
-        console.log('clicked: strt n keep moving down')
-        downPressed = true;
-    })) {
-
-    } else if (leftButton.addEventListener('click', function() {
-        console.log('clicked: strt n keep moving left')
+function lbttnClicked() {
+        upPressed = false;        
+        downPressed = false;
         leftPressed = true;
-    })) {
-
-    } else if (rightButton.addEventListener('click', function() {
-        console.log('clicked: strt n keep moving right')
-        rightPressed = true;
-    })) {
-
-    }
+        rightPressed = false;
 }
+
+function rbttnClicked() {
+    upPressed = false;        
+    downPressed = false;
+    leftPressed = false;
+    rightPressed = true;
+}
+
+function dbttnClicked() {
+    upPressed = false;        
+    downPressed = true;
+    leftPressed = false;
+    rightPressed = false;
+}
+
+function ubttnClicked() {
+    upPressed = true;        
+    downPressed = false;
+    leftPressed = false;
+    rightPressed = false;
+}
+
+
+
+
+
+
+// function buttonClicked() {
+//     if (upButton.addEventListener('click', function() {
+//         console.log('clicked: strt n keep moving up')
+//         upPressed = true;        
+//         downPressed = false;
+//         leftPressed = false;
+//         rightPressed = false;
+//     })) { 
+
+        
+//     } 
+//     if (downButton.addEventListener('click', function() {
+//         console.log('clicked: strt n keep moving down')
+//         downPressed = true;      
+//         upPressed = false;
+//         leftPressed = false;
+//         rightPressed = false;
+//     })) {
+  
+
+//     } else if (leftButton.addEventListener('click', function() {
+//         console.log('clicked: strt n keep moving left')
+//         leftPressed = true;     
+//         downPressed = false;
+//         upPressed = false;
+//         rightPressed = false;
+//     })) {
+   
+
+//     } else if (rightButton.addEventListener('click', function() {
+//         console.log('clicked: strt n keep moving right')
+//         rightPressed = true;        
+//         downPressed = false;
+//         leftPressed = false;
+//         upPressed = false;
+//     })) {
+
+
+//     }
+// }
 
 
 
