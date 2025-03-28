@@ -279,14 +279,44 @@ startBttn.addEventListener("click", startGame);
 
 
 
+//accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error
+let leftButton = document.querySelector('#lbttn');
+let rightButton = document.querySelector('#rbttn');
+let downButton = document.querySelector('#dbttn');
+let upButton = document.querySelector('#ubttn');
+
+// leftButton.addEventListener('click', buttonClicked);
+rightButton.addEventListener('click', buttonClicked);
+upButton.addEventListener('click', buttonClicked);
+downButton.addEventListener('click', buttonClicked);
 
 
 
 
+function buttonClicked() {
+    if (upButton.addEventListener('click', function() {
+        console.log('clicked: strt n keep moving up')
+        upPressed = true;
+    })) {
 
+    } 
+    if (downButton.addEventListener('click', function() {
+        console.log('clicked: strt n keep moving down')
+        downPressed = true;
+    })) {
 
+    } else if (leftButton.addEventListener('click', function() {
+        console.log('clicked: strt n keep moving left')
+        leftPressed = true;
+    })) {
 
+    } else if (rightButton.addEventListener('click', function() {
+        console.log('clicked: strt n keep moving right')
+        rightPressed = true;
+    })) {
 
+    }
+}
 
 
 
