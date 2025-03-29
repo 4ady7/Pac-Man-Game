@@ -145,6 +145,16 @@ setInterval(function() {
             player.style.top = playerTop + 'px';
         }
 
+        if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead'
+        }
+
+        if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead'
+        }
+
         playerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
         // scoreCount()
@@ -161,12 +171,25 @@ setInterval(function() {
             playerTop = playerTop - playerSpeed;
             player.style.top = playerTop + 'px';
         }
- 
+         
+        
+        if (pcdul.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead'
+        }
+
+        if (pcdur.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead'
+        }
+
+
         playerMouth.classList = 'up';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
         // one of the mistake I landed on when I was coding that I opted for copying and pasting the function for the point colllection, and a line of comment explaining it, but it seemed that I have also copied a closing bracket, and the result after pasting resulted in a disapearance of the whole maze. It took me time to figure it out, but I finally did figure it out 
         // scoreCount()
     }
+
 
     else if(leftPressed == true) {
         let currentPositon = player.getBoundingClientRect()
@@ -178,6 +201,16 @@ setInterval(function() {
         if (pcdld.classList.contains('wall') == false && pcdlu.classList.contains('wall') == false) {
             playerLeft = playerLeft - playerSpeed;
             player.style.left = playerLeft + 'px';   
+        }
+
+        if (pcdld.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead' 
+        }
+
+        if (pcdlu.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead' 
         }
 
         playerMouth.classList = 'left';
@@ -194,6 +227,7 @@ setInterval(function() {
         // pcdru = playerCollisionDetectionRightUpward
         let pcdru = document.elementFromPoint(newRight, currentPLPositon.top)
 
+        // Another way of Wall collision detection, but this one failed 
         // let wallPosition = document.querySelectorAll('.wall'); 
         // if (
         //     playerLeft + currentPLPositon.width > wallPosition.left &&
@@ -213,6 +247,18 @@ setInterval(function() {
             player.style.left = playerLeft + 'px';
             console.log(playerLeft)
         }
+
+        if (pcdrd.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead'
+        }
+
+        if (pcdru.classList.contains('enemy') == true) {
+            alert('An enemy has been encountered!!! game over!!!')
+            player.classList = 'dead'
+        }
+
+
 
         playerMouth.classList = 'right';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
