@@ -186,12 +186,28 @@ setInterval(function() {
     }
 
     else if(rightPressed == true) {
-        let currentPositon = player.getBoundingClientRect()
-        let newRight = currentPositon.right + 1;
+        // currentPLPositon = currentPlayerPositon
+        let currentPLPositon = player.getBoundingClientRect();
+        let newRight = currentPLPositon.right + 1;
         // pcdrd = playerCollisionDetectionRightDownward
-        let pcdrd = document.elementFromPoint(newRight, currentPositon.bottom)
+        let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom)
         // pcdru = playerCollisionDetectionRightUpward
-        let pcdru = document.elementFromPoint(newRight, currentPositon.top)
+        let pcdru = document.elementFromPoint(newRight, currentPLPositon.top)
+
+        // let wallPosition = document.querySelectorAll('.wall'); 
+        // if (
+        //     playerLeft + currentPLPositon.width > wallPosition.left &&
+        //     playerLeft < wallPosition.right &&
+        //     playerTop + currentPLPositon.height > wallPosition.top && 
+        //     playerTop < wallPosition.bottom
+        // ) {
+        //     playerLeft = playerLeft + playerSpeed;
+        //     player.style.left = playerLeft + 'px';
+        //     console.log(playerLeft)
+        // }
+
+
+        //wall collisio detection 
         if (pcdrd.classList.contains('wall') == false && pcdru.classList.contains('wall') == false) {
             playerLeft = playerLeft + playerSpeed;
             player.style.left = playerLeft + 'px';
