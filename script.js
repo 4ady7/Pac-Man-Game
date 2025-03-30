@@ -162,7 +162,7 @@ setInterval(function() {
 
     else if(upPressed == true) {
         let currentPositon = player.getBoundingClientRect()
-        let newUp = currentPositon.top + 1;
+        let newUp = currentPositon.top - 1;
         // pcdul = playerCollisionDetectionUpLeft
         let pcdul = document.elementFromPoint(currentPositon.left, newUp)
         // pcdur = playerCollisionDetectionUpRight
@@ -193,7 +193,7 @@ setInterval(function() {
 
     else if(leftPressed == true) {
         let currentPositon = player.getBoundingClientRect()
-        let newLeft = currentPositon.left + 1;
+        let newLeft = currentPositon.left - 1;
         // pcdld = playerCollisionDetectionLeftDownward
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom)
         // pcdlu = playerCollisionDetectionLeftUpward
