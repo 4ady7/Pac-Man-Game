@@ -317,6 +317,7 @@ function pointCollection() {
             if (totalPoints == 50) {
                 // alert('Game has ended! All points have been collected!');
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
+                //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
             }
         }
     }
@@ -427,15 +428,15 @@ function ubttnClicked() {
 //still need to work on this enemy collison first and test it to make sure it is function then I call the function like I called the point collection function 
 //function for enemy collision 
 function enemyCollision() {
-    let point = document.querySelectorAll('.enemy');
+    let allEnemies = document.querySelectorAll('.enemy');
     let playerPosition = player.getBoundingClientRect();
-    for(let i = 0; i < point.length; i++) {
-        let positionOfPoint = point[i].getBoundingClientRect();
+    for(let i = 0; i < allEnemies.length; i++) {
+        let positionOfEnemies = allEnemies[i].getBoundingClientRect();
         if (
-            playerPosition.right > positionOfPoint.left &&
-            playerPosition.left < positionOfPoint.right &&
-            playerPosition.bottom > positionOfPoint.top && 
-            playerPosition.top < positionOfPoint.bottom
+            playerPosition.right > positionOfEnemies.left &&
+            playerPosition.left < positionOfEnemies.right &&
+            playerPosition.bottom > positionOfEnemies.top && 
+            playerPosition.top < positionOfEnemies.bottom
         ) {
             setTimeout(restart, 500)
             }
