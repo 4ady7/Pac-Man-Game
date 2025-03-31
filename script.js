@@ -2,7 +2,7 @@ let upPressed = false;
 let downPressed = false;
 let leftPressed = false;
 let rightPressed = false;
-let playerSpeed = 1.25; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
+let playerSpeed = 1; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 const main = document.querySelector('main');
@@ -126,20 +126,21 @@ function keyDown(event) { //event here is a parameter inside the function
 
 
 
-
+const collisionUnit = 1;
 const player = document.querySelector('#player'); //selecting the player
 const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
 
-setInterval(function() {
+let timer = setInterval(function() {
     if(downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
         let currentPositon = player.getBoundingClientRect()
-        let newBottom = currentPositon.bottom + 1;
+        let newBottom = currentPositon.bottom + collisionUnit;
         let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
         // console.log(currentPositon.left)
         let playerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom)
+        // console.log(playerCollisionDetectionBottomLeft)
         if (playerCollisionDetectionBottomLeft.classList.contains('wall') == false && playerCollisionDetectionBottomRight.classList.contains('wall') == false) {
             playerTop = playerTop + playerSpeed;
             player.style.top = playerTop + 'px';
@@ -147,12 +148,14 @@ setInterval(function() {
 
         if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead'
+            player.classList = 'dead';
+            clearInterval(timer);
         }
 
         if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead'
+            player.classList = 'dead';
+            clearInterval(timer);
         }
 
         playerMouth.classList = 'down';
@@ -162,7 +165,7 @@ setInterval(function() {
 
     else if(upPressed == true) {
         let currentPositon = player.getBoundingClientRect()
-        let newUp = currentPositon.top - 1;
+        let newUp = currentPositon.top - collisionUnit;
         // pcdul = playerCollisionDetectionUpLeft
         let pcdul = document.elementFromPoint(currentPositon.left, newUp)
         // pcdur = playerCollisionDetectionUpRight
@@ -175,12 +178,14 @@ setInterval(function() {
         
         if (pcdul.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead'
+            player.classList = 'dead';
+            clearInterval(timer); 
         }
 
         if (pcdur.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead'
+            player.classList = 'dead';
+            clearInterval(timer);
         }
 
 
@@ -193,7 +198,7 @@ setInterval(function() {
 
     else if(leftPressed == true) {
         let currentPositon = player.getBoundingClientRect()
-        let newLeft = currentPositon.left - 1;
+        let newLeft = currentPositon.left - collisionUnit;
         // pcdld = playerCollisionDetectionLeftDownward
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom)
         // pcdlu = playerCollisionDetectionLeftUpward
@@ -204,13 +209,18 @@ setInterval(function() {
         }
 
         if (pcdld.classList.contains('enemy') == true) {
+            // enemyCollision()
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead' 
+            player.classList = 'dead'; 
+            clearInterval(timer);
+            // setTimeout(restart, 500)
         }
 
         if (pcdlu.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead' 
+            player.classList = 'dead';
+            clearInterval(timer);
+            // setTimeout(restart, 500)
         }
 
         playerMouth.classList = 'left';
@@ -221,7 +231,7 @@ setInterval(function() {
     else if(rightPressed == true) {
         // currentPLPositon = currentPlayerPositon
         let currentPLPositon = player.getBoundingClientRect();
-        let newRight = currentPLPositon.right + 1;
+        let newRight = currentPLPositon.right + collisionUnit; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
         // pcdrd = playerCollisionDetectionRightDownward
         let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom)
         // pcdru = playerCollisionDetectionRightUpward
@@ -250,12 +260,14 @@ setInterval(function() {
 
         if (pcdrd.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead'
+            player.classList = 'dead';
+            clearInterval(timer);
         }
 
         if (pcdru.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead'
+            player.classList = 'dead';
+            clearInterval(timer);
         }
 
 
@@ -303,15 +315,18 @@ function pointCollection() {
 
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
-                alert('Game has ended! All points have been collected!');
-                //setTimeout(alert('Game has ended! All points have been collected!'), 13000) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
+                // alert('Game has ended! All points have been collected!');
+                setTimeout(gameOver, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
             }
         }
     }
 }
 
 
-
+//function for when all the points have been collected 
+function gameOver() {
+    alert('Game has ended! All points have been collected!')
+}
 
 
 
@@ -338,6 +353,8 @@ function startGame() {
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
+
+    setTimeout(removeButton, 3000)
 }
 
 // #1 when you are expecting a function, and you get a blue colored instead of a yellow colored check if you have actually craeted a function, for example here with startGame.
@@ -346,8 +363,17 @@ startBttn.addEventListener("click", startGame);
 
 
 
+//function to remove the start button 
+function removeButton () {
+    startBttn.style.display = 'none' 
+}
 
 
+//function to have a restart button to restart the game
+function restart() {
+    startBttn.style.opacity = 1;
+    startBttn.innerHTML = 'Restart the game?'
+}
 
 
 //accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error
@@ -393,6 +419,47 @@ function ubttnClicked() {
 
 
 
+
+
+
+//function for enemy collision 
+function enemyCollision() {
+    let point = document.querySelectorAll('.enemy');
+    let playerPosition = player.getBoundingClientRect();
+    for(let i = 0; i < point.length; i++) {
+        let positionOfPoint = point[i].getBoundingClientRect();
+        if (
+            playerPosition.right > positionOfPoint.left &&
+            playerPosition.left < positionOfPoint.right &&
+            playerPosition.bottom > positionOfPoint.top && 
+            playerPosition.top < positionOfPoint.bottom
+        ) {
+            setTimeout(restart, 500)
+            }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// let colours = document.querySelectorAll('li');
+
+// for(let i = 0; i<10; i++) {
+//     colours[i].addEventListener('click', setColor);
+// }
+
+// function setColor() {
+//     player.style.backgroundColor = this.id; 
+// }
 
 
 
