@@ -369,6 +369,7 @@ function removeButton () {
 }
 
 
+//Remaining Task 
 //function to have a restart button to restart the game
 function restart() {
     startBttn.style.opacity = 1;
@@ -422,8 +423,8 @@ function ubttnClicked() {
 
 
 
-
-
+//Remaining Task  
+//still need to work on this enemy collison first and test it to make sure it is function then I call the function like I called the point collection function 
 //function for enemy collision 
 function enemyCollision() {
     let point = document.querySelectorAll('.enemy');
