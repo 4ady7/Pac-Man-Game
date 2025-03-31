@@ -2,7 +2,7 @@ let upPressed = false;
 let downPressed = false;
 let leftPressed = false;
 let rightPressed = false;
-let playerSpeed = 1; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
+let playerSpeed = 1.25; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 const main = document.querySelector('main');
@@ -316,7 +316,7 @@ function pointCollection() {
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
                 // alert('Game has ended! All points have been collected!');
-                setTimeout(gameOver, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
+                setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
             }
         }
     }
@@ -372,8 +372,10 @@ function removeButton () {
 //function to have a restart button to restart the game
 function restart() {
     startBttn.style.opacity = 1;
+    startBttn.style.display = 'block';
     startBttn.innerHTML = 'Restart the game?'
-}
+    //if start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously
+} //restart button now is visible and clickable, but I still need to bring back all the points when the start button is clicked 
 
 
 //accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error
