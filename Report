@@ -1,0 +1,14 @@
+Bug Report (Notes for the testing lecture later)
+
+#1 
+I have faced an unexpected issue with one of the the wall blocks when I was moving to the right and then upwards. This problem happened with Microsoft edge browser. The reason for it is unknown at the time, but to fix it: I opted to check for 2 collision units instead of 1. Now, the player is moving freely without getting stuck. 
+
+
+
+#2 
+I have faced yet another problem. The problem I faced was in Microsoft edge browser. The problem was that i could go through the wall under the area where the start button was intially visiable. And it seems that the start button still had the upperhand over the wall block, and that's why the player was able to go through, because the player collision detection is not recognising that it is a wall block, and to solve this problem I opted to use setTimeout() after 3 seconds to display none the start button. 
+
+
+
+objective notes to implement :
+brring back the opacity to 1 for the start button, and change the start button to restart and when you press on it. The game restarts. Thinking about it, the restart button is the same function as the start button function. 
