@@ -133,9 +133,10 @@ let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
 
 setInterval(function() {
+    //let currentPositon = player.getBoundingClientRect() //optimize 
     if(downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
-        let currentPositon = player.getBoundingClientRect()
+        let currentPositon = player.getBoundingClientRect() //optimize
         let newBottom = currentPositon.bottom + 1;
         let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
         // console.log(currentPositon.left)
@@ -161,7 +162,7 @@ setInterval(function() {
     }
 
     else if(upPressed == true) {
-        let currentPositon = player.getBoundingClientRect()
+        let currentPositon = player.getBoundingClientRect() //optimize 
         let newUp = currentPositon.top - 1;
         // pcdul = playerCollisionDetectionUpLeft
         let pcdul = document.elementFromPoint(currentPositon.left, newUp)
@@ -192,7 +193,7 @@ setInterval(function() {
 
 
     else if(leftPressed == true) {
-        let currentPositon = player.getBoundingClientRect()
+        let currentPositon = player.getBoundingClientRect() //optimize
         let newLeft = currentPositon.left - 1;
         // pcdld = playerCollisionDetectionLeftDownward
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom)
@@ -220,7 +221,7 @@ setInterval(function() {
 
     else if(rightPressed == true) {
         // currentPLPositon = currentPlayerPositon
-        let currentPLPositon = player.getBoundingClientRect();
+        let currentPLPositon = player.getBoundingClientRect(); //optimize
         let newRight = currentPLPositon.right + 1;
         // pcdrd = playerCollisionDetectionRightDownward
         let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom)
@@ -280,7 +281,7 @@ let totalPoints = 0;
 // }
 
 
-function pointCollection() {
+function pointCollection() {    
     // let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
 
     //the idea I need to implement is that I need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
