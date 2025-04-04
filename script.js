@@ -135,7 +135,7 @@ let playerLeft = 0; //initializing a variable
 let timer = setInterval(function() {
     if(downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
-        let currentPositon = player.getBoundingClientRect()
+        let currentPositon = player.getBoundingClientRect() //optimize 
         let newBottom = currentPositon.bottom + collisionUnit;
         let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
         // console.log(currentPositon.left)
@@ -164,7 +164,7 @@ let timer = setInterval(function() {
     }
 
     else if(upPressed == true) {
-        let currentPositon = player.getBoundingClientRect()
+        let currentPositon = player.getBoundingClientRect() //optimize
         let newUp = currentPositon.top - collisionUnit;
         // pcdul = playerCollisionDetectionUpLeft
         let pcdul = document.elementFromPoint(currentPositon.left, newUp)
@@ -197,7 +197,7 @@ let timer = setInterval(function() {
 
 
     else if(leftPressed == true) {
-        let currentPositon = player.getBoundingClientRect()
+        let currentPositon = player.getBoundingClientRect() //optimize
         let newLeft = currentPositon.left - collisionUnit;
         // pcdld = playerCollisionDetectionLeftDownward
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom)
@@ -230,7 +230,7 @@ let timer = setInterval(function() {
 
     else if(rightPressed == true) {
         // currentPLPositon = currentPlayerPositon
-        let currentPLPositon = player.getBoundingClientRect();
+        let currentPLPositon = player.getBoundingClientRect(); //optimize
         let newRight = currentPLPositon.right + collisionUnit; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
         // pcdrd = playerCollisionDetectionRightDownward
         let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom)
