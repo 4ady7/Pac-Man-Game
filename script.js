@@ -21,19 +21,21 @@ let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //the last row is also filled with only walls 
 ];
 
+console.log(maze.length); //Output: 10
+console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
+
+//creating an enemy randomly after I have removed the enemy from the maze
 function createEnemy() {
-    const row = Math.floor(Math.random() * maze.length);
+    const row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
     const column =  Math.floor(Math.random() * maze[row].length);
-    //checking if the maze location is equal to 0
+    //checking if the maze location is equal to 0, which represents the points.
     if(maze[row][column] == 0) {
-        //if that's true then add an enemy
+        //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in the maze. 
         maze[row][column] = 3;
     }
     else {
         createEnemy();
     }
-
-    // maze[row][column] = 3 
 }
 
 createEnemy()
@@ -481,10 +483,6 @@ function lbttnClicked() {
     downPressed = false;
     leftPressed = true;
     rightPressed = false;
-    upPressed = false;        
-    downPressed = false;
-    leftPressed = true;
-    rightPressed = false;
 }
 
 function rbttnClicked() {
@@ -636,45 +634,3 @@ function removelive() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let allEnemies = document.querySelectorAll('.enemy');
-// for (let enemyOfEnemies of allEnemies) {
-//     enemyOfEnemies.addEventListener('click', enemyMovement);
-// }
-// function enemyMovement() {
-//     randomNumber = Math.ceil(Math.random() * 4);
-//     this.classList = 'side' + randomNumber;
-// }
