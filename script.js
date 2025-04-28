@@ -25,38 +25,8 @@ let maze = [
 
 
 
-//ALSO Working Perfectly 
-// function spawnEnemy() {
-//     let placed = false; // A flag to know if an enemy was placed successfully
-
-//     while (!placed) { // Loop until we successfully place an enemy
-//         let row = Math.floor(Math.random() * maze.length); 
-//         // Random row between 0 and maze height
-
-//         let col = Math.floor(Math.random() * maze[row].length); 
-//         // Random column between 0 and maze width
-
-//         if (maze[row][col] === 0) {
-//             // Only place an enemy if the spot is empty (0)
-
-//             maze[row][col] = 3; 
-//             // Update the data array so the game "knows" there's an enemy here
-
-
-//             placed = true; 
-//             // Mark that we placed the enemy so we exit the loop
-//         }
-//         // If the random place wasn't empty, the loop continues and picks another spot
-//     }
-// }
-
-
-// spawnEnemy()
-// spawnEnemy()
-// spawnEnemy()
-
-// console.log(maze.length); //Output: 10
-// console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
+console.log(maze.length); //Output: 10
+console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
 
 //creating an enemy randomly after I have removed the enemy from the maze
 function createEnemy() {
@@ -68,13 +38,16 @@ function createEnemy() {
         maze[row][column] = 3;
     }
     else {
+        //if the location is not location 0, and thus unsucessful to create an enemy, so call the function again. 
         createEnemy();
+        //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
 }
 
-createEnemy()
-createEnemy()
-createEnemy()
+//calling the function three times to create three enemies
+createEnemy();
+createEnemy();
+createEnemy();
 
 
 
