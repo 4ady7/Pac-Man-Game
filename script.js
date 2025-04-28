@@ -10,16 +10,81 @@ const main = document.querySelector('main');
 //Player = 2, Wall = 1, Enemy = 3, Point = 0
 let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //the first row is filled with only walls 
-    [1, 2, 0, 1, 0, 0, 0, 0, 3, 1], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
+    [1, 2, 0, 1, 0, 0, 0, 0, 0, 1], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
     [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 0, 0, 0, 0, 0, 1], // 0 represents the points that the player should collect 
     [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 1, 0, 3, 0, 0, 0, 1], //there is an enemy in the sixth column in this row
+    [1, 0, 0, 1, 0, 0, 0, 0, 0, 1], //there is an enemy in the sixth column in this row
     [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 3, 1, 0, 0, 0, 0, 0, 0, 1], //there is an enemy in the second column in this row
+    [1, 0, 1, 0, 0, 0, 0, 0, 0, 1], //there is an enemy in the second column in this row
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //the last row is also filled with only walls 
 ];
+
+function createEnemy() {
+    const row = Math.floor(Math.random() * maze.length);
+    const column =  Math.floor(Math.random() * maze[row].length);
+    //checking if the maze location is equal to 0
+    if(maze[row][column] == 0) {
+        //if that's true then add an enemy
+        maze[row][column] = 3;
+    }
+    else {
+        createEnemy();
+    }
+
+    // maze[row][column] = 3 
+}
+
+createEnemy()
+createEnemy()
+createEnemy()
+
+
+
+
+
+
+//moving the enemy 
+let allEnemies = document.querySelectorAll('.enemy');
+for (let enemyOfEnemies of allEnemies) {
+    enemyMovement(enemyOfEnemies);
+}
+function enemyMovement(enemyOfEnemies) {
+    let top = 0;
+    let left = 0;
+    let direction = Math.ceil(Math.random() * 4);
+    setInterval(function() {
+        if(direction == 1) {
+            top--; 
+        };
+        if(direction == 2) {
+            top++; 
+        };
+        if(direction == 3) {
+            left++; 
+        };
+        if(direction == 4) {
+            left--; 
+        };
+
+        enemyOfEnemies.style.left = left + 'px';
+        enemyOfEnemies.style.top = top + 'px';
+    }, 10)
+}
+
+
+
+
+
+
+
+
+//local storage used to save the name of the user, and their score of points after they have died after losing all of their 3 lives 
+
+
+
+
 
 //Populates the maze in the HTML
 for (let y of maze) {
@@ -132,8 +197,8 @@ const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
 
-let timer = setInterval(function() {
-    if(downPressed == true) {
+let timer = setInterval(function () {
+    if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
         let currentPositon = player.getBoundingClientRect() //optimize 
         let newBottom = currentPositon.bottom + collisionUnit;
@@ -147,15 +212,19 @@ let timer = setInterval(function() {
         }
 
         if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
-            alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead';
-            clearInterval(timer);
+            // alert('An enemy has been encountered!!! game over!!!');
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
         }
 
         if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
-            alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead';
-            clearInterval(timer);
+            // alert('An enemy has been encountered!!! game over!!!');
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
         }
 
         playerMouth.classList = 'down';
@@ -163,7 +232,7 @@ let timer = setInterval(function() {
         // scoreCount()
     }
 
-    else if(upPressed == true) {
+    else if (upPressed == true) {
         let currentPositon = player.getBoundingClientRect() //optimize
         let newUp = currentPositon.top - collisionUnit;
         // pcdul = playerCollisionDetectionUpLeft
@@ -174,18 +243,22 @@ let timer = setInterval(function() {
             playerTop = playerTop - playerSpeed;
             player.style.top = playerTop + 'px';
         }
-         
-        
+
+
         if (pcdul.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead';
-            clearInterval(timer); 
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
         }
 
         if (pcdur.classList.contains('enemy') == true) {
             alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead';
-            clearInterval(timer);
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
         }
 
 
@@ -196,7 +269,7 @@ let timer = setInterval(function() {
     }
 
 
-    else if(leftPressed == true) {
+    else if (leftPressed == true) {
         let currentPositon = player.getBoundingClientRect() //optimize
         let newLeft = currentPositon.left - collisionUnit;
         // pcdld = playerCollisionDetectionLeftDownward
@@ -205,21 +278,25 @@ let timer = setInterval(function() {
         let pcdlu = document.elementFromPoint(newLeft, currentPositon.top)
         if (pcdld.classList.contains('wall') == false && pcdlu.classList.contains('wall') == false) {
             playerLeft = playerLeft - playerSpeed;
-            player.style.left = playerLeft + 'px';   
+            player.style.left = playerLeft + 'px';
         }
 
         if (pcdld.classList.contains('enemy') == true) {
             // enemyCollision()
-            alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead'; 
-            clearInterval(timer);
+            // alert('An enemy has been encountered!!! game over!!!');
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
             // setTimeout(restart, 500)
         }
 
         if (pcdlu.classList.contains('enemy') == true) {
-            alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead';
-            clearInterval(timer);
+            // alert('An enemy has been encountered!!! game over!!!');
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
             // setTimeout(restart, 500)
         }
 
@@ -228,7 +305,7 @@ let timer = setInterval(function() {
         // scoreCount()
     }
 
-    else if(rightPressed == true) {
+    else if (rightPressed == true) {
         // currentPLPositon = currentPlayerPositon
         let currentPLPositon = player.getBoundingClientRect(); //optimize
         let newRight = currentPLPositon.right + collisionUnit; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
@@ -259,15 +336,19 @@ let timer = setInterval(function() {
         }
 
         if (pcdrd.classList.contains('enemy') == true) {
-            alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead';
-            clearInterval(timer);
+            // alert('An enemy has been encountered!!! game over!!!');
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
         }
 
         if (pcdru.classList.contains('enemy') == true) {
-            alert('An enemy has been encountered!!! game over!!!')
-            player.classList = 'dead';
-            clearInterval(timer);
+            // alert('An enemy has been encountered!!! game over!!!');
+            removelive();
+            player.classList = 'hit';
+            // player.classList = 'dead';
+            // clearInterval(timer);
         }
 
 
@@ -292,7 +373,7 @@ let totalPoints = 0;
 // }
 
 
-function pointCollection() {    
+function pointCollection() {
     // let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
 
     //the idea I need to implement is that I need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
@@ -300,7 +381,7 @@ function pointCollection() {
     console.log(point.length); //so now I know that we have 50 points in the maze. 
     // idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
     let playerPosition = player.getBoundingClientRect();
-    for(let i = 0; i < point.length; i++) {
+    for (let i = 0; i < point.length; i++) {
         let positionOfPoint = point[i].getBoundingClientRect();
         if (
             playerPosition.right > positionOfPoint.left &&
@@ -343,13 +424,12 @@ function gameOver() {
 
 
 
-
 let startBttn = document.querySelector('#start');
 
 function startGame() {
     // you can also use the following code __startBttn.style.display = 'none'__ This code will do same thing as opacity=0, which results in displaying nothing.  
     startBttn.style.opacity = 0;
-    
+
     // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
@@ -365,8 +445,8 @@ startBttn.addEventListener("click", startGame);
 
 
 //function to remove the start button 
-function removeButton () {
-    startBttn.style.display = 'none' 
+function removeButton() {
+    startBttn.style.display = 'none'
 }
 
 
@@ -393,28 +473,28 @@ downButton.addEventListener('click', dbttnClicked);
 
 
 function lbttnClicked() {
-        upPressed = false;        
-        downPressed = false;
-        leftPressed = true;
-        rightPressed = false;
+    upPressed = false;
+    downPressed = false;
+    leftPressed = true;
+    rightPressed = false;
 }
 
 function rbttnClicked() {
-    upPressed = false;        
+    upPressed = false;
     downPressed = false;
     leftPressed = false;
     rightPressed = true;
 }
 
 function dbttnClicked() {
-    upPressed = false;        
+    upPressed = false;
     downPressed = true;
     leftPressed = false;
     rightPressed = false;
 }
 
 function ubttnClicked() {
-    upPressed = true;        
+    upPressed = true;
     downPressed = false;
     leftPressed = false;
     rightPressed = false;
@@ -430,17 +510,17 @@ function ubttnClicked() {
 function enemyCollision() {
     let allEnemies = document.querySelectorAll('.enemy');
     let playerPosition = player.getBoundingClientRect();
-    for(let i = 0; i < allEnemies.length; i++) {
+    for (let i = 0; i < allEnemies.length; i++) {
         let positionOfEnemies = allEnemies[i].getBoundingClientRect();
         if (
             playerPosition.right > positionOfEnemies.left &&
             playerPosition.left < positionOfEnemies.right &&
-            playerPosition.bottom > positionOfEnemies.top && 
+            playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
         ) {
             setTimeout(restart, 500)
-            }
-        
+        }
+
     }
 }
 
@@ -453,6 +533,28 @@ function enemyCollision() {
 
 
 
+//creating lives 
+function createlives() {
+    let li = document.createElement('li');
+    let ul = document.querySelector('.lives ul');
+    ul.appendChild(li);
+}
+
+createlives();
+createlives();
+createlives();
+
+
+
+//removing lives 
+function removelive() {
+    let li = document.querySelector('.lives li');
+    let ul = document.querySelector('.lives ul');
+    ul.removeChild(li);
+}
+//calling it when the player hits an enemy
+
+
 
 
 // let colours = document.querySelectorAll('li');
@@ -462,7 +564,7 @@ function enemyCollision() {
 // }
 
 // function setColor() {
-//     player.style.backgroundColor = this.id; 
+//     player.style.backgroundColor = this.id;
 // }
 
 
@@ -484,12 +586,12 @@ function enemyCollision() {
 
 
 
-// notes for enemy movement 
+// notes for enemy movement
 // you will have to target each enemy seperately to allow different movement directions
 // you will have add the the action of the function in the start game function, so that the enemy will start movement after the start button has been pressed
 
 
-// code for the enemy movement 
+// code for the enemy movement
 
 
 
@@ -520,5 +622,51 @@ function enemyCollision() {
 
 
 
-// Adavnced secion notes 
+// Adavnced secion notes
 // way to increase the level to be more harder is by changing the interval speed of the player movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let allEnemies = document.querySelectorAll('.enemy');
+// for (let enemyOfEnemies of allEnemies) {
+//     enemyOfEnemies.addEventListener('click', enemyMovement);
+// }
+// function enemyMovement() {
+//     randomNumber = Math.ceil(Math.random() * 4);
+//     this.classList = 'side' + randomNumber;
+// }
