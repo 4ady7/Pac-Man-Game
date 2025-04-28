@@ -1,7 +1,7 @@
-let upPressed = false;
-let downPressed = false;
-let leftPressed = false;
-let rightPressed = false;
+let upPressed = false; //intializing the value of the variable upPressed to the boolean value false 
+let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
+let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
+let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
 let playerSpeed = 1.25; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
@@ -176,8 +176,11 @@ let timer = setInterval(function() {
         }
          
         
+        //checking if the player has came in contact with an enemy
         if (pcdul.classList.contains('enemy') == true) {
-            alert('An enemy has been encountered!!! game over!!!')
+            //if that's true, and the player came in contact with an enemy then display an alert 
+            alert('An enemy has been encountered!!! game over!!!');
+            //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
             player.classList = 'dead';
             clearInterval(timer); 
         }
@@ -315,6 +318,7 @@ function pointCollection() {
 
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
+                clearInterval(timer) //if it is true, and all the 50 points have been collected, then stop the movement of the player.
                 // alert('Game has ended! All points have been collected!');
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
@@ -393,10 +397,10 @@ downButton.addEventListener('click', dbttnClicked);
 
 
 function lbttnClicked() {
-        upPressed = false;        
-        downPressed = false;
-        leftPressed = true;
-        rightPressed = false;
+    upPressed = false;        
+    downPressed = false;
+    leftPressed = true;
+    rightPressed = false;
 }
 
 function rbttnClicked() {
