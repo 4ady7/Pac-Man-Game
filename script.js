@@ -27,15 +27,15 @@ let maze = [
 
 
 
-let listofEnemies = []; //creating a list to contain the created enemies, and assigning the list to a variable, and calling the varibale listofEnemies. 
+let arrayofEnemies = []; //creating an array to contain the created enemies, and assigning the array to a variable, and calling the varibale arrayofEnemies. 
 
 console.log(maze.length); //Output: 10
 console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
 
 //creating an enemy randomly after I have removed the enemy from the maze
 function createEnemy() {
-    const row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
-    const column = Math.floor(Math.random() * maze[row].length);
+    let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
+    let column = Math.floor(Math.random() * maze[row].length);
     //checking if the maze location is equal to 0, which represents the points.
     if (maze[row][column] == 0) {
         //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in the maze. 
@@ -47,7 +47,7 @@ function createEnemy() {
         createEnemy(); //calling the function to create an enemy
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
-    listofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called listofEnemies
+    arrayofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
 }
 
 //calling the function three times to create three enemies
@@ -55,7 +55,10 @@ createEnemy();
 createEnemy();
 createEnemy();
 
-
+//showing in the console the exact location of each created enemy, which is determined randomly and changes every game
+console.log(arrayofEnemies[0]);
+console.log(arrayofEnemies[1]);
+console.log(arrayofEnemies[2]);
 
 
 
@@ -64,7 +67,8 @@ createEnemy();
 //moving the enemy 
 //let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
 
-for (let theenemyOfEnemies of listofEnemies) {
+let = arrayofEnemies = document.querySelectorAll('.enemy');
+for (let theenemyOfEnemies of arrayofEnemies) {
     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
 }
@@ -92,8 +96,10 @@ function enemyMovement(theenemyOfEnemies) {
             left--;
         };
 
-        theenemyOfEnemies.style.left = left + 'px';
         theenemyOfEnemies.style.top = top + 'px';
+
+        theenemyOfEnemies.style.left = left + 'px';
+
     }, 10);
 }
 
