@@ -9,6 +9,10 @@ I have faced an unexpected issue with one of the the wall blocks when I was movi
 I have faced yet another problem. The problem I faced was in Microsoft edge browser. The problem was that i could go through the wall under the area where the start button was intially visiable. And it seems that the start button still had the upperhand over the wall block, and that's why the player was able to go through, because the player collision detection is not recognising that it is a wall block, and to solve this problem I opted to use setTimeout() after 3 seconds to display none the start button. 
 
 
+#3 
+I was facing a problem with the enemy movement, after removing the enemy from the maze so that I can randomly place the enemy anywhere on the maze except where there are walls, and the player. The problem is that after removing the enemy, and creating a new function for creating the enemy, I am now unable to select the using querySelectorAll like before. I now need a new way of selecting the eneimes. 
+
+
 
 objective notes to implement :
 brring back the opacity to 1 for the start button, and change the start button to restart and when you press on it. The game restarts. Thinking about it, the restart button is the same function as the start button function. 

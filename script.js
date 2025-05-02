@@ -5,7 +5,7 @@ let rightPressed = false; //intializing the value of the variable rightPressed t
 let playerSpeed = 1.25; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
-const main = document.querySelector('main');
+let main = document.querySelector('main');
 
 //Player = 2, Wall = 1, Enemy = 3, Point = 0
 let maze = [
@@ -25,23 +25,29 @@ let maze = [
 
 
 
+
+
+let listofEnemies = []; //creating a list to contain the created enemies, and assigning the list to a variable, and calling the varibale listofEnemies. 
+
 console.log(maze.length); //Output: 10
 console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
 
 //creating an enemy randomly after I have removed the enemy from the maze
 function createEnemy() {
     const row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
-    const column =  Math.floor(Math.random() * maze[row].length);
+    const column = Math.floor(Math.random() * maze[row].length);
     //checking if the maze location is equal to 0, which represents the points.
-    if(maze[row][column] == 0) {
+    if (maze[row][column] == 0) {
         //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in the maze. 
         maze[row][column] = 3;
+        enemyPosition = { row, column } //assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
     }
     else {
         //if the location is not location 0, and thus unsucessful to create an enemy, so call the function again. 
-        createEnemy();
+        createEnemy(); //calling the function to create an enemy
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
+    listofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called listofEnemies
 }
 
 //calling the function three times to create three enemies
@@ -54,32 +60,41 @@ createEnemy();
 
 
 
+
 //moving the enemy 
-let allEnemies = document.querySelectorAll('.enemy');
-for (let enemyOfEnemies of allEnemies) {
-    enemyMovement(enemyOfEnemies);
+//let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
+
+for (let theenemyOfEnemies of listofEnemies) {
+    //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+    enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
 }
-function enemyMovement(enemyOfEnemies) {
+
+function enemyMovement(theenemyOfEnemies) {
     let top = 0;
     let left = 0;
     let direction = Math.ceil(Math.random() * 4);
-    setInterval(function() {
-        if(direction == 1) {
-            top--; 
+    setInterval(function () {
+        // let positionOfEnemies = theenemyOfEnemies.getBoundingClientRect(); 
+        if (direction == 1) {
+            // let newTop = position.top - 1;
+            // let topL = document.elementFromPoint(position.left, newTop);
+            // let topR = document.elementFromPoint(position.right, newTop);
+            // if(topL.classList.contains('wall') == false && topR.classList.contains('wa
+            top--;
         };
-        if(direction == 2) {
-            top++; 
+        if (direction == 2) {
+            top++;
         };
-        if(direction == 3) {
-            left++; 
+        if (direction == 3) {
+            left++;
         };
-        if(direction == 4) {
-            left--; 
+        if (direction == 4) {
+            left--;
         };
 
-        enemyOfEnemies.style.left = left + 'px';
-        enemyOfEnemies.style.top = top + 'px';
-    }, 10)
+        theenemyOfEnemies.style.left = left + 'px';
+        theenemyOfEnemies.style.top = top + 'px';
+    }, 10);
 }
 
 
