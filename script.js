@@ -65,18 +65,16 @@ console.log(arrayofEnemies[2]);
 
 
 //moving the enemy 
-//let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-
-let = arrayofEnemies = document.querySelectorAll('.enemy');
-for (let theenemyOfEnemies of arrayofEnemies) {
+let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
+for (let theenemyOfEnemies of alltheEnemies) {
     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
 }
 
 function enemyMovement(theenemyOfEnemies) {
-    let top = 0;
-    let left = 0;
     let direction = Math.ceil(Math.random() * 4);
+    let enemytop = 0;
+    let enemyleft = 0;
     setInterval(function () {
         // let positionOfEnemies = theenemyOfEnemies.getBoundingClientRect(); 
         if (direction == 1) {
@@ -84,25 +82,27 @@ function enemyMovement(theenemyOfEnemies) {
             // let topL = document.elementFromPoint(position.left, newTop);
             // let topR = document.elementFromPoint(position.right, newTop);
             // if(topL.classList.contains('wall') == false && topR.classList.contains('wa
-            top--;
+            enemytop-= 5;
         };
         if (direction == 2) {
-            top++;
+            enemytop+= 5;
         };
         if (direction == 3) {
-            left++;
+            enemyleft+= 5;
         };
         if (direction == 4) {
-            left--;
+            enemyleft-= 5;
         };
 
-        theenemyOfEnemies.style.top = top + 'px';
+        theenemyOfEnemies.style.top = enemytop + 'px';
+        
 
-        theenemyOfEnemies.style.left = left + 'px';
+        theenemyOfEnemies.style.posleft = enemyleft + 'px';
+        
+        // console.log(enemyleft)
 
-    }, 10);
+    }, 50);
 }
-
 
 
 
