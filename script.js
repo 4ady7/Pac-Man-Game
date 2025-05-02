@@ -40,12 +40,14 @@ function createEnemy() {
     if (maze[row][column] == 0) {
         //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in the maze. 
         maze[row][column] = 3;
-        enemyPosition = { row, column } //assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
     }
     else {
         //if the location is not location 0, and thus unsucessful to create an enemy, so call the function again. 
         createEnemy(); //calling the function to create an enemy
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
+    }
+    if (maze[row][column] == 3) {
+        enemyPosition = { row, column } //assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
     }
     arrayofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
 }
@@ -63,15 +65,19 @@ console.log(arrayofEnemies[2]);
 
 
 
-
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-for (let theenemyOfEnemies of alltheEnemies) {
+console.log("no of enemies: " + arrayofEnemies.length)
+for (let theenemyOfEnemies of arrayofEnemies) {
+    console.log("lopp" + theenemyOfEnemies)
+    console.log("Jsonlopp" + JSON.stringify(theenemyOfEnemies));
     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
 }
 
 function enemyMovement(theenemyOfEnemies) {
+    console.log("taht" + theenemyOfEnemies);
+    console.log("Jsontaht" + JSON.stringify(theenemyOfEnemies));
     let direction = Math.ceil(Math.random() * 4);
     let enemytop = 0;
     let enemyleft = 0;
@@ -82,27 +88,28 @@ function enemyMovement(theenemyOfEnemies) {
             // let topL = document.elementFromPoint(position.left, newTop);
             // let topR = document.elementFromPoint(position.right, newTop);
             // if(topL.classList.contains('wall') == false && topR.classList.contains('wa
-            enemytop-= 5;
+            enemytop -= 5;
         };
         if (direction == 2) {
-            enemytop+= 5;
+            enemytop += 5;
         };
         if (direction == 3) {
-            enemyleft+= 5;
+            enemyleft += 5;
         };
         if (direction == 4) {
-            enemyleft-= 5;
+            enemyleft -= 5;
         };
 
         theenemyOfEnemies.style.top = enemytop + 'px';
-        
+
 
         theenemyOfEnemies.style.posleft = enemyleft + 'px';
-        
-        // console.log(enemyleft)
+
+        console.log(enemyleft)
 
     }, 50);
 }
+
 
 
 
