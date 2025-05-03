@@ -65,50 +65,7 @@ createEnemy();
 
 
 
-//moving the enemy 
-let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-// console.log("no of enemies: " + arrayofEnemies.length)
-for (let theenemyOfEnemies of alltheEnemies) {
-    console.log("lopp" + theenemyOfEnemies)
-    console.log("Jsonlopp" + JSON.stringify(theenemyOfEnemies));
-    //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
-    enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
-}
 
-function enemyMovement(theenemyOfEnemies) {
-    console.log("taht" + theenemyOfEnemies);
-    console.log("Jsontaht" + JSON.stringify(theenemyOfEnemies));
-    let direction = Math.ceil(Math.random() * 4);
-    let enemytop = 0;
-    let enemyleft = 0;
-    setInterval(function () {
-        // let positionOfEnemies = theenemyOfEnemies.getBoundingClientRect(); 
-        if (direction == 1) {
-            // let newTop = position.top - 1;
-            // let topL = document.elementFromPoint(position.left, newTop);
-            // let topR = document.elementFromPoint(position.right, newTop);
-            // if(topL.classList.contains('wall') == false && topR.classList.contains('wa
-            enemytop -= 5;
-        };
-        if (direction == 2) {
-            enemytop += 5;
-        };
-        if (direction == 3) {
-            enemyleft += 5;
-        };
-        if (direction == 4) {
-            enemyleft -= 5;
-        };
-
-        theenemyOfEnemies.style.top = enemytop + 'px';
-
-
-        theenemyOfEnemies.style.left = enemyleft + 'px';
-
-        console.log(enemyleft)
-
-    }, 50);
-}
 
 
 
@@ -619,6 +576,66 @@ function removelive() {
 
 
 
+//moving the enemy 
+let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
+// console.log("no of enemies: " + arrayofEnemies.length)
+for (let theenemyOfEnemies of alltheEnemies) {
+    console.log("lopp" + theenemyOfEnemies)
+    console.log("Jsonlopp" + JSON.stringify(theenemyOfEnemies));
+    //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+    enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+}
+
+function enemyMovement(theenemyOfEnemies) {
+    console.log("taht" + theenemyOfEnemies);
+    console.log("Jsontaht" + JSON.stringify(theenemyOfEnemies));
+    let direction = Math.ceil(Math.random() * 4);
+    let enemytop = 0;
+    let enemyleft = 0;
+    setInterval(function () {
+        // let positionOfEnemies = theenemyOfEnemies.getBoundingClientRect(); 
+        if (direction == 1) {
+            // let newTop = position.top - 1;
+            // let topL = document.elementFromPoint(position.left, newTop);
+            // let topR = document.elementFromPoint(position.right, newTop);
+            // if(topL.classList.contains('wall') == false && topR.classList.contains('wa
+            enemytop -= 5;
+        };
+        if (direction == 2) {
+            enemytop += 5;
+        };
+        if (direction == 3) {
+            enemyleft += 5;
+        };
+        if (direction == 4) {
+            enemyleft -= 5;
+        };
+
+        theenemyOfEnemies.style.top = enemytop + 'px';
+
+
+        theenemyOfEnemies.style.left = enemyleft + 'px';
+
+        console.log(enemyleft)
+
+    }, 50);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -665,6 +682,7 @@ function removelive() {
 
 // Adavnced secion notes
 // way to increase the level to be more harder is by changing the interval speed of the player movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
+
 
 
 
