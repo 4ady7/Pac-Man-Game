@@ -27,7 +27,7 @@ let maze = [
 
 
 
-let arrayofEnemies = []; //creating an array to contain the created enemies, and assigning the array to a variable, and calling the varibale arrayofEnemies. 
+// let arrayofEnemies = []; //creating an array to contain the created enemies, and assigning the array to a variable, and calling the varibale arrayofEnemies. 
 
 console.log(maze.length); //Output: 10
 console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
@@ -46,10 +46,10 @@ function createEnemy() {
         createEnemy(); //calling the function to create an enemy
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
-    if (maze[row][column] == 3) {
-        enemyPosition = { row, column } //assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
-    }
-    arrayofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
+    // if (maze[row][column] == 3) {
+        // enemyPosition = { row, column } //assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
+    // }
+    // arrayofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
 }
 
 //calling the function three times to create three enemies
@@ -58,17 +58,17 @@ createEnemy();
 createEnemy();
 
 //showing in the console the exact location of each created enemy, which is determined randomly and changes every game
-console.log(arrayofEnemies[0]);
-console.log(arrayofEnemies[1]);
-console.log(arrayofEnemies[2]);
+// console.log(arrayofEnemies[0]);
+// console.log(arrayofEnemies[1]);
+// console.log(arrayofEnemies[2]);
 
 
 
 
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-console.log("no of enemies: " + arrayofEnemies.length)
-for (let theenemyOfEnemies of arrayofEnemies) {
+// console.log("no of enemies: " + arrayofEnemies.length)
+for (let theenemyOfEnemies of alltheEnemies) {
     console.log("lopp" + theenemyOfEnemies)
     console.log("Jsonlopp" + JSON.stringify(theenemyOfEnemies));
     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
@@ -103,7 +103,7 @@ function enemyMovement(theenemyOfEnemies) {
         theenemyOfEnemies.style.top = enemytop + 'px';
 
 
-        theenemyOfEnemies.style.posleft = enemyleft + 'px';
+        theenemyOfEnemies.style.left = enemyleft + 'px';
 
         console.log(enemyleft)
 

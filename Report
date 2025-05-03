@@ -10,7 +10,11 @@ I have faced yet another problem. The problem I faced was in Microsoft edge brow
 
 
 #3 
-I was facing a problem with the enemy movement, after removing the enemy from the maze so that I can randomly place the enemy anywhere on the maze except where there are walls, and the player. The problem is that after removing the enemy, and creating a new function for creating the enemy, I am now unable to select the using querySelectorAll like before. I now need a new way of selecting the eneimes. 
+I was facing a problem with the enemy movement, after removing the enemy from the maze so that I can randomly place the enemy anywhere on the maze except where there are walls, and the player. The problem is that after removing the enemy, and creating a new function for creating the enemy, I am now unable to select the using querySelectorAll like before. I now need a new way of selecting the eneimes. I tried creating an empty array, and adding to it the location of the created enemies
+
+
+#4
+I was facing a problem with how I initially was creating the enemy to be place randomly inside the maze. I figured out the problem after using console.log(variable.length) when I was checking the number of created and I turned out to be way more than 3 enemies, so the solved this problem by 
 
 
 
