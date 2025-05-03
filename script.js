@@ -50,6 +50,7 @@ function createEnemy() {
         enemyPosition = { row, column } //assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
     }
     arrayofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
+    //using the push() method to add the eleent to the end of the array
 }
 
 //calling the function three times to create three enemies
@@ -191,6 +192,8 @@ const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
 
+
+//without setInterval method the player would not be able to move. The following is a an example of using setinterval method with a function that has no name
 let timer = setInterval(function () {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
@@ -207,16 +210,14 @@ let timer = setInterval(function () {
 
         if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            removelive();
-            player.classList = 'hit';
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
         }
 
         if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            removelive();
-            player.classList = 'hit';
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
         }
@@ -242,18 +243,16 @@ let timer = setInterval(function () {
         //checking if the player has came in contact with an enemy
         if (pcdul.classList.contains('enemy') == true) {
             //if that's true, and the player came in contact with an enemy then display an alert 
-            alert('An enemy has been encountered!!! game over!!!');
+            // alert('An enemy has been encountered!!! game over!!!');
             //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
-            removelive();
-            player.classList = 'hit';
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
         }
 
         if (pcdur.classList.contains('enemy') == true) {
-            alert('An enemy has been encountered!!! game over!!!')
-            removelive();
-            player.classList = 'hit';
+            // alert('An enemy has been encountered!!! game over!!!')
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
         }
@@ -279,10 +278,8 @@ let timer = setInterval(function () {
         }
 
         if (pcdld.classList.contains('enemy') == true) {
-            // enemyCollision()
             // alert('An enemy has been encountered!!! game over!!!');
-            removelive();
-            player.classList = 'hit';
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
             // setTimeout(restart, 500)
@@ -290,8 +287,7 @@ let timer = setInterval(function () {
 
         if (pcdlu.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            removelive();
-            player.classList = 'hit';
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
             // setTimeout(restart, 500)
@@ -334,16 +330,14 @@ let timer = setInterval(function () {
 
         if (pcdrd.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            removelive();
-            player.classList = 'hit';
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
         }
 
         if (pcdru.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            removelive();
-            player.classList = 'hit';
+            enemyEncounter();
             // player.classList = 'dead';
             // clearInterval(timer);
         }
@@ -395,7 +389,7 @@ function pointCollection() {
             if (totalPoints == 50) {
                 clearInterval(timer) //if it is true, and all the 50 points have been collected, then stop the movement of the player.
                 // alert('Game has ended! All points have been collected!');
-                setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last disappears from the screen, but that did not work.
+                setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
             }
         }
@@ -407,6 +401,32 @@ function pointCollection() {
 function gameOver() {
     alert('Game has ended! All points have been collected!')
 }
+
+
+let encounteredEnemy = false; //initializing the variable encounteredEnemy with the boolean value false, which refers to a player that has not encountered an enemy
+function enemyEncounter() {
+    //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
+    if (encounteredEnemy == false) {
+        //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
+        removelive();
+        //and the player displays the hit animation
+        player.classList = 'hit';
+        //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
+        encounteredEnemy = true;
+
+        //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
+        //So settimeout method keeps the previous state of a player has encountered an enemy for 3 seconds, and then changes the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy after the 3 second period.
+        //why I am doing this? to give the player a grace period to get away from the enemy after encountering an enemy. 
+        setTimeout(() => {
+            encounteredEnemy = false;
+        }, 3000); //3000 here equals 3 seconds, because intervals are measured in 1000ths of a second 
+    }
+}
+
+
+
+
+
 
 
 
@@ -533,12 +553,16 @@ function enemyCollision() {
 
 //creating lives 
 function createlives() {
+    //creating a list in HTML, and assigning to the variable li 
     let li = document.createElement('li');
+    //selecting the unordered list inside the div with the class lives
     let ul = document.querySelector('.lives ul');
+    //appending/adding the created list assigned to variable li to the unordered list iniside the div with the class lives
     ul.appendChild(li);
 }
 
-createlives();
+//calling the function three times to create three lives, refering to the player's health 
+createlives(); 
 createlives();
 createlives();
 
@@ -546,11 +570,31 @@ createlives();
 
 //removing lives 
 function removelive() {
+    //selecting a list inside the div with the class lives
     let li = document.querySelector('.lives li');
+    //selecting the unordered list inside the div with the class lives
     let ul = document.querySelector('.lives ul');
+    //removing the created list assigned to variable li from the unordered list iniside the div with the class lives
     ul.removeChild(li);
 }
-//calling it when the player hits an enemy
+//I will be calling it when the player hits an enemy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -576,42 +620,49 @@ function removelive() {
 
 
 
-//moving the enemy 
-let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
-for (let theenemyOfEnemies of alltheEnemies) {
-    //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
-    enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
-}
 
-function enemyMovement(theenemyOfEnemies) {
-    let direction = Math.ceil(Math.random() * 4);
-    let enemytop = 0;
-    let enemyleft = 0;
-    setInterval(function () {
-        if (direction == 1) {
-            // let newTop = position.top - 1;
-            // let topL = document.elementFromPoint(position.left, newTop);
-            // let topR = document.elementFromPoint(position.right, newTop);
-            // if(topL.classList.contains('wall') == false && topR.classList.contains('wa
-            enemytop -= 5;
-        };
-        if (direction == 2) {
-            enemytop += 5;
-        };
-        if (direction == 3) {
-            enemyleft += 5;
-        };
-        if (direction == 4) {
-            enemyleft -= 5;
-        };
-        theenemyOfEnemies.style.top = enemytop + 'px';
-        theenemyOfEnemies.style.left = enemyleft + 'px';
 
-        console.log(enemytop) //shhowing the enemy movement along the vertical line 
-        console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
-    }, 50);
-}
+
+
+
+
+
+// //moving the enemy 
+// let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
+// console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
+// for (let theenemyOfEnemies of alltheEnemies) {
+//     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+//     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+// }
+
+// function enemyMovement(theenemyOfEnemies) {
+//     let direction = Math.ceil(Math.random() * 4);
+//     let enemytop = 0;
+//     let enemyleft = 0;
+//     setInterval(function () {
+//         if (direction == 1) {
+//             // let newTop = position.top - 1;
+//             // let topL = document.elementFromPoint(position.left, newTop);
+//             // let topR = document.elementFromPoint(position.right, newTop);
+//             // if(topL.classList.contains('wall') == false && topR.classList.contains('wa
+//             enemytop -= 5;
+//         };
+//         if (direction == 2) {
+//             enemytop += 5;
+//         };
+//         if (direction == 3) {
+//             enemyleft += 5;
+//         };
+//         if (direction == 4) {
+//             enemyleft -= 5;
+//         };
+//         theenemyOfEnemies.style.top = enemytop + 'px';
+//         theenemyOfEnemies.style.left = enemyleft + 'px';
+
+//         console.log(enemytop) //shhowing the enemy movement along the vertical line 
+//         console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
+//     }, 50);
+// }
 
 
 
