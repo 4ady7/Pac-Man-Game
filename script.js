@@ -660,7 +660,7 @@ function enemyMovement(theenemyOfEnemies) {
                 //if the enemy hits a wall change direction
                 if (ecdul.classList.contains('wall') == true && ecdur.classList.contains('wall') == true) {
                     for (let i of direction) {
-                        let direction = Math.ceil(Math.random() * 8);
+                        i = Math.ceil(Math.random() * 8);
                     }
                 }
             };
@@ -685,7 +685,7 @@ function enemyMovement(theenemyOfEnemies) {
                 //if the enemy hits a wall change direction
                 if (ecdbl.classList.contains('wall') == true && ecdbr.classList.contains('wall') == true) {
                     for (let i of direction) {
-                        let direction = Math.ceil(Math.random() * 8);
+                        i = Math.ceil(Math.random() * 8);
                     }
                 }
             };
@@ -708,7 +708,7 @@ function enemyMovement(theenemyOfEnemies) {
                 //if the enemy hits a wall change direction
                 if (ecdlB.classList.contains('wall') == true && ecdlT.classList.contains('wall') == true) {
                     for (let i of direction) {
-                        let direction = Math.ceil(Math.random() * 8);
+                        i = Math.ceil(Math.random() * 8);
                     }
                 }
             };
@@ -731,8 +731,8 @@ function enemyMovement(theenemyOfEnemies) {
 
                 //if the enemy hits a wall change direction
                 if (ecdrB.classList.contains('wall') == true && ecdrT.classList.contains('wall') == true) {
-                    for (let i of direction) {
-                        let direction = Math.ceil(Math.random() * 8);
+                    for (let a of direction) {
+                        i = Math.ceil(Math.random() * 8);
                     }
                 }
             };
