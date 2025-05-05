@@ -18,7 +18,7 @@ I was facing a problem with how I initially was creating the enemy to be place r
 
 
 #5
-Another problem i was facing is that while doing my enemy wall collision detection, more than one value of the variable direction was being assigned to one enemy, and another enemy was not assigned the variable direction at all, so now I need to command the assignment of the variable direction only once to each enemy.
+Another problem i was facing is that while doing my enemy wall collision detection, more than one value of the variable direction was being assigned to one enemy, and another enemy was not assigned the variable direction at all, so now I need to command the assignment of the variable direction only once to each enemy. However, I come to believe that I do not need to do that, and the real problem is in the function for the player-enemy collision detection.
 
 
 

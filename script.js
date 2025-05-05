@@ -653,10 +653,20 @@ function enemyMovement(theenemyOfEnemies) {
                     theenemyOfEnemies.style.top = enemytop + 'px';
 
                 }
-                else {
-                    console.log("print this out: " + ecdul);
+                // else {
+                //     console.log("print this out: " + ecdul);
+                // }
+
+                //if the enemy hits a wall change direction
+                if (ecdul.classList.contains('wall') == true && ecdur.classList.contains('wall') == true) {
+                    for (let i of direction) {
+                        let direction = Math.ceil(Math.random() * 8);
+                    }
                 }
             };
+
+
+
             if (direction == 2) {
                 let enemyPosition = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPosition
 
@@ -670,7 +680,18 @@ function enemyMovement(theenemyOfEnemies) {
                     enemytop += 1; //incrementing the enemy position by 1, and assigning it to the variable enemytop
                     theenemyOfEnemies.style.top = enemytop + 'px'; //applying the changes and moving the enemy to the bottom 
                 };
+
+                
+                //if the enemy hits a wall change direction
+                if (ecdbl.classList.contains('wall') == true && ecdbr.classList.contains('wall') == true) {
+                    for (let i of direction) {
+                        let direction = Math.ceil(Math.random() * 8);
+                    }
+                }
             };
+
+
+
             if (direction == 3) {
                 let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
                 let newLeft = enemyPosition.left - 1;
@@ -683,19 +704,36 @@ function enemyMovement(theenemyOfEnemies) {
                     enemyleft -= 1; 
                     theenemyOfEnemies.style.left = enemyleft + 'px';
                 };
+
+                //if the enemy hits a wall change direction
+                if (ecdlB.classList.contains('wall') == true && ecdlT.classList.contains('wall') == true) {
+                    for (let i of direction) {
+                        let direction = Math.ceil(Math.random() * 8);
+                    }
+                }
             };
+
+
+
             if (direction == 4) {
                 let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
                 //why newRight have to have +, and not - here ? is it because we are moving in a different direction. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left direction. 
                 let newRight = enemyPosition.right + 1;
                 
                 // ecdrB = enemyCollisionDetectionRightBottom
-                let ecdlB = document.elementFromPoint(newRight, enemyPosition.bottom);
+                let ecdrB = document.elementFromPoint(newRight, enemyPosition.bottom);
                 // ecdrT = enemyCollisionDetectionRightTop
                 let ecdrT = document.elementFromPoint(newRight, enemyPosition.top);
-                if (ecdlB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false) { 
+                if (ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false) { 
                     enemyleft += 1; 
                     theenemyOfEnemies.style.left = enemyleft + 'px';
+                }
+
+                //if the enemy hits a wall change direction
+                if (ecdrB.classList.contains('wall') == true && ecdrT.classList.contains('wall') == true) {
+                    for (let i of direction) {
+                        let direction = Math.ceil(Math.random() * 8);
+                    }
                 }
             };
 
@@ -705,36 +743,77 @@ function enemyMovement(theenemyOfEnemies) {
 
             //more enemy collision diagonally, because I noticed that the enemy is sometimes moving diagonally, but what I also noticed is even though I uncommented this uncompleted code, my enemy wall collision detection works fine, and problem that I was facing earlier where It seemed that there is no collision detection at all I assume it was a glitch 
             //direction == 5 is for right-bottom collision detction
-            // if (direction == 5) {
-            //     let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
-            //     let newRight = enemyPosition.right - 1;
-            //     let newBottom = enemyPosition.bottom - 1;
-            //     // RB = RightBottom
-            //     let RB = document.elementFromPoint(newRight, newBottom);
-            //     if (RB == true && RB.classList.contains('wall') == false) { 
-            //         enemyleft += 1; 
-            //         theenemyOfEnemies.style.left = enemyleft + 'px';
-            //     }
-            // };
-            //direction == 6 is for right-upward collision detction
-            // if (direction == 6) {
-            //     }
-            // };
-            //direction == 7 is for left-bottom collision detction
-            // if (direction == 7) {
-            //     }
-            // };
-            //direction == 8 is for right-upward collision detction
-            // if (direction == 8) {
-            //     }
-            // };
+            if (direction == 5) {
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
+                let newRight = enemyPosition.right + 1;
+                let newBottom = enemyPosition.bottom + 1;
+                // RB = RightBottom
+                let RB = document.elementFromPoint(newRight, newBottom);
+                if (RB == true && RB.classList.contains('wall') == false) { 
+                    enemyleft += 1;
+                    enemytop += 1;
+                    theenemyOfEnemies.style.left = enemyleft + 'px';
+                    theenemyOfEnemies.style.top = enemytop + 'px';
+                }
+            };
+
+
+
+            // direction == 6 is for right-upward collision detction
+            if (direction == 6) {
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
+                let newRight = enemyPosition.right + 1;
+                let newTop = enemyPosition.top - 1;
+                // RT = RightUp
+                let RT = document.elementFromPoint(newRight, newTop);
+                if (RT == true && RT.classList.contains('wall') == false) { 
+                    enemyleft += 1; 
+                    enemytop -= 1;
+                    theenemyOfEnemies.style.left = enemyleft + 'px';
+                    theenemyOfEnemies.style.top = enemytop + 'px';
+                }
+            };
+
+
+
+            // direction == 7 is for left-bottom collision detction
+            if (direction == 7) {
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
+                let newLeft = enemyPosition.left - 1;
+                let newBottom = enemyPosition.bottom + 1;
+                // RB = RightBottom
+                let RB = document.elementFromPoint(newLeft, newBottom);
+                if (RB == true && RB.classList.contains('wall') == false) { 
+                    enemyleft -= 1; 
+                    enemytop += 1;
+                    theenemyOfEnemies.style.left = enemyleft + 'px';
+                    theenemyOfEnemies.style.top = enemytop + 'px';
+                }
+            };
+
+
+
+            // direction == 8 is for left-upward collision detction
+            if (direction == 8) {
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
+                let newLeft = enemyPosition.left - 1;
+                let newTop = enemyPosition.top - 1;
+                // LT = LeftUp
+                let LT = document.elementFromPoint(newLeft, newTop);
+                if (LT == true && LT.classList.contains('wall') == false) {
+                    enemyleft -= 1;
+                    enemytop -= 1;
+                    theenemyOfEnemies.style.left = enemyleft + 'px';
+                    theenemyOfEnemies.style.top = enemytop + 'px';
+                }
+                }
+            };
 
 
         
             
             console.log(enemytop) //shhowing the enemy movement along the vertical line 
             console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
-        }
     }, 50);
 }
 
