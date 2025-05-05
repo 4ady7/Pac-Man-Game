@@ -208,19 +208,19 @@ let timer = setInterval(function () {
             player.style.top = playerTop + 'px';
         }
 
-        if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
-            // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-        }
+        // if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
+        //     // alert('An enemy has been encountered!!! game over!!!');
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        // }
 
-        if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
-            // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-        }
+        // if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
+        //     // alert('An enemy has been encountered!!! game over!!!');
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        // }
 
         playerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
@@ -240,22 +240,22 @@ let timer = setInterval(function () {
         }
 
 
-        //checking if the player has came in contact with an enemy
-        if (pcdul.classList.contains('enemy') == true) {
-            //if that's true, and the player came in contact with an enemy then display an alert 
-            // alert('An enemy has been encountered!!! game over!!!');
-            //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-        }
+        // //checking if the player has came in contact with an enemy
+        // if (pcdul.classList.contains('enemy') == true) {
+        //     //if that's true, and the player came in contact with an enemy then display an alert 
+        //     // alert('An enemy has been encountered!!! game over!!!');
+        //     //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        // }
 
-        if (pcdur.classList.contains('enemy') == true) {
-            // alert('An enemy has been encountered!!! game over!!!')
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-        }
+        // if (pcdur.classList.contains('enemy') == true) {
+        //     // alert('An enemy has been encountered!!! game over!!!')
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        // }
 
 
         playerMouth.classList = 'up';
@@ -277,21 +277,21 @@ let timer = setInterval(function () {
             player.style.left = playerLeft + 'px';
         }
 
-        if (pcdld.classList.contains('enemy') == true) {
-            // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-            // setTimeout(restart, 500)
-        }
+        // if (pcdld.classList.contains('enemy') == true) {
+        //     // alert('An enemy has been encountered!!! game over!!!');
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        //     // setTimeout(restart, 500)
+        // }
 
-        if (pcdlu.classList.contains('enemy') == true) {
-            // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-            // setTimeout(restart, 500)
-        }
+        // if (pcdlu.classList.contains('enemy') == true) {
+        //     // alert('An enemy has been encountered!!! game over!!!');
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        //     // setTimeout(restart, 500)
+        // }
 
         playerMouth.classList = 'left';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
@@ -328,19 +328,19 @@ let timer = setInterval(function () {
             console.log(playerLeft)
         }
 
-        if (pcdrd.classList.contains('enemy') == true) {
-            // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-        }
+        // if (pcdrd.classList.contains('enemy') == true) {
+        //     // alert('An enemy has been encountered!!! game over!!!');
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        // }
 
-        if (pcdru.classList.contains('enemy') == true) {
-            // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-        }
+        // if (pcdru.classList.contains('enemy') == true) {
+        //     // alert('An enemy has been encountered!!! game over!!!');
+        //     enemyEncounter();
+        //     // player.classList = 'dead';
+        //     // clearInterval(timer);
+        // }
 
 
 
@@ -636,7 +636,7 @@ for (let theenemyOfEnemies of alltheEnemies) {
 }
 
 function enemyMovement(theenemyOfEnemies) {
-    let direction = Math.ceil(Math.random() * 4);
+    let direction = Math.ceil(Math.random() * 8);
     let enemytop = 0;
     let enemyleft = 0;
     setInterval(function () {
@@ -659,7 +659,9 @@ function enemyMovement(theenemyOfEnemies) {
             };
             if (direction == 2) {
                 let enemyPosition = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPosition
-                let newBottom = enemyPosition.bottom - 1; //selecting the new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
+
+                //why newBottom have to have +, and not - here ? is it because we are moving in a different direction. Because we are moving downwar, and addition pushes the enemy downwards. 
+                let newBottom = enemyPosition.bottom + 1; //selecting the new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
                 // ecdbl = enemyCollisionDetectionBottomLeft
                 let ecdbl = document.elementFromPoint(enemyPosition.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
                 // ecdbr = enemyCollisionDetectionBottomRight
@@ -684,7 +686,9 @@ function enemyMovement(theenemyOfEnemies) {
             };
             if (direction == 4) {
                 let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
-                let newRight = enemyPosition.right - 1;
+                //why newRight have to have +, and not - here ? is it because we are moving in a different direction. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left direction. 
+                let newRight = enemyPosition.right + 1;
+                
                 // ecdrB = enemyCollisionDetectionRightBottom
                 let ecdlB = document.elementFromPoint(newRight, enemyPosition.bottom);
                 // ecdrT = enemyCollisionDetectionRightTop
@@ -694,8 +698,40 @@ function enemyMovement(theenemyOfEnemies) {
                     theenemyOfEnemies.style.left = enemyleft + 'px';
                 }
             };
-        
 
+
+
+
+
+            //more enemy collision diagonally, because I noticed that the enemy is sometimes moving diagonally, but what I also noticed is even though I uncommented this uncompleted code, my enemy wall collision detection works fine, and problem that I was facing earlier where It seemed that there is no collision detection at all I assume it was a glitch 
+            //direction == 5 is for right-bottom collision detction
+            // if (direction == 5) {
+            //     let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
+            //     let newRight = enemyPosition.right - 1;
+            //     let newBottom = enemyPosition.bottom - 1;
+            //     // RB = RightBottom
+            //     let RB = document.elementFromPoint(newRight, newBottom);
+            //     if (RB == true && RB.classList.contains('wall') == false) { 
+            //         enemyleft += 1; 
+            //         theenemyOfEnemies.style.left = enemyleft + 'px';
+            //     }
+            // };
+            //direction == 6 is for right-upward collision detction
+            // if (direction == 6) {
+            //     }
+            // };
+            //direction == 7 is for left-bottom collision detction
+            // if (direction == 7) {
+            //     }
+            // };
+            //direction == 8 is for right-upward collision detction
+            // if (direction == 8) {
+            //     }
+            // };
+
+
+        
+            
             console.log(enemytop) //shhowing the enemy movement along the vertical line 
             console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
         }
