@@ -641,32 +641,60 @@ function enemyMovement(theenemyOfEnemies) {
     let enemyleft = 0;
     setInterval(function () {
         for (let theenemyOfEnemies of alltheEnemies) {
-            let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             if (direction == 1) {
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
                 let newUp = enemyPosition.top - 1;
                 // ecdul = enemyCollisionDetectionUpLeft
                 let ecdul = document.elementFromPoint(enemyPosition.left, newUp)
-                console.log("print this out: " + ecdul);
                 // ecdur = enemyCollisionDetectionUpRight
                 let ecdur = document.elementFromPoint(enemyPosition.right, newUp)
-                if (ecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) { enemytop--; };
+                if (ecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) { 
+                    enemytop-=1; 
+                    theenemyOfEnemies.style.top = enemytop + 'px';
+
+                }
+                else {
+                    console.log("print this out: " + ecdul);
+                }
             };
             if (direction == 2) {
-                let newBottom = enemyPosition.bottom - 1;
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPosition
+                let newBottom = enemyPosition.bottom - 1; //selecting the new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
                 // ecdbl = enemyCollisionDetectionBottomLeft
-                let ecdbl = document.elementFromPoint(enemyPosition.left, newBottom)
+                let ecdbl = document.elementFromPoint(enemyPosition.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
                 // ecdbr = enemyCollisionDetectionBottomRight
-                let ecdbr = document.elementFromPoint(enemyPosition.right, newBottom)
-                if (ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false) { enemytop += 1; };
+                let ecdbr = document.elementFromPoint(enemyPosition.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the bottom position of the enemy. 
+                if (ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false) { 
+                    enemytop += 1; //incrementing the enemy position by 1, and assigning it to the variable enemytop
+                    theenemyOfEnemies.style.top = enemytop + 'px'; //applying the changes and moving the enemy to the bottom 
+                };
             };
             if (direction == 3) {
-                enemyleft += 1;
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
+                let newLeft = enemyPosition.left - 1;
+                // ecdlB = enemyCollisionDetectionLeftBottom
+                let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom)
+                // ecdlT = enemyCollisionDetectionLeftTop
+                let ecdlT = document.elementFromPoint(newLeft, enemyPosition.top)
+                if (ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false) { 
+                    //one of the type mistakes I made is when typing the code for enemy wall collision detection is that I typed enemytop variable also for the right and left movement direction, however moments later I realized my mistake and changed the variable enemytop to the variable enemyleft, and now my enemy moves to the left and to the right.
+                    enemyleft -= 1; 
+                    theenemyOfEnemies.style.left = enemyleft + 'px';
+                };
             };
             if (direction == 4) {
-                enemyleft -= 1;
+                let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
+                let newRight = enemyPosition.right - 1;
+                // ecdrB = enemyCollisionDetectionRightBottom
+                let ecdlB = document.elementFromPoint(newRight, enemyPosition.bottom);
+                // ecdrT = enemyCollisionDetectionRightTop
+                let ecdrT = document.elementFromPoint(newRight, enemyPosition.top);
+                if (ecdlB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false) { 
+                    enemyleft += 1; 
+                    theenemyOfEnemies.style.left = enemyleft + 'px';
+                }
             };
-        theenemyOfEnemies.style.top = enemytop + 'px';
-        theenemyOfEnemies.style.left = enemyleft + 'px';
+        
 
             console.log(enemytop) //shhowing the enemy movement along the vertical line 
             console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
