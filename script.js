@@ -466,6 +466,8 @@ startBttn.addEventListener("click", startGame);
 //function to remove the start button 
 function removeButton() {
     startBttn.style.display = 'none';
+
+    //adding the loop inside the removeButton function, so that to only allow the player to move, when the removeButton function is called; in other word, to only allow the player to move after the start button have been pressed and the start button have disappeared, because I am calling the removeButton function inside the startGame function. For reference: setTimeout(removeButton, 3000).
     for (let theenemyOfEnemies of alltheEnemies) {
         //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
         enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
@@ -483,7 +485,7 @@ function restart() {
 } //restart button now is visible and clickable, but I still need to bring back all the points when the start button is clicked 
 
 
-//accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error
+//accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error.
 let leftButton = document.querySelector('#lbttn');
 let rightButton = document.querySelector('#rbttn');
 let downButton = document.querySelector('#dbttn');
@@ -663,10 +665,6 @@ function endGame() {
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
 console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
-/* for (let theenemyOfEnemies of alltheEnemies) {
-    //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
-    enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
-} */
 
 function enemyMovement(theenemyOfEnemies) {
     let direction = Math.ceil(Math.random() * 8);
