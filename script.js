@@ -686,6 +686,7 @@ function enemyMovement(theenemyOfEnemies) {
 
             }
             else{
+                //if it contains a wall, then randomly change the direction
                 direction = Math.ceil(Math.random() * 8);
             }
         }
