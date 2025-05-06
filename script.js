@@ -391,6 +391,7 @@ function pointCollection() {
                 // alert('Game has ended! All points have been collected!');
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
+                endGame();
             }
         }
     }
@@ -615,6 +616,34 @@ function removelive() {
 
 
 
+let playerList = [];
+for(let i = 0; i < localStorage.length; i++) {
+let key = localStorage.key(i);
+let value = localStorage.getItem(key);
+playerList.push(value);
+}
+console.log(playerList);
+
+
+function endGame() {
+    let name = prompt("Game Over!!! Please Enter your name:");
+    let score = document.querySelector('.score p').textContent;
+
+    // let value = localStorage.getItem(key);
+    // playerList.push(value);
+    // let scoreObjects = scoreArray.map(function);
+    // scoreObjects = scoreObjects.slice(0, 5);
+
+    localStorage.setItem('Name', name);
+    localStorage.setItem('Score', score);
+
+    let leaderboardList = document.querySelector('.leaderboard ol');
+    let newEntry = document.createElement('li');
+    newEntry.textContent = `${name}........${score}`;
+    leaderboardList.appendChild(newEntry);
+
+    console.log(`Saved to leaderboard: ${name} - ${score}`);
+}
 
 
 
