@@ -194,7 +194,7 @@ let playerLeft = 0; //initializing a variable
 
 
 //without setInterval method the player would not be able to move. The following is a an example of using setinterval method with a function that has no name
-let timer = setInterval(function () {
+let timer = setInterval( () => {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
         let currentPositon = player.getBoundingClientRect() //optimize 
@@ -208,19 +208,19 @@ let timer = setInterval(function () {
             player.style.top = playerTop + 'px';
         }
 
-        // if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        // }
+        if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+        }
 
-        // if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        // }
+        if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+        }
 
         playerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
@@ -240,22 +240,22 @@ let timer = setInterval(function () {
         }
 
 
-        // //checking if the player has came in contact with an enemy
-        // if (pcdul.classList.contains('enemy') == true) {
-        //     //if that's true, and the player came in contact with an enemy then display an alert 
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        // }
+        //checking if the player has came in contact with an enemy
+        if (pcdul.classList.contains('enemy') == true) {
+            //if that's true, and the player came in contact with an enemy then display an alert 
+            // alert('An enemy has been encountered!!! game over!!!');
+            //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+        }
 
-        // if (pcdur.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!')
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        // }
+        if (pcdur.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!')
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+        }
 
 
         playerMouth.classList = 'up';
@@ -277,21 +277,21 @@ let timer = setInterval(function () {
             player.style.left = playerLeft + 'px';
         }
 
-        // if (pcdld.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        //     // setTimeout(restart, 500)
-        // }
+        if (pcdld.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+            // setTimeout(restart, 500)
+        }
 
-        // if (pcdlu.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        //     // setTimeout(restart, 500)
-        // }
+        if (pcdlu.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+            // setTimeout(restart, 500)
+        }
 
         playerMouth.classList = 'left';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
@@ -328,19 +328,19 @@ let timer = setInterval(function () {
             console.log(playerLeft)
         }
 
-        // if (pcdrd.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        // }
+        if (pcdrd.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+        }
 
-        // if (pcdru.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();
-        //     // player.classList = 'dead';
-        //     // clearInterval(timer);
-        // }
+        if (pcdru.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();
+            // player.classList = 'dead';
+            // clearInterval(timer);
+        }
 
 
 
