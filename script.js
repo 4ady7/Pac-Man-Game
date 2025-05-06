@@ -138,15 +138,19 @@ function keyDown(event) { //event here is a parameter inside the function
     if (event.key === 'ArrowUp') {
         console.log('strt n keep moving up')
         upPressed = true;
+        // enemyCollision();
     } else if (event.key === 'ArrowDown') {
         console.log('strt n keep moving down')
         downPressed = true;
+        // enemyCollision();
     } else if (event.key === 'ArrowLeft') {
         console.log('strt n keep moving left')
         leftPressed = true;
+        // enemyCollision();
     } else if (event.key === 'ArrowRight') {
         console.log('strt n keep moving right')
         rightPressed = true;
+        // enemyCollision();
     }
 
     //Increasing or decreasing the speed of the playyer 
@@ -190,7 +194,8 @@ function enemyEncounter() {
     //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
     if (encounteredEnemy == false) {
         //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
-        removelive();
+        playerDied();
+        // enemyCollision();
         //and the player displays the hit animation
         player.classList = 'hit';
         //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
@@ -208,20 +213,29 @@ function enemyEncounter() {
 
 
 
-
-
-
-
-
-
-
-
-
 const collisionUnit = 1;
 const player = document.querySelector('#player'); //selecting the player
 const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
+
+
+
+
+
+let lives = 3;
+function playerDied() {
+    if (lives > 0) {
+        lives = lives - 1;
+        removelive();
+    }
+    if (lives == 0) {
+        player.classList = 'dead';
+    }
+}
+
+
+
 
 
 //without setInterval method the player would not be able to move. The following is a an example of using setinterval method with a function that has no name
@@ -277,6 +291,10 @@ let timer = setInterval(() => {
             // alert('An enemy has been encountered!!! game over!!!');
             //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
             enemyEncounter();
+            // let lives = 3;
+            // if (lives == 0) {
+            //     player.classList = 'dead';
+            // }
             // player.classList = 'dead';
             // clearInterval(timer);
         }
@@ -284,6 +302,10 @@ let timer = setInterval(() => {
         if (pcdur.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!')
             enemyEncounter();
+            let lives = 3;
+            if (lives == 0) {
+                player.classList = 'dead';
+            }
             // player.classList = 'dead';
             // clearInterval(timer);
         }
