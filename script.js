@@ -206,6 +206,7 @@ function enemyEncounter() {
         //why I am doing this? to give the player a grace period to get away from the enemy after encountering an enemy. 
         setTimeout(() => {
             encounteredEnemy = false;
+            player.classList = ''
         }, 3000); //3000 here equals 3 seconds, because intervals are measured in 1000ths of a second 
     }
 }
@@ -567,7 +568,8 @@ function ubttnClicked() {
 //Remaining Task  
 //still need to work on this enemy collison first and test it to make sure it is function then I call the function like I called the point collection function 
 //function for enemy collision 
-function enemyCollision() {
+
+setInterval( function enemyCollision() {
     let allEnemies = document.querySelectorAll('.enemy');
     let playerPosition = player.getBoundingClientRect();
     for (let i = 0; i < allEnemies.length; i++) {
@@ -582,7 +584,7 @@ function enemyCollision() {
         }
 
     }
-}
+}, 10)
 
 
 
