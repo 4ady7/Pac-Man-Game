@@ -194,13 +194,11 @@ let encounteredEnemy = false; //initializing the variable encounteredEnemy with 
 function enemyEncounter() {
     //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
     if (encounteredEnemy == false) {
-        //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
+        //removelive(); //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
         playerDied();
         // enemyCollision();
-        //and the player displays the hit animation
-        player.classList = 'hit';
-        //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
-        encounteredEnemy = true;
+        player.classList = 'hit'; //and the player displays the hit animation
+        encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
 
         //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
         //So settimeout method keeps the previous state of a player has encountered an enemy for 3 seconds, and then changes the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy after the 3 second period.
@@ -225,23 +223,14 @@ let playerLeft = 0; //initializing a variable
 
 
 
-let lives = 3;
-function playerDied() {
-    if (lives > 0) {
-        lives = lives - 1;
-        removelive();
-    }
-    if (lives == 0) {
-        player.classList = 'dead';
-    }
-}
+
 
 
 
 
 
 //without setInterval method the player would not be able to move. The following is a an example of using setinterval method with a function that has no name
-let timer = setInterval(() => {
+let playerMovement = setInterval(() => {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
         let currentPositon = player.getBoundingClientRect() //optimize 
@@ -304,10 +293,10 @@ let timer = setInterval(() => {
         if (pcdur.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!')
             enemyEncounter();
-            let lives = 3;
-            if (lives == 0) {
-                player.classList = 'dead';
-            }
+            // let lives = 3;
+            // if (lives == 0) {
+            //     player.classList = 'dead';
+            // }
             // player.classList = 'dead';
             // clearInterval(timer);
         }
@@ -442,8 +431,9 @@ function pointCollection() {
 
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
-                clearInterval(timer) //if it is true, and all the 50 points have been collected, then stop the movement of the player.
+                clearInterval(playerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the player.
                 // alert('Game has ended! All points have been collected!');
+                clearInterval(MovementofEnemy);
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
                 endGame();
@@ -570,7 +560,7 @@ function ubttnClicked() {
 //still need to work on this enemy collison first and test it to make sure it is function then I call the function like I called the point collection function 
 //function for enemy collision 
 
-setInterval( function enemyCollision() {
+setInterval(function enemyCollision() {
     let allEnemies = document.querySelectorAll('.enemy');
     let playerPosition = player.getBoundingClientRect();
     for (let i = 0; i < allEnemies.length; i++) {
@@ -581,7 +571,7 @@ setInterval( function enemyCollision() {
             playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
         ) {
-            setTimeout(restart, 500)
+            setTimeout(playerDied, 500)
         }
 
     }
@@ -622,8 +612,26 @@ function removelive() {
     //removing the created list assigned to variable li from the unordered list iniside the div with the class lives
     ul.removeChild(li);
 }
-//I will be calling it when the player hits an enemy
 
+
+// let theEnemies = document.querySelectorAll('.enemy'); 
+// let oneEnemy = theEnemies
+let ulSeclect = document.querySelectorAll('.lives ul li');
+lives = ulSeclect.length;
+console.log(lives); //Output is 3 
+// let lives = 3;
+function playerDied() {
+    for (let index = 0; index < lives.length; index++) {
+        if (enemyEncounter()) {
+            lives = lives - 1;
+            removelive(); //calling a function to remove a live/heart when the player hits an enemy
+        }
+        if (lives == 0) {
+            player.classList = 'dead';
+            setTimeout(restart, 500)
+        }
+    }
+}
 
 
 
@@ -708,7 +716,7 @@ function enemyMovement(theenemyOfEnemies) {
     let direction = Math.ceil(Math.random() * 8);
     let enemytop = 0;
     let enemyleft = 0;
-    setInterval(function () {
+    MovementofEnemy = setInterval(function () {
         if (direction == 1) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newUp = enemyPosition.top - 1;

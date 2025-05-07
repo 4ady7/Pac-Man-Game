@@ -21,6 +21,30 @@ I was facing a problem with how I initially was creating the enemy to be place r
 Another problem i was facing is that while doing my enemy wall collision detection, more than one value of the variable direction was being assigned to one enemy, and another enemy was not assigned the variable direction at all, so now I need to command the assignment of the variable direction only once to each enemy. However, I come to believe that I do not need to do that, and the real problem is in the function for the player-enemy collision detection.
 
 
+#6 lost all the points from one hit from the enemy, and the dead animation has been displayed; however, the hit animation has not been displayed and the the function that I used for remove only one live when the enemy hits the player; this function did not work. The good thing now is the the collison between the enemy and the player is working when the the enemy moves toward and hits the player. On the other hand, when the player moves toward and hits the enemy, the hit animation is displayed followed immediatly by the dead animation, and the player loses all of thier liives from hit too.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 objective notes to implement :
 brring back the opacity to 1 for the start button, and change the start button to restart and when you press on it. The game restarts. Thinking about it, the restart button is the same function as the start button function. 
