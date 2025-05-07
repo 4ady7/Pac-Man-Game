@@ -2,7 +2,7 @@ let upPressed = false; //intializing the value of the variable upPressed to the 
 let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
 let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
 let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
-let playerSpeed = 1.25; // starting with a speed level 3 to allow the player to not only speed up, but to also speed up
+let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to not only speed up, but to also speed down
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 let main = document.querySelector('main');
@@ -15,9 +15,9 @@ let maze = [
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 0, 0, 0, 0, 0, 1], // 0 represents the points that the player should collect 
     [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 1, 0, 0, 0, 0, 0, 1], //there is an enemy in the sixth column in this row
+    [1, 0, 0, 1, 0, 0, 0, 0, 0, 1], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
     [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 0, 0, 0, 0, 0, 1], //there is an enemy in the second column in this row
+    [1, 0, 1, 0, 0, 0, 0, 0, 0, 1], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //the last row is also filled with only walls 
 ];
 
@@ -46,8 +46,9 @@ function createEnemy() {
         createEnemy(); //calling the function to create an enemy
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
+    //if the maze location is equal to 3, which represents the enemy.
     if (maze[row][column] == 3) {
-        enemyPosition = { row, column } //assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
+        enemyPosition = { row, column } //then I am going to be assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
     }
     arrayofEnemies.push(enemyPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
     //using the push() method to add the eleent to the end of the array
@@ -85,20 +86,20 @@ console.log(arrayofEnemies[2]);
 for (let y of maze) {
     for (let x of y) {
         let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block, and this is the parent block div
-        block.classList.add('block'); //a class block is being connected to variable block that is going to be applied to all of the following cases 
+        block.classList.add('block'); //a class block is being added to variable block that is going to be applied to all of the following cases 
 
         switch (x) {
             case 1: //walls are added by assigning walls to the locations of 1 in the maze 
                 block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze. Case 1 child block represents the wall.
                 break;
             case 2: //player added by assigning the player to the location of 2 in the maze
-                block.id = 'player'; //the id player is applied and connectd to the case 2 block, which is one of the child blocks, and the second child block created. Case 2 child block represnts the player. 
+                block.id = 'player'; //the id player is connectd and added to the case 2 block, which is one of the child blocks, and the second child block is created. Case 2 child block represnts and reflects visullay and logically the player in the maze. 
                 let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
-                mouth.classList.add('mouth'); //the class mouth is connectd to the mouth of the player.
-                block.appendChild(mouth); //mouth for the player added to the structure of the HTML file.
+                mouth.classList.add('mouth'); //the class mouth is applied to the case 2 block, and the Case 2 child block represnts and reflects visullay and logically the player in the maze, and now we are adding a mouth to the player, so that the location of 2 in the maze, which is the player, now have a mouth.
+                block.appendChild(mouth); //mouth for the player added to the structure of the HTML file
                 break;
             case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
-                block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy 
+                block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
                 break;
             default:
                 block.classList.add('point'); //the points to be collected by the player are added 
@@ -153,34 +154,34 @@ function keyDown(event) { //event here is a parameter inside the function
         // enemyCollision();
     }
 
-    //Increasing or decreasing the speed of the playyer 
+    //Increasing or decreasing the speed of the playyer using the keyboard numbers on the keyboard keys 
     switch (event.key) {
         case '1':
-            playerSpeed = 1.05
+            playerSpeed = 1.05 //level 1 spped 
             break;
         case '2':
-            playerSpeed = 1.10
+            playerSpeed = 1.10 //level 2 speed 
             break;
         case '3':
-            playerSpeed = 1.15
+            playerSpeed = 1.15 //level 3 speed 
             break;
         case '4':
-            playerSpeed = 1.20
+            playerSpeed = 1.20 //level 4 speed 
             break;
         case '5':
-            playerSpeed = 1.25
+            playerSpeed = 1.25 //level 5 speed 
             break;
         case '6':
-            playerSpeed = 1.30
+            playerSpeed = 1.30 //level 6 speed 
             break;
         case '7':
-            playerSpeed = 1.35
+            playerSpeed = 1.35 //level 7 speed 
             break;
         case '8':
-            playerSpeed = 1.40
+            playerSpeed = 1.40 //level 8 speed 
             break;
         case '9':
-            playerSpeed = 1.45
+            playerSpeed = 1.45 //level 9 speed 
             break;
     }
 }
