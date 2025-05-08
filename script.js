@@ -229,7 +229,7 @@ let playerLeft = 0; //initializing a variable
 
 
 
-//without setInterval method the player would not be able to move. The following is a an example of using setinterval method with a function that has no name
+
 function playerMovement() {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
@@ -398,11 +398,11 @@ function playerMovement() {
 
 
 
-
+//function for calling the the player to move 
 function callPlayertoMove() {
-    playerMoving = setInterval(playerMovement ,9);
+    playerMoving = setInterval(playerMovement ,9); //assigning the setInterval to a variable playerMoving. This setInterval is calling the function for moving the player every 9th of a second
 }
-callPlayertoMove();
+callPlayertoMove(); //calling the function for the player to start moving 
 
 
 
@@ -599,14 +599,15 @@ setInterval(function enemyCollision() {
 console.log("this is the remaini" + lives); 
 
 
+//creating a function to stop the player from moving 
 function stopPlayerMovement() {
-    clearInterval(playerMoving);
+    clearInterval(playerMoving); //clearing to stop the player from moving.
 }
 
-
+//creating a function for the player to go back and move again during a player's state of being in the same place
 function playerReturntoMove() {
-    clearInterval(playerMoving);
-    callPlayertoMove();
+    clearInterval(playerMoving); //clearing to prevent the player from get faster with each key press. I am clearing the variable assigned to the setinterval(). This setInterval was calling the function for moving the player every 9th of a second.
+    callPlayertoMove(); //calling the function for the player to move 
 }
 
 
