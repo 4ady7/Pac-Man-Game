@@ -447,6 +447,8 @@ function pointCollection() {
                 clearInterval(playerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the player.
                 // alert('Game has ended! All points have been collected!');
                 clearInterval(MovementofEnemy);
+                clearInterval(MovementofEnemy);
+                clearInterval(MovementofEnemy);
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
                 endGame();
@@ -529,7 +531,6 @@ function restart() {
     // stopPlayerMovement()
     document.removeEventListener('keydown', keyDown); 
     document.removeEventListener('keyup', keyUp);  
-
 } 
 // setInterval(pointCollection, 10);
 
@@ -544,6 +545,7 @@ function restartFunction() {
     player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
     playerTop = 0;
     playerLeft = 0;
+    lives = 3;
     // playerReturntoMove();
     Pscore.innerHTML = 0; //reseting the score counter back 0 when the restart function is called
     // for (let theenemyOfEnemies of alltheEnemies) {
@@ -758,6 +760,7 @@ for (let i = 0; i < localStorage.length; i++) {
 
 
 function endGame() {
+    clearInterval(playerMovement);
     let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
     let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
 
@@ -788,7 +791,7 @@ function endGame() {
 
     clearInterval(callPlayertoMove);
     restart();
-    clearInterval(playerMovement)
+    clearInterval(playerMovement);
     startBttn.addEventListener("click", restartFunction);
 }
 
