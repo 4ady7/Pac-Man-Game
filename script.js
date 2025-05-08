@@ -790,15 +790,28 @@ function enemyMovement(theenemyOfEnemies) {
             let ecdul = document.elementFromPoint(enemyPosition.left, newUp);
             // ecdur = enemyCollisionDetectionUpRight
             let ecdur = document.elementFromPoint(enemyPosition.right, newUp);
+
+
+
+
+
+            //This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving 
             // if (ecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
             //     enemytop -= 1;
             //     theenemyOfEnemies.style.top = enemytop + 'px';
-
             // }
             // else {
             //     //if it contains a wall, then randomly change the direction
             //     direction = Math.ceil(Math.random() * 8);
             // }
+
+
+
+
+
+
+
+
 
             // player = document.getElementById('player');
             // if (ecdul.contains(player) == true && ecdur.contains(player) == true) {
