@@ -196,6 +196,7 @@ function enemyEncounter() {
     if (encounteredEnemy == false) {
         //removelive(); //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
         playerDied();
+        enemyColtemp();
         // enemyCollision();
         player.classList = 'hit'; //and the player displays the hit animation
         encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
@@ -573,27 +574,27 @@ let ulSeclect = document.querySelectorAll('.lives ul li');
 lives = ulSeclect.length;
 console.log(lives); //Output is 3 
 
-setInterval(function enemyCollision() {
-    let allEnemies = document.querySelectorAll('.enemy');
-    let playerPosition = player.getBoundingClientRect();
-    for (let i = 0; i < allEnemies.length; i++) {
-        let positionOfEnemies = allEnemies[i].getBoundingClientRect();
-        if (
-            playerPosition.right > positionOfEnemies.left &&
-            playerPosition.left < positionOfEnemies.right &&
-            playerPosition.bottom > positionOfEnemies.top &&
-            playerPosition.top < positionOfEnemies.bottom
-        ) {
-            stopPlayerMovement();
-            player.classList.add('hit');
-            setTimeout( () => {
-                playerReturntoMove();
-                player.classList.remove('hit');
-            }, 1500);
-        }
+// setInterval(function enemyCollision() {
+//     let allEnemies = document.querySelectorAll('.enemy');
+//     let playerPosition = player.getBoundingClientRect();
+//     for (let i = 0; i < allEnemies.length; i++) {
+//         let positionOfEnemies = allEnemies[i].getBoundingClientRect();
+//         if (
+//             playerPosition.right > positionOfEnemies.left &&
+//             playerPosition.left < positionOfEnemies.right &&
+//             playerPosition.bottom > positionOfEnemies.top &&
+//             playerPosition.top < positionOfEnemies.bottom
+//         ) {
+//             stopPlayerMovement();
+//             player.classList.add('hit');
+//             setTimeout( () => {
+//                 playerReturntoMove();
+//                 player.classList.remove('hit');
+//             }, 1500);
+//         }
 
-    }
-}, 10)
+//     }
+// }, 10)
 
 
 console.log("this is the remaini" + lives); 
@@ -785,7 +786,16 @@ function enemyMovement(theenemyOfEnemies) {
                 //if it contains a wall, then randomly change the direction
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            // player = document.getElementById('player');
+            // if (ecdul.contains(player) == true && ecdur.contains(player) == true) {
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         }
+        
 
         if (direction == 2) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPosition
@@ -803,6 +813,14 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            // player = document.getElementById('player');
+            // if (ecdbl.contains(player) == true && ecdbr.contains(player) == true) {
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         };
 
 
@@ -821,6 +839,15 @@ function enemyMovement(theenemyOfEnemies) {
             } else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+
+            // player = document.getElementById('player');
+            // if (ecdlB.contains(player) == true && ecdlT.contains(player) == true) {
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         };
 
 
@@ -840,6 +867,14 @@ function enemyMovement(theenemyOfEnemies) {
             } else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            // player = document.getElementById('player');
+            // if (ecdrB.contains(player) == true && ecdrT.contains(player) == true) {
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         };
 
 
@@ -863,6 +898,14 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            // player = document.getElementById('player');
+            // if (RB.contains(player) == true) {
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         };
 
 
@@ -883,6 +926,14 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            // player = document.getElementById('player');
+            // if (RT.contains(player) == true) {
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         };
 
 
@@ -903,6 +954,14 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            // player = document.getElementById('player');
+            // if (RB.contains(player) == true) {
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         };
 
 
@@ -923,6 +982,15 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            // player = document.getElementById('player');
+            // if (LT.contains(player) == true) {
+            //     console.log('MeetingbtwThePlayerAndTheEnemy');
+            //     // alert('An enemy has been encountered!!! game over!!!');
+            //     enemyEncounter();
+            //     // player.classList = 'dead';
+            //     // clearInterval(timer); 
+            // }
         }
 
 
@@ -1020,26 +1088,26 @@ function save(username, score) {
 
 
 
-// setInterval(function enemyColtemp() {
-//     let allEnemies = document.querySelectorAll('.enemy');
-//     let playerPosition = player.getBoundingClientRect();
-//     for (let enemeyONE of allEnemies) {
-//         let positionOfEnemies = enemeyONE.getBoundingClientRect();
-//         if (
-//             playerPosition.right > positionOfEnemies.left &&
-//             playerPosition.left < positionOfEnemies.right &&
-//             playerPosition.bottom > positionOfEnemies.top &&
-//             playerPosition.top < positionOfEnemies.bottom
-//         ) {
-//             stopPlayerMovement();
-//             player.classList.add('hit');
-//             lives = lives - 1;
-//             removelive();
-//             setTimeout( () => {
-//                 playerReturntoMove();
-//                 player.classList.remove('hit');
-//             }, 1500);
-//         }
+function enemyColtemp() {
+    let allEnemies = document.querySelectorAll('.enemy');
+    let playerPosition = player.getBoundingClientRect();
+    for (let enemeyONE of allEnemies) {
+        let positionOfEnemies = enemeyONE.getBoundingClientRect();
+        if (
+            playerPosition.right > positionOfEnemies.left &&
+            playerPosition.left < positionOfEnemies.right &&
+            playerPosition.bottom > positionOfEnemies.top &&
+            playerPosition.top < positionOfEnemies.bottom
+        ) {
+            stopPlayerMovement();
+            removelive();
+            lives = lives - 1;
+            player.classList.add('hit');
+            setTimeout( () => {
+                playerReturntoMove();
+                player.classList.remove('hit');
+            }, 1500);
+        }
 
-//     }
-// }, 10)
+    }
+}
