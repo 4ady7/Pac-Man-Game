@@ -185,7 +185,7 @@ function keyDown(event) { //event here is a parameter inside the function
             playerSpeed = 1.40 //level 8 speed 
             break;
         case '9':
-            playerSpeed = 1.45 //level 9 speed 
+            playerSpeed = 2.45 //level 9 speed 
             break;
     }
 }
@@ -516,6 +516,8 @@ function removeButton() {
 }
 
 
+
+
 //Remaining Task 
 //function to have a restart button to restart the game
 function restart() {
@@ -787,7 +789,7 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newUp = enemyPosition.top - 1;
             // ecdul = enemyCollisionDetectionUpLeft
-            let ecdul = document.elementFromPoint(enemyPosition.left, newUp);
+            let eecdul = document.elementFromPoint(enemyPosition.left, newUp);
             // ecdur = enemyCollisionDetectionUpRight
             let ecdur = document.elementFromPoint(enemyPosition.right, newUp);
 
@@ -795,15 +797,15 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-            //This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving 
-            // if (ecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
-            //     enemytop -= 1;
-            //     theenemyOfEnemies.style.top = enemytop + 'px';
-            // }
-            // else {
-            //     //if it contains a wall, then randomly change the direction
-            //     direction = Math.ceil(Math.random() * 8);
-            // }
+            // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving 
+            if (eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
+                enemytop -= 1;
+                theenemyOfEnemies.style.top = enemytop + 'px';
+            }
+            else {
+                //if it contains a wall, then randomly change the direction
+                direction = Math.ceil(Math.random() * 8);
+            }
 
 
 
