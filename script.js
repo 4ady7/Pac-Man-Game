@@ -673,6 +673,9 @@ for (let i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
     let value = localStorage.getItem(key);
     playerList.push(value);
+
+
+    // playerList.sort((a, b) => b.value - a.value);
 }
 console.log(playerList);
 
@@ -689,6 +692,8 @@ function endGame() {
     localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
     localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
 
+
+
     let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
     let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
     let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
@@ -697,6 +702,9 @@ function endGame() {
     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
     console.log(`Saved to leaderboard: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+
+
+    // .sort((a, b) => b.pointsCollected - a.pointsCollected);
 }
 
 
