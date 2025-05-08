@@ -202,7 +202,7 @@ function enemyEncounter() {
         // playerDied();
         enemyColtemp();
         // enemyCollision();
-        player.classList = 'hit'; //and the player displays the hit animation
+        // player.classList = 'hit'; //and the player displays the hit animation
         encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
 
         //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
@@ -302,7 +302,6 @@ function playerMovement() {
             // if (lives == 0) {
             //     player.classList = 'dead';
             // }
-            // player.classList = 'dead';
             // clearInterval(timer);
         }
 
@@ -458,9 +457,11 @@ function pointCollection() {
 
 
 //function for when all the points have been collected 
-function gameOver() {
-    alert('Game has ended! All points have been collected!')
-}
+// function gameOver() {
+//     clearInterval(playerMovement);
+//     clearInterval(MovementofEnemy);
+//     // alert('Game has ended!')
+// }
 
 
 
@@ -512,6 +513,7 @@ function removeStartButton() {
     for (let theenemyOfEnemies of alltheEnemies) {
         //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
         enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+        console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
     }
 }
 
@@ -524,6 +526,19 @@ function restart() {
     startBttn.style.opacity = 1;
     startBttn.style.display = 'block';
     startBttn.innerHTML = 'Restart the game?';
+    // stopPlayerMovement()
+    document.removeEventListener('keydown', keyDown); 
+    document.removeEventListener('keyup', keyUp);  
+
+} 
+// setInterval(pointCollection, 10);
+
+
+
+function restartFunction() {
+    document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
+    // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
+    document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
     main.innerHTML = ""; //clearing the previous maze that was used in the last 
     mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
     player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
@@ -531,12 +546,12 @@ function restart() {
     playerLeft = 0;
     // playerReturntoMove();
     Pscore.innerHTML = 0; //reseting the score counter back 0 when the restart function is called
-    for (let theenemyOfEnemies of alltheEnemies) {
-        //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
-        enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
-    }
-} 
-// setInterval(pointCollection, 10);
+    // for (let theenemyOfEnemies of alltheEnemies) {
+    //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+    //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+    // }
+}
+
 
 
 
@@ -767,6 +782,14 @@ function endGame() {
 
 
     // .sort((a, b) => b.pointsCollected - a.pointsCollected);
+
+
+
+
+    clearInterval(callPlayertoMove);
+    restart();
+    clearInterval(playerMovement)
+    startBttn.addEventListener("click", restartFunction);
 }
 
 
@@ -796,6 +819,7 @@ function enemyMovement(theenemyOfEnemies) {
             let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp);
             // ecdur = enemyCollisionDetectionUpRight
             let ecdur = document.elementFromPoint(enemyPositionForNewUp.right, newUp);
+            console.log("where are the 3 enemies: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
 
 
 
@@ -1119,7 +1143,7 @@ function save(username, score) {
 
 
 
-
+lives = 3
 function enemyColtemp() {
     let allEnemies = document.querySelectorAll('.enemy');
     let playerPosition = player.getBoundingClientRect();
@@ -1139,6 +1163,13 @@ function enemyColtemp() {
                 playerReturntoMove();
                 player.classList.remove('hit');
             }, 1500);
+            if (lives == 0) {
+                player.classList.add('dead');
+                stopPlayerMovement();
+                endGame();
+                // gameOver();
+                // restart();
+            }
         }
 
     }
