@@ -793,6 +793,10 @@ function endGame() {
     restart();
     clearInterval(playerMovement);
     startBttn.addEventListener("click", restartFunction);
+    upPressed = false;
+    downPressed = false;
+    leftPressed = false;
+    rightPressed = false;
 }
 
 
