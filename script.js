@@ -545,7 +545,7 @@ function restartFunction() {
     player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
     playerTop = 0;
     playerLeft = 0;
-    lives = 3;
+    lives = 3; //reesting the variable lives back to 3 
     // playerReturntoMove();
     Pscore.innerHTML = 0; //reseting the displaed and visible score counter back to 0 when the restart function is called
     totalPoints = 0; //reseting the score counter variable totalpoints back to 0 when the restart function is called
