@@ -679,7 +679,7 @@ console.log(playerList);
 
 function endGame() {
     let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
-    let pointsCollected = document.querySelector('.score p').textContent; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
+    let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
 
     // let value = localStorage.getItem(key);
     // playerList.push(value);
