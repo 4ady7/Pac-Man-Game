@@ -82,34 +82,38 @@ console.log(arrayofEnemies[2]);
 
 
 
-//Populates the maze in the HTML
-for (let y of maze) {
-    for (let x of y) {
-        let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block, and this is the parent block div
-        block.classList.add('block'); //a class block is being added to variable block that is going to be applied to all of the following cases 
+//creating a function for creating and populating the maze
+function mazeCreation() {
+    for (let y of maze) {
+        for (let x of y) {
+            let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block, and this is the parent block div
+            block.classList.add('block'); //a class block is being added to variable block that is going to be applied to all of the following cases 
 
-        switch (x) {
-            case 1: //walls are added by assigning walls to the locations of 1 in the maze 
-                block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze. Case 1 child block represents the wall.
-                break;
-            case 2: //player added by assigning the player to the location of 2 in the maze
-                block.id = 'player'; //the id player is connectd and added to the case 2 block, which is one of the child blocks, and the second child block is created. Case 2 child block represnts and reflects visullay and logically the player in the maze. 
-                let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
-                mouth.classList.add('mouth'); //the class mouth is applied to the case 2 block, and the Case 2 child block represnts and reflects visullay and logically the player in the maze, and now we are adding a mouth to the player, so that the location of 2 in the maze, which is the player, now have a mouth.
-                block.appendChild(mouth); //mouth for the player added to the structure of the HTML file
-                break;
-            case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
-                block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
-                break;
-            default:
-                block.classList.add('point'); //the points to be collected by the player are added 
-                block.style.height = '1vh'; //the height of the points is adjusted down, because it seems that the the height was larger than 1vh
-                block.style.width = '1vh'; //the width of the points is adjusted, probably adjusted up
+            switch (x) {
+                case 1: //walls are added by assigning walls to the locations of 1 in the maze 
+                    block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze. Case 1 child block represents the wall.
+                    break;
+                case 2: //player added by assigning the player to the location of 2 in the maze
+                    block.id = 'player'; //the id player is connectd and added to the case 2 block, which is one of the child blocks, and the second child block is created. Case 2 child block represnts and reflects visullay and logically the player in the maze. 
+                    let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
+                    mouth.classList.add('mouth'); //the class mouth is applied to the case 2 block, and the Case 2 child block represnts and reflects visullay and logically the player in the maze, and now we are adding a mouth to the player, so that the location of 2 in the maze, which is the player, now have a mouth.
+                    block.appendChild(mouth); //mouth for the player added to the structure of the HTML file
+                    break;
+                case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
+                    block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
+                    break;
+                default:
+                    block.classList.add('point'); //the points to be collected by the player are added 
+                    block.style.height = '1vh'; //the height of the points is adjusted down, because it seems that the the height was larger than 1vh
+                    block.style.width = '1vh'; //the width of the points is adjusted, probably adjusted up
+            }
+
+            main.appendChild(block); //block is created and added to the structure of the HTML file inisde the main tag. Block is a variable that contains the newly created div tag. 
         }
-
-        main.appendChild(block); //block is created and added to the structure of the HTML file inisde the main tag. Block is a variable that contains the newly created div tag. 
     }
 }
+mazeCreation(); //calling the function to create and populate the maze 
+
 
 
 
@@ -118,38 +122,38 @@ for (let y of maze) {
 function keyUp(event) { //event here is a parameter inside the function 
     // console.log(event.key) //Keyup event is being recorded only when the key is released. Most often, that happens only when you are stopping becuase you reached your final destiniation after you have collected all the points, or you are stopping because you are changing direction to the left, right, or doing a 180 and going in the opposite direction (backwards). 
     if (event.key === 'ArrowUp') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowUp.
-        console.log('stp moving up')
+        // console.log('stp moving up')
         upPressed = false;
     } else if (event.key === 'ArrowDown') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowDown.
-        console.log('stp moving down')
+        // console.log('stp moving down')
         downPressed = false;
     } else if (event.key === 'ArrowLeft') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowLeft.
-        console.log('stp moving left')
+        // console.log('stp moving left')
         leftPressed = false;
         //event.key === 'ArrowRight' is not a representing the action; thus not checking the action. It is only checking which key is this, so in the following case it is checking if the key is the right arrow key or is it a different key like an arrow left, down, or up.
     } else if (event.key === 'ArrowRight') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowRight.
-        console.log('stp moving right')
+        // console.log('stp moving right')
         rightPressed = false;
     }
 }
 
 function keyDown(event) { //event here is a parameter inside the function
     //event.key is a representation of the key that was pressed
-    console.log(event.key) //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
+    // console.log(event.key); //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
     if (event.key === 'ArrowUp') {
-        console.log('strt n keep moving up')
+        // console.log('strt n keep moving up')
         upPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowDown') {
-        console.log('strt n keep moving down')
+        // console.log('strt n keep moving down')
         downPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowLeft') {
-        console.log('strt n keep moving left')
+        // console.log('strt n keep moving left')
         leftPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowRight') {
-        console.log('strt n keep moving right')
+        // console.log('strt n keep moving right')
         rightPressed = true;
         // enemyCollision();
     }
@@ -195,7 +199,7 @@ function enemyEncounter() {
     //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
     if (encounteredEnemy == false) {
         //removelive(); //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
-        playerDied();
+        // playerDied();
         enemyColtemp();
         // enemyCollision();
         player.classList = 'hit'; //and the player displays the hit animation
@@ -215,7 +219,7 @@ function enemyEncounter() {
 
 
 const collisionUnit = 1;
-const player = document.querySelector('#player'); //selecting the player
+let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
 const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
@@ -370,7 +374,7 @@ function playerMovement() {
         if (pcdrd.classList.contains('wall') == false && pcdru.classList.contains('wall') == false) {
             playerLeft = playerLeft + playerSpeed;
             player.style.left = playerLeft + 'px';
-            console.log(playerLeft)
+            // console.log(playerLeft);
         }
 
         if (pcdrd.classList.contains('enemy') == true) {
@@ -517,9 +521,18 @@ function removeButton() {
 function restart() {
     startBttn.style.opacity = 1;
     startBttn.style.display = 'block';
-    startBttn.innerHTML = 'Restart the game?'
-    //if start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously
-} //restart button now is visible and clickable, but I still need to bring back all the points when the start button is clicked 
+    startBttn.innerHTML = 'Restart the game?';
+    main.innerHTML = ""; //clearing the previous maze that was used in the last 
+    mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
+    player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
+    playerTop = 0;
+    playerLeft = 0;
+    // playerReturntoMove();
+    Pscore.innerHTML = 0; //reseting the score counter back 0 when the restart function is called
+} 
+// setInterval(pointCollection, 10);
+
+
 
 
 //accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error.
@@ -720,7 +733,7 @@ for (let i = 0; i < localStorage.length; i++) {
 
     // playerList.sort((a, b) => b.value - a.value);
 }
-console.log(playerList);
+// console.log(playerList);
 
 
 function endGame() {
@@ -774,18 +787,18 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newUp = enemyPosition.top - 1;
             // ecdul = enemyCollisionDetectionUpLeft
-            let ecdul = document.elementFromPoint(enemyPosition.left, newUp)
+            let ecdul = document.elementFromPoint(enemyPosition.left, newUp);
             // ecdur = enemyCollisionDetectionUpRight
-            let ecdur = document.elementFromPoint(enemyPosition.right, newUp)
-            if (ecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
-                enemytop -= 1;
-                theenemyOfEnemies.style.top = enemytop + 'px';
+            let ecdur = document.elementFromPoint(enemyPosition.right, newUp);
+            // if (ecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
+            //     enemytop -= 1;
+            //     theenemyOfEnemies.style.top = enemytop + 'px';
 
-            }
-            else {
-                //if it contains a wall, then randomly change the direction
-                direction = Math.ceil(Math.random() * 8);
-            }
+            // }
+            // else {
+            //     //if it contains a wall, then randomly change the direction
+            //     direction = Math.ceil(Math.random() * 8);
+            // }
 
             // player = document.getElementById('player');
             // if (ecdul.contains(player) == true && ecdur.contains(player) == true) {
@@ -996,8 +1009,8 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-        console.log(enemytop) //shhowing the enemy movement along the vertical line 
-        console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
+        // console.log(enemytop); //shhowing the enemy movement along the vertical line 
+        // console.log(enemyleft); //shhowing the enemy movement along the horizontal line 
     }, 10);
 }
 
