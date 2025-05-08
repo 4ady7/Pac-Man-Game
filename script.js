@@ -837,7 +837,8 @@ function enemyMovement(theenemyOfEnemies) {
     let enemytop = 0;
     let enemyleft = 0;
     MovementofEnemy = setInterval(function () {
-        if (lives == 0) { direction = 0 };
+        if (lives == 0) { direction = 0 }; //stopping the enemy movement 
+        if (totalPoints == 50) { direction = 0 }; //stopping the enemy movement 
         if (direction == 1) {
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect();
             let newUp = enemyPositionForNewUp.top - 1;
