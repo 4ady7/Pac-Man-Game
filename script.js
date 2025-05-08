@@ -826,16 +826,18 @@ function endGame() {
 
 
 
-
+lives = 3 
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
 console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
 
 function enemyMovement(theenemyOfEnemies) {
     let direction = Math.ceil(Math.random() * 8);
+    // if (lives == 0) { direction = 0 };
     let enemytop = 0;
     let enemyleft = 0;
     MovementofEnemy = setInterval(function () {
+        if (lives == 0) { direction = 0 };
         if (direction == 1) {
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect();
             let newUp = enemyPositionForNewUp.top - 1;
