@@ -25,7 +25,7 @@ Another problem i was facing is that while doing my enemy wall collision detecti
 
 
 
-
+#7 same kind of problem that I face before, i faced again but this time, it is in adding the class hit, and then learning that I have to remove the remove the class hit afterwards, but this time it is with calling the player to move, and facing the problem of my movement being accleared which was one of my intentions, and then I learnt that I have to use clearInterval() to stop any previous movements, and then call the function to move the player again.  
 
 
 

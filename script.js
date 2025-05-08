@@ -230,7 +230,7 @@ let playerLeft = 0; //initializing a variable
 
 
 //without setInterval method the player would not be able to move. The following is a an example of using setinterval method with a function that has no name
-let playerMovement = setInterval(() => {
+function playerMovement() {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
         let currentPositon = player.getBoundingClientRect() //optimize 
@@ -393,7 +393,16 @@ let playerMovement = setInterval(() => {
         // scoreCount()
     }
 
-}, 9);
+}
+
+
+
+
+
+function callPlayertoMove() {
+    playerMoving = setInterval(playerMovement ,9);
+}
+callPlayertoMove();
 
 
 
@@ -560,6 +569,10 @@ function ubttnClicked() {
 //still need to work on this enemy collison first and test it to make sure it is function then I call the function like I called the point collection function 
 //function for enemy collision 
 
+let ulSeclect = document.querySelectorAll('.lives ul li');
+lives = ulSeclect.length;
+console.log(lives); //Output is 3 
+
 setInterval(function enemyCollision() {
     let allEnemies = document.querySelectorAll('.enemy');
     let playerPosition = player.getBoundingClientRect();
@@ -571,12 +584,30 @@ setInterval(function enemyCollision() {
             playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
         ) {
-            setTimeout(playerDied, 500)
+            stopPlayerMovement();
+            player.classList.add('hit');
+            setTimeout( () => {
+                playerReturntoMove();
+                player.classList.remove('hit');
+            }, 1500);
         }
 
     }
 }, 10)
 
+
+console.log("this is the remaini" + lives); 
+
+
+function stopPlayerMovement() {
+    clearInterval(playerMoving);
+}
+
+
+function playerReturntoMove() {
+    clearInterval(playerMoving);
+    callPlayertoMove();
+}
 
 
 
@@ -603,6 +634,16 @@ createlives();
 
 
 
+
+
+
+
+function removeLi() {
+    const li = document.querySelector('li');
+    li.parentNode.removeChild(li);
+}
+
+
 //removing lives 
 function removelive() {
     //selecting a list inside the div with the class lives
@@ -616,13 +657,13 @@ function removelive() {
 
 // let theEnemies = document.querySelectorAll('.enemy'); 
 // let oneEnemy = theEnemies
-let ulSeclect = document.querySelectorAll('.lives ul li');
-lives = ulSeclect.length;
-console.log(lives); //Output is 3 
-// let lives = 3;
+// let ulSeclect = document.querySelectorAll('.lives ul li');
+// lives = ulSeclect.length;
+// console.log(lives); //Output is 3 
+// // let lives = 3;
 function playerDied() {
     for (let index = 0; index < lives.length; index++) {
-        if (enemyEncounter()) {
+        if (enemyColtemp()) {
             lives = lives - 1;
             removelive(); //calling a function to remove a live/heart when the player hits an enemy
         }
@@ -769,9 +810,9 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             // ecdlB = enemyCollisionDetectionLeftBottom
-            let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom)
+            let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom); //fix this it is being flagged again in the console 
             // ecdlT = enemyCollisionDetectionLeftTop
-            let ecdlT = document.elementFromPoint(newLeft, enemyPosition.top)
+            let ecdlT = document.elementFromPoint(newLeft, enemyPosition.top);
             if (ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false) {
                 //one of the type mistakes I made is when typing the code for enemy wall collision detection is that I typed enemytop variable also for the right and left movement direction, however moments later I realized my mistake and changed the variable enemytop to the variable enemyleft, and now my enemy moves to the left and to the right.
                 enemyleft -= 1;
@@ -964,3 +1005,40 @@ function save(username, score) {
 
 // sorting from largest to smallest
 // list.sort //go to the slide sort array in week 12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// setInterval(function enemyColtemp() {
+//     let allEnemies = document.querySelectorAll('.enemy');
+//     let playerPosition = player.getBoundingClientRect();
+//     for (let enemeyONE of allEnemies) {
+//         let positionOfEnemies = enemeyONE.getBoundingClientRect();
+//         if (
+//             playerPosition.right > positionOfEnemies.left &&
+//             playerPosition.left < positionOfEnemies.right &&
+//             playerPosition.bottom > positionOfEnemies.top &&
+//             playerPosition.top < positionOfEnemies.bottom
+//         ) {
+//             stopPlayerMovement();
+//             player.classList.add('hit');
+//             lives = lives - 1;
+//             removelive();
+//             setTimeout( () => {
+//                 playerReturntoMove();
+//                 player.classList.remove('hit');
+//             }, 1500);
+//         }
+
+//     }
+// }, 10)
