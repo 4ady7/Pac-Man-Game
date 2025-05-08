@@ -452,6 +452,11 @@ function pointCollection() {
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
                 endGame();
+                lostlives = 3 - lives;
+                console.log(lives + "here in point collection")
+                for (let index = 0; index < lostlives; index++) {
+                    createlives();  
+                }
             }
         }
     }
