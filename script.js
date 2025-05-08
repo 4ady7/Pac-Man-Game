@@ -1172,8 +1172,12 @@ function enemyColtemp() {
             }, 1500);
             if (lives == 0) {
                 player.classList.add('dead');
+                clearInterval(MovementofEnemy);
                 stopPlayerMovement();
                 endGame();
+                createlives();
+                createlives();
+                createlives();
                 // gameOver();
                 // restart();
             }
