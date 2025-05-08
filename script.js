@@ -404,7 +404,7 @@ function playerMovement() {
 
 //function for calling the the player to move 
 function callPlayertoMove() {
-    playerMoving = setInterval(playerMovement ,9); //assigning the setInterval to a variable playerMoving. This setInterval is calling the function for moving the player every 9th of a second
+    playerMoving = setInterval(playerMovement, 9); //assigning the setInterval to a variable playerMoving. This setInterval is calling the function for moving the player every 9th of a second
 }
 callPlayertoMove(); //calling the function for the player to start moving 
 
@@ -529,9 +529,9 @@ function restart() {
     startBttn.style.display = 'block';
     startBttn.innerHTML = 'Restart the game?';
     // stopPlayerMovement()
-    document.removeEventListener('keydown', keyDown); 
-    document.removeEventListener('keyup', keyUp);  
-} 
+    document.removeEventListener('keydown', keyDown);
+    document.removeEventListener('keyup', keyUp);
+}
 // setInterval(pointCollection, 10);
 
 
@@ -547,10 +547,22 @@ function restartFunction() {
     playerLeft = 0;
     lives = 3;
     // playerReturntoMove();
-    Pscore.innerHTML = 0; //reseting the score counter back 0 when the restart function is called
+    Pscore.innerHTML = 0; //reseting the displaed and visible score counter back to 0 when the restart function is called
+    totalPoints = 0; //reseting the score counter variable totalpoints back to 0 when the restart function is called
     // for (let theenemyOfEnemies of alltheEnemies) {
     //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
     //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+    // }
+
+    // clearInterval(createEnemy);
+    // clearInterval(createEnemy);
+    // createEnemy();
+    // createEnemy();
+    // createEnemy();
+    // for (let theenemyOfEnemies of alltheEnemies) {
+    //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+    //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+    //     console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
     // }
 }
 
@@ -633,7 +645,7 @@ console.log(lives); //Output is 3
 // }, 10)
 
 
-console.log("this is the remaini" + lives); 
+console.log("this is the remaini" + lives);
 
 
 //creating a function to stop the player from moving 
@@ -1166,7 +1178,7 @@ function enemyColtemp() {
             removelive();
             lives = lives - 1;
             player.classList.add('hit');
-            setTimeout( () => {
+            setTimeout(() => {
                 playerReturntoMove();
                 player.classList.remove('hit');
             }, 1500);
