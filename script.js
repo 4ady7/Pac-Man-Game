@@ -678,23 +678,23 @@ console.log(playerList);
 
 
 function endGame() {
-    let name = prompt("Game Over!!! Please Enter your name:");
-    let score = document.querySelector('.score p').textContent;
+    let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
+    let pointsCollected = document.querySelector('.score p').textContent; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
 
     // let value = localStorage.getItem(key);
     // playerList.push(value);
     // let scoreObjects = scoreArray.map(function);
     // scoreObjects = scoreObjects.slice(0, 5);
 
-    localStorage.setItem('Name', name);
-    localStorage.setItem('Score', score);
+    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
+    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
 
-    let leaderboardList = document.querySelector('.leaderboard ol');
-    let newEntry = document.createElement('li');
-    newEntry.textContent = `${name}........${score}`;
-    leaderboardList.appendChild(newEntry);
+    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
+    let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+    addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
+    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
-    console.log(`Saved to leaderboard: ${name} - ${score}`);
+    console.log(`Saved to leaderboard: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 }
 
 
