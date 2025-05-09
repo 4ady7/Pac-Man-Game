@@ -820,7 +820,7 @@ function endGame() {
     //     createlives();
     //     createlives();
     // }
-    listofLeaderboard.sort((a, b) => b.pointsCollected - a.pointsCollected);
+    // listofLeaderboard.sort((a, b) => b - a);
 }
 
 
@@ -1157,13 +1157,10 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-function save(username, score) {
-    localStorage.setItem(username, score)
-}
 
 
-// sorting from largest to smallest
-// list.sort //go to the slide sort array in week 12
+
+
 
 
 
@@ -1235,3 +1232,14 @@ function enemyColtemp() {
 function getName() {
     const username = prompt('Enter name');
 }
+
+
+function save(username, score) {
+    localStorage.setItem(username, score)
+}
+
+
+
+
+// sorting from largest to smallest
+// list.sort //go to the slide sort array in week 12
