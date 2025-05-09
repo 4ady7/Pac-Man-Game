@@ -716,18 +716,18 @@ function removelive() {
 // lives = ulSeclect.length;
 // console.log(lives); //Output is 3 
 // // let lives = 3;
-function playerDied() {
-    for (let index = 0; index < lives.length; index++) {
-        if (enemyColtemp()) {
-            lives = lives - 1;
-            removelive(); //calling a function to remove a live/heart when the player hits an enemy
-        }
-        if (lives == 0) {
-            player.classList = 'dead';
-            setTimeout(restart, 500)
-        }
-    }
-}
+// function playerDied() {
+//     for (let index = 0; index < lives.length; index++) {
+//         if (enemyColtemp()) {
+//             lives = lives - 1;
+//             removelive(); //calling a function to remove a live/heart when the player hits an enemy
+//         }
+//         if (lives == 0) {
+//             player.classList = 'dead';
+//             setTimeout(restart, 500)
+//         }
+//     }
+// }
 
 
 
