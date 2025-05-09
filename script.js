@@ -810,10 +810,10 @@ function endGame() {
     clearInterval(playerMovement);
     startBttn.addEventListener("click", restartFunction);
 
-    upPressed = false; //reseting the player movement 
-    downPressed = false; //reseting the player movement 
-    leftPressed = false; //reseting the player movement 
-    rightPressed = false; //reseting the player movement 
+    upPressed = false; //reseting the player key presses and movements  
+    downPressed = false; //reseting the player key presses and movements 
+    leftPressed = false; //reseting the player key presses and movements 
+    rightPressed = false; //reseting the player key presses and movements 
 }
 
 
