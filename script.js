@@ -568,6 +568,7 @@ function restartFunction() {
     // createEnemy();
     // createEnemy();
     // createEnemy();
+    // removeStartButton();
 }
 
 
@@ -821,6 +822,17 @@ function endGame() {
     //     createlives();
     // }
     // listofLeaderboard.sort((a, b) => b - a);
+    // previousMazeEnemies = document,querySelectorAll('.enemy');
+    // previousMazeEnemies.forEach(enemy => {
+    //     enemy.classList.remove('enemy')     
+    // });
+    
+    // for (let theenemyOfEnemies of alltheEnemies) {
+    //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+    //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+    //     console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
+    // }
+    // MovementofEnemy();
 }
 
 
