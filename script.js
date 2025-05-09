@@ -875,6 +875,7 @@ function enemyMovement(theenemyOfEnemies) {
             if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
                 enemytop -= 1;
                 theenemyOfEnemies.style.top = enemytop + 'px';
+                console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
             }
             else {
                 //if it contains a wall, then randomly change the direction
@@ -1198,7 +1199,7 @@ function enemyColtemp() {
             playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
         ) {
-            stopPlayerMovement();
+            // stopPlayerMovement();
             removelive();
             lives = lives - 1;
             player.classList.add('hit');
@@ -1212,7 +1213,7 @@ function enemyColtemp() {
                 createlives();
                 createlives();
                 clearInterval(MovementofEnemy);
-                stopPlayerMovement();
+                // stopPlayerMovement();
                 endGame();
                 // gameOver();
                 // restart();
