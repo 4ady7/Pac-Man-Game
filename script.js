@@ -495,7 +495,7 @@ function pointCollection() {
 let startBttn = document.querySelector('#start');
 
 function startGame() {
-    // you can also use the following code __startBttn.style.display = 'none'__ This code will do same thing as opacity=0, which results in displaying nothing.  
+    // you can also use the following code display none, adnThis code will do same thing as setting opacity to 0, which results in displaying nothing.  
     startBttn.style.opacity = 0;
 
     // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 
