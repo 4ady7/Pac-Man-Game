@@ -797,10 +797,10 @@ function endGame() {
     // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
-    console.log(`Saved to leaderboard: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+    console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 
 
-    // .sort((a, b) => b.pointsCollected - a.pointsCollected);
+    
 
 
 
@@ -814,6 +814,13 @@ function endGame() {
     downPressed = false; //reseting the player key presses and movements 
     leftPressed = false; //reseting the player key presses and movements 
     rightPressed = false; //reseting the player key presses and movements 
+
+    // if (lives == 0) {
+    //     createlives();
+    //     createlives();
+    //     createlives();
+    // }
+    listofLeaderboard.sort((a, b) => b.pointsCollected - a.pointsCollected);
 }
 
 
@@ -1192,12 +1199,12 @@ function enemyColtemp() {
             }, 1500);
             if (lives == 0) {
                 player.classList.add('dead');
+                createlives();
+                createlives();
+                createlives();
                 clearInterval(MovementofEnemy);
                 stopPlayerMovement();
                 endGame();
-                createlives();
-                createlives();
-                createlives();
                 // gameOver();
                 // restart();
             }
