@@ -82,34 +82,38 @@ console.log(arrayofEnemies[2]);
 
 
 
-//Populates the maze in the HTML
-for (let y of maze) {
-    for (let x of y) {
-        let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block, and this is the parent block div
-        block.classList.add('block'); //a class block is being added to variable block that is going to be applied to all of the following cases 
+//creating a function for creating and populating the maze
+function mazeCreation() {
+    for (let y of maze) {
+        for (let x of y) {
+            let block = document.createElement('div'); //a div has just been created in the structure of the HTML file, and the div is assigned to the variable block, and this is the parent block div
+            block.classList.add('block'); //a class block is being added to variable block that is going to be applied to all of the following cases 
 
-        switch (x) {
-            case 1: //walls are added by assigning walls to the locations of 1 in the maze 
-                block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze. Case 1 child block represents the wall.
-                break;
-            case 2: //player added by assigning the player to the location of 2 in the maze
-                block.id = 'player'; //the id player is connectd and added to the case 2 block, which is one of the child blocks, and the second child block is created. Case 2 child block represnts and reflects visullay and logically the player in the maze. 
-                let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
-                mouth.classList.add('mouth'); //the class mouth is applied to the case 2 block, and the Case 2 child block represnts and reflects visullay and logically the player in the maze, and now we are adding a mouth to the player, so that the location of 2 in the maze, which is the player, now have a mouth.
-                block.appendChild(mouth); //mouth for the player added to the structure of the HTML file
-                break;
-            case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
-                block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
-                break;
-            default:
-                block.classList.add('point'); //the points to be collected by the player are added 
-                block.style.height = '1vh'; //the height of the points is adjusted down, because it seems that the the height was larger than 1vh
-                block.style.width = '1vh'; //the width of the points is adjusted, probably adjusted up
+            switch (x) {
+                case 1: //walls are added by assigning walls to the locations of 1 in the maze 
+                    block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze. Case 1 child block represents the wall.
+                    break;
+                case 2: //player added by assigning the player to the location of 2 in the maze
+                    block.id = 'player'; //the id player is connectd and added to the case 2 block, which is one of the child blocks, and the second child block is created. Case 2 child block represnts and reflects visullay and logically the player in the maze. 
+                    let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
+                    mouth.classList.add('mouth'); //the class mouth is applied to the case 2 block, and the Case 2 child block represnts and reflects visullay and logically the player in the maze, and now we are adding a mouth to the player, so that the location of 2 in the maze, which is the player, now have a mouth.
+                    block.appendChild(mouth); //mouth for the player added to the structure of the HTML file
+                    break;
+                case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
+                    block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
+                    break;
+                default:
+                    block.classList.add('point'); //the points to be collected by the player are added 
+                    block.style.height = '1vh'; //the height of the points is adjusted down, because it seems that the the height was larger than 1vh
+                    block.style.width = '1vh'; //the width of the points is adjusted, probably adjusted up
+            }
+
+            main.appendChild(block); //block is created and added to the structure of the HTML file inisde the main tag. Block is a variable that contains the newly created div tag. 
         }
-
-        main.appendChild(block); //block is created and added to the structure of the HTML file inisde the main tag. Block is a variable that contains the newly created div tag. 
     }
 }
+mazeCreation(); //calling the function to create and populate the maze 
+
 
 
 
@@ -119,15 +123,19 @@ function keyUp(event) { //event here is a parameter inside the function
     // console.log(event.key) //Keyup event is being recorded only when the key is released. Most often, that happens only when you are stopping becuase you reached your final destiniation after you have collected all the points, or you are stopping because you are changing direction to the left, right, or doing a 180 and going in the opposite direction (backwards). 
     if (event.key === 'ArrowUp') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowUp.
         // console.log('stp moving up')
+        // console.log('stp moving up')
         upPressed = false;
     } else if (event.key === 'ArrowDown') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowDown.
+        // console.log('stp moving down')
         // console.log('stp moving down')
         downPressed = false;
     } else if (event.key === 'ArrowLeft') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowLeft.
         // console.log('stp moving left')
+        // console.log('stp moving left')
         leftPressed = false;
         //event.key === 'ArrowRight' is not a representing the action; thus not checking the action. It is only checking which key is this, so in the following case it is checking if the key is the right arrow key or is it a different key like an arrow left, down, or up.
     } else if (event.key === 'ArrowRight') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowRight.
+        // console.log('stp moving right')
         // console.log('stp moving right')
         rightPressed = false;
     }
@@ -135,20 +143,24 @@ function keyUp(event) { //event here is a parameter inside the function
 
 function keyDown(event) { //event here is a parameter inside the function
     //event.key is a representation of the key that was pressed
-    console.log(event.key) //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
+    // console.log(event.key); //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
     if (event.key === 'ArrowUp') {
+        // console.log('strt n keep moving up')
         // console.log('strt n keep moving up')
         upPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowDown') {
         // console.log('strt n keep moving down')
+        // console.log('strt n keep moving down')
         downPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowLeft') {
         // console.log('strt n keep moving left')
+        // console.log('strt n keep moving left')
         leftPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowRight') {
+        // console.log('strt n keep moving right')
         // console.log('strt n keep moving right')
         rightPressed = true;
         // enemyCollision();
@@ -181,7 +193,7 @@ function keyDown(event) { //event here is a parameter inside the function
             playerSpeed = 1.40 //level 8 speed 
             break;
         case '9':
-            playerSpeed = 1.45 //level 9 speed 
+            playerSpeed = 2.45 //level 9 speed 
             break;
     }
 }
@@ -195,10 +207,10 @@ function enemyEncounter() {
     //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
     if (encounteredEnemy == false) {
         //removelive(); //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
-        playerDied();
+        // playerDied();
         enemyColtemp();
         // enemyCollision();
-        player.classList = 'hit'; //and the player displays the hit animation
+        // player.classList = 'hit'; //and the player displays the hit animation
         encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
 
         //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
@@ -215,8 +227,8 @@ function enemyEncounter() {
 
 
 const collisionUnit = 1;
-const player = document.querySelector('#player'); //selecting the player
-const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player
+let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
+let playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player //const playerMouth to let playerMouth, why ? to be able to reassign the variable playerMouth again to the playerMouth by selecting through the mouth of the player 
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
 
@@ -298,7 +310,6 @@ function playerMovement() {
             // if (lives == 0) {
             //     player.classList = 'dead';
             // }
-            // player.classList = 'dead';
             // clearInterval(timer);
         }
 
@@ -370,7 +381,7 @@ function playerMovement() {
         if (pcdrd.classList.contains('wall') == false && pcdru.classList.contains('wall') == false) {
             playerLeft = playerLeft + playerSpeed;
             player.style.left = playerLeft + 'px';
-            console.log(playerLeft)
+            // console.log(playerLeft);
         }
 
         if (pcdrd.classList.contains('enemy') == true) {
@@ -401,7 +412,7 @@ function playerMovement() {
 
 //function for calling the the player to move 
 function callPlayertoMove() {
-    playerMoving = setInterval(playerMovement ,9); //assigning the setInterval to a variable playerMoving. This setInterval is calling the function for moving the player every 9th of a second
+    playerMoving = setInterval(playerMovement, 9); //assigning the setInterval to a variable playerMoving. This setInterval is calling the function for moving the player every 9th of a second
 }
 callPlayertoMove(); //calling the function for the player to start moving 
 
@@ -444,9 +455,16 @@ function pointCollection() {
                 clearInterval(playerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the player.
                 // alert('Game has ended! All points have been collected!');
                 clearInterval(MovementofEnemy);
+                clearInterval(MovementofEnemy);
+                clearInterval(MovementofEnemy);
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
                 endGame();
+                lostlives = 3 - lives;
+                console.log(lives + "here in point collection")
+                for (let index = 0; index < lostlives; index++) {
+                    createlives();  
+                }
             }
         }
     }
@@ -454,9 +472,11 @@ function pointCollection() {
 
 
 //function for when all the points have been collected 
-function gameOver() {
-    alert('Game has ended! All points have been collected!')
-}
+// function gameOver() {
+//     clearInterval(playerMovement);
+//     clearInterval(MovementofEnemy);
+//     // alert('Game has ended!')
+// }
 
 
 
@@ -483,7 +503,7 @@ function gameOver() {
 let startBttn = document.querySelector('#start');
 
 function startGame() {
-    // you can also use the following code __startBttn.style.display = 'none'__ This code will do same thing as opacity=0, which results in displaying nothing.  
+    // you can also use the following code display none, adnThis code will do same thing as setting opacity to 0, which results in displaying nothing.  
     startBttn.style.opacity = 0;
 
     // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 
@@ -491,7 +511,12 @@ function startGame() {
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
 
-    setTimeout(removeButton, 3000)
+    leftButton.addEventListener('click', lbttnClicked);
+    rightButton.addEventListener('click', rbttnClicked);
+    upButton.addEventListener('click', ubttnClicked);
+    downButton.addEventListener('click', dbttnClicked);
+
+    setTimeout(removeStartButton, 3000)
 }
 
 // #1 when you are expecting a function, and you get a blue colored instead of a yellow colored check if you have actually craeted a function, for example here with startGame.
@@ -501,15 +526,18 @@ startBttn.addEventListener("click", startGame);
 
 
 //function to remove the start button 
-function removeButton() {
+function removeStartButton() {
     startBttn.style.display = 'none';
 
-    //adding the loop inside the removeButton function, so that to only allow the player to move, when the removeButton function is called; in other word, to only allow the player to move after the start button have been pressed and the start button have disappeared, because I am calling the removeButton function inside the startGame function. For reference: setTimeout(removeButton, 3000).
+    //adding the loop inside the removeStartButton function, so that to only allow the player to move, when the removeStartButton function is called; in other word, to only allow the player to move after the start button have been pressed and the start button have disappeared, because I am calling the removeStartButton function inside the startGame function. For reference: setTimeout(removeStartButton, 3000).
     for (let theenemyOfEnemies of alltheEnemies) {
         //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
         enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+        console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
     }
 }
+
+
 
 
 //Remaining Task 
@@ -517,9 +545,49 @@ function removeButton() {
 function restart() {
     startBttn.style.opacity = 1;
     startBttn.style.display = 'block';
-    startBttn.innerHTML = 'Restart the game?'
-    //if start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously
-} //restart button now is visible and clickable, but I still need to bring back all the points when the start button is clicked 
+    startBttn.innerHTML = 'Restart the game?';
+    // stopPlayerMovement()
+    document.removeEventListener('keydown', keyDown);
+    document.removeEventListener('keyup', keyUp);
+}
+// setInterval(pointCollection, 10);
+
+
+
+function restartFunction() {
+    document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
+    // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
+    document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
+    main.innerHTML = ""; //clearing the previous maze that was used in the last 
+    // clearInterval(mazeCreation);
+    mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
+
+
+    // direction = Math.ceil(Math.random() * 8);
+    player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
+    alltheEnemies = document.querySelectorAll('.enemy'); //selecting the enemey after creating a new maze is the solution that I was missing to get the enemy movement finally working
+    playerMouth = player.querySelector('.mouth');
+    playerTop = 0;
+    playerLeft = 0;
+    lives = 3; //reesting the variable lives back to 3 
+    // playerReturntoMove();
+    Pscore.innerHTML = 0; //reseting the displaed and visible score counter back to 0 when the restart function is called
+    totalPoints = 0; //reseting the score counter variable totalpoints back to 0 when the restart function is called
+    // for (let theenemyOfEnemies of alltheEnemies) {
+    //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+    //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+    // }
+
+    // clearInterval(createEnemy);
+    // clearInterval(createEnemy);
+    // createEnemy();
+    // createEnemy();
+    // createEnemy();
+    // removeStartButton();
+}
+
+
+
 
 
 //accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error.
@@ -528,10 +596,7 @@ let rightButton = document.querySelector('#rbttn');
 let downButton = document.querySelector('#dbttn');
 let upButton = document.querySelector('#ubttn');
 
-leftButton.addEventListener('click', lbttnClicked);
-rightButton.addEventListener('click', rbttnClicked);
-upButton.addEventListener('click', ubttnClicked);
-downButton.addEventListener('click', dbttnClicked);
+
 
 
 function lbttnClicked() {
@@ -597,7 +662,7 @@ console.log(lives); //Output is 3
 // }, 10)
 
 
-console.log("this is the remaini" + lives); 
+console.log("this is the remaini" + lives);
 
 
 //creating a function to stop the player from moving 
@@ -663,18 +728,18 @@ function removelive() {
 // lives = ulSeclect.length;
 // console.log(lives); //Output is 3 
 // // let lives = 3;
-function playerDied() {
-    for (let index = 0; index < lives.length; index++) {
-        if (enemyColtemp()) {
-            lives = lives - 1;
-            removelive(); //calling a function to remove a live/heart when the player hits an enemy
-        }
-        if (lives == 0) {
-            player.classList = 'dead';
-            setTimeout(restart, 500)
-        }
-    }
-}
+// function playerDied() {
+//     for (let index = 0; index < lives.length; index++) {
+//         if (enemyColtemp()) {
+//             lives = lives - 1;
+//             removelive(); //calling a function to remove a live/heart when the player hits an enemy
+//         }
+//         if (lives == 0) {
+//             player.classList = 'dead';
+//             setTimeout(restart, 500)
+//         }
+//     }
+// }
 
 
 
@@ -720,34 +785,66 @@ for (let i = 0; i < localStorage.length; i++) {
 
     // playerList.sort((a, b) => b.value - a.value);
 }
-console.log(playerList);
+// console.log(playerList);
 
 
 function endGame() {
-    let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
-    let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
+    clearInterval(playerMovement);
+    // let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
+    // let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
 
-    // let value = localStorage.getItem(key);
-    // playerList.push(value);
-    // let scoreObjects = scoreArray.map(function);
-    // scoreObjects = scoreObjects.slice(0, 5);
+    // // let value = localStorage.getItem(key);
+    // // playerList.push(value);
+    // // let scoreObjects = scoreArray.map(function);
+    // // scoreObjects = scoreObjects.slice(0, 5);
 
-    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
-    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
+    // localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
+    // localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
 
 
 
-    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
-    let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-    let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
-    addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-    // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
-    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+    // let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
+    // let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+    // let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
+    // addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+    // // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
+    // listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
     // console.log(`Saved to leaderboard: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 
 
-    // .sort((a, b) => b.pointsCollected - a.pointsCollected);
+    
+
+
+
+
+    clearInterval(callPlayertoMove);
+    restart();
+    clearInterval(playerMovement);
+    startBttn.addEventListener("click", restartFunction);
+
+    upPressed = false; //reseting the player key presses and movements  
+    downPressed = false; //reseting the player key presses and movements 
+    leftPressed = false; //reseting the player key presses and movements 
+    rightPressed = false; //reseting the player key presses and movements 
+
+    // if (lives == 0) {
+    //     createlives();
+    //     createlives();
+    //     createlives();
+    // }
+    // listofLeaderboard.sort((a, b) => b - a);
+    // previousMazeEnemies = document,querySelectorAll('.enemy');
+    // previousMazeEnemies.forEach(enemy => {
+    //     enemy.classList.remove('enemy')     
+    // });
+    
+    // for (let theenemyOfEnemies of alltheEnemies) {
+    //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
+    //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
+    //     console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
+    // }
+    // MovementofEnemy();
 }
 
 
@@ -760,32 +857,50 @@ function endGame() {
 
 
 
-
+lives = 3 
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
 console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
 
 function enemyMovement(theenemyOfEnemies) {
     let direction = Math.ceil(Math.random() * 8);
+    // if (lives == 0) { direction = 0 };
     let enemytop = 0;
     let enemyleft = 0;
     MovementofEnemy = setInterval(function () {
+        if (lives == 0) { direction = 0 }; //stopping the enemy movement 
+        if (totalPoints == 50) { direction = 0 }; //stopping the enemy movement 
         if (direction == 1) {
-            let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
-            let newUp = enemyPosition.top - 1;
+            const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect();
+            let newUp = enemyPositionForNewUp.top - 1;
             // ecdul = enemyCollisionDetectionUpLeft
-            let ecdul = document.elementFromPoint(enemyPosition.left, newUp)
+            let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp);
             // ecdur = enemyCollisionDetectionUpRight
-            let ecdur = document.elementFromPoint(enemyPosition.right, newUp)
-            if (ecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
+            let ecdur = document.elementFromPoint(enemyPositionForNewUp.right, newUp);
+            console.log("where are the 3 enemies: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
+
+
+
+            
+            
+            // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving 
+            if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
                 enemytop -= 1;
                 theenemyOfEnemies.style.top = enemytop + 'px';
-
+                console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
             }
             else {
                 //if it contains a wall, then randomly change the direction
                 direction = Math.ceil(Math.random() * 8);
             }
+
+
+
+
+
+
+
+
 
             // player = document.getElementById('player');
             // if (ecdul.contains(player) == true && ecdur.contains(player) == true) {
@@ -798,15 +913,15 @@ function enemyMovement(theenemyOfEnemies) {
         
 
         if (direction == 2) {
-            let enemyPosition = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPosition
+            let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPosition
 
             //why newBottom have to have +, and not - here ? is it because we are moving in a different direction. Because we are moving downwar, and addition pushes the enemy downwards. 
-            let newBottom = enemyPosition.bottom + 1; //selecting the new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
+            let newBottom = enemyPositionForNewDown.bottom + 1; //selecting the new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
             // ecdbl = enemyCollisionDetectionBottomLeft
-            let ecdbl = document.elementFromPoint(enemyPosition.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
+            let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
             // ecdbr = enemyCollisionDetectionBottomRight
-            let ecdbr = document.elementFromPoint(enemyPosition.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the bottom position of the enemy. 
-            if (ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false) {
+            let ecdbr = document.elementFromPoint(enemyPositionForNewDown.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the bottom position of the enemy. 
+            if (ecdbl && ecdbr && ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false) {
                 enemytop += 1; //incrementing the enemy position by 1, and assigning it to the variable enemytop
                 theenemyOfEnemies.style.top = enemytop + 'px'; //applying the changes and moving the enemy to the bottom 
             }
@@ -832,7 +947,7 @@ function enemyMovement(theenemyOfEnemies) {
             let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom); //fix this it is being flagged again in the console 
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPosition.top);
-            if (ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false) {
+            if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false) {
                 //one of the type mistakes I made is when typing the code for enemy wall collision detection is that I typed enemytop variable also for the right and left movement direction, however moments later I realized my mistake and changed the variable enemytop to the variable enemyleft, and now my enemy moves to the left and to the right.
                 enemyleft -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -861,7 +976,7 @@ function enemyMovement(theenemyOfEnemies) {
             let ecdrB = document.elementFromPoint(newRight, enemyPosition.bottom);
             // ecdrT = enemyCollisionDetectionRightTop
             let ecdrT = document.elementFromPoint(newRight, enemyPosition.top);
-            if (ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false) {
+            if (ecdrB && ecdrT && ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false) {
                 enemyleft += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
@@ -889,7 +1004,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPosition.bottom + 1;
             // RB = RightBottom
             let RB = document.elementFromPoint(newRight, newBottom);
-            if (RB == true && RB.classList.contains('wall') == false) {
+            if (RB && RB == true && RB.classList.contains('wall') == false) {
                 enemyleft += 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -917,7 +1032,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newTop = enemyPosition.top - 1;
             // RT = RightUp
             let RT = document.elementFromPoint(newRight, newTop);
-            if (RT == true && RT.classList.contains('wall') == false) {
+            if (RT && RT == true && RT.classList.contains('wall') == false) {
                 enemyleft += 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -943,9 +1058,9 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             let newBottom = enemyPosition.bottom + 1;
-            // RB = RightBottom
-            let RB = document.elementFromPoint(newLeft, newBottom);
-            if (RB == true && RB.classList.contains('wall') == false) {
+            // LB = LeftBottom
+            let LB = document.elementFromPoint(newLeft, newBottom);
+            if (LB && LB == true && LB.classList.contains('wall') == false) {
                 enemyleft -= 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -971,9 +1086,9 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             let newTop = enemyPosition.top - 1;
-            // LT = LeftUp
-            let LT = document.elementFromPoint(newLeft, newTop);
-            if (LT == true && LT.classList.contains('wall') == false) {
+            // LU = LeftUp
+            let LU = document.elementFromPoint(newLeft, newTop);
+            if (LU && LU == true && LU.classList.contains('wall') == false) {
                 enemyleft -= 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1067,13 +1182,6 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-function save(username, score) {
-    localStorage.setItem(username, score)
-}
-
-
-// sorting from largest to smallest
-// list.sort //go to the slide sort array in week 12
 
 
 
@@ -1088,6 +1196,10 @@ function save(username, score) {
 
 
 
+
+
+
+lives = 3
 function enemyColtemp() {
     let allEnemies = document.querySelectorAll('.enemy');
     let playerPosition = player.getBoundingClientRect();
@@ -1099,15 +1211,60 @@ function enemyColtemp() {
             playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
         ) {
-            stopPlayerMovement();
+            // stopPlayerMovement();
             removelive();
             lives = lives - 1;
             player.classList.add('hit');
-            setTimeout( () => {
+            setTimeout(() => {
                 playerReturntoMove();
                 player.classList.remove('hit');
             }, 1500);
+            if (lives == 0) {
+                player.classList.add('dead');
+                createlives();
+                createlives();
+                createlives();
+                clearInterval(MovementofEnemy);
+                // stopPlayerMovement();
+                endGame();
+                // gameOver();
+                // restart();
+            }
         }
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getName() {
+    const username = prompt('Enter name');
+}
+
+
+function save(username, score) {
+    localStorage.setItem(username, score)
+}
+
+
+
+
+// sorting from largest to smallest
+// list.sort //go to the slide sort array in week 12
