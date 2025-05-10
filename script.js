@@ -1246,17 +1246,171 @@ function enemyColtemp() {
 
 
 
-function getName() {
-    const username = prompt('Enter name');
-}
+// function getName() {
+//     const username = prompt('Enter name');
+// }
 
 
-function save(username, score) {
-    localStorage.setItem(username, score)
-}
+// function save(username, Pscore) {
+//     localStorage.setItem(username, Pscore)
+// }
 
+// function getsscores() {
+//     for (let i = 0; i < localStorage.length; i++) {
+//         const username = localStorage.key(i);
+//         const points = localStorage.getItem(username);
+//     }
+
+//     //sorting 
+
+//     addtoLeaderboard(username, points)
+// }
+
+// function addtoLeaderboard(username, points) {
+//     const li = document.createElement('li');
+//     const ol = document.querySelector('.leaderboard ol');
+//     ol.appendChild(li);
+// }
 
 
 
 // sorting from largest to smallest
 // list.sort //go to the slide sort array in week 12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function createTag(tag, parent, text) {
+//     const element = document.createElement(tag);
+//     const textNode = document.createTextNode(text);
+//     element.appendChild(textNode);
+//     parent.appendChild(element);
+//     return element;
+// }
+
+// let score = 20;
+
+// let leaderboard = document.querySelector(".leaderboard ol");
+
+// function saveName() {
+//     const username = prompt('Enter name....');
+//     localStorage.setItem(username, score);
+// }
+
+// for (let i = 0; i < localStorage.length; i++) {
+//     const username = localStorage.key(i);
+//     const playerScore = localStorage.getItem(username);
+//     createTag('li' + leaderboard, `${username} ....... ${playerScore}`);
+// }
+
+// saveName();
