@@ -557,8 +557,8 @@ function restartFunction() {
 
     // direction = Math.ceil(Math.random() * 8);
     player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
-    alltheEnemies = document.querySelectorAll('.enemy'); //selecting the enemey after creating a new maze is the solution that I was missing to get the enemy movement finally working
-    playerMouth = player.querySelector('.mouth');
+    alltheEnemies = document.querySelectorAll('.enemy'); //selecting the enemies after creating a new maze, and reassigning the enemies to the variable alltheEnemies is the solution that I was missing to get the enemy movement finally working
+    playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player after creating a new maze, and reassigning the mouth of the player to the variable playerMouth is the solution that I was missing to get the player mouth displayed after the restart button is clicked
     playerTop = 0;
     playerLeft = 0;
     lives = 3; //reesting the variable lives back to 3 
