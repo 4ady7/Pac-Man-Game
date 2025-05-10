@@ -118,17 +118,17 @@ for (let y of maze) {
 function keyUp(event) { //event here is a parameter inside the function 
     // console.log(event.key) //Keyup event is being recorded only when the key is released. Most often, that happens only when you are stopping becuase you reached your final destiniation after you have collected all the points, or you are stopping because you are changing direction to the left, right, or doing a 180 and going in the opposite direction (backwards). 
     if (event.key === 'ArrowUp') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowUp.
-        console.log('stp moving up')
+        // console.log('stp moving up')
         upPressed = false;
     } else if (event.key === 'ArrowDown') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowDown.
-        console.log('stp moving down')
+        // console.log('stp moving down')
         downPressed = false;
     } else if (event.key === 'ArrowLeft') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowLeft.
-        console.log('stp moving left')
+        // console.log('stp moving left')
         leftPressed = false;
         //event.key === 'ArrowRight' is not a representing the action; thus not checking the action. It is only checking which key is this, so in the following case it is checking if the key is the right arrow key or is it a different key like an arrow left, down, or up.
     } else if (event.key === 'ArrowRight') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowRight.
-        console.log('stp moving right')
+        // console.log('stp moving right')
         rightPressed = false;
     }
 }
@@ -137,19 +137,19 @@ function keyDown(event) { //event here is a parameter inside the function
     //event.key is a representation of the key that was pressed
     console.log(event.key) //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
     if (event.key === 'ArrowUp') {
-        console.log('strt n keep moving up')
+        // console.log('strt n keep moving up')
         upPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowDown') {
-        console.log('strt n keep moving down')
+        // console.log('strt n keep moving down')
         downPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowLeft') {
-        console.log('strt n keep moving left')
+        // console.log('strt n keep moving left')
         leftPressed = true;
         // enemyCollision();
     } else if (event.key === 'ArrowRight') {
-        console.log('strt n keep moving right')
+        // console.log('strt n keep moving right')
         rightPressed = true;
         // enemyCollision();
     }
@@ -744,7 +744,7 @@ function endGame() {
     // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
-    console.log(`Saved to leaderboard: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+    // console.log(`Saved to leaderboard: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 
 
     // .sort((a, b) => b.pointsCollected - a.pointsCollected);
@@ -996,8 +996,8 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-        console.log(enemytop) //shhowing the enemy movement along the vertical line 
-        console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
+        // console.log(enemytop) //shhowing the enemy movement along the vertical line 
+        // console.log(enemyleft) //shhowing the enemy movement along the horizontal line 
     }, 10);
 }
 
