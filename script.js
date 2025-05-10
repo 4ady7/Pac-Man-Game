@@ -220,7 +220,7 @@ function enemyEncounter() {
 
 const collisionUnit = 1;
 let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
-const playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player
+let playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player //const playerMouth to let playerMouth, why ? to be able to reassign the variable playerMouth again to the playerMouth by selecting through the mouth of the player 
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
 
@@ -558,7 +558,7 @@ function restartFunction() {
     // direction = Math.ceil(Math.random() * 8);
     player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
     alltheEnemies = document.querySelectorAll('.enemy'); //selecting the enemey after creating a new maze is the solution that I was missing to get the enemy movement finally working
-    // playerMouth = player.querySelector('.mouth');
+    playerMouth = player.querySelector('.mouth');
     playerTop = 0;
     playerLeft = 0;
     lives = 3; //reesting the variable lives back to 3 
