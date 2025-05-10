@@ -503,6 +503,11 @@ function startGame() {
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
 
+    leftButton.addEventListener('click', lbttnClicked);
+    rightButton.addEventListener('click', rbttnClicked);
+    upButton.addEventListener('click', ubttnClicked);
+    downButton.addEventListener('click', dbttnClicked);
+    
     setTimeout(removeStartButton, 3000)
 }
 
@@ -546,6 +551,7 @@ function restartFunction() {
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
     main.innerHTML = ""; //clearing the previous maze that was used in the last 
+    // clearInterval(mazeCreation);
     mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
 
 
@@ -581,10 +587,7 @@ let rightButton = document.querySelector('#rbttn');
 let downButton = document.querySelector('#dbttn');
 let upButton = document.querySelector('#ubttn');
 
-leftButton.addEventListener('click', lbttnClicked);
-rightButton.addEventListener('click', rbttnClicked);
-upButton.addEventListener('click', ubttnClicked);
-downButton.addEventListener('click', dbttnClicked);
+
 
 
 function lbttnClicked() {
