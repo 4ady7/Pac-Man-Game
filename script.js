@@ -782,27 +782,27 @@ for (let i = 0; i < localStorage.length; i++) {
 
 function endGame() {
     clearInterval(playerMovement);
-    // let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
-    // let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
+    let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
+    let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
 
-    // // let value = localStorage.getItem(key);
-    // // playerList.push(value);
-    // // let scoreObjects = scoreArray.map(function);
-    // // scoreObjects = scoreObjects.slice(0, 5);
+    // let value = localStorage.getItem(key);
+    // playerList.push(value);
+    // let scoreObjects = scoreArray.map(function);
+    // scoreObjects = scoreObjects.slice(0, 5);
 
-    // localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
-    // localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
+    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
+    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
 
 
 
-    // let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
-    // let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-    // let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
-    // addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-    // // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
-    // listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
+    let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+    let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
+    addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+    // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
+    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
-    // console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+    console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 
 
     
@@ -837,31 +837,6 @@ function endGame() {
     //     console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
     // }
     // MovementofEnemy();
-
-    function createTag(tag, parent, text) {
-        const element = document.createElement(tag);
-        const textNode = document.createTextNode(text);
-        element.appendChild(textNode);
-        parent.appendChild(element);
-        return element;
-    }
-    
-    let score = 20;
-    
-    let leaderboard = document.querySelector(".leaderboard ol");
-    
-    function saveName() {
-        const username = prompt('Enter name....');
-        localStorage.setItem(username, score);
-    }
-    
-    for (let i = 0; i < localStorage.length; i++) {
-        const username = localStorage.key(i);
-        const playerScore = localStorage.getItem(username);
-        createTag('li', leaderboard, `${username} ....... ${playerScore}`);
-    }
-    
-    saveName();
 }
 
 
