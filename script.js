@@ -507,7 +507,7 @@ function startGame() {
     rightButton.addEventListener('click', rbttnClicked);
     upButton.addEventListener('click', ubttnClicked);
     downButton.addEventListener('click', dbttnClicked);
-    
+
     setTimeout(removeStartButton, 3000)
 }
 
@@ -557,6 +557,7 @@ function restartFunction() {
 
     // direction = Math.ceil(Math.random() * 8);
     player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
+    alltheEnemies = document.querySelectorAll('.enemy'); //selecting the enemey after creating a new maze is the solution that I was missing to get the enemy movement finally working
     // playerMouth = player.querySelector('.mouth');
     playerTop = 0;
     playerLeft = 0;
