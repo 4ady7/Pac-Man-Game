@@ -140,6 +140,13 @@ function keyUp(event) { //event here is a parameter inside the function
 function keyDown(event) { //event here is a parameter inside the function
     //event.key is a representation of the key that was pressed
     // console.log(event.key); //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
+    
+    //stopping and clearing any movement that has been initiated before initiating the player movement through the arrow key inputs. In my case, stopping the movement of the GUI buttons that has been initiated.
+    upPressed = false;
+    downPressed = false;
+    leftPressed = false;
+    rightPressed = false;
+
     if (event.key === 'ArrowUp') {
         // console.log('strt n keep moving up')
         upPressed = true;
@@ -185,7 +192,7 @@ function keyDown(event) { //event here is a parameter inside the function
             playerSpeed = 1.40 //level 8 speed 
             break;
         case '9':
-            playerSpeed = 2.45 //level 9 speed 
+            playerSpeed = 2.45 //speed-up boost feature 
             break;
     }
 }
