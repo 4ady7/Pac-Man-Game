@@ -817,8 +817,30 @@ function removelive() {
 
 
 function saveData() {
+    getName();
+
+
+
+
+
+
     let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
     let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
+    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
+    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
+    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
+    let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+    let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
+    addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+
+
+
+    // console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+
+
+
+
 
     // const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
     // let leaderboard = [];
@@ -833,12 +855,11 @@ function saveData() {
     // localStorage.setItem(playerName, pointsCollected); //storing the variable playerName as the key, and the variable pointsCollected as the score
 
 
-    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
-    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
 
 
 
-    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
+
+    
     // listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
 
 
@@ -850,12 +871,7 @@ function saveData() {
 
     //     createTag('li', listofLeaderboard, `${nameOfPlayer} ....... ${scoreOfPlayer}`);
     // }
-    let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-    let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
-    addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
 
-    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
-    console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 
 
     // let savedPlayerData = [];
@@ -1357,9 +1373,9 @@ function enemyColtemp() {
 
 
 
-// function getName() {
-//     const username = prompt('Enter name');
-// }
+function getName() {
+    let username = prompt('Enter name');
+}
 
 
 // function save(username, Pscore) {
