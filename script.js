@@ -1,7 +1,7 @@
-let upPressed = false; //intializing the value of the variable upPressed to the boolean value false 
-let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
-let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
-let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
+// let upPressed = false; //intializing the value of the variable upPressed to the boolean value false 
+// let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
+// let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
+// let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
 let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to not only speed up, but to also speed down
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
@@ -458,7 +458,7 @@ function pointCollection() {
                 clearInterval(MovementofEnemy);
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
-                endGame();
+                gameEnded();
                 lostlives = 3 - lives;
                 console.log(lives + "here in point collection")
                 for (let index = 0; index < lostlives; index++) {
@@ -787,7 +787,7 @@ for (let i = 0; i < localStorage.length; i++) {
 // console.log(playerList);
 
 
-function endGame() {
+function gameEnded() {
     clearInterval(playerMovement);
     let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
     let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
@@ -844,6 +844,34 @@ function endGame() {
     //     console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
     // }
     // MovementofEnemy();
+
+
+
+
+    // function createTag(tag, parent, text) {
+    //     const element = document.createElement(tag);
+    //     const textNode = document.createTextNode(text);
+    //     element.appendChild(textNode);
+    //     parent.appendChild(element);
+    //     return element;
+    // }
+    
+    // let score = 20;
+    
+    // let leaderboard = document.querySelector(".leaderboard ol");
+    
+    // function saveName() {
+    //     const username = prompt('Enter name....');
+    //     localStorage.setItem(username, score);
+    // }
+    
+    // for (let i = 0; i < localStorage.length; i++) {
+    //     const username = localStorage.key(i);
+    //     const playerScore = localStorage.getItem(username);
+    //     createTag('li', leaderboard, `${username} ....... ${playerScore}`);
+    // }
+    
+    // saveName();
 }
 
 
@@ -1225,7 +1253,7 @@ function enemyColtemp() {
                 createlives();
                 clearInterval(MovementofEnemy);
                 // stopPlayerMovement();
-                endGame();
+                gameEnded();
                 // gameOver();
                 // restart();
             }
