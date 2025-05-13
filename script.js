@@ -140,7 +140,7 @@ function keyUp(event) { //event here is a parameter inside the function
 function keyDown(event) { //event here is a parameter inside the function
     //event.key is a representation of the key that was pressed
     // console.log(event.key); //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
-    
+
     //stopping and clearing any movement that has been initiated before initiating the player movement through the arrow key inputs. In my case, stopping the movement of the GUI buttons that has been initiated.
     upPressed = false;
     downPressed = false;
@@ -462,7 +462,7 @@ function pointCollection() {
                 lostlives = 3 - lives;
                 console.log(lives + "here in point collection")
                 for (let index = 0; index < lostlives; index++) {
-                    createlives();  
+                    createlives();
                 }
             }
         }
@@ -777,7 +777,7 @@ function removelive() {
 
 // let playerList = [];
 // for (let i = 0; i < localStorage.length; i++) {
-//     let nameOfPlayer = localStorage.key(i); //assigning each key in the local storage to the variable nameOfPlayer  
+//     let nameofnameOfPlayer = localStorage.key(i); //assigning each key in the local storage to the variable nameOfPlayer  
 //     let value = localStorage.getItem(key);
 //     playerList.push(value);
 
@@ -786,6 +786,33 @@ function removelive() {
 // }
 // console.log(playerList);
 
+
+
+
+// function createTag(tag, parent, text) {
+//     const element = document.createElement(tag);
+//     const textNode = document.createTextNode(text);
+//     element.appendChild(textNode);
+//     parent.appendChild(element);
+//     return element;
+// }
+
+// let score = 20;
+
+// let leaderboard = document.querySelector(".leaderboard ol");
+
+// function saveName() {
+//     const username = prompt('Enter name....');
+//     localStorage.setItem(username, score);
+// }
+
+// for (let i = 0; i < localStorage.length; i++) {
+//     const username = localStorage.key(i);
+//     const playerScore = localStorage.getItem(username);
+//     createTag('li', leaderboard, `${username} ....... ${playerScore}`);
+// }
+
+// saveName();
 
 
 
@@ -808,14 +835,28 @@ function saveData() {
 
     let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
     // listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
-    
+
+    // for (let index = 0; index < localStorage.length; index++) {
+    //     let nameOfPlayer = localStorage.key[index];
+    //     let scoreOfPlayer = localStorage.getItem(nameOfPlayer);
+
+    //     createTag('li', listofLeaderboard, `${nameOfPlayer} ....... ${scoreOfPlayer}`);
+    // }
     let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
     let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
     addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-    // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
-    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
+    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
     console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+
+
+
+
+
+
+
+
+    // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
 }
 
 function gameEnded() {
@@ -823,7 +864,7 @@ function gameEnded() {
 
 
 
-    
+
     saveData();
 
 
@@ -848,7 +889,7 @@ function gameEnded() {
     // previousMazeEnemies.forEach(enemy => {
     //     enemy.classList.remove('enemy')     
     // });
-    
+
     // for (let theenemyOfEnemies of alltheEnemies) {
     //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
     //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
@@ -866,22 +907,22 @@ function gameEnded() {
     //     parent.appendChild(element);
     //     return element;
     // }
-    
+
     // let score = 20;
-    
+
     // let leaderboard = document.querySelector(".leaderboard ol");
-    
+
     // function saveName() {
     //     const username = prompt('Enter name....');
     //     localStorage.setItem(username, score);
     // }
-    
+
     // for (let i = 0; i < localStorage.length; i++) {
     //     const username = localStorage.key(i);
     //     const playerScore = localStorage.getItem(username);
     //     createTag('li', leaderboard, `${username} ....... ${playerScore}`);
     // }
-    
+
     // saveName();
 }
 
@@ -895,7 +936,7 @@ function gameEnded() {
 
 
 
-lives = 3 
+lives = 3
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
 console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
@@ -919,8 +960,8 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-            
-            
+
+
             // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving 
             if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
                 enemytop -= 1;
@@ -948,7 +989,7 @@ function enemyMovement(theenemyOfEnemies) {
             //     // clearInterval(timer); 
             // }
         }
-        
+
 
         if (direction == 2) {
             let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPosition
@@ -1307,7 +1348,7 @@ function enemyColtemp() {
 //         const points = localStorage.getItem(username);
 //     }
 
-//     //sorting 
+//     //sorting
 
 //     addtoLeaderboard(username, points)
 // }
