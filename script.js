@@ -830,17 +830,20 @@ function saveData() {
     // let scoreObjects = scoreArray.map(function);
     // scoreObjects = scoreObjects.slice(0, 5);
 
-    localStorage.setItem(playerName, pointsCollected); //storing the variable playerName as the key, and the variable pointsCollected as the score
+    // localStorage.setItem(playerName, pointsCollected); //storing the variable playerName as the key, and the variable pointsCollected as the score
 
 
-    // localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
-    // localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
+    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
+    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
 
 
 
     let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
     // listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
 
+
+    // let savedPlayer = localStorage.getItem('Name'); 
+    // let savedTotalPoints = localStorage.getItem('Score');
     // for (let index = 0; index < localStorage.length; index++) {
     //     let nameOfPlayer = localStorage.key[index];
     //     let scoreOfPlayer = localStorage.getItem(nameOfPlayer);
@@ -853,6 +856,11 @@ function saveData() {
 
     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
     console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+
+
+    // let savedPlayerData = [];
+    // savedPlayerData.push({savedPlayer, savedTotalPoints});
+    // savedPlayerData.sort((a, b) => b.pointsCollected - a.pointsCollected);
 
     // let leaderboardSort = localStorage.getItem('leaderboard ol');
     // leaderboard.forEach(element => {
