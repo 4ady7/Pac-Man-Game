@@ -1,7 +1,7 @@
-// let upPressed = false; //intializing the value of the variable upPressed to the boolean value false 
-// let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
-// let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
-// let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
+let upPressed = false; //intializing the value of the variable upPressed to the boolean value false 
+let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
+let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
+let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
 let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to not only speed up, but to also speed down
 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
@@ -775,15 +775,15 @@ function removelive() {
 
 
 
-let playerList = [];
-for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    let value = localStorage.getItem(key);
-    playerList.push(value);
+// let playerList = [];
+// for (let i = 0; i < localStorage.length; i++) {
+//     let nameOfPlayer = localStorage.key(i); //assigning each key in the local storage to the variable nameOfPlayer  
+//     let value = localStorage.getItem(key);
+//     playerList.push(value);
 
 
-    // playerList.sort((a, b) => b.value - a.value);
-}
+//     // playerList.sort((a, b) => b.value - a.value);
+// }
 // console.log(playerList);
 
 
@@ -798,13 +798,16 @@ function saveData() {
     // let scoreObjects = scoreArray.map(function);
     // scoreObjects = scoreObjects.slice(0, 5);
 
-    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
-    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
+    localStorage.setItem(playerName, pointsCollected); //storing the variable playerName as the key, and the variable pointsCollected as the score
+
+
+    // localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
+    // localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
 
 
 
     let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
-    listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
+    // listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
     
     let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
     let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
