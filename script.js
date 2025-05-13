@@ -787,8 +787,9 @@ for (let i = 0; i < localStorage.length; i++) {
 // console.log(playerList);
 
 
-function gameEnded() {
-    clearInterval(playerMovement);
+
+
+function saveData() {
     let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
     let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
 
@@ -810,10 +811,15 @@ function gameEnded() {
     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
     console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
+}
+
+function gameEnded() {
+    clearInterval(playerMovement);
+
 
 
     
-
+    saveData();
 
 
 
