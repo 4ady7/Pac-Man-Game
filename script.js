@@ -820,6 +820,11 @@ function saveData() {
     let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
     let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
 
+    // const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    // let leaderboard = [];
+    // leaderboard.push({playerName, pointsCollected}) //linking the player's name, and the number of points the player collected by adding them together in one set.  
+    // leaderboard.sort((a, b) => b.pointsCollected - a.pointsCollected); //arranging them desendingly from largest to smallest by number of points that has been collected.
+
     // let value = localStorage.getItem(key);
     // playerList.push(value);
     // let scoreObjects = scoreArray.map(function);
@@ -849,7 +854,18 @@ function saveData() {
     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
     console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 
+    // let leaderboardSort = localStorage.getItem('leaderboard ol');
+    // leaderboard.forEach(element => {
+    //     let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+    //     let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
+    //     addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+    
+    //     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+    //     console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
 
+        
+    //     leaderboardSort.sort((a, b) => b.pointsCollected - a.pointsCollected); //arranging them desendingly from largest to smallest by number of points that has been collected.
+    // });
 
 
 
