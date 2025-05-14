@@ -1406,7 +1406,7 @@ function leaderboardCreation() {
         let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
 
         //looping through the variable highestOnes
-        highestOnes.forEach(element => {
+        highestOnes.forEach(function(element) {
             addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName, element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points.
         });
     }
