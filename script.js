@@ -1391,9 +1391,12 @@ function leaderboardCreation() {
         //sortting the scores descndingly from greatest to smallest number of points collected  
         allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points.
     
-        //looping through the array allResults, and calling the function addtoLeaderboard() 
-        allResults.forEach(element => {
-            addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array allResults, and it represents the variable playerName, element[1] represents the second item of each array inside the array allResults, and it represents the variable points.
+        //I needed to add this line of code after sorting the array allresults 
+        let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
+
+        //looping through the variable highestOnes, and calling the function addtoLeaderboard() 
+        highestOnes.forEach(element => {
+            addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName, element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points.
         });
     }
     
