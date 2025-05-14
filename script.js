@@ -7,7 +7,7 @@ let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 let main = document.querySelector('main');
 
-//Player = 2, Wall = 1, Enemy = 3, Point = 0
+//Player = 2, Wall = 1, Enemy was 3, Point = 0
 let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //the first row is filled with only walls 
     [1, 2, 0, 1, 0, 0, 0, 0, 0, 1], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
@@ -1407,14 +1407,16 @@ function leaderboardCreation() {
 
         //looping through the variable highestOnes
         highestOnes.forEach(element => {
-            let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-            addlitoLeaderboard.innerHTML = `${playerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-            let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-            listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
-
-
-            //addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName, element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points.
+            addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName, element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points.
         });
+    }
+    
+    function addPlayerInfoToLeaderboard(playerName, points) {
+        let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+        addlitoLeaderboard.innerHTML = `${playerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+    
+        let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
+        listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
     }
     
     // function addPlayerInfoToLeaderboard(playerName, points) {
