@@ -1409,7 +1409,7 @@ function leaderboardCreation() {
 
         //While I was testing, I proved that here in the forEach loop, the index, which is most represented by the charachter i, is the value of the length of my localStorage
         highestOnes.forEach(function(_, element) {
-            console.log("jsu sjdkasjld" + element); });
+            console.log("Here is my index:" + element); });
 
 
         //looping through each array inside the variable highestOnes, and assigning the value of the smaller array to the vatiable element. While element[0] and element[1] represent the values inisde the smallerr array.
