@@ -1405,6 +1405,13 @@ function leaderboardCreation() {
         //I needed to add this line of code after sorting the array allresults to slice from an array that has already been sorted desendingly
         let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
 
+
+
+        //While I was testing, I proved that here in the forEach loop, the index, which is most represented by the charachter i, is the value of the length of my localStorage
+        highestOnes.forEach(function(_, element) {
+            console.log("jsu sjdkasjld" + element); });
+
+
         //looping through each array inside the variable highestOnes, and assigning the value of the smaller array to the vatiable element. While element[0] and element[1] represent the values inisde the smallerr array.
         highestOnes.forEach(function(element) {
             addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName becuase playerName is the first parameter/argument of the function addPlayerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addPlayerInfoToLeaderboard. 
