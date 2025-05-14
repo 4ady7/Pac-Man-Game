@@ -817,22 +817,23 @@ function removelive() {
 
 
 function saveData() {
-    getName();
+    // getName();
+    
 
 
 
 
 
 
-    let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
-    let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
-    localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
-    localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
-    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
-    let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-    let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
-    addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-    listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+    // let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
+    // let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
+    // localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
+    // localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
+    // let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
+    // let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+    // let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
+    // addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+    // listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
 
 
@@ -996,7 +997,7 @@ function enemyMovement(theenemyOfEnemies) {
             let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp);
             // ecdur = enemyCollisionDetectionUpRight
             let ecdur = document.elementFromPoint(enemyPositionForNewUp.right, newUp);
-            console.log("where are the 3 enemies: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
+            // console.log("where are the 3 enemies: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
 
 
 
@@ -1368,34 +1369,88 @@ function enemyColtemp() {
 
 
 
-
-
-
-
-
-function getName() {
-    let username = prompt('Enter name');
+function getPLayer() {
+    return prompt('Enter name');//asking the player for the username, and assigning that username to the function getPLayer(). The prompt is displayed only when I call the getPLayer() function
 }
 
+//could not name this function player, the game crashes, I think because it is conflicting with the class player 
+function playerInfo(nameOfPlayer, scorePoints) {
+    localStorage.setItem(nameOfPlayer, scorePoints);//storing the parameter nameOfPlayer as the key, and the parameter Pscore as the value
+}
 
-// function save(username, Pscore) {
-//     localStorage.setItem(username, Pscore)
+function leaderboardCreation() {
+    let allResults = [];//initializing a list, and assigning it to the variable allResults 
+
+    //looping through each item in the local storage
+        for (let i = 0; i < localStorage.length; i++) {
+            let playerName = localStorage.key(i);//assigning the key of each item in local storage to the variable playerName
+            let points = parseInt(localStorage.getItem(playerName));//assigning the value of each item in local storage to the variable points, and using parseInt() to convert the string to the closest whole number 
+            allResults.push([playerName, points]);// Storing the array of 2 variables into the arry allResults
+        }
+    
+        //sortting the scores descndingly from greatest to smallest number of points collected  
+        allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points.
+    
+        //looping through the array allResults, and calling the function addtoLeaderboard() 
+        allResults.forEach(element => {
+            addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array allResults, and it represents the variable playerName, element[1] represents the second item of each array inside the array allResults, and it represents the variable points.
+        });
+    }
+    
+    function addPlayerInfoToLeaderboard(playerName, points) {
+        let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
+        addlitoLeaderboard.innerHTML = `${playerName} ........ ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+    
+        let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
+        listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+    }
+    
+    function saveData() {
+        let name = getPLayer(); //calling the function and assigning it to the variable name 
+        let pointsCollected = document.querySelector('.score p').textContent; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
+    
+        playerInfo(name, pointsCollected); //calling the function to save to local storage the name and pointsCollected
+    
+        // Clear current leaderboard
+        let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
+        listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
+    
+        leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
+    }
+
+
+
+
+// function getPLayer() {
+//     let Pscores = document.querySelector('.score p').innerHTML;
+//     let username = prompt('Enter name');
+//     save(username, Pscores);
+//     getsscores();
+// }
+
+// function save(username, Pscores) {
+//     localStorage.setItem(username, Pscores);
+//     console.log(username);
+//     console.log(Pscores);
 // }
 
 // function getsscores() {
 //     for (let i = 0; i < localStorage.length; i++) {
-//         const username = localStorage.key(i);
-//         const points = localStorage.getItem(username);
+//         let usernamed = localStorage.key(i);
+//         let points = localStorage.getItem(usernamed);
+//         console.log(points);
+//         console.log(usernamed);
 //     }
+
 
 //     //sorting
 
-//     addtoLeaderboard(username, points)
+//     addtoLeaderboard(usernamed, points)
 // }
 
-// function addtoLeaderboard(username, points) {
-//     const li = document.createElement('li');
-//     const ol = document.querySelector('.leaderboard ol');
+// function addtoLeaderboard(usernamed, points) {
+//     let li = document.createElement('li');
+//     let ol = document.querySelector('.leaderboard ol');
 //     ol.appendChild(li);
 // }
 
