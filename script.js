@@ -1389,18 +1389,19 @@ function leaderboardCreation() {
         }
     
         //sortting the scores descndingly from greatest to smallest number of points collected  
-        allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points.
+        allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points. [1] represents the second item of each array inside the array allResults, and it represents the variable points.
     
         //I needed to add this line of code after sorting the array allresults to slice from an array that has already been sorted desendingly
         let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
 
-        //looping through the variable highestOnes, and calling the function addtoLeaderboard() 
+        //looping through the variable highestOnes
         highestOnes.forEach(element => {
             let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
             addlitoLeaderboard.innerHTML = `${playerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-        
             let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
             listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+
+            
             //addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName, element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points.
         });
     }
