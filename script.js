@@ -1414,9 +1414,8 @@ function leaderboardCreation() {
     
         playerInfo(name, pointsCollected); //calling the function to save to local storage the name and pointsCollected
     
-        // Clear current leaderboard
-        let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-        listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
+        // let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
+        // listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
     
         leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
     }
