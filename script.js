@@ -1369,9 +1369,9 @@ function enemyColtemp() {
 
 
 
-function getPLayer() {
-    return prompt('Enter name');//asking the player for the username, and assigning that username to the function getPLayer(). The prompt is displayed only when I call the getPLayer() function
-}
+// function getPLayer() {
+//     return prompt('Enter name');//asking the player for the username, and assigning that username to the function getPLayer(). The prompt is displayed only when I call the getPLayer() function
+// }
 
 //could not name this function player, the game crashes, I think because it is conflicting with the class player 
 function playerInfo(nameOfPlayer, scorePoints) {
@@ -1409,10 +1409,10 @@ function leaderboardCreation() {
     }
     
     function saveData() {
-        let name = getPLayer(); //calling the function and assigning it to the variable name 
+        let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable name 
         let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
     
-        playerInfo(name, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfPlayer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that player has collected during that game.
+        playerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfPlayer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that player has collected during that game.
     
         //the leader board were displaying duplicates after the saving the player info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
