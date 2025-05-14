@@ -1391,7 +1391,7 @@ function leaderboardCreation() {
         //sortting the scores descndingly from greatest to smallest number of points collected  
         allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points.
     
-        //I needed to add this line of code after sorting the array allresults 
+        //I needed to add this line of code after sorting the array allresults to slice from an array that has already been sorted desendingly
         let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
 
         //looping through the variable highestOnes, and calling the function addtoLeaderboard() 
@@ -1414,8 +1414,9 @@ function leaderboardCreation() {
     
         playerInfo(name, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfPlayer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that player has collected during that game.
     
-        // let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-        // listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
+        //the leader board were displaying duplicates after the saving the player info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
+        let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
+        listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list 
     
         leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
     }
