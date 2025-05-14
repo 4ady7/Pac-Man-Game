@@ -1402,7 +1402,7 @@ function leaderboardCreation() {
     
     function addPlayerInfoToLeaderboard(playerName, points) {
         let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-        addlitoLeaderboard.innerHTML = `${playerName} ........ ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+        addlitoLeaderboard.innerHTML = `${playerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
     
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
         listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
