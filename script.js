@@ -769,7 +769,18 @@ function removelive() {
 //     player.style.backgroundColor = this.id;
 // }
 
+// let side = document.getElementById("side");
+// let closeside = document.getElementById("closeside");
 
+// // Show customizer when player is clicked
+// player.addEventListener("click", function() {
+//     side.style.transform = "translateX(0)";
+// });
+
+// // Hide customizer when "X" is clicked
+// closeside.addEventListener("click", function() {
+//     side.style.transform = "translateX(100%)";
+// });
 
 
 
@@ -1401,7 +1412,7 @@ function leaderboardCreation() {
             let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
             listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
 
-            
+
             //addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName, element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points.
         });
     }
