@@ -1086,11 +1086,6 @@ function enemyColtemp() {
 
 
 
-
-// function getPLayer() {
-//     return prompt('Enter name');//asking the player for the username, and assigning that username to the function getPLayer(). The prompt is displayed only when I call the getPLayer() function
-// }
-
 //could not name this function player, the game crashes, I think because it is conflicting with the class player 
 function playerInfo(nameOfPlayer, scorePoints) {
     localStorage.setItem(nameOfPlayer, scorePoints);//storing the parameter nameOfPlayer as the key, and the parameter Pscore as the value
@@ -1134,13 +1129,10 @@ function leaderboardCreation() {
         listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
     }
     
-    // function addPlayerInfoToLeaderboard(playerName, points) {
-    //     let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-    //     addlitoLeaderboard.innerHTML = `${playerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-    
-    //     let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-    //     listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
-    // }
+
+
+
+
     
     function saveData() {
         let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable name 
@@ -1158,178 +1150,13 @@ function leaderboardCreation() {
 
 
 
-// function getPLayer() {
-//     let Pscores = document.querySelector('.score p').innerHTML;
-//     let username = prompt('Enter name');
-//     save(username, Pscores);
-//     getsscores();
-// }
 
-// function save(username, Pscores) {
-//     localStorage.setItem(username, Pscores);
-//     console.log(username);
-//     console.log(Pscores);
-// }
 
-// function getsscores() {
-//     for (let i = 0; i < localStorage.length; i++) {
-//         let usernamed = localStorage.key(i);
-//         let points = localStorage.getItem(usernamed);
-//         console.log(points);
-//         console.log(usernamed);
-//     }
 
 
-//     //sorting
 
-//     addtoLeaderboard(usernamed, points)
-// }
 
-// function addtoLeaderboard(usernamed, points) {
-//     let li = document.createElement('li');
-//     let ol = document.querySelector('.leaderboard ol');
-//     ol.appendChild(li);
-// }
 
 
 
-// sorting from largest to smallest
-// list.sort //go to the slide sort array in week 12
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function createTag(tag, parent, text) {
-//     const element = document.createElement(tag);
-//     const textNode = document.createTextNode(text);
-//     element.appendChild(textNode);
-//     parent.appendChild(element);
-//     return element;
-// }
-
-// let score = 20;
-
-// let leaderboard = document.querySelector(".leaderboard ol");
-
-// function saveName() {
-//     const username = prompt('Enter name....');
-//     localStorage.setItem(username, score);
-// }
-
-// for (let i = 0; i < localStorage.length; i++) {
-//     const username = localStorage.key(i);
-//     const playerScore = localStorage.getItem(username);
-//     createTag('li', leaderboard, `${username} ....... ${playerScore}`);
-// }
-
-// saveName();
