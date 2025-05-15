@@ -1424,8 +1424,12 @@ function enemyColtemp() {
             playerPosition.left < positionOfEnemies.right &&
             playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
+
+            // && positionOfEnemies.left > playerPosition.right &&
+            // positionOfEnemies.right < playerPosition.left &&
+            // positionOfEnemies.top > playerPosition.bottom &&
+            // positionOfEnemies.bottom < playerPosition.top
         ) {
-            // stopPlayerMovement();
             removelive();
             lives = lives - 1;
             player.classList.add('hit');
@@ -1438,11 +1442,7 @@ function enemyColtemp() {
                 createlives();
                 createlives();
                 createlives();
-                // clearInterval(MovementofEnemy);
-                // stopPlayerMovement();
                 gameEnded();
-                // gameOver();
-                // restart();
             }
         }
 
