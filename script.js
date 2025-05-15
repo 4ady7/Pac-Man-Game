@@ -528,8 +528,8 @@ startBttn.addEventListener("click", startGame);
 function removeStartButton() {
     //calling the function three times to create three enemies
     createEnemy();
-    createEnemy();
-    createEnemy();
+    // createEnemy();
+    // createEnemy();
     startBttn.style.display = 'none';
 
     //adding the loop inside the removeStartButton function, so that to only allow the player to move, when the removeStartButton function is called; in other word, to only allow the player to move after the start button have been pressed and the start button have disappeared, because I am calling the removeStartButton function inside the startGame function. For reference: setTimeout(removeStartButton, 3000).
