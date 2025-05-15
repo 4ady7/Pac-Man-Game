@@ -256,8 +256,7 @@ function enemyEncounter() {
 
 
 const collisionUnit = 2; //setting the collision Unit to 2 while testing prevents the player from getting stuck into the wall
-// let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
-let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again
+let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
 let playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player //const playerMouth to let playerMouth, why ? to be able to reassign the variable playerMouth again to the playerMouth by selecting through the mouth of the player 
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
@@ -265,22 +264,14 @@ let playerLeft = 0; //initializing a variable
 
 
 
-
-
-
-
-
-
-
-
 function playerMovement() {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
-        let currentPositon = player.getBoundingClientRect(); //optimize 
+        let currentPositon = player.getBoundingClientRect();
         let newBottom = currentPositon.bottom + collisionUnit;
-        let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
+        let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom);
         // console.log(currentPositon.left)
-        let playerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom)
+        let playerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom);
         // console.log(playerCollisionDetectionBottomLeft)
         if (playerCollisionDetectionBottomLeft.classList.contains('wall') == false && playerCollisionDetectionBottomRight.classList.contains('wall') == false && playerCollisionDetectionBottomLeft.classList.contains('mazeBorders') == false && playerCollisionDetectionBottomRight.classList.contains('mazeBorders') == false) {
             playerTop = playerTop + playerSpeed;
@@ -290,15 +281,11 @@ function playerMovement() {
         if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
         }
 
         if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
         }
 
         playerMouth.classList = 'down';
@@ -307,12 +294,12 @@ function playerMovement() {
     }
 
     else if (upPressed == true) {
-        let currentPositon = player.getBoundingClientRect() //optimize
+        let currentPositon = player.getBoundingClientRect();
         let newUp = currentPositon.top - collisionUnit;
         // pcdul = playerCollisionDetectionUpLeft
-        let pcdul = document.elementFromPoint(currentPositon.left, newUp)
+        let pcdul = document.elementFromPoint(currentPositon.left, newUp);
         // pcdur = playerCollisionDetectionUpRight
-        let pcdur = document.elementFromPoint(currentPositon.right, newUp)
+        let pcdur = document.elementFromPoint(currentPositon.right, newUp);
         if (pcdul.classList.contains('wall') == false && pcdur.classList.contains('wall') == false && pcdul.classList.contains('mazeBorders') == false && pcdur.classList.contains('mazeBorders') == false) {
             playerTop = playerTop - playerSpeed;
             player.style.top = playerTop + 'px';
@@ -323,41 +310,28 @@ function playerMovement() {
         if (pcdul.classList.contains('enemy') == true) {
             //if that's true, and the player came in contact with an enemy then display an alert 
             // alert('An enemy has been encountered!!! game over!!!');
-            //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
             enemyEncounter();
-            // let lives = 3;
-            // if (lives == 0) {
-            //     player.classList = 'dead';
-            // }
-            // player.classList = 'dead';
-            // clearInterval(timer);
         }
 
         if (pcdur.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!')
             enemyEncounter();
-            // let lives = 3;
-            // if (lives == 0) {
-            //     player.classList = 'dead';
-            // }
-            // clearInterval(timer);
         }
 
 
         playerMouth.classList = 'up';
-        pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
-        // one of the mistake I landed on when I was coding that I opted for copying and pasting the function for the point colllection, and a line of comment explaining it, but it seemed that I have also copied a closing bracket, and the result after pasting resulted in a disapearance of the whole maze. It took me time to figure it out, but I finally did figure it out 
-        // scoreCount()
+        pointCollection(); //calling the function to collect the points when pressing the down arrow key on the key board 
+        // one of the mistake I landed on when I was coding when I opted for copying, from where I coded this function before, the function for the point colllection, and a line of comment explaining it, but it seemed that I have also copied a closing bracket, and the result after pasting resulted in a disapearance of the whole maze. It took me time to figure it out, but I finally did figure it out 
     }
 
 
     else if (leftPressed == true) {
-        let currentPositon = player.getBoundingClientRect() //optimize
+        let currentPositon = player.getBoundingClientRect();
         let newLeft = currentPositon.left - collisionUnit;
         // pcdld = playerCollisionDetectionLeftDownward
-        let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom)
+        let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom);
         // pcdlu = playerCollisionDetectionLeftUpward
-        let pcdlu = document.elementFromPoint(newLeft, currentPositon.top)
+        let pcdlu = document.elementFromPoint(newLeft, currentPositon.top);
         if (pcdld.classList.contains('wall') == false && pcdlu.classList.contains('wall') == false && pcdld.classList.contains('mazeBorders') == false && pcdlu.classList.contains('mazeBorders') == false) {
             playerLeft = playerLeft - playerSpeed;
             player.style.left = playerLeft + 'px';
@@ -366,22 +340,15 @@ function playerMovement() {
         if (pcdld.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-            // setTimeout(restart, 500)
         }
 
         if (pcdlu.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
-            // setTimeout(restart, 500)
         }
 
         playerMouth.classList = 'left';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
-        // scoreCount()
     }
 
     else if (rightPressed == true) {
@@ -389,22 +356,9 @@ function playerMovement() {
         let currentPLPositon = player.getBoundingClientRect(); //optimize
         let newRight = currentPLPositon.right + collisionUnit; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
         // pcdrd = playerCollisionDetectionRightDownward
-        let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom)
+        let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom);
         // pcdru = playerCollisionDetectionRightUpward
-        let pcdru = document.elementFromPoint(newRight, currentPLPositon.top)
-
-        // Another way of Wall collision detection, but this one failed 
-        // let wallPosition = document.querySelectorAll('.wall'); 
-        // if (
-        //     playerLeft + currentPLPositon.width > wallPosition.left &&
-        //     playerLeft < wallPosition.right &&
-        //     playerTop + currentPLPositon.height > wallPosition.top && 
-        //     playerTop < wallPosition.bottom
-        // ) {
-        //     playerLeft = playerLeft + playerSpeed;
-        //     player.style.left = playerLeft + 'px';
-        //     console.log(playerLeft)
-        // }
+        let pcdru = document.elementFromPoint(newRight, currentPLPositon.top);
 
 
         //wall collisio detection 
@@ -417,22 +371,17 @@ function playerMovement() {
         if (pcdrd.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
         }
 
         if (pcdru.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();
-            // player.classList = 'dead';
-            // clearInterval(timer);
         }
 
 
 
         playerMouth.classList = 'right';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
-        // scoreCount()
     }
 
 }
@@ -1389,7 +1338,7 @@ function enemyColtemp() {
             playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
         ) {
-            removelive();
+            removelive(); //the removelive function is called to remove a live from the player's lives.
             lives = lives - 1;
             player.classList.add('hit');
             setTimeout(() => {
@@ -1397,7 +1346,7 @@ function enemyColtemp() {
                 player.classList.remove('hit');
             }, 1500);
             if (lives == 0) {
-                player.classList.add('dead');
+                player.classList.add('dead'); //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
                 createlives();
                 createlives();
                 createlives();
