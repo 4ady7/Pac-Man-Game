@@ -1053,7 +1053,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
             // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving 
-            if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false) {
+            if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdur.classList.contains('mazeBorders') == false) {
                 enemytop -= 1;
                 theenemyOfEnemies.style.top = enemytop + 'px';
                 console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
@@ -1090,7 +1090,7 @@ function enemyMovement(theenemyOfEnemies) {
             let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
             // ecdbr = enemyCollisionDetectionBottomRight
             let ecdbr = document.elementFromPoint(enemyPositionForNewDown.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the bottom position of the enemy. 
-            if (ecdbl && ecdbr && ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false) {
+            if (ecdbl && ecdbr && ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdbr.classList.contains('mazeBorders') == false) {
                 enemytop += 1; //incrementing the enemy position by 1, and assigning it to the variable enemytop
                 theenemyOfEnemies.style.top = enemytop + 'px'; //applying the changes and moving the enemy to the bottom 
             }
@@ -1116,7 +1116,7 @@ function enemyMovement(theenemyOfEnemies) {
             let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom); //fix this it is being flagged again in the console 
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPosition.top);
-            if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false) {
+            if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false && ecdlT.classList.contains('mazeBorders') == false) {
                 //one of the type mistakes I made is when typing the code for enemy wall collision detection is that I typed enemytop variable also for the right and left movement direction, however moments later I realized my mistake and changed the variable enemytop to the variable enemyleft, and now my enemy moves to the left and to the right.
                 enemyleft -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1145,7 +1145,7 @@ function enemyMovement(theenemyOfEnemies) {
             let ecdrB = document.elementFromPoint(newRight, enemyPosition.bottom);
             // ecdrT = enemyCollisionDetectionRightTop
             let ecdrT = document.elementFromPoint(newRight, enemyPosition.top);
-            if (ecdrB && ecdrT && ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false) {
+            if (ecdrB && ecdrT && ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false && ecdrT.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
@@ -1173,7 +1173,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPosition.bottom + 1;
             // RB = RightBottom
             let RB = document.elementFromPoint(newRight, newBottom);
-            if (RB && RB == true && RB.classList.contains('wall') == false) {
+            if (RB && RB == true && RB.classList.contains('wall') == false && RB.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1201,7 +1201,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newTop = enemyPosition.top - 1;
             // RT = RightUp
             let RT = document.elementFromPoint(newRight, newTop);
-            if (RT && RT == true && RT.classList.contains('wall') == false) {
+            if (RT && RT == true && RT.classList.contains('wall') == false && RT.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1229,7 +1229,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPosition.bottom + 1;
             // LB = LeftBottom
             let LB = document.elementFromPoint(newLeft, newBottom);
-            if (LB && LB == true && LB.classList.contains('wall') == false) {
+            if (LB && LB == true && LB.classList.contains('wall') == false && LB.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1257,7 +1257,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newTop = enemyPosition.top - 1;
             // LU = LeftUp
             let LU = document.elementFromPoint(newLeft, newTop);
-            if (LU && LU == true && LU.classList.contains('wall') == false) {
+            if (LU && LU == true && LU.classList.contains('wall') == false && LU.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
