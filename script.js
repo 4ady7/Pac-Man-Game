@@ -96,17 +96,21 @@ function createWall() {
 }
 
 //calling the function three times to create ten walls. I could also use a for loop instead.
-createWall();
-createWall();
-createWall();
-createWall();
-createWall();
-createWall();
-createWall();
-createWall();
-createWall();
-createWall();
+// createWall();
+// createWall();
+// createWall();
+// createWall();
+// createWall();
+// createWall();
+// createWall();
+// createWall();
+// createWall();
+// createWall();
 
+// optimizing how I am creating the walls into the maze
+for (let index = 0; index < 10; index++) {
+    createWall();
+}
 
 
 
