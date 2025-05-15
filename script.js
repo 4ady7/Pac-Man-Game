@@ -1040,6 +1040,8 @@ function enemyMovement(theenemyOfEnemies) {
     MovementofEnemy = setInterval(function () {
         if (lives == 0) { direction = 0 }; //stopping the enemy movement 
         if (totalPoints == 50) { direction = 0 }; //stopping the enemy movement 
+        
+        //first option is for moving upwards
         if (direction == 1) {
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect();
             let newUp = enemyPositionForNewUp.top - 1;
@@ -1114,7 +1116,7 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             // ecdlB = enemyCollisionDetectionLeftBottom
-            let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom); //fix this it is being flagged again in the console 
+            let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom);
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPosition.top);
             if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false && ecdlT.classList.contains('mazeBorders') == false) {
@@ -1172,13 +1174,18 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newRight = enemyPosition.right + 1;
             let newBottom = enemyPosition.bottom + 1;
-            // if (newRight.classList.contains('wall') == false && newBottom.classList.contains('mazeBorders') == false) {
-            //     newRight = enemyPosition.right + 1;
-            //     newBottom = enemyPosition.bottom + 1;
-            // }
+
+
+            // ecdbr = enemyCollisionDetectionBottomRight
+            let ecdbr = document.elementFromPoint(enemyPositionForNewDown.right, newBottom);
+            
             // DRB = DiagonallyRightBottom
             let DRB = document.elementFromPoint(newRight, newBottom);
-            if (DRB && DRB.classList.contains('wall') == false && DRB.classList.contains('mazeBorders') == false) {
+
+            // ecdrB = enemyCollisionDetectionRightBottom
+            let ecdrB = document.elementFromPoint(newRight, enemyPosition.bottom);
+
+            if (DRB && DRB.classList.contains('wall') == false && DRB.classList.contains('mazeBorders') == false && ecdbr.classList.contains('wall') == false && ecdbr.classList.contains('mazeBorders') == false && ecdrB.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1203,15 +1210,21 @@ function enemyMovement(theenemyOfEnemies) {
         if (direction == 6) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newRight = enemyPosition.right + 1;
-            let newTop = enemyPosition.top - 1;
-            // if (newRight.classList.contains('wall') == false && newTop.classList.contains('mazeBorders') == false) {
-            //     newRight = enemyPosition.right + 1;
-            //     newTop = enemyPosition.top - 1;
-            // }
+            let newUp = enemyPosition.top - 1;
+
+            // ecdur = enemyCollisionDetectionUpRight
+            let ecdur = document.elementFromPoint(enemyPositionForNewUp.right, newUp);
 
             // DRT = DiagonallyRightUp
-            let DRT = document.elementFromPoint(newRight, newTop);
-            if (DRT && DRT.classList.contains('wall') == false && DRT.classList.contains('mazeBorders') == false) {
+            let DRT = document.elementFromPoint(newRight, newUp);
+
+            // ecdrT = enemyCollisionDetectionRightTop
+            let ecdrT = document.elementFromPoint(newRight, enemyPosition.top);
+
+            // ecdlB = enemyCollisionDetectionLeftBottom
+            let ecdlB = document.elementFromPoint(newLeft, enemyPosition.bottom);
+
+            if (DRT && DRT.classList.contains('wall') == false && DRT.classList.contains('mazeBorders') == false && ecdur.classList.contains('wall') == false && ecdur.classList.contains('mazeBorders') == false && ecdrT.classList.contains('wall') == false && ecdrT.classList.contains('mazeBorders') == false && ecdlB.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1237,13 +1250,13 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             let newBottom = enemyPosition.bottom + 1;
-            // if (newLeft.classList.contains('wall') == false && newBottom.classList.contains('mazeBorders') == false) {
-            //     newLeft = enemyPosition.left - 1;
-            //     newBottom = enemyPosition.bottom + 1;
-            // }
+
+            // ecdbl = enemyCollisionDetectionBottomLeft
+            let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); 
+            
             // DLB = DiagonallyLeftBottom
             let DLB = document.elementFromPoint(newLeft, newBottom);
-            if (DLB && DLB.classList.contains('wall') == false && DLB.classList.contains('mazeBorders') == false) {
+            if (DLB && DLB.classList.contains('wall') == false && DLB.classList.contains('mazeBorders') == false && ecdbl.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1269,13 +1282,16 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             let newTop = enemyPosition.top - 1;
-            // if (newLeft.classList.contains('wall') == false && newTop.classList.contains('mazeBorders') == false) {
-            //     newLeft = enemyPosition.left - 1;
-            //     newTop = enemyPosition.top - 1;
-            // }
-            // DLU = DiagonallyLeftUp
+
+            // ecdul = enemyCollisionDetectionUpLeft
+            let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp);
+
             let DLU = document.elementFromPoint(newLeft, newTop);
-            if (DLU && DLU.classList.contains('wall') == false && DLU.classList.contains('mazeBorders') == false) {
+
+            // ecdlT = enemyCollisionDetectionLeftTop
+            let ecdlT = document.elementFromPoint(newLeft, enemyPosition.top);
+            
+            if (DLU && DLU.classList.contains('wall') == false && DLU.classList.contains('mazeBorders') == false && eecdul.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdlT.classList.contains('wall') == false && ecdlT.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
