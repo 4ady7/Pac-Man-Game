@@ -398,23 +398,15 @@ callPlayertoMove(); //calling the function for the player to start moving
 
 
 let Pscore = document.querySelector('#Pscore'); //selecting the score paragraph that was set to 0, initially.
-let totalPoints = 0;
-
-//uncommenting that function out for a more optimized way of increamenting the score. Instead of creating another function for the counting the score, I am going add the code I need for increamenting the score inside the point collection function. 
-// function to change the score number and assigning it to the value of the variable totalPoints
-// function scoreCount() {
-//     console.log('the total is ' + totalPoints) //checking the points collected in the console, too
-//     Pscore.innerHTML = totalPoints;
-// }
+let totalPoints = 0; //initializing the variable totalPoints to 0
 
 
 function pointCollection() {
-    // let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
+    let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
 
-    //the idea I need to implement is that I need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
     let point = document.querySelectorAll('.point');
     // console.log(point.length); //so now I know that we have 50 points in the maze. 
-    // idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
+
     let playerPosition = player.getBoundingClientRect();
     for (let i = 0; i < point.length; i++) {
         let positionOfPoint = point[i].getBoundingClientRect();
@@ -424,7 +416,7 @@ function pointCollection() {
             playerPosition.bottom > positionOfPoint.top && //this third line means that is the player’s bottom position below the point’s top position on the maze, which means that as a result of the player movement downwards, the player is now moving overlapping and over the point when the player's bottom position is larger than the point's top poistion
             playerPosition.top < positionOfPoint.bottom
         ) {
-            //onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects.
+            onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects.
             point[i].classList.remove('point');
             totalPoints = totalPoints + 1; //increasing the value of the variable totalPoints by 1 for each point collected 
             Pscore.innerHTML = totalPoints; //changing the score number and assigning it to the value of the variable totalPoints
@@ -432,15 +424,11 @@ function pointCollection() {
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
                 clearInterval(playerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the player.
-                // alert('Game has ended! All points have been collected!');
-                // clearInterval(MovementofEnemy);
-                // clearInterval(MovementofEnemy);
-                // clearInterval(MovementofEnemy);
-                setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
-                //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
+                // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
+                setTimeout(restart, 500) 
+                
                 gameEnded();
                 lostlives = 3 - lives;
-                console.log(lives + "here in point collection")
                 for (let index = 0; index < lostlives; index++) {
                     createlives();
                 }
