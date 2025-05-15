@@ -1166,7 +1166,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-        //more enemy collision diagonally, because I noticed that the enemy is sometimes moving diagonally, but what I also noticed is even though I uncommented this uncompleted code, my enemy wall collision detection works fine, and problem that I was facing earlier where It seemed that there is no collision detection at all I assume it was a glitch 
+        //more enemy collision diagonally
         //direction == 5 is for right-bottom collision detction
         if (direction == 5) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
