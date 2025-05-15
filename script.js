@@ -498,6 +498,7 @@ function startGame() {
     setTimeout(removeStartButton, 3000)
 }
 
+//Reminder of old lessons 
 // #1 when you are expecting a function, and you get a blue colored instead of a yellow colored check if you have actually craeted a function, for example here with startGame.
 // #2 if I added document instead of startBttn then if I clicked anywhere on the website page, the start button will disapear
 startBttn.addEventListener("click", startGame);
@@ -506,11 +507,6 @@ startBttn.addEventListener("click", startGame);
 
 //function to remove the start button 
 function removeStartButton() {
-    //calling the function three times to create three enemies
-    createEnemy();
-    createWall();
-    // createEnemy();
-    // createEnemy();
     startBttn.style.display = 'none';
 
     //adding the loop inside the removeStartButton function, so that to only allow the player to move, when the removeStartButton function is called; in other word, to only allow the player to move after the start button have been pressed and the start button have disappeared, because I am calling the removeStartButton function inside the startGame function. For reference: setTimeout(removeStartButton, 3000).
@@ -533,6 +529,11 @@ function restart() {
     // stopPlayerMovement()
     document.removeEventListener('keydown', keyDown);
     document.removeEventListener('keyup', keyUp);
+    //calling the function three times to create three enemies
+    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
+    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
+    // createEnemy();
+    // createEnemy();
 }
 // setInterval(pointCollection, 10);
 
