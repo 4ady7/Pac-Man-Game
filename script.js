@@ -78,14 +78,6 @@ function createWall() {
     let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
     let column = Math.floor(Math.random() * maze[row].length);
     //checking if the maze location is equal to 0, which represents the points.
-
-    // // let playerP = document.querySelector('#player');
-    // let currentPositon = player.getBoundingClientRect(); //optimize 
-    // let playerNewBottom = currentPositon.top + 1;
-
-
-    //&& playerNewBottom.classList.contains('enemy') == false
-
     if (maze[row][column] == 0) {
         //if that's true, and it is the location 0, then add a wall, which is represented by the location 1 in the maze. 
         maze[row][column] = 1;
@@ -103,6 +95,7 @@ function createWall() {
     //using the push() method to add the eleent to the end of the array
 }
 
+//calling the function three times to create ten walls. I could also use a for loop instead.
 createWall();
 createWall();
 createWall();
@@ -118,7 +111,7 @@ createWall();
 
 
 
-//local storage used to save the name of the user, and their score of points after they have died after losing all of their 3 lives 
+
 
 
 
@@ -246,11 +239,7 @@ let encounteredEnemy = false; //initializing the variable encounteredEnemy with 
 function enemyEncounter() {
     //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
     if (encounteredEnemy == false) {
-        //removelive(); //so after encountering an enemy, the removelive function is called to remove a live from the player's lives.
-        // playerDied();
-        enemyColtemp();
-        // enemyCollision();
-        // player.classList = 'hit'; //and the player displays the hit animation
+        enemyColtemp(); //so after encountering an enemy, the enemyColtemp function is called to activate the animation and remove a live from the player 
         encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
 
         //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
@@ -1349,31 +1338,6 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-
-
-// notes for enemy movement
-// you will have to target each enemy seperately to allow different movement directions
-// you will have add the the action of the function in the start game function, so that the enemy will start movement after the start button has been pressed
-
-
-// code for the enemy movement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // BrainStorming section (General)
 // I think I could allow the start button to be activate also not only by clicking on it, but also by pressing the enter key on my keyboard
 // idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
@@ -1424,11 +1388,6 @@ function enemyColtemp() {
             playerPosition.left < positionOfEnemies.right &&
             playerPosition.bottom > positionOfEnemies.top &&
             playerPosition.top < positionOfEnemies.bottom
-
-            // && positionOfEnemies.left > playerPosition.right &&
-            // positionOfEnemies.right < playerPosition.left &&
-            // positionOfEnemies.top > playerPosition.bottom &&
-            // positionOfEnemies.bottom < playerPosition.top
         ) {
             removelive();
             lives = lives - 1;
