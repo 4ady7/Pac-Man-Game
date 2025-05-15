@@ -71,6 +71,10 @@ console.log(arrayofEnemies[2]);
 
 
 
+
+
+
+
 let arrayofWalls = []; //creating an array to contain the created walls, and assigning the array to a variable, and calling the varibale arrayofWalls. 
 
 //creating an enemy randomly after I have removed the enemy from the maze
@@ -159,6 +163,12 @@ mazeCreation(); //calling the function to create and populate the maze
 
 
 
+
+
+
+
+
+
 // the keyUp function is for stopping the movement when you stop pressing a certain direction key on the keyboard, and the scenario for not having this function will be: a player moving in a certain direction without stopping, and the only option you will have is just to change its direction to another direction as continues to go in the previous direction, but you will not be able to stop it from moveming once you initiated the movement. However, you might be able to create a zigZag movement if needed maybe when creating harder levels. 
 //Player movement.
 function keyUp(event) { //event here is a parameter inside the function 
@@ -178,6 +188,9 @@ function keyUp(event) { //event here is a parameter inside the function
         rightPressed = false;
     }
 }
+
+
+
 
 function keyDown(event) { //event here is a parameter inside the function
     //event.key is a representation of the key that was pressed
@@ -239,6 +252,10 @@ function keyDown(event) { //event here is a parameter inside the function
 
 
 
+
+
+
+
 let encounteredEnemy = false; //initializing the variable encounteredEnemy with the boolean value false, which refers to a player that has not encountered an enemy
 function enemyEncounter() {
     //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
@@ -255,6 +272,12 @@ function enemyEncounter() {
         }, 3000); //3000 here equals 3 seconds, because intervals are measured in 1000ths of a second 
     }
 }
+
+
+
+
+
+
 
 
 
@@ -393,6 +416,11 @@ function playerMovement() {
 
 
 
+
+
+
+
+
 //function for calling the the player to move 
 function callPlayertoMove() {
     playerMoving = setInterval(playerMovement, 9); //assigning the setInterval to a variable playerMoving. This setInterval is calling the function for moving the player every 9th of a second
@@ -440,26 +468,6 @@ function pointCollection() {
         }
     }
 }
-
-
-//function for when all the points have been collected 
-// function gameOver() {
-//     clearInterval(playerMovement);
-//     clearInterval(MovementofEnemy);
-//     // alert('Game has ended!')
-// }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
