@@ -9,16 +9,16 @@ let main = document.querySelector('main');
 
 //Player = 2, Wall = 1, Enemy was 3, Point = 0
 let maze = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //the first row is filled with only walls 
-    [1, 2, 0, 1, 0, 0, 0, 0, 0, 1], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
-    [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 0, 0, 0, 0, 0, 1], // 0 represents the points that the player should collect 
-    [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 1, 0, 0, 0, 0, 0, 1], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-    [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 0, 0, 0, 0, 0, 1], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //the last row is also filled with only walls 
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
+    [4, 2, 0, 1, 0, 0, 0, 0, 0, 4], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
+    [4, 0, 0, 0, 0, 0, 0, 1, 1, 4],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+    [4, 0, 1, 1, 0, 0, 0, 0, 0, 4], // 0 represents the points that the player should collect 
+    [4, 0, 0, 0, 0, 0, 0, 1, 1, 4],
+    [4, 0, 0, 1, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+    [4, 0, 0, 0, 0, 0, 0, 1, 0, 4],
+    [4, 0, 1, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+    [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
 ];
 
 
@@ -101,6 +101,9 @@ function mazeCreation() {
                     break;
                 case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
                     block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
+                    break;
+                case 4:
+                    block.classList.add('mazeBorders');
                     break;
                 default:
                     block.classList.add('point'); //the points to be collected by the player are added 
