@@ -77,7 +77,7 @@ console.log(arrayofEnemies[2]);
 
 
 
-//local storage used to save the name of the user, and their score of points after they have died after losing all of their 3 lives 
+
 
 
 
@@ -154,19 +154,19 @@ function keyDown(event) { //event here is a parameter inside the function
     if (event.key === 'ArrowUp') {
         // console.log('strt n keep moving up')
         upPressed = true;
-        // enemyCollision();
+        enemyCollision();
     } else if (event.key === 'ArrowDown') {
         // console.log('strt n keep moving down')
         downPressed = true;
-        // enemyCollision();
+        enemyCollision();
     } else if (event.key === 'ArrowLeft') {
         // console.log('strt n keep moving left')
         leftPressed = true;
-        // enemyCollision();
+        enemyCollision();
     } else if (event.key === 'ArrowRight') {
         // console.log('strt n keep moving right')
         rightPressed = true;
-        // enemyCollision();
+        enemyCollision();
     }
 
     //Increasing or decreasing the speed of the playyer using the keyboard numbers on the keyboard keys 
@@ -1476,6 +1476,7 @@ function enemyColtemp() {
 //could not name this function player, the game crashes, I think because it is conflicting with the class player 
 function playerInfo(nameOfPlayer, scorePoints) {
     localStorage.setItem(nameOfPlayer, scorePoints);//storing the parameter nameOfPlayer as the key, and the parameter Pscore as the value
+    //local storage to save the name of the user, and their score of points after they have died after losing all of their 3 lives 
 }
 
 function leaderboardCreation() {
