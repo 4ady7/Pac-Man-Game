@@ -285,7 +285,7 @@ function playerMovement() {
         // console.log(currentPositon.left)
         let playerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom)
         // console.log(playerCollisionDetectionBottomLeft)
-        if (playerCollisionDetectionBottomLeft.classList.contains('wall') == false && playerCollisionDetectionBottomRight.classList.contains('wall') == false) {
+        if (playerCollisionDetectionBottomLeft.classList.contains('wall') == false && playerCollisionDetectionBottomRight.classList.contains('wall') == false && playerCollisionDetectionBottomLeft.classList.contains('mazeBorders') == false && playerCollisionDetectionBottomRight.classList.contains('mazeBorders') == false) {
             playerTop = playerTop + playerSpeed;
             player.style.top = playerTop + 'px';
         }
@@ -316,7 +316,7 @@ function playerMovement() {
         let pcdul = document.elementFromPoint(currentPositon.left, newUp)
         // pcdur = playerCollisionDetectionUpRight
         let pcdur = document.elementFromPoint(currentPositon.right, newUp)
-        if (pcdul.classList.contains('wall') == false && pcdur.classList.contains('wall') == false) {
+        if (pcdul.classList.contains('wall') == false && pcdur.classList.contains('wall') == false && pcdul.classList.contains('mazeBorders') == false && pcdur.classList.contains('mazeBorders') == false) {
             playerTop = playerTop - playerSpeed;
             player.style.top = playerTop + 'px';
         }
@@ -361,7 +361,7 @@ function playerMovement() {
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom)
         // pcdlu = playerCollisionDetectionLeftUpward
         let pcdlu = document.elementFromPoint(newLeft, currentPositon.top)
-        if (pcdld.classList.contains('wall') == false && pcdlu.classList.contains('wall') == false) {
+        if (pcdld.classList.contains('wall') == false && pcdlu.classList.contains('wall') == false && pcdld.classList.contains('mazeBorders') == false && pcdlu.classList.contains('mazeBorders') == false) {
             playerLeft = playerLeft - playerSpeed;
             player.style.left = playerLeft + 'px';
         }
@@ -411,7 +411,7 @@ function playerMovement() {
 
 
         //wall collisio detection 
-        if (pcdrd.classList.contains('wall') == false && pcdru.classList.contains('wall') == false) {
+        if (pcdrd.classList.contains('wall') == false && pcdru.classList.contains('wall') == false && pcdrd.classList.contains('mazeBorders') == false && pcdru.classList.contains('mazeBorders') == false) {
             playerLeft = playerLeft + playerSpeed;
             player.style.left = playerLeft + 'px';
             // console.log(playerLeft);
