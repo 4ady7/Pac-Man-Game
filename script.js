@@ -1174,7 +1174,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPosition.bottom + 1;
             // RB = RightBottom
             let RB = document.elementFromPoint(newRight, newBottom);
-            if (RB && RB == true && RB.classList.contains('wall') == false && RB.classList.contains('mazeBorders') == false) {
+            if (RB && RB.classList.contains('wall') == false && RB.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1202,7 +1202,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newTop = enemyPosition.top - 1;
             // RT = RightUp
             let RT = document.elementFromPoint(newRight, newTop);
-            if (RT && RT == true && RT.classList.contains('wall') == false && RT.classList.contains('mazeBorders') == false) {
+            if (RT && RT.classList.contains('wall') == false && RT.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1230,7 +1230,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPosition.bottom + 1;
             // LB = LeftBottom
             let LB = document.elementFromPoint(newLeft, newBottom);
-            if (LB && LB == true && LB.classList.contains('wall') == false && LB.classList.contains('mazeBorders') == false) {
+            if (LB && LB.classList.contains('wall') == false && LB.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1258,7 +1258,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newTop = enemyPosition.top - 1;
             // LU = LeftUp
             let LU = document.elementFromPoint(newLeft, newTop);
-            if (LU && LU == true && LU.classList.contains('wall') == false && LU.classList.contains('mazeBorders') == false) {
+            if (LU && LU.classList.contains('wall') == false && LU.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
