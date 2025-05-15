@@ -406,7 +406,7 @@ let totalPoints = 0; //initializing the variable totalPoints to 0
 
 
 function pointCollection() {
-    let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
+    // let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
 
     let point = document.querySelectorAll('.point');
     // console.log(point.length); //so now I know that we have 50 points in the maze. 
@@ -420,7 +420,7 @@ function pointCollection() {
             playerPosition.bottom > positionOfPoint.top && //this third line means that is the player’s bottom position below the point’s top position on the maze, which means that as a result of the player movement downwards, the player is now moving overlapping and over the point when the player's bottom position is larger than the point's top poistion
             playerPosition.top < positionOfPoint.bottom
         ) {
-            onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects.
+            // onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects, so in total I am removing two points, one point that comes in contact with the player, and another does not. something like this could be added as power-up later on
             point[i].classList.remove('point');
             totalPoints = totalPoints + 1; //increasing the value of the variable totalPoints by 1 for each point collected 
             Pscore.innerHTML = totalPoints; //changing the score number and assigning it to the value of the variable totalPoints
