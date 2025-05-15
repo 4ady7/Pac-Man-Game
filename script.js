@@ -1044,7 +1044,7 @@ function enemyMovement(theenemyOfEnemies) {
         //first option is for moving upwards
         if (direction == 1) {
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
-            let newUp = enemyPositionForNewUp.top - 1;
+            let newUp = enemyPositionForNewUp.top - 1; //selectiing the next top position, and assigning it to the variable newUp
             // ecdul = enemyCollisionDetectionUpLeft
             let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp); //I was getting null for the value of the variable eecdul, so after I tried checking if it is true before moving the enemy, the problem was fixed, so I conclude that the enemy may have been trying to get off the screen or access an element that is not visible and is outside the borders of the maze.
             // ecdur = enemyCollisionDetectionUpRight
@@ -1088,7 +1088,7 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewDown
 
             //why newBottom have to have +, and not - here ? is it because we are moving in a different direction. Because we are moving downwar, and addition pushes the enemy downwards. 
-            let newBottom = enemyPositionForNewDown.bottom + 1; //selecting the new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
+            let newBottom = enemyPositionForNewDown.bottom + 1; //selecting the next new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
             // ecdbl = enemyCollisionDetectionBottomLeft
             let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
             // ecdbr = enemyCollisionDetectionBottomRight
@@ -1114,7 +1114,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         if (direction == 3) {
             let enemyPositionForNewLeft = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewLeft
-            let newLeft = enemyPositionForNewLeft.left - 1;
+            let newLeft = enemyPositionForNewLeft.left - 1; //selectiing the next left position, and assigning it to the variable newLeft
             // ecdlB = enemyCollisionDetectionLeftBottom
             let ecdlB = document.elementFromPoint(newLeft, enemyPositionForNewLeft.bottom);
             // ecdlT = enemyCollisionDetectionLeftTop
@@ -1142,7 +1142,7 @@ function enemyMovement(theenemyOfEnemies) {
         if (direction == 4) {
             let enemyPositionForNewRight = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewRight
             //why newRight have to have +, and not - here ? is it because we are moving in a different direction. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left direction. 
-            let newRight = enemyPositionForNewRight.right + 1;
+            let newRight = enemyPositionForNewRight.right + 1; //selectiing the next right position, and assigning it to the variable newRight
 
             // ecdrB = enemyCollisionDetectionRightBottom
             let ecdrB = document.elementFromPoint(newRight, enemyPositionForNewRight.bottom);
@@ -1177,13 +1177,13 @@ function enemyMovement(theenemyOfEnemies) {
 
 
             // ecdbr = enemyCollisionDetectionBottomRight
-            let ecdbr = document.elementFromPoint(enemyPositionForDiagonalRightBottom.right, newBottom);
+            let ecdbr = document.elementFromPoint(enemyPositionForDiagonalRightBottom.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the next (+1) new bottom position that the enemy may move to. 
             
             // DRB = DiagonallyRightBottom
-            let DRB = document.elementFromPoint(newRight, newBottom);
+            let DRB = document.elementFromPoint(newRight, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the next (+1) new bottom position of the enemy. That's means here that I have created a collision for the diagonally. A diagonal moves equals two new positions being updated at the same time to allow the movement of the enemy diagonally.
 
             // ecdrB = enemyCollisionDetectionRightBottom
-            let ecdrB = document.elementFromPoint(newRight, enemyPositionForDiagonalRightBottom.bottom);
+            let ecdrB = document.elementFromPoint(newRight, enemyPositionForDiagonalRightBottom.bottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the bottom position of the enemy. 
 
             if (DRB && DRB.classList.contains('wall') == false && DRB.classList.contains('mazeBorders') == false && ecdbr.classList.contains('wall') == false && ecdbr.classList.contains('mazeBorders') == false && ecdrB.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
