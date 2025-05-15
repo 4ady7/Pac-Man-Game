@@ -724,14 +724,7 @@ function removelive() {
 
 function gameEnded() {
     clearInterval(playerMovement);
-
-
-
-    
     saveData();
-
-
-
     clearInterval(callPlayertoMove);
     restart();
     clearInterval(playerMovement);
@@ -741,52 +734,6 @@ function gameEnded() {
     downPressed = false; //reseting the player key presses and movements 
     leftPressed = false; //reseting the player key presses and movements 
     rightPressed = false; //reseting the player key presses and movements 
-
-    // if (lives == 0) {
-    //     createlives();
-    //     createlives();
-    //     createlives();
-    // }
-    // listofLeaderboard.sort((a, b) => b - a);
-    // previousMazeEnemies = document,querySelectorAll('.enemy');
-    // previousMazeEnemies.forEach(enemy => {
-    //     enemy.classList.remove('enemy')     
-    // });
-
-    // for (let theenemyOfEnemies of alltheEnemies) {
-    //     //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
-    //     enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
-    //     console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
-    // }
-    // MovementofEnemy();
-
-
-
-
-    // function createTag(tag, parent, text) {
-    //     const element = document.createElement(tag);
-    //     const textNode = document.createTextNode(text);
-    //     element.appendChild(textNode);
-    //     parent.appendChild(element);
-    //     return element;
-    // }
-
-    // let score = 20;
-
-    // let leaderboard = document.querySelector(".leaderboard ol");
-
-    // function saveName() {
-    //     const username = prompt('Enter name....');
-    //     localStorage.setItem(username, score);
-    // }
-
-    // for (let i = 0; i < localStorage.length; i++) {
-    //     const username = localStorage.key(i);
-    //     const playerScore = localStorage.getItem(username);
-    //     createTag('li', leaderboard, `${username} ....... ${playerScore}`);
-    // }
-
-    // saveName();
 }
 
 
@@ -802,7 +749,7 @@ function gameEnded() {
 lives = 3
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-// console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
+console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
 
 function enemyMovement(theenemyOfEnemies) {
     let direction = Math.ceil(Math.random() * 8);
