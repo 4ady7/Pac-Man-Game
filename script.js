@@ -1176,9 +1176,9 @@ function enemyMovement(theenemyOfEnemies) {
             //     newRight = enemyPosition.right + 1;
             //     newBottom = enemyPosition.bottom + 1;
             // }
-            // RB = RightBottom
-            let RB = document.elementFromPoint(newRight, newBottom);
-            if (RB && RB.classList.contains('wall') == false && RB.classList.contains('mazeBorders') == false) {
+            // DRB = DiagonallyRightBottom
+            let DRB = document.elementFromPoint(newRight, newBottom);
+            if (DRB && DRB.classList.contains('wall') == false && DRB.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1208,9 +1208,10 @@ function enemyMovement(theenemyOfEnemies) {
             //     newRight = enemyPosition.right + 1;
             //     newTop = enemyPosition.top - 1;
             // }
-            // RT = RightUp
-            let RT = document.elementFromPoint(newRight, newTop);
-            if (RT && RT.classList.contains('wall') == false && RT.classList.contains('mazeBorders') == false) {
+
+            // DRT = DiagonallyRightUp
+            let DRT = document.elementFromPoint(newRight, newTop);
+            if (DRT && DRT.classList.contains('wall') == false && DRT.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1240,9 +1241,9 @@ function enemyMovement(theenemyOfEnemies) {
             //     newLeft = enemyPosition.left - 1;
             //     newBottom = enemyPosition.bottom + 1;
             // }
-            // LB = LeftBottom
-            let LB = document.elementFromPoint(newLeft, newBottom);
-            if (LB && LB.classList.contains('wall') == false && LB.classList.contains('mazeBorders') == false) {
+            // DLB = DiagonallyLeftBottom
+            let DLB = document.elementFromPoint(newLeft, newBottom);
+            if (DLB && DLB.classList.contains('wall') == false && DLB.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1272,9 +1273,9 @@ function enemyMovement(theenemyOfEnemies) {
             //     newLeft = enemyPosition.left - 1;
             //     newTop = enemyPosition.top - 1;
             // }
-            // LU = LeftUp
-            let LU = document.elementFromPoint(newLeft, newTop);
-            if (LU && LU.classList.contains('wall') == false && LU.classList.contains('mazeBorders') == false) {
+            // DLU = DiagonallyLeftUp
+            let DLU = document.elementFromPoint(newLeft, newTop);
+            if (DLU && DLU.classList.contains('wall') == false && DLU.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
