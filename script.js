@@ -7,7 +7,7 @@ let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to 
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 let main = document.querySelector('main');
 
-//Player = 2, Wall = 1, Enemy was 3, Point = 0
+//Player = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
 let maze = [
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
     [4, 2, 0, 1, 0, 0, 0, 0, 0, 4], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
@@ -103,7 +103,7 @@ function mazeCreation() {
                     block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
                     break;
                 case 4:
-                    block.classList.add('mazeBorders');
+                    block.classList.add('mazeBorders'); //creating borders for the maze 
                     break;
                 default:
                     block.classList.add('point'); //the points to be collected by the player are added 
