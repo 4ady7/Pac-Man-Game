@@ -453,9 +453,9 @@ function pointCollection() {
             if (totalPoints == 50) {
                 clearInterval(playerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the player.
                 // alert('Game has ended! All points have been collected!');
-                clearInterval(MovementofEnemy);
-                clearInterval(MovementofEnemy);
-                clearInterval(MovementofEnemy);
+                // clearInterval(MovementofEnemy);
+                // clearInterval(MovementofEnemy);
+                // clearInterval(MovementofEnemy);
                 setTimeout(restart, 500) //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work.
                 //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. 
                 gameEnded();
@@ -526,6 +526,10 @@ startBttn.addEventListener("click", startGame);
 
 //function to remove the start button 
 function removeStartButton() {
+    //calling the function three times to create three enemies
+    createEnemy();
+    createEnemy();
+    createEnemy();
     startBttn.style.display = 'none';
 
     //adding the loop inside the removeStartButton function, so that to only allow the player to move, when the removeStartButton function is called; in other word, to only allow the player to move after the start button have been pressed and the start button have disappeared, because I am calling the removeStartButton function inside the startGame function. For reference: setTimeout(removeStartButton, 3000).
@@ -1355,7 +1359,7 @@ function enemyColtemp() {
                 createlives();
                 createlives();
                 createlives();
-                clearInterval(MovementofEnemy);
+                // clearInterval(MovementofEnemy);
                 // stopPlayerMovement();
                 gameEnded();
                 // gameOver();
