@@ -10,14 +10,14 @@ let main = document.querySelector('main');
 //Player = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
 let maze = [
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-    [4, 2, 0, 1, 0, 0, 0, 0, 0, 4], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
-    [4, 0, 0, 0, 0, 0, 0, 1, 1, 4],
+    [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-    [4, 0, 1, 1, 0, 0, 0, 0, 0, 4], // 0 represents the points that the player should collect 
-    [4, 0, 0, 0, 0, 0, 0, 1, 1, 4],
-    [4, 0, 0, 1, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-    [4, 0, 0, 0, 0, 0, 0, 1, 0, 4],
-    [4, 0, 1, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the player should collect 
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
 ];
 
@@ -68,9 +68,40 @@ console.log(arrayofEnemies[2]);
 
 
 
+let arrayofWalls = []; //creating an array to contain the created enemies, and assigning the array to a variable, and calling the varibale arrayofEnemies. 
 
+//creating an enemy randomly after I have removed the enemy from the maze
+function createWall() {
+    let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
+    let column = Math.floor(Math.random() * maze[row].length);
+    //checking if the maze location is equal to 0, which represents the points.
+    if (maze[row][column] == 0) {
+        //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in the maze. 
+        maze[row][column] = 1;
+    }
+    else {
+        //if the location is not location 0, and thus unsucessful to create an enemy, so call the function again. 
+        createWall(); //calling the function to create an enemy
+        //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
+    }
+    //if the maze location is equal to 3, which represents the enemy.
+    if (maze[row][column] == 1) {
+        wallPosition = { row, column } //then I am going to be assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
+    }
+    arrayofWalls.push(wallPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
+    //using the push() method to add the eleent to the end of the array
+}
 
-
+createWall();
+createWall();
+createWall();
+createWall();
+createWall();
+createWall();
+createWall();
+createWall();
+createWall();
+createWall();
 
 
 
