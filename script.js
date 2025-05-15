@@ -1044,7 +1044,7 @@ function enemyMovement(theenemyOfEnemies) {
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect();
             let newUp = enemyPositionForNewUp.top - 1;
             // ecdul = enemyCollisionDetectionUpLeft
-            let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp);
+            let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp); //I was getting null for the value of the variable eecdul, so after I tried checking if it is true before moving the enemy, the problem was fixed, so I conclude that the enemy may have been trying to get off the screen or access an element that is not visible and is outside the borders of the maze.
             // ecdur = enemyCollisionDetectionUpRight
             let ecdur = document.elementFromPoint(enemyPositionForNewUp.right, newUp);
             // console.log("where are the 3 enemies: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
@@ -1053,7 +1053,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-            // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving 
+            // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving; that was because of the problem that the value of the variable eecdul was showing in the console as null.
             if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdur.classList.contains('mazeBorders') == false) {
                 enemytop -= 1;
                 theenemyOfEnemies.style.top = enemytop + 'px';
