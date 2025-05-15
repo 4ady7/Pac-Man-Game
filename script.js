@@ -195,19 +195,15 @@ function keyDown(event) { //event here is a parameter inside the function
     if (event.key === 'ArrowUp') {
         // console.log('strt n keep moving up')
         upPressed = true;
-        // enemyCollision();
     } else if (event.key === 'ArrowDown') {
         // console.log('strt n keep moving down')
         downPressed = true;
-        // enemyCollision();
     } else if (event.key === 'ArrowLeft') {
         // console.log('strt n keep moving left')
         leftPressed = true;
-        // enemyCollision();
     } else if (event.key === 'ArrowRight') {
         // console.log('strt n keep moving right')
         rightPressed = true;
-        // enemyCollision();
     }
 
     //Increasing or decreasing the speed of the playyer using the keyboard numbers on the keyboard keys 
@@ -1415,12 +1411,14 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-lives = 3
+
 function enemyColtemp() {
-    let allEnemies = document.querySelectorAll('.enemy');
-    let playerPosition = player.getBoundingClientRect();
+    let allEnemies = document.querySelectorAll('.enemy'); //selcecting the enemies and assigning them to the variable allEnemies
+    let playerPosition = player.getBoundingClientRect(); //selecting the position of the player 
+    //looping through every enemy 
     for (let enemeyONE of allEnemies) {
-        let positionOfEnemies = enemeyONE.getBoundingClientRect();
+        let positionOfEnemies = enemeyONE.getBoundingClientRect(); //selecting the position of an enemy 
+        //chcecking if the psoition of the player overlaps with the position of the enemy 
         if (
             playerPosition.right > positionOfEnemies.left &&
             playerPosition.left < positionOfEnemies.right &&
