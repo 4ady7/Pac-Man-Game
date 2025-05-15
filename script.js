@@ -513,7 +513,6 @@ function removeStartButton() {
     for (let theenemyOfEnemies of alltheEnemies) {
         //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
         enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
-        console.log("INside 3 enemies: " + theenemyOfEnemies.getBoundingClientRect());
     }
 }
 
