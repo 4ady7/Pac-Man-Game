@@ -606,38 +606,14 @@ function ubttnClicked() {
 
 
 
-//Remaining Task  
-//still need to work on this enemy collison first and test it to make sure it is function then I call the function like I called the point collection function 
-//function for enemy collision 
 
 let ulSeclect = document.querySelectorAll('.lives ul li');
 lives = ulSeclect.length;
 console.log(lives); //Output is 3 
 
-// setInterval(function enemyCollision() {
-//     let allEnemies = document.querySelectorAll('.enemy');
-//     let playerPosition = player.getBoundingClientRect();
-//     for (let i = 0; i < allEnemies.length; i++) {
-//         let positionOfEnemies = allEnemies[i].getBoundingClientRect();
-//         if (
-//             playerPosition.right > positionOfEnemies.left &&
-//             playerPosition.left < positionOfEnemies.right &&
-//             playerPosition.bottom > positionOfEnemies.top &&
-//             playerPosition.top < positionOfEnemies.bottom
-//         ) {
-//             stopPlayerMovement();
-//             player.classList.add('hit');
-//             setTimeout( () => {
-//                 playerReturntoMove();
-//                 player.classList.remove('hit');
-//             }, 1500);
-//         }
-
-//     }
-// }, 10)
 
 
-console.log("this is the remaini" + lives);
+
 
 
 //creating a function to stop the player from moving 
@@ -680,10 +656,6 @@ createlives();
 
 
 
-function removeLi() {
-    const li = document.querySelector('li');
-    li.parentNode.removeChild(li);
-}
 
 
 //removing lives 
@@ -697,24 +669,6 @@ function removelive() {
 }
 
 
-// let theEnemies = document.querySelectorAll('.enemy'); 
-// let oneEnemy = theEnemies
-// let ulSeclect = document.querySelectorAll('.lives ul li');
-// lives = ulSeclect.length;
-// console.log(lives); //Output is 3 
-// // let lives = 3;
-// function playerDied() {
-//     for (let index = 0; index < lives.length; index++) {
-//         if (enemyColtemp()) {
-//             lives = lives - 1;
-//             removelive(); //calling a function to remove a live/heart when the player hits an enemy
-//         }
-//         if (lives == 0) {
-//             player.classList = 'dead';
-//             setTimeout(restart, 500)
-//         }
-//     }
-// }
 
 
 
@@ -762,137 +716,18 @@ function removelive() {
 
 
 
-// let playerList = [];
-// for (let i = 0; i < localStorage.length; i++) {
-//     let nameofnameOfPlayer = localStorage.key(i); //assigning each key in the local storage to the variable nameOfPlayer  
-//     let value = localStorage.getItem(key);
-//     playerList.push(value);
-
-
-//     // playerList.sort((a, b) => b.value - a.value);
-// }
-// console.log(playerList);
-
-
-
-
-// function createTag(tag, parent, text) {
-//     const element = document.createElement(tag);
-//     const textNode = document.createTextNode(text);
-//     element.appendChild(textNode);
-//     parent.appendChild(element);
-//     return element;
-// }
-
-// let score = 20;
-
-// let leaderboard = document.querySelector(".leaderboard ol");
-
-// function saveName() {
-//     const username = prompt('Enter name....');
-//     localStorage.setItem(username, score);
-// }
-
-// for (let i = 0; i < localStorage.length; i++) {
-//     const username = localStorage.key(i);
-//     const playerScore = localStorage.getItem(username);
-//     createTag('li', leaderboard, `${username} ....... ${playerScore}`);
-// }
-
-// saveName();
-
-
-
-function saveData() {
-    // getName();
-    
 
 
 
 
 
-
-    // let playerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable playerName 
-    // let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
-    // localStorage.setItem('Name', playerName); //storing the key value to 'Name' string, and the other value to the value of the variable playerName
-    // localStorage.setItem('Score', pointsCollected); //storing the key value to 'Score' string, and the other value to the value of the variable pointsCollected
-    // let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard 
-    // let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-    // let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
-    // addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-    // listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
-
-
-
-    // console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
-
-
-
-
-
-    // const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-    // let leaderboard = [];
-    // leaderboard.push({playerName, pointsCollected}) //linking the player's name, and the number of points the player collected by adding them together in one set.  
-    // leaderboard.sort((a, b) => b.pointsCollected - a.pointsCollected); //arranging them desendingly from largest to smallest by number of points that has been collected.
-
-    // let value = localStorage.getItem(key);
-    // playerList.push(value);
-    // let scoreObjects = scoreArray.map(function);
-    // scoreObjects = scoreObjects.slice(0, 5);
-
-    // localStorage.setItem(playerName, pointsCollected); //storing the variable playerName as the key, and the variable pointsCollected as the score
-
-
-
-
-
-
-    
-    // listofLeaderboard.innerHTML = ''; //reseting and clearing the ordered list 
-
-
-    // let savedPlayer = localStorage.getItem('Name'); 
-    // let savedTotalPoints = localStorage.getItem('Score');
-    // for (let index = 0; index < localStorage.length; index++) {
-    //     let nameOfPlayer = localStorage.key[index];
-    //     let scoreOfPlayer = localStorage.getItem(nameOfPlayer);
-
-    //     createTag('li', listofLeaderboard, `${nameOfPlayer} ....... ${scoreOfPlayer}`);
-    // }
-
-
-
-    // let savedPlayerData = [];
-    // savedPlayerData.push({savedPlayer, savedTotalPoints});
-    // savedPlayerData.sort((a, b) => b.pointsCollected - a.pointsCollected);
-
-    // let leaderboardSort = localStorage.getItem('leaderboard ol');
-    // leaderboard.forEach(element => {
-    //     let addtoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-    //     let listFormat = document.createTextNode(`${playerName}........${pointsCollected}`); //assigning the list format to the variable listFormat
-    //     addtoLeaderboard.appendChild(listFormat); //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
-    
-    //     listofLeaderboard.appendChild(addtoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
-    //     console.log(`leaderboard list after it has been updated: ${playerName} - ${pointsCollected}`); //displaying the player score of points collected and the username in the console 
-
-        
-    //     leaderboardSort.sort((a, b) => b.pointsCollected - a.pointsCollected); //arranging them desendingly from largest to smallest by number of points that has been collected.
-    // });
-
-
-
-
-
-
-    // addtoLeaderboard.textContent = `${playerName}........${pointsCollected}`; //adjusting the format for the list 
-}
 
 function gameEnded() {
     clearInterval(playerMovement);
 
 
 
-
+    
     saveData();
 
 
