@@ -4,8 +4,11 @@ let leftPressed = false; //intializing the value of the variable leftPressed to 
 let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
 let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to not only speed up, but to also speed down
 
+
+
 // Here we are selecting and assigning the main tag on our HTML file to the variable main on JAVASCRIPT file 
 let main = document.querySelector('main');
+
 
 //Player = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
 let maze = [
@@ -75,6 +78,14 @@ function createWall() {
     let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
     let column = Math.floor(Math.random() * maze[row].length);
     //checking if the maze location is equal to 0, which represents the points.
+
+    // // let playerP = document.querySelector('#player');
+    // let currentPositon = player.getBoundingClientRect(); //optimize 
+    // let playerNewBottom = currentPositon.top + 1;
+
+
+    //&& playerNewBottom.classList.contains('enemy') == false
+
     if (maze[row][column] == 0) {
         //if that's true, and it is the location 0, then add a wall, which is represented by the location 1 in the maze. 
         maze[row][column] = 1;
@@ -260,7 +271,8 @@ function enemyEncounter() {
 
 
 const collisionUnit = 2; //setting the collision Unit to 2 while testing prevents the player from getting stuck into the wall
-let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
+// let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
+let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again
 let playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player //const playerMouth to let playerMouth, why ? to be able to reassign the variable playerMouth again to the playerMouth by selecting through the mouth of the player 
 let playerTop = 0; //initializing a variable
 let playerLeft = 0; //initializing a variable
@@ -279,7 +291,7 @@ let playerLeft = 0; //initializing a variable
 function playerMovement() {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
-        let currentPositon = player.getBoundingClientRect() //optimize 
+        let currentPositon = player.getBoundingClientRect(); //optimize 
         let newBottom = currentPositon.bottom + collisionUnit;
         let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom)
         // console.log(currentPositon.left)
