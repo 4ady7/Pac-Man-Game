@@ -23,21 +23,7 @@ let maze = [
 
 
 
-function mazeRefereshed() {
-    //Player = 2, Wall = 1, Enemy was 3, Point = 0
-    maze = [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //the first row is filled with only walls 
-        [1, 2, 0, 1, 0, 0, 0, 0, 0, 1], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
-        [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 0, 0, 0, 0, 0, 1], // 0 represents the points that the player should collect 
-        [1, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-        [1, 0, 0, 1, 0, 0, 0, 0, 0, 1], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-        [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-        [1, 0, 1, 0, 0, 0, 0, 0, 0, 1], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] //the last row is also filled with only walls 
-    ];
-}
+
 
 
 
@@ -541,7 +527,7 @@ startBttn.addEventListener("click", startGame);
 //function to remove the start button 
 function removeStartButton() {
     //calling the function three times to create three enemies
-    // createEnemy();
+    createEnemy();
     // createEnemy();
     // createEnemy();
     startBttn.style.display = 'none';
@@ -575,11 +561,7 @@ function restartFunction() {
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
-    mazeRefereshed(); //reseting the maze. I was doing this mainly because while I was testing, I discovered that the enemy placement was not changing after clicking the restart button, so now I am removing the enemy from the maze.
-    createEnemy();
-    createEnemy();
-    createEnemy();
-    main.innerHTML = ""; //clearing the previous maze that was used in the last game to reset the points 
+    main.innerHTML = ""; //clearing the previous maze that was used in the last 
     // clearInterval(mazeCreation);
     mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
 
@@ -601,6 +583,9 @@ function restartFunction() {
 
     // clearInterval(createEnemy);
     // clearInterval(createEnemy);
+    // createEnemy();
+    // createEnemy();
+    // createEnemy();
     // removeStartButton();
 }
 
