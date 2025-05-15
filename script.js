@@ -1172,6 +1172,10 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newRight = enemyPosition.right + 1;
             let newBottom = enemyPosition.bottom + 1;
+            // if (newRight.classList.contains('wall') == false && newBottom.classList.contains('mazeBorders') == false) {
+            //     newRight = enemyPosition.right + 1;
+            //     newBottom = enemyPosition.bottom + 1;
+            // }
             // RB = RightBottom
             let RB = document.elementFromPoint(newRight, newBottom);
             if (RB && RB.classList.contains('wall') == false && RB.classList.contains('mazeBorders') == false) {
@@ -1200,6 +1204,10 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newRight = enemyPosition.right + 1;
             let newTop = enemyPosition.top - 1;
+            // if (newRight.classList.contains('wall') == false && newTop.classList.contains('mazeBorders') == false) {
+            //     newRight = enemyPosition.right + 1;
+            //     newTop = enemyPosition.top - 1;
+            // }
             // RT = RightUp
             let RT = document.elementFromPoint(newRight, newTop);
             if (RT && RT.classList.contains('wall') == false && RT.classList.contains('mazeBorders') == false) {
@@ -1228,6 +1236,10 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             let newBottom = enemyPosition.bottom + 1;
+            // if (newLeft.classList.contains('wall') == false && newBottom.classList.contains('mazeBorders') == false) {
+            //     newLeft = enemyPosition.left - 1;
+            //     newBottom = enemyPosition.bottom + 1;
+            // }
             // LB = LeftBottom
             let LB = document.elementFromPoint(newLeft, newBottom);
             if (LB && LB.classList.contains('wall') == false && LB.classList.contains('mazeBorders') == false) {
@@ -1256,6 +1268,10 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPosition = theenemyOfEnemies.getBoundingClientRect();
             let newLeft = enemyPosition.left - 1;
             let newTop = enemyPosition.top - 1;
+            // if (newLeft.classList.contains('wall') == false && newTop.classList.contains('mazeBorders') == false) {
+            //     newLeft = enemyPosition.left - 1;
+            //     newTop = enemyPosition.top - 1;
+            // }
             // LU = LeftUp
             let LU = document.elementFromPoint(newLeft, newTop);
             if (LU && LU.classList.contains('wall') == false && LU.classList.contains('mazeBorders') == false) {
