@@ -259,7 +259,7 @@ function enemyEncounter() {
 
 
 
-const collisionUnit = 2;
+const collisionUnit = 2; //setting the collision Unit to 2 while testing prevents the player from getting stuck into the wall
 let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
 let playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player //const playerMouth to let playerMouth, why ? to be able to reassign the variable playerMouth again to the playerMouth by selecting through the mouth of the player 
 let playerTop = 0; //initializing a variable
