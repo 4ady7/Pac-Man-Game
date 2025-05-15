@@ -562,6 +562,7 @@ startBttn.addEventListener("click", startGame);
 function removeStartButton() {
     //calling the function three times to create three enemies
     createEnemy();
+    createWall();
     // createEnemy();
     // createEnemy();
     startBttn.style.display = 'none';
