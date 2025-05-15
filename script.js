@@ -1,3 +1,39 @@
+
+
+
+
+
+
+
+
+
+
+// BrainStorming section (General)
+// I think I could allow the start button to be activate also not only by clicking on it, but also by pressing the enter key on my keyboard
+// idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
+
+
+// BrainStorming section for CSS
+// I think I might need to use innerHTML when the pacman gets hit, so the lives get reduced by 1, or loses one heart
+
+
+
+
+
+
+// Adavnced secion notes
+// way to increase the level to be more harder is by changing the interval speed of the player movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
+
+
+
+
+
+
+
+
+
+
+
 let upPressed = false; //intializing the value of the variable upPressed to the boolean value false 
 let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
 let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
@@ -677,17 +713,6 @@ function removelive() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // let colours = document.querySelectorAll('li');
 
 // for(let i = 0; i<10; i++) {
@@ -752,7 +777,6 @@ console.log("no of enemies: " + alltheEnemies.length) //showing the number of en
 
 function enemyMovement(theenemyOfEnemies) {
     let direction = Math.ceil(Math.random() * 8);
-    // if (lives == 0) { direction = 0 };
     let enemytop = 0;
     let enemyleft = 0;
     MovementofEnemy = setInterval(function () {
@@ -783,22 +807,6 @@ function enemyMovement(theenemyOfEnemies) {
                 //if it contains a wall, then randomly change the direction
                 direction = Math.ceil(Math.random() * 8);
             }
-
-
-
-
-
-
-
-
-
-            // player = document.getElementById('player');
-            // if (ecdul.contains(player) == true && ecdur.contains(player) == true) {
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         }
 
 
@@ -818,14 +826,6 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            // player = document.getElementById('player');
-            // if (ecdbl.contains(player) == true && ecdbr.contains(player) == true) {
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         };
 
 
@@ -844,15 +844,6 @@ function enemyMovement(theenemyOfEnemies) {
             } else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-
-            // player = document.getElementById('player');
-            // if (ecdlB.contains(player) == true && ecdlT.contains(player) == true) {
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         };
 
 
@@ -872,14 +863,6 @@ function enemyMovement(theenemyOfEnemies) {
             } else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            // player = document.getElementById('player');
-            // if (ecdrB.contains(player) == true && ecdrT.contains(player) == true) {
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         };
 
 
@@ -912,14 +895,6 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            // player = document.getElementById('player');
-            // if (RB.contains(player) == true) {
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         };
 
 
@@ -948,14 +923,6 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            // player = document.getElementById('player');
-            // if (RT.contains(player) == true) {
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         };
 
 
@@ -984,14 +951,6 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            // player = document.getElementById('player');
-            // if (RB.contains(player) == true) {
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         };
 
 
@@ -1019,15 +978,6 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            // player = document.getElementById('player');
-            // if (LT.contains(player) == true) {
-            //     console.log('MeetingbtwThePlayerAndTheEnemy');
-            //     // alert('An enemy has been encountered!!! game over!!!');
-            //     enemyEncounter();
-            //     // player.classList = 'dead';
-            //     // clearInterval(timer); 
-            // }
         }
 
 
@@ -1059,21 +1009,15 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-// BrainStorming section (General)
-// I think I could allow the start button to be activate also not only by clicking on it, but also by pressing the enter key on my keyboard
-// idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
-
-
-// BrainStorming section for CSS
-// I think I might need to use innerHTML when the pacman gets hit, so the lives get reduced by 1, or loses one heart
 
 
 
 
 
 
-// Adavnced secion notes
-// way to increase the level to be more harder is by changing the interval speed of the player movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
+
+
+
 
 
 
