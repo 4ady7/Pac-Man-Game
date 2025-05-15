@@ -526,14 +526,18 @@ function restart() {
     startBttn.style.opacity = 1;
     startBttn.style.display = 'block';
     startBttn.innerHTML = 'Restart the game?';
-    // stopPlayerMovement()
     document.removeEventListener('keydown', keyDown);
     document.removeEventListener('keyup', keyUp);
-    //calling the function three times to create three enemies
+
+    //calling the createEnemy function one time to create one extra enemy
     createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
+    // createEnemy();
+    // createEnemy();
+
+    //calling the createWall function one time to create one extra wall
     createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-    // createEnemy();
-    // createEnemy();
+    // createWall();
+    // createWall();
 }
 // setInterval(pointCollection, 10);
 
