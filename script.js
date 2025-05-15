@@ -1208,18 +1208,18 @@ function enemyMovement(theenemyOfEnemies) {
 
         // direction == 6 is for right-upward collision detction
         if (direction == 6) {
-            let enemyPositionForDiagonalRightTop = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightTop
-            let newRight = enemyPositionForDiagonalRightTop.right + 1;
-            let newTop = enemyPositionForDiagonalRightTop.top - 1;
+            let enemyPositionForDiagonalRightUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightUpwards
+            let newRight = enemyPositionForDiagonalRightUpwards.right + 1;
+            let newUp = enemyPositionForDiagonalRightUpwards.top - 1;
 
             // ecdur = enemyCollisionDetectionUpRight
-            let ecdur = document.elementFromPoint(enemyPositionForDiagonalRightTop.right, newTop);
+            let ecdur = document.elementFromPoint(enemyPositionForDiagonalRightUpwards.right, newUp);
 
             // DRT = DiagonallyRightUp
-            let DRT = document.elementFromPoint(newRight, newTop);
+            let DRT = document.elementFromPoint(newRight, newUp);
 
             // ecdrT = enemyCollisionDetectionRightTop
-            let ecdrT = document.elementFromPoint(newRight, enemyPositionForDiagonalRightTop.top);
+            let ecdrT = document.elementFromPoint(newRight, enemyPositionForDiagonalRightUpwards.top);
 
             if (DRT && DRT.classList.contains('wall') == false && DRT.classList.contains('mazeBorders') == false && ecdur.classList.contains('wall') == false && ecdur.classList.contains('mazeBorders') == false && ecdrT.classList.contains('wall') == false && ecdrT.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
@@ -1282,12 +1282,12 @@ function enemyMovement(theenemyOfEnemies) {
         if (direction == 8) {
             let enemyPositionForDiagonalLeftUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftUpwards
             let newLeft = enemyPositionForDiagonalLeftUpwards.left - 1;
-            let newTop = enemyPositionForDiagonalLeftUpwards.top - 1;
+            let newUp = enemyPositionForDiagonalLeftUpwards.top - 1;
 
             // ecdul = enemyCollisionDetectionUpLeft
-            let eecdul = document.elementFromPoint(enemyPositionForDiagonalLeftUpwards.left, newTop);
+            let eecdul = document.elementFromPoint(enemyPositionForDiagonalLeftUpwards.left, newUp);
 
-            let DLU = document.elementFromPoint(newLeft, newTop);
+            let DLU = document.elementFromPoint(newLeft, newUp);
 
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPositionForDiagonalLeftUpwards.top);
