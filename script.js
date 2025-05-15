@@ -68,7 +68,7 @@ console.log(arrayofEnemies[2]);
 
 
 
-let arrayofWalls = []; //creating an array to contain the created enemies, and assigning the array to a variable, and calling the varibale arrayofEnemies. 
+let arrayofWalls = []; //creating an array to contain the created walls, and assigning the array to a variable, and calling the varibale arrayofWalls. 
 
 //creating an enemy randomly after I have removed the enemy from the maze
 function createWall() {
@@ -76,19 +76,19 @@ function createWall() {
     let column = Math.floor(Math.random() * maze[row].length);
     //checking if the maze location is equal to 0, which represents the points.
     if (maze[row][column] == 0) {
-        //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in the maze. 
+        //if that's true, and it is the location 0, then add a wall, which is represented by the location 1 in the maze. 
         maze[row][column] = 1;
     }
     else {
-        //if the location is not location 0, and thus unsucessful to create an enemy, so call the function again. 
-        createWall(); //calling the function to create an enemy
+        //if the location is not location 0, and thus unsucessful to create a wall, so call the function again. 
+        createWall(); //calling the function to create a wall
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
-    //if the maze location is equal to 3, which represents the enemy.
+    //if the maze location is equal to 1, which represents the wall.
     if (maze[row][column] == 1) {
-        wallPosition = { row, column } //then I am going to be assigning the randomly choosen location of the enemy that consists of an x-axis and a y-axis to a variable, and calling the variable enemyPosition
+        wallPosition = { row, column } //then I am going to be assigning the randomly choosen location of the wall that consists of an x-axis and a y-axis to a variable, and calling the variable wallPosition
     }
-    arrayofWalls.push(wallPosition); //adding the randomlyy chosen location of the enemy to the list called arrayofEnemies
+    arrayofWalls.push(wallPosition); //adding the randomlyy chosen location of the wall to the list called arrayofWalls
     //using the push() method to add the eleent to the end of the array
 }
 
