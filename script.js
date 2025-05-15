@@ -475,7 +475,7 @@ function pointCollection() {
 
     //the idea I need to implement is that I need to figure out a way to select just one point, and then remove just one after the player occupies the space where the point existed. I also need to add all that inside a function that moves the player.
     let point = document.querySelectorAll('.point');
-    console.log(point.length); //so now I know that we have 50 points in the maze. 
+    // console.log(point.length); //so now I know that we have 50 points in the maze. 
     // idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
     let playerPosition = player.getBoundingClientRect();
     for (let i = 0; i < point.length; i++) {
@@ -1038,7 +1038,7 @@ function gameEnded() {
 lives = 3
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
+// console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
 
 function enemyMovement(theenemyOfEnemies) {
     let direction = Math.ceil(Math.random() * 8);
@@ -1067,7 +1067,7 @@ function enemyMovement(theenemyOfEnemies) {
             if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdur.classList.contains('mazeBorders') == false) {
                 enemytop -= 1;
                 theenemyOfEnemies.style.top = enemytop + 'px';
-                console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
+                // console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
             }
             else {
                 //if it contains a wall, then randomly change the direction
