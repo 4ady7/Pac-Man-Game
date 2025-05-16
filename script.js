@@ -612,8 +612,94 @@ function pointCollection() {
                 }
             }
 
+            //I decided to created another group of if statements for the next 85 levls. I know it is not the best from an optimization point of view, but I was also thinking about the bugs and who what bugs might occur, so I went with the safer option, priortizing the functionality of the game in the first 12 levels.
             //enabling the user to be able to go to the next level, and by level 12 the player will be facing 14 enemies and there will be 21 walls
-            if (currentLevel == 12) {
+            if (currentLevel == 12 && currentLevel == 25 && currentLevel == 38 && currentLevel == 51 && currentLevel == 64 && currentLevel == 77 && currentLevel == 90) {
+                if (totalPoints == 30) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 2 the player will be facing 4 enemies and there will be 11 walls 
+            if (currentLevel == 13 && currentLevel == 26 && currentLevel == 39 && currentLevel == 52 && currentLevel == 65 && currentLevel == 78 && currentLevel == 91) {
+                if (totalPoints == 50) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 2 the player will be facing 4 enemies and there will be 11 walls 
+            if (currentLevel == 14 && currentLevel == 27 && currentLevel == 40 && currentLevel == 53 && currentLevel == 66 && currentLevel == 79 && currentLevel == 92) {
+                if (totalPoints == 48) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 3 the player will be facing 5 enemies and there will be 12 walls 
+            if (currentLevel == 15 && currentLevel == 28 && currentLevel == 41 && currentLevel == 54 && currentLevel == 67 && currentLevel == 80 && currentLevel == 93) {
+                if (totalPoints == 46) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 4 the player will be facing 6 enemies and there will be 13 walls 
+            if (currentLevel == 16 && currentLevel == 29 && currentLevel == 42 && currentLevel == 55 && currentLevel == 68 && currentLevel == 81 && currentLevel == 94) {
+                if (totalPoints == 44) {
+                    nextStage()
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 5 the player will be facing 7 enemies and there will be 14 walls 
+            if (currentLevel == 17 && currentLevel == 30 && currentLevel == 43 && currentLevel == 56 && currentLevel == 69 && currentLevel == 82 && currentLevel == 95) {
+                if (totalPoints == 42) {
+                    nextStage();
+                }
+            }
+            
+
+            //enabling the user to be able to go to the next level, and by level 6 the player will be facing 8 enemies and there will be 15 walls 
+            if (currentLevel == 18 && currentLevel == 31 && currentLevel == 44 && currentLevel == 57 && currentLevel == 70 && currentLevel == 83 && currentLevel == 96) {
+                if (totalPoints == 40) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 7 the player will be facing 9 enemies and there will be 16 walls 
+            if (currentLevel == 19 && currentLevel == 32 && currentLevel == 45 && currentLevel == 58 && currentLevel == 71 && currentLevel == 84 && currentLevel == 97) {
+                if (totalPoints == 38) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 8 the player will be facing 10 enemies and there will be 17 walls 
+            if (currentLevel == 20 && currentLevel == 33 && currentLevel == 46 && currentLevel == 59 && currentLevel == 72 && currentLevel == 85 && currentLevel == 98) {
+                if (totalPoints == 36) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 9 the player will be facing 11 enemies and there will be 18 walls 
+            if (currentLevel == 21 && currentLevel == 34 && currentLevel == 47 && currentLevel == 60 && currentLevel == 73 && currentLevel == 86 && currentLevel == 99) {
+                if (totalPoints == 34) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 10 the player will be facing 12 enemies and there will be 19 walls
+            if (currentLevel == 22 && currentLevel == 35 && currentLevel == 48 && currentLevel == 61 && currentLevel == 74 && currentLevel == 87 && currentLevel == 100) {
+                if (totalPoints == 32) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 11 the player will be facing 13 enemies and there will be 20 walls 
+            if (currentLevel == 23 && currentLevel == 36 && currentLevel == 49 && currentLevel == 62 && currentLevel == 75 && currentLevel == 88 && currentLevel == 101) {
+                if (totalPoints == 32) {
+                    nextStage();
+                }
+            }
+
+            //enabling the user to be able to go to the next level, and by level 12 the player will be facing 14 enemies and there will be 21 walls
+            if (currentLevel == 24 && currentLevel == 37 && currentLevel == 50 && currentLevel == 63 && currentLevel == 76 && currentLevel == 89 && currentLevel == 102) {
                 if (totalPoints == 30) {
                     nextStage();
                 }
@@ -713,28 +799,28 @@ function restartFunction() {
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the gamer 
     
     
-    if (currentLevel == 3) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 12) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
     if (currentLevel == 25) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
-    if (currentLevel == 37) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 38) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
-    if (currentLevel == 49) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 51) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
-    if (currentLevel == 61) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 64) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
-    if (currentLevel == 73) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 77) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
-    if (currentLevel == 85) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 90) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
-    if (currentLevel == 97) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 103) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
     
