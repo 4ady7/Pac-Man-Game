@@ -1124,164 +1124,164 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-        //more enemy collision diagonally
-        //trajectory == 5 is for right-bottom collision detction
-        // if (trajectory == 5) {
-        //     let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
-        //     let newRight = enemyPositionForDiagonalRightBottom.right + 1;
-        //     let newBottom = enemyPositionForDiagonalRightBottom.bottom + 1;
+        // more enemy collision diagonally
+        // trajectory == 5 is for right-bottom collision detction
+        if (trajectory == 5) {
+            let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
+            let newRight = enemyPositionForDiagonalRightBottom.right + 1;
+            let newBottom = enemyPositionForDiagonalRightBottom.bottom + 1;
 
 
-        //     // ecdbr = enemyCollisionDetectionBottomRight
-        //     let ecdbr = document.elementFromPoint(enemyPositionForDiagonalRightBottom.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the next (+1) new bottom position that the enemy may move to. 
+            // ecdbr = enemyCollisionDetectionBottomRight
+            let ecdbr = document.elementFromPoint(enemyPositionForDiagonalRightBottom.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the next (+1) new bottom position that the enemy may move to. 
             
-        //     // DRB = DiagonallyRightBottom
-        //     let DRB = document.elementFromPoint(newRight, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the next (+1) new bottom position of the enemy. That's means here that I have created a collision for the diagonally. A diagonal moves equals two new positions being updated at the same time to allow the movement of the enemy diagonally.
+            // DRB = DiagonallyRightBottom
+            let DRB = document.elementFromPoint(newRight, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the next (+1) new bottom position of the enemy. That's means here that I have created a collision for the diagonally. A diagonal moves equals two new positions being updated at the same time to allow the movement of the enemy diagonally.
 
-        //     // ecdrB = enemyCollisionDetectionRightBottom
-        //     let ecdrB = document.elementFromPoint(newRight, enemyPositionForDiagonalRightBottom.bottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the bottom position of the enemy. 
+            // ecdrB = enemyCollisionDetectionRightBottom
+            let ecdrB = document.elementFromPoint(newRight, enemyPositionForDiagonalRightBottom.bottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the bottom position of the enemy. 
 
-        //     if (DRB && DRB.classList.contains('wall') == false && DRB.classList.contains('mazeBorders') == false && ecdbr.classList.contains('wall') == false && ecdbr.classList.contains('mazeBorders') == false && ecdrB.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false) {
-        //         enemyleft += 1;
-        //         enemytop += 1;
-        //         theenemyOfEnemies.style.left = enemyleft + 'px';
-        //         theenemyOfEnemies.style.top = enemytop + 'px';
-        //     }
-        //     else {
-        //         trajectory = Math.ceil(Math.random() * 8);
-        //     }
+            if (DRB && DRB.classList.contains('wall') == false && DRB.classList.contains('mazeBorders') == false && ecdbr.classList.contains('wall') == false && ecdbr.classList.contains('mazeBorders') == false && ecdrB.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false) {
+                enemyleft += 1;
+                enemytop += 1;
+                theenemyOfEnemies.style.left = enemyleft + 'px';
+                theenemyOfEnemies.style.top = enemytop + 'px';
+            }
+            else {
+                trajectory = Math.ceil(Math.random() * 8);
+            }
 
-            // if (ecdbr && ecdbr.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
+            if (ecdbr && ecdbr.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
 
-            // if (DRB && DRB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
+            if (DRB && DRB.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
 
-            // if (ecdrB && ecdrB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-        // };
-
-
-
-        // // trajectory == 6 is for right-upward collision detction
-        // if (trajectory == 6) {
-        //     let enemyPositionForDiagonalRightUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightUpwards
-        //     let newRight = enemyPositionForDiagonalRightUpwards.right + 1;
-        //     let newUp = enemyPositionForDiagonalRightUpwards.top - 1;
-
-        //     // ecdur = enemyCollisionDetectionUpRight
-        //     let ecdur = document.elementFromPoint(enemyPositionForDiagonalRightUpwards.right, newUp);
-
-        //     // DRT = DiagonallyRightUp
-        //     let DRT = document.elementFromPoint(newRight, newUp);
-
-        //     // ecdrT = enemyCollisionDetectionRightTop
-        //     let ecdrT = document.elementFromPoint(newRight, enemyPositionForDiagonalRightUpwards.top);
-
-        //     if (DRT && DRT.classList.contains('wall') == false && DRT.classList.contains('mazeBorders') == false && ecdur.classList.contains('wall') == false && ecdur.classList.contains('mazeBorders') == false && ecdrT.classList.contains('wall') == false && ecdrT.classList.contains('mazeBorders') == false) {
-        //         enemyleft += 1;
-        //         enemytop -= 1;
-        //         theenemyOfEnemies.style.left = enemyleft + 'px';
-        //         theenemyOfEnemies.style.top = enemytop + 'px';
-        //     }
-        //     else {
-        //         trajectory = Math.ceil(Math.random() * 8);
-        //     }
-
-            // if (ecdur && ecdur.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (DRT && DRT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (ecdrT && ecdrT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-        // };
+            if (ecdrB && ecdrB.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
+        };
 
 
 
-        // // trajectory == 7 is for left-bottom collision detction
-        // if (trajectory == 7) {
-        //     let enemyPositionForDiagonalLeftBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftBottom
-        //     let newLeft = enemyPositionForDiagonalLeftBottom.left - 1;
-        //     let newBottom = enemyPositionForDiagonalLeftBottom.bottom + 1;
+        // trajectory == 6 is for right-upward collision detction
+        if (trajectory == 6) {
+            let enemyPositionForDiagonalRightUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightUpwards
+            let newRight = enemyPositionForDiagonalRightUpwards.right + 1;
+            let newUp = enemyPositionForDiagonalRightUpwards.top - 1;
 
-        //     // ecdbl = enemyCollisionDetectionBottomLeft
-        //     let ecdbl = document.elementFromPoint(enemyPositionForDiagonalLeftBottom.left, newBottom); 
+            // ecdur = enemyCollisionDetectionUpRight
+            let ecdur = document.elementFromPoint(enemyPositionForDiagonalRightUpwards.right, newUp);
+
+            // DRT = DiagonallyRightUp
+            let DRT = document.elementFromPoint(newRight, newUp);
+
+            // ecdrT = enemyCollisionDetectionRightTop
+            let ecdrT = document.elementFromPoint(newRight, enemyPositionForDiagonalRightUpwards.top);
+
+            if (DRT && DRT.classList.contains('wall') == false && DRT.classList.contains('mazeBorders') == false && ecdur.classList.contains('wall') == false && ecdur.classList.contains('mazeBorders') == false && ecdrT.classList.contains('wall') == false && ecdrT.classList.contains('mazeBorders') == false) {
+                enemyleft += 1;
+                enemytop -= 1;
+                theenemyOfEnemies.style.left = enemyleft + 'px';
+                theenemyOfEnemies.style.top = enemytop + 'px';
+            }
+            else {
+                trajectory = Math.ceil(Math.random() * 8);
+            }
+
+            if (ecdur && ecdur.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
+
+            if (DRT && DRT.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
+
+            if (ecdrT && ecdrT.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
+        };
+
+
+
+        // trajectory == 7 is for left-bottom collision detction
+        if (trajectory == 7) {
+            let enemyPositionForDiagonalLeftBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftBottom
+            let newLeft = enemyPositionForDiagonalLeftBottom.left - 1;
+            let newBottom = enemyPositionForDiagonalLeftBottom.bottom + 1;
+
+            // ecdbl = enemyCollisionDetectionBottomLeft
+            let ecdbl = document.elementFromPoint(enemyPositionForDiagonalLeftBottom.left, newBottom); 
             
-        //     // DLB = DiagonallyLeftBottom
-        //     let DLB = document.elementFromPoint(newLeft, newBottom);
+            // DLB = DiagonallyLeftBottom
+            let DLB = document.elementFromPoint(newLeft, newBottom);
 
-        //     // ecdlB = enemyCollisionDetectionLeftBottom
-        //     let ecdlB = document.elementFromPoint(newLeft, enemyPositionForDiagonalLeftBottom.bottom);
+            // ecdlB = enemyCollisionDetectionLeftBottom
+            let ecdlB = document.elementFromPoint(newLeft, enemyPositionForDiagonalLeftBottom.bottom);
 
-        //     if (DLB && DLB.classList.contains('wall') == false && DLB.classList.contains('mazeBorders') == false && ecdbl.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdlB.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false) {
-        //         enemyleft -= 1;
-        //         enemytop += 1;
-        //         theenemyOfEnemies.style.left = enemyleft + 'px';
-        //         theenemyOfEnemies.style.top = enemytop + 'px';
-        //     }
-        //     else {
-        //         trajectory = Math.ceil(Math.random() * 8);
-        //     }
+            if (DLB && DLB.classList.contains('wall') == false && DLB.classList.contains('mazeBorders') == false && ecdbl.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdlB.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false) {
+                enemyleft -= 1;
+                enemytop += 1;
+                theenemyOfEnemies.style.left = enemyleft + 'px';
+                theenemyOfEnemies.style.top = enemytop + 'px';
+            }
+            else {
+                trajectory = Math.ceil(Math.random() * 8);
+            }
 
-            // if (ecdbl && ecdbl.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
+            if (ecdbl && ecdbl.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
 
-            // if (DLB && DLB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
+            if (DLB && DLB.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
 
-            // if (ecdlB && ecdlB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-        // };
+            if (ecdlB && ecdlB.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
+        };
 
 
 
-        // // trajectory == 8 is for left-upward collision detction
-        // if (trajectory == 8) {
-        //     let enemyPositionForDiagonalLeftUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftUpwards
-        //     let newLeft = enemyPositionForDiagonalLeftUpwards.left - 1;
-        //     let newUp = enemyPositionForDiagonalLeftUpwards.top - 1;
+        // trajectory == 8 is for left-upward collision detction
+        if (trajectory == 8) {
+            let enemyPositionForDiagonalLeftUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftUpwards
+            let newLeft = enemyPositionForDiagonalLeftUpwards.left - 1;
+            let newUp = enemyPositionForDiagonalLeftUpwards.top - 1;
 
-        //     // ecdul = enemyCollisionDetectionUpLeft
-        //     let eecdul = document.elementFromPoint(enemyPositionForDiagonalLeftUpwards.left, newUp);
+            // ecdul = enemyCollisionDetectionUpLeft
+            let eecdul = document.elementFromPoint(enemyPositionForDiagonalLeftUpwards.left, newUp);
 
-        //     let DLU = document.elementFromPoint(newLeft, newUp);
+            let DLU = document.elementFromPoint(newLeft, newUp);
 
-        //     // ecdlT = enemyCollisionDetectionLeftTop
-        //     let ecdlT = document.elementFromPoint(newLeft, enemyPositionForDiagonalLeftUpwards.top);
+            // ecdlT = enemyCollisionDetectionLeftTop
+            let ecdlT = document.elementFromPoint(newLeft, enemyPositionForDiagonalLeftUpwards.top);
             
-        //     if (DLU && DLU.classList.contains('wall') == false && DLU.classList.contains('mazeBorders') == false && eecdul.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdlT.classList.contains('wall') == false && ecdlT.classList.contains('mazeBorders') == false) {
-        //         enemyleft -= 1;
-        //         enemytop -= 1;
-        //         theenemyOfEnemies.style.left = enemyleft + 'px';
-        //         theenemyOfEnemies.style.top = enemytop + 'px';
-        //     }
-        //     else {
-        //         trajectory = Math.ceil(Math.random() * 8);
-        //     }
+            if (DLU && DLU.classList.contains('wall') == false && DLU.classList.contains('mazeBorders') == false && eecdul.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdlT.classList.contains('wall') == false && ecdlT.classList.contains('mazeBorders') == false) {
+                enemyleft -= 1;
+                enemytop -= 1;
+                theenemyOfEnemies.style.left = enemyleft + 'px';
+                theenemyOfEnemies.style.top = enemytop + 'px';
+            }
+            else {
+                trajectory = Math.ceil(Math.random() * 8);
+            }
 
-            // if (eecdul && eecdul.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
+            if (eecdul && eecdul.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
 
-            // if (DLU && DLU.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
+            if (DLU && DLU.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
 
-            // if (ecdlT && ecdlT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-        // }
+            if (ecdlT && ecdlT.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
+        }
 
 
 
