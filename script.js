@@ -472,7 +472,7 @@ function gamerMovement() {
 
 
 
-//optimized my code by creating one and then calling it several times instead of having this code be repeated over and over again 
+//optimized my code by creating one function and then calling it several times instead of having this code be repeated over and over again 
 function nextStage() {
     clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
     // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
@@ -684,171 +684,58 @@ function restart() {
 
 
 
+//optimized my code by creating one function and then calling it several times instead of having this code be repeated over and over again 
+function mazeRefereshed() {
+    maze = [
+        [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
+        [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
+        [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+        [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+        [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
+        [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+        [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+        [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+        [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+        [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
+    ];
+    createEnemy();
+    createEnemy();
+    createEnemy();
+    for (let index = 0; index < 10; index++) {
+        createWall();
+    }
+}
+
+
 function restartFunction() {
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the gamer when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the gamer 
     
     
-    if (currentLevel == 13) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+    if (currentLevel == 3) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+        mazeRefereshed()
     }
     if (currentLevel == 25) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+        mazeRefereshed()
     }
     if (currentLevel == 37) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+        mazeRefereshed()
     }
     if (currentLevel == 49) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+        mazeRefereshed()
     }
     if (currentLevel == 61) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+        mazeRefereshed()
     }
     if (currentLevel == 73) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+        mazeRefereshed()
     }
     if (currentLevel == 85) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+        mazeRefereshed()
     }
     if (currentLevel == 97) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
-        maze = [
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
-        ];
-        createEnemy();
-        createEnemy();
-        createEnemy();
-        for (let index = 0; index < 10; index++) {
-            createWall();
-        }
+        mazeRefereshed()
     }
     
     main.innerHTML = ""; //clearing the previous maze that was used in the last 
