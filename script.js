@@ -472,8 +472,30 @@ function gamerMovement() {
 
 
 
+//optimized my code by creating one and then calling it several times instead of having this code be repeated over and over again 
+function nextStage() {
+    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
+    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
+    setTimeout(restart, 500) 
+    
+    gameEnded();
+    lostlives = 3 - lives;
+    for (let index = 0; index < lostlives; index++) {
+        createlives();
+    }
+    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
+    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
+    
+    //calling the createEnemy function one time to create one extra enemy
+    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
+    // createEnemy();
+    // createEnemy();
 
-
+    //calling the createWall function one time to create one extra wall
+    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
+    // createWall();
+    // createWall();
+}
 
 
 
@@ -516,134 +538,34 @@ function pointCollection() {
 
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
-                clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                setTimeout(restart, 500) 
-                
-                gameEnded();
-                lostlives = 3 - lives;
-                for (let index = 0; index < lostlives; index++) {
-                    createlives();
-                }
-                currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                
-                //calling the createEnemy function one time to create one extra enemy
-                createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                // createEnemy();
-                // createEnemy();
-
-                //calling the createWall function one time to create one extra wall
-                createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                // createWall();
-                // createWall();
+                nextStage();
             }
 
             //enabling the user to be able to go to the next level, and by level 2 the player will be facing 4 enemies and there will be 11 walls 
             if (currentLevel == 2) {
                 if (totalPoints == 48) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 3 the player will be facing 5 enemies and there will be 12 walls 
             if (currentLevel == 3) {
                 if (totalPoints == 46) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 4 the player will be facing 6 enemies and there will be 13 walls 
             if (currentLevel == 4) {
                 if (totalPoints == 44) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage()
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 5 the player will be facing 7 enemies and there will be 14 walls 
             if (currentLevel == 5) {
                 if (totalPoints == 42) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
             
@@ -651,189 +573,49 @@ function pointCollection() {
             //enabling the user to be able to go to the next level, and by level 6 the player will be facing 8 enemies and there will be 15 walls 
             if (currentLevel == 6) {
                 if (totalPoints == 40) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 7 the player will be facing 9 enemies and there will be 16 walls 
             if (currentLevel == 7) {
                 if (totalPoints == 38) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 8 the player will be facing 10 enemies and there will be 17 walls 
             if (currentLevel == 8) {
                 if (totalPoints == 36) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 9 the player will be facing 11 enemies and there will be 18 walls 
             if (currentLevel == 9) {
                 if (totalPoints == 34) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 10 the player will be facing 12 enemies and there will be 19 walls
             if (currentLevel == 10) {
                 if (totalPoints == 32) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 11 the player will be facing 13 enemies and there will be 20 walls 
             if (currentLevel == 11) {
                 if (totalPoints == 32) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 12 the player will be facing 14 enemies and there will be 21 walls
             if (currentLevel == 12) {
                 if (totalPoints == 30) {
-                    clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
-                    // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-                    setTimeout(restart, 500) 
-                    
-                    gameEnded();
-                    lostlives = 3 - lives;
-                    for (let index = 0; index < lostlives; index++) {
-                        createlives();
-                    }
-                    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-                    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-                    
-                    //calling the createEnemy function one time to create one extra enemy
-                    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createEnemy();
-                    // createEnemy();
-    
-                    //calling the createWall function one time to create one extra wall
-                    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-                    // createWall();
-                    // createWall();
+                    nextStage();
                 }
             }
         }
