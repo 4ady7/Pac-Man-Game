@@ -1280,12 +1280,12 @@ function enemyPLCol() {
             gamer.classList.add('hit'); //adding the class hit to the gamer to display the hit animation
             stopgamerMovement(); //calling the function to stop the movement of the gamer
             setTimeout(() => {
+                gamer.classList = ''; //removing any class linked to the gamer varible, which represents the gamer that we selected by the gamer ID.
                 gamerReturntoMove(); //calling the function that clears the interval for the movements of the gamer to stop the gamer from moving 
-                gamer.classList.remove('hit'); //removing the class hit from the gamer to hide the hit animation
             }, 1500); //stopping the gamer from moving for 1.5 seconds //1500 here equals 1.5 seconds, because intervals are measured in 1000ths of a second 
 
             if (lives == 0) {
-                gamer.classList.remove('hit'); //removing the hit class from the gamer in case the gamer was down to only 1 and then the gamer has been hit by 2 enemies at the same exact time, so preventing errors in the console
+                gamer.classList = ''; //removing the hit class from the gamer in case the gamer was down to only 1 and then the gamer has been hit by 2 enemies at the same exact time, so preventing errors in the console
                 gamer.classList.add('dead'); //if that's true, and the gamer came in contact with an enemy, then add the dead animation to the gamer 
                 gameEnded();
                 createlives();
