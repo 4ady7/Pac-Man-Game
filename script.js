@@ -1421,10 +1421,10 @@ function enemyPLCol() {
         let positionOfEnemies = enemeyONE.getBoundingClientRect(); //selecting the position of an enemy 
         //chcecking if the psoition of the gamer overlaps with the position of the enemy 
         if (
-            gamerPosition.right > positionOfEnemies.left &&
-            gamerPosition.left < positionOfEnemies.right &&
-            gamerPosition.bottom > positionOfEnemies.top &&
-            gamerPosition.top < positionOfEnemies.bottom
+            gamerPosition.right > positionOfEnemies.left + 2 &&
+            gamerPosition.left < positionOfEnemies.right - 2 &&
+            gamerPosition.bottom > positionOfEnemies.top + 2 &&
+            gamerPosition.top < positionOfEnemies.bottom - 2
         ) {
             removelive(); //the removelive function is called to remove a live from the gamer's lives.
             lives = lives - 1; //removing 1 from the variable, and the variable lives was assigned to the length/number of the the lists that I have inside the unordered list inisde the div with the class live s
