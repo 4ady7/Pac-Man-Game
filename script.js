@@ -327,7 +327,7 @@ function enemyEncounter() {
         setTimeout(() => {
             encounteredEnemy = false;
             gamer.classList = ''; //removing any class linked to the gamer varible, which represents the gamer that we selected by the gamer ID.
-        }, 2500); //2500 here equals 2.5 seconds, because intervals are measured in 1000ths of a second 
+        }, 3500); //3500 here equals 3.5 seconds, because intervals are measured in 1000ths of a second 
     }
 }
 
@@ -748,7 +748,7 @@ function removelive() {
 
 
 function gameEnded() {
-    clearInterval(gamerMovement);
+    clearInterval(gamerMovement); //clearing gamer movement 
     saveData();
     clearInterval(callgamertoMove);
     restart();
