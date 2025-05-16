@@ -810,9 +810,9 @@ function enemyMovement(theenemyOfEnemies) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             }
     
-            if (ecdur.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
-            }
+            // if (ecdur.classList.contains('player') == true) {
+            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            // }
         }
 
 
@@ -1096,10 +1096,10 @@ function enemyPLCol() {
             if (lives == 0) {
                 player.classList.remove('hit'); //removing the hit class from the player in case the player was down to only 1 and then the player has been hit by 2 enemies at the same exact time, so preventing errors in the console
                 player.classList.add('dead'); //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
-                createlives();
-                createlives();
-                createlives();
                 gameEnded();
+                createlives();
+                createlives();
+                createlives();
             }
         }
 
