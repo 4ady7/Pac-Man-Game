@@ -612,7 +612,7 @@ function pointCollection() {
                 }
             }
 
-            //I decided to created another group of if statements for the next 85 levls. I know it is not the best from an optimization point of view, but I was also thinking about the bugs and who what bugs might occur, so I went with the safer option, priortizing the functionality of the game in the first 12 levels.
+            //I decided to created another group of if statements for the next 85 levls. I know it is not the best from an optimization point of view, but I was also thinking about the bugs and who what bugs might occur, so I went with the safer option, priortizing the functionality of the game in the first 11 levels.
             //enabling the user to be able to go to the next level, and by level 12 the player will be facing 14 enemies and there will be 21 walls
             if (currentLevel == 12 && currentLevel == 25 && currentLevel == 38 && currentLevel == 51 && currentLevel == 64 && currentLevel == 77 && currentLevel == 90) {
                 if (totalPoints == 30) {
