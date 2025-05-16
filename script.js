@@ -1120,7 +1120,7 @@ function enemyPLCol() {
 
 
 
-//could not name this function gamer, the game crashes, I think because it is conflicting with the class gamer 
+//could not name this function player, the game crashes, I think because it is conflicting with the player gamer 
 function gamerInfo(nameOfgamer, scorePoints) {
     localStorage.setItem(nameOfgamer, scorePoints);//storing the parameter nameOfgamer as the key, and the parameter Pscore as the value
     //local storage to save the name of the user, and their score of points after they have died after losing all of their 3 lives 
