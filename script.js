@@ -1082,6 +1082,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
         if (trajectory == 2) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewDown
 
             //why newBottom have to have +, and not - here ? is it because we are moving in a different trajectory. Because we are moving downwar, and addition pushes the enemy downwards. 
@@ -1117,6 +1118,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
         if (trajectory == 3) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewLeft = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewLeft
             let newLeft = enemyPositionForNewLeft.left - 1; //selectiing the next left position, and assigning it to the variable newLeft
             // ecdlB = enemyCollisionDetectionLeftBottom
@@ -1150,6 +1152,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
         if (trajectory == 4) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewRight = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewRight
             //why newRight have to have +, and not - here ? is it because we are moving in a different trajectory. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left trajectory. 
             let newRight = enemyPositionForNewRight.right + 1; //selectiing the next right position, and assigning it to the variable newRight
@@ -1189,6 +1192,7 @@ function enemyMovement(theenemyOfEnemies) {
         // more enemy collision diagonally
         // trajectory == 5 is for right-bottom collision detction
         if (trajectory == 5) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
             let newRight = enemyPositionForDiagonalRightBottom.right + 1;
             let newBottom = enemyPositionForDiagonalRightBottom.bottom + 1;
@@ -1230,6 +1234,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         // trajectory == 6 is for right-upward collision detction
         if (trajectory == 6) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalRightUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightUpwards
             let newRight = enemyPositionForDiagonalRightUpwards.right + 1;
             let newUp = enemyPositionForDiagonalRightUpwards.top - 1;
@@ -1270,6 +1275,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         // trajectory == 7 is for left-bottom collision detction
         if (trajectory == 7) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalLeftBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftBottom
             let newLeft = enemyPositionForDiagonalLeftBottom.left - 1;
             let newBottom = enemyPositionForDiagonalLeftBottom.bottom + 1;
@@ -1310,6 +1316,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         // trajectory == 8 is for left-upward collision detction
         if (trajectory == 8) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalLeftUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftUpwards
             let newLeft = enemyPositionForDiagonalLeftUpwards.left - 1;
             let newUp = enemyPositionForDiagonalLeftUpwards.top - 1;
