@@ -375,7 +375,6 @@ function gamerMovement() {
 
         gamerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
-        // scoreCount()
     }
 
     else if (upPressed == true) {
@@ -487,7 +486,7 @@ callgamertoMove(); //calling the function for the gamer to start moving
 
 
 
-let Pscore = document.querySelector('#Pscore'); //selecting the score paragraph that was set to 0, initially.
+let Pscore = document.querySelector('#Pscore'); //selecting the paragraph inisde the div with class score, and that score paragraph was initially set to 0, initially.
 let totalPoints = 0; //initializing the variable totalPoints to 0
 
 
@@ -576,8 +575,9 @@ function removeStartButton() {
 
 
 
+let stages = document.querySelector('#CurrentStage'); //selecting the paragraph inisde the div with class levels, and that levels paragraph was initially set to 0, initially.
+let currentLevel = 1; //initializing the variable currentLevel to 1
 
-//Remaining Task 
 //function to have a restart button to restart the game
 function restart() {
     startBttn.style.opacity = 1; //allowing the visibility of the start button
@@ -595,6 +595,8 @@ function restart() {
     createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
     // createWall();
     // createWall();
+    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
+    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
 }
 
 
@@ -811,9 +813,9 @@ function enemyMovement(theenemyOfEnemies) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            // if (ecdur.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
+            if (ecdur.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            }
         }
 
 
