@@ -541,7 +541,7 @@ let startBttn = document.querySelector('#start');
 
 function startGame() {
     // you can also use the following code display none, adnThis code will do same thing as setting opacity to 0, which results in displaying nothing.  
-    startBttn.style.opacity = 0;
+    startBttn.style.opacity = 0; //hiding the visibility of the start button
 
     // Having the following 2 lines inside the function start game allows us to disable the movement of the gamer before the game starts, and only allow the gamer to move after the start button has been pressed 
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the gamer when the key is pressed 
@@ -565,7 +565,7 @@ startBttn.addEventListener("click", startGame);
 
 //function to remove the start button 
 function removeStartButton() {
-    startBttn.style.display = 'none';
+    startBttn.style.display = 'none'; //hiding the visibility of the start button
 
     //adding the loop inside the removeStartButton function, so that to only allow the gamer to move, when the removeStartButton function is called; in other word, to only allow the gamer to move after the start button have been pressed and the start button have disappeared, because I am calling the removeStartButton function inside the startGame function. For reference: setTimeout(removeStartButton, 3000).
     for (let theenemyOfEnemies of alltheEnemies) {
@@ -580,7 +580,7 @@ function removeStartButton() {
 //Remaining Task 
 //function to have a restart button to restart the game
 function restart() {
-    startBttn.style.opacity = 1;
+    startBttn.style.opacity = 1; //allowing the visibility of the start button
     startBttn.style.display = 'block';
     startBttn.innerHTML = 'Restart the game?';
     document.removeEventListener('keydown', keyDown);
