@@ -1094,7 +1094,7 @@ function enemyPLCol() {
             }, 1500); //stopping the player from moving for 1.5 seconds //1500 here equals 1.5 seconds, because intervals are measured in 1000ths of a second 
 
             if (lives == 0) {
-                player.classList.remove('hit');
+                player.classList.remove('hit'); //removing the hit class from the player in case the player was down to only 1 and then the player has been hit by 2 enemies at the same exact time, so preventing errors in the console
                 player.classList.add('dead'); //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
                 createlives();
                 createlives();
