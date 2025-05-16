@@ -137,8 +137,8 @@ div p {
     font-size: 2em;
 }
 
-#player {
-    /* the player is yellow colored */
+#gamer {
+    /* the gamer is yellow colored */
     background-color: yellow;
     border-radius: 100%;
     position: relative;
@@ -163,7 +163,7 @@ div p {
     background-color: rgb(25, 97, 170);
     width: 100%;
     height: 100%;
-    /* I nneeded to add position relative, and itt was a solution to a problem I was encountering. The problem was that the the collision detection with the wall was working fine except for the very first left coloumn. The player was not recognizing that there are walls and that column. I knew that the problem was not in how I implement the collision detection of the walls becuase the player could detect the walls from all sides including the right side and left side of the player, so the I started to check how the walls has been created, and I discovered that no position was assigned to the walls, and as I played around. I started by adding position absolute, and the outcome was tha all the columns and rows inside the maze turned into walls. I knew that would not work, and I can not use position absolute. I, then, proceeded by using poistion relative, and that's when I discovered that the player has recognized the walls on the very first left column, and all the other walls were still recognized by player. Now, my wall collison detection works perfectly */
+    /* I nneeded to add position relative, and itt was a solution to a problem I was encountering. The problem was that the the collision detection with the wall was working fine except for the very first left coloumn. The gamer was not recognizing that there are walls and that column. I knew that the problem was not in how I implement the collision detection of the walls becuase the gamer could detect the walls from all sides including the right side and left side of the gamer, so the I started to check how the walls has been created, and I discovered that no position was assigned to the walls, and as I played around. I started by adding position absolute, and the outcome was tha all the columns and rows inside the maze turned into walls. I knew that would not work, and I can not use position absolute. I, then, proceeded by using poistion relative, and that's when I discovered that the gamer has recognized the walls on the very first left column, and all the other walls were still recognized by gamer. Now, my wall collison detection works perfectly */
     position: relative; 
 }
 
@@ -172,12 +172,12 @@ div p {
     background-color: blue;
     width: 100%;
     height: 100%;
-    /* I nneeded to add position relative, and itt was a solution to a problem I was encountering. The problem was that the the collision detection with the wall was working fine except for the very first left coloumn. The player was not recognizing that there are walls and that column. I knew that the problem was not in how I implement the collision detection of the walls becuase the player could detect the walls from all sides including the right side and left side of the player, so the I started to check how the walls has been created, and I discovered that no position was assigned to the walls, and as I played around. I started by adding position absolute, and the outcome was tha all the columns and rows inside the maze turned into walls. I knew that would not work, and I can not use position absolute. I, then, proceeded by using poistion relative, and that's when I discovered that the player has recognized the walls on the very first left column, and all the other walls were still recognized by player. Now, my wall collison detection works perfectly */
+    /* I nneeded to add position relative, and itt was a solution to a problem I was encountering. The problem was that the the collision detection with the wall was working fine except for the very first left coloumn. The gamer was not recognizing that there are walls and that column. I knew that the problem was not in how I implement the collision detection of the walls becuase the gamer could detect the walls from all sides including the right side and left side of the gamer, so the I started to check how the walls has been created, and I discovered that no position was assigned to the walls, and as I played around. I started by adding position absolute, and the outcome was tha all the columns and rows inside the maze turned into walls. I knew that would not work, and I can not use position absolute. I, then, proceeded by using poistion relative, and that's when I discovered that the gamer has recognized the walls on the very first left column, and all the other walls were still recognized by gamer. Now, my wall collison detection works perfectly */
     position: relative; 
 }
 
 
-/* Styles for the player direction */
+/* Styles for the gamer direction */
 .up, .down, .left, .right {
     width: 100%;
     height: 100%;

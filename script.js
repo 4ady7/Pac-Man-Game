@@ -22,7 +22,7 @@
 
 
 // Adavnced secion notes
-// way to increase the level to be more harder is by changing the interval speed of the player movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
+// way to increase the level to be more harder is by changing the interval speed of the gamer movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
 
 
 
@@ -30,6 +30,28 @@
 
 
 
+// let colours = document.querySelectorAll('li');
+
+// for(let i = 0; i<10; i++) {
+//     colours[i].addEventListener('click', setColor);
+// }
+
+// function setColor() {
+//     gamer.style.backgroundColor = this.id;
+// }
+
+// let side = document.getElementById("side");
+// let closeside = document.getElementById("closeside");
+
+// // Show customizer when gamer is clicked
+// gamer.addEventListener("click", function() {
+//     side.style.transform = "translateX(0)";
+// });
+
+// // Hide customizer when "X" is clicked
+// closeside.addEventListener("click", function() {
+//     side.style.transform = "translateX(100%)";
+// });
 
 
 
@@ -38,7 +60,7 @@ let upPressed = false; //intializing the value of the variable upPressed to the 
 let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
 let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
 let rightPressed = false; //intializing the value of the variable rightPressed to the boolean value false 
-let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to not only speed up, but to also speed down
+let gamerSpeed = 1.25; // starting with a speed level 5 to allow the gamer to not only speed up, but to also speed down
 
 
 
@@ -46,13 +68,13 @@ let playerSpeed = 1.25; // starting with a speed level 5 to allow the player to 
 let main = document.querySelector('main');
 
 
-//Player = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
 let maze = [
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
-    [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the player is in the second column in this row, and there is an enemy in the ninth column in this row
+    [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
-    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the player should collect 
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
@@ -172,11 +194,11 @@ function mazeCreation() {
                 case 1: //walls are added by assigning walls to the locations of 1 in the maze 
                     block.classList.add('wall'); //the class wall is applied and connectd to the case 1 block, which is the surroundings walls of the maze. Case 1 child block represents the wall.
                     break;
-                case 2: //player added by assigning the player to the location of 2 in the maze
-                    block.id = 'player'; //the id player is connectd and added to the case 2 block, which is one of the child blocks, and the second child block is created. Case 2 child block represnts and reflects visullay and logically the player in the maze. 
+                case 2: //gamer added by assigning the gamer to the location of 2 in the maze
+                    block.id = 'gamer'; //the id gamer is connectd and added to the case 2 block, which is one of the child blocks, and the second child block is created. Case 2 child block represnts and reflects visullay and logically the gamer in the maze. 
                     let mouth = document.createElement('div'); //a div has just been created in the structure of the HTML file inisde the parent block div, and the div is assigned to the variable mouth 
-                    mouth.classList.add('mouth'); //the class mouth is applied to the case 2 block, and the Case 2 child block represnts and reflects visullay and logically the player in the maze, and now we are adding a mouth to the player, so that the location of 2 in the maze, which is the player, now have a mouth.
-                    block.appendChild(mouth); //mouth for the player added to the structure of the HTML file
+                    mouth.classList.add('mouth'); //the class mouth is applied to the case 2 block, and the Case 2 child block represnts and reflects visullay and logically the gamer in the maze, and now we are adding a mouth to the gamer, so that the location of 2 in the maze, which is the gamer, now have a mouth.
+                    block.appendChild(mouth); //mouth for the gamer added to the structure of the HTML file
                     break;
                 case 3: //enemies are added by assigning the enemies to the locations of 3 in the maze
                     block.classList.add('enemy'); //applying the class enemy to the blocks with locations of 3 in the maze. Case 3 child block represents the enemy
@@ -185,7 +207,7 @@ function mazeCreation() {
                     block.classList.add('mazeBorders'); //creating borders for the maze 
                     break;
                 default:
-                    block.classList.add('point'); //the points to be collected by the player are added 
+                    block.classList.add('point'); //the points to be collected by the gamer are added 
                     block.style.height = '1vh'; //the height of the points is adjusted down, because it seems that the the height was larger than 1vh
                     block.style.width = '1vh'; //the width of the points is adjusted, probably adjusted up
             }
@@ -205,8 +227,8 @@ mazeCreation(); //calling the function to create and populate the maze
 
 
 
-// the keyUp function is for stopping the movement when you stop pressing a certain direction key on the keyboard, and the scenario for not having this function will be: a player moving in a certain direction without stopping, and the only option you will have is just to change its direction to another direction as continues to go in the previous direction, but you will not be able to stop it from moveming once you initiated the movement. However, you might be able to create a zigZag movement if needed maybe when creating harder levels. 
-//Player movement.
+// the keyUp function is for stopping the movement when you stop pressing a certain direction key on the keyboard, and the scenario for not having this function will be: a gamer moving in a certain direction without stopping, and the only option you will have is just to change its direction to another direction as continues to go in the previous direction, but you will not be able to stop it from moveming once you initiated the movement. However, you might be able to create a zigZag movement if needed maybe when creating harder levels. 
+//gamer movement.
 function keyUp(event) { //event here is a parameter inside the function 
     // console.log(event.key) //Keyup event is being recorded only when the key is released. Most often, that happens only when you are stopping becuase you reached your final destiniation after you have collected all the points, or you are stopping because you are changing direction to the left, right, or doing a 180 and going in the opposite direction (backwards). 
     if (event.key === 'ArrowUp') { //event.key is a representation of the key that was pressed, and here you are checking if that key is equal to the following key name, which in this case is ArrowUp.
@@ -232,7 +254,7 @@ function keyDown(event) { //event here is a parameter inside the function
     //event.key is a representation of the key that was pressed
     // console.log(event.key); //keydown event is recorded a lot in the console as it is being recorded with every press on the keyboard even if it is on the same key.
 
-    //stopping and clearing any movement that has been initiated before initiating the player movement through the arrow key inputs. In my case, stopping the movement of the GUI buttons that has been initiated.
+    //stopping and clearing any movement that has been initiated before initiating the gamer movement through the arrow key inputs. In my case, stopping the movement of the GUI buttons that has been initiated.
     upPressed = false;
     downPressed = false;
     leftPressed = false;
@@ -255,31 +277,31 @@ function keyDown(event) { //event here is a parameter inside the function
     //Increasing or decreasing the speed of the playyer using the keyboard numbers on the keyboard keys 
     switch (event.key) {
         case '1':
-            playerSpeed = 1.05 //level 1 spped 
+            gamerSpeed = 1.05 //level 1 spped 
             break;
         case '2':
-            playerSpeed = 1.10 //level 2 speed 
+            gamerSpeed = 1.10 //level 2 speed 
             break;
         case '3':
-            playerSpeed = 1.15 //level 3 speed 
+            gamerSpeed = 1.15 //level 3 speed 
             break;
         case '4':
-            playerSpeed = 1.20 //level 4 speed 
+            gamerSpeed = 1.20 //level 4 speed 
             break;
         case '5':
-            playerSpeed = 1.25 //level 5 speed 
+            gamerSpeed = 1.25 //level 5 speed 
             break;
         case '6':
-            playerSpeed = 1.30 //level 6 speed 
+            gamerSpeed = 1.30 //level 6 speed 
             break;
         case '7':
-            playerSpeed = 1.35 //level 7 speed 
+            gamerSpeed = 1.35 //level 7 speed 
             break;
         case '8':
-            playerSpeed = 1.40 //level 8 speed 
+            gamerSpeed = 1.40 //level 8 speed 
             break;
         case '9':
-            playerSpeed = 2.45 //speed-up boost feature 
+            gamerSpeed = 2.45 //speed-up boost feature 
             break;
     }
 }
@@ -291,20 +313,20 @@ function keyDown(event) { //event here is a parameter inside the function
 
 
 
-//creating a function that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
-let encounteredEnemy = false; //initializing the variable encounteredEnemy with the boolean value false, which refers to a player that has not encountered an enemy
+//creating a function that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer
+let encounteredEnemy = false; //initializing the variable encounteredEnemy with the boolean value false, which refers to a gamer that has not encountered an enemy
 function enemyEncounter() {
-    //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
+    //checking if the gamer has encounter an enemy, and if the gamer has not encountered an enemy, then the variable encounteredEnemy is false which refers to a gamer that has not encountered an enemy, and if the gamer has indeed encountered an enemy, then the variable encounteredEnemy is true
     if (encounteredEnemy == false) {
-        enemyPLCol(); //so after encountering an enemy, the enemyPLCol function is called to activate the animation and remove a live from the player 
-        encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
+        enemyPLCol(); //so after encountering an enemy, the enemyPLCol function is called to activate the animation and remove a live from the gamer 
+        encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the gamer has encounter an enemy
 
-        //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
-        //So settimeout method keeps the previous state of a player has encountered an enemy for 3 seconds, and then changes the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy after the 3 second period.
-        //why I am doing this? to give the player a grace period to get away from the enemy after encountering an enemy. 
+        //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the gamer is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
+        //So settimeout method keeps the previous state of a gamer has encountered an enemy for 3 seconds, and then changes the variable encounteredEnemy back to boolean value false, meaning that the gamer is in a state that not encountered the enemy after the 3 second period.
+        //why I am doing this? to give the gamer a grace period to get away from the enemy after encountering an enemy. 
         setTimeout(() => {
             encounteredEnemy = false;
-            player.classList = ''; //removing any class linked to the player varible, which represents the player that we selected by the player ID.
+            gamer.classList = ''; //removing any class linked to the gamer varible, which represents the gamer that we selected by the gamer ID.
         }, 2500); //2500 here equals 2.5 seconds, because intervals are measured in 1000ths of a second 
     }
 }
@@ -318,132 +340,132 @@ function enemyEncounter() {
 
 
 
-const contactPortion = 2; //setting the collision Unit to 2 while testing prevents the player from getting stuck into the wall
-let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
-let playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player //const playerMouth to let playerMouth, why ? to be able to reassign the variable playerMouth again to the playerMouth by selecting through the mouth of the player 
-let playerTop = 0; //initializing a variable
-let playerLeft = 0; //initializing a variable
+const contactPortion = 2; //setting the collision Unit to 2 while testing prevents the gamer from getting stuck into the wall
+let gamer = document.querySelector('#gamer'); //selecting the gamer //const gamer to let gamer, why ? to be able to reassign the variable gamer again to the gamer by selecting through the gamer id 
+let gamerMouth = gamer.querySelector('.mouth'); //selecting the mouth of the gamer //const gamerMouth to let gamerMouth, why ? to be able to reassign the variable gamerMouth again to the gamerMouth by selecting through the mouth of the gamer 
+let gamerTop = 0; //initializing a variable
+let gamerLeft = 0; //initializing a variable
 
 
 
 
-function playerMovement() {
+function gamerMovement() {
     if (downPressed == true) {
-        //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
-        let currentPositon = player.getBoundingClientRect();
+        //the following 2 lines are just a way to see where the next movement for the gamer will be, but it is not responsible for moving the gamer. What you can do is You can use the console.log(newBottom), and you will get the predicted gamer next movement
+        let currentPositon = gamer.getBoundingClientRect();
         let newBottom = currentPositon.bottom + contactPortion;
-        let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom);
+        let gamerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom);
         // console.log(currentPositon.left)
-        let playerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom);
-        // console.log(playerCollisionDetectionBottomLeft)
-        if (playerCollisionDetectionBottomLeft.classList.contains('wall') == false && playerCollisionDetectionBottomRight.classList.contains('wall') == false && playerCollisionDetectionBottomLeft.classList.contains('mazeBorders') == false && playerCollisionDetectionBottomRight.classList.contains('mazeBorders') == false) {
-            playerTop = playerTop + playerSpeed;
-            player.style.top = playerTop + 'px';
+        let gamerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom);
+        // console.log(gamerCollisionDetectionBottomLeft)
+        if (gamerCollisionDetectionBottomLeft.classList.contains('wall') == false && gamerCollisionDetectionBottomRight.classList.contains('wall') == false && gamerCollisionDetectionBottomLeft.classList.contains('mazeBorders') == false && gamerCollisionDetectionBottomRight.classList.contains('mazeBorders') == false) {
+            gamerTop = gamerTop + gamerSpeed;
+            gamer.style.top = gamerTop + 'px';
         }
 
-        if (playerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
+        if (gamerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
-        if (playerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
+        if (gamerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
-        playerMouth.classList = 'down';
+        gamerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
         // scoreCount()
     }
 
     else if (upPressed == true) {
-        let currentPositon = player.getBoundingClientRect();
+        let currentPositon = gamer.getBoundingClientRect();
         let newUp = currentPositon.top - contactPortion;
-        // pcdul = playerCollisionDetectionUpLeft
+        // pcdul = gamerCollisionDetectionUpLeft
         let pcdul = document.elementFromPoint(currentPositon.left, newUp);
-        // pcdur = playerCollisionDetectionUpRight
+        // pcdur = gamerCollisionDetectionUpRight
         let pcdur = document.elementFromPoint(currentPositon.right, newUp);
         if (pcdul.classList.contains('wall') == false && pcdur.classList.contains('wall') == false && pcdul.classList.contains('mazeBorders') == false && pcdur.classList.contains('mazeBorders') == false) {
-            playerTop = playerTop - playerSpeed;
-            player.style.top = playerTop + 'px';
+            gamerTop = gamerTop - gamerSpeed;
+            gamer.style.top = gamerTop + 'px';
         }
 
 
-        //checking if the player has came in contact with an enemy
+        //checking if the gamer has came in contact with an enemy
         if (pcdul.classList.contains('enemy') == true) {
-            //if that's true, and the player came in contact with an enemy then display an alert 
+            //if that's true, and the gamer came in contact with an enemy then display an alert 
             // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
         if (pcdur.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!')
-            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
 
-        playerMouth.classList = 'up';
+        gamerMouth.classList = 'up';
         pointCollection(); //calling the function to collect the points when pressing the down arrow key on the key board 
         // one of the mistake I landed on when I was coding when I opted for copying, from where I coded this function before, the function for the point colllection, and a line of comment explaining it, but it seemed that I have also copied a closing bracket, and the result after pasting resulted in a disapearance of the whole maze. It took me time to figure it out, but I finally did figure it out 
     }
 
 
     else if (leftPressed == true) {
-        let currentPositon = player.getBoundingClientRect();
+        let currentPositon = gamer.getBoundingClientRect();
         let newLeft = currentPositon.left - contactPortion;
-        // pcdld = playerCollisionDetectionLeftDownward
+        // pcdld = gamerCollisionDetectionLeftDownward
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom);
-        // pcdlu = playerCollisionDetectionLeftUpward
+        // pcdlu = gamerCollisionDetectionLeftUpward
         let pcdlu = document.elementFromPoint(newLeft, currentPositon.top);
         if (pcdld.classList.contains('wall') == false && pcdlu.classList.contains('wall') == false && pcdld.classList.contains('mazeBorders') == false && pcdlu.classList.contains('mazeBorders') == false) {
-            playerLeft = playerLeft - playerSpeed;
-            player.style.left = playerLeft + 'px';
+            gamerLeft = gamerLeft - gamerSpeed;
+            gamer.style.left = gamerLeft + 'px';
         }
 
         if (pcdld.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
         if (pcdlu.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
-        playerMouth.classList = 'left';
+        gamerMouth.classList = 'left';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
 
     else if (rightPressed == true) {
-        // currentPLPositon = currentPlayerPositon
-        let currentPLPositon = player.getBoundingClientRect(); //optimize
+        // currentPLPositon = currentgamerPositon
+        let currentPLPositon = gamer.getBoundingClientRect(); //optimize
         let newRight = currentPLPositon.right + contactPortion; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
-        // pcdrd = playerCollisionDetectionRightDownward
+        // pcdrd = gamerCollisionDetectionRightDownward
         let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom);
-        // pcdru = playerCollisionDetectionRightUpward
+        // pcdru = gamerCollisionDetectionRightUpward
         let pcdru = document.elementFromPoint(newRight, currentPLPositon.top);
 
 
         //wall collisio detection 
         if (pcdrd.classList.contains('wall') == false && pcdru.classList.contains('wall') == false && pcdrd.classList.contains('mazeBorders') == false && pcdru.classList.contains('mazeBorders') == false) {
-            playerLeft = playerLeft + playerSpeed;
-            player.style.left = playerLeft + 'px';
-            // console.log(playerLeft);
+            gamerLeft = gamerLeft + gamerSpeed;
+            gamer.style.left = gamerLeft + 'px';
+            // console.log(gamerLeft);
         }
 
         if (pcdrd.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
         if (pcdru.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
-            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
 
 
-        playerMouth.classList = 'right';
+        gamerMouth.classList = 'right';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
 
@@ -457,11 +479,11 @@ function playerMovement() {
 
 
 
-//function for calling the the player to move 
-function callPlayertoMove() {
-    playerMoving = setInterval(playerMovement, 9); //assigning the setInterval to a variable playerMoving. This setInterval is calling the function for moving the player every 9th of a second
+//function for calling the the gamer to move 
+function callgamertoMove() {
+    gamerMoving = setInterval(gamerMovement, 9); //assigning the setInterval to a variable gamerMoving. This setInterval is calling the function for moving the gamer every 9th of a second
 }
-callPlayertoMove(); //calling the function for the player to start moving 
+callgamertoMove(); //calling the function for the gamer to start moving 
 
 
 
@@ -470,28 +492,28 @@ let totalPoints = 0; //initializing the variable totalPoints to 0
 
 
 function pointCollection() {
-    // let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the player collects.
+    // let onePoint = document.querySelector('.point') //this line of code in assoiation with another line below creates a cool effect, removes one point only from the maze with every point that the gamer collects.
 
     let point = document.querySelectorAll('.point');
     // console.log(point.length); //so now I know that we have 50 points in the maze. 
 
-    let playerPosition = player.getBoundingClientRect();
+    let gamerPosition = gamer.getBoundingClientRect();
     for (let i = 0; i < point.length; i++) {
         let positionOfPoint = point[i].getBoundingClientRect();
         if (
-            playerPosition.right > positionOfPoint.left &&
-            playerPosition.left < positionOfPoint.right &&
-            playerPosition.bottom > positionOfPoint.top && //this third line means that is the player’s bottom position below the point’s top position on the maze, which means that as a result of the player movement downwards, the player is now moving overlapping and over the point when the player's bottom position is larger than the point's top poistion
-            playerPosition.top < positionOfPoint.bottom
+            gamerPosition.right > positionOfPoint.left &&
+            gamerPosition.left < positionOfPoint.right &&
+            gamerPosition.bottom > positionOfPoint.top && //this third line means that is the gamer’s bottom position below the point’s top position on the maze, which means that as a result of the gamer movement downwards, the gamer is now moving overlapping and over the point when the gamer's bottom position is larger than the point's top poistion
+            gamerPosition.top < positionOfPoint.bottom
         ) {
-            // onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the player collects, so in total I am removing two points, one point that comes in contact with the player, and another does not. something like this could be added as power-up later on
+            // onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the gamer collects, so in total I am removing two points, one point that comes in contact with the gamer, and another does not. something like this could be added as power-up later on
             point[i].classList.remove('point');
             totalPoints = totalPoints + 1; //increasing the value of the variable totalPoints by 1 for each point collected 
             Pscore.innerHTML = totalPoints; //changing the score number and assigning it to the value of the variable totalPoints
 
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
-                clearInterval(playerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the player.
+                clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
                 // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
                 setTimeout(restart, 500) 
                 
@@ -521,10 +543,10 @@ function startGame() {
     // you can also use the following code display none, adnThis code will do same thing as setting opacity to 0, which results in displaying nothing.  
     startBttn.style.opacity = 0;
 
-    // Having the following 2 lines inside the function start game allows us to disable the movement of the player before the game starts, and only allow the player to move after the start button has been pressed 
-    document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
+    // Having the following 2 lines inside the function start game allows us to disable the movement of the gamer before the game starts, and only allow the gamer to move after the start button has been pressed 
+    document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the gamer when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
-    document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
+    document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the gamer 
 
     leftButton.addEventListener('click', lbttnClicked);
     rightButton.addEventListener('click', rbttnClicked);
@@ -545,7 +567,7 @@ startBttn.addEventListener("click", startGame);
 function removeStartButton() {
     startBttn.style.display = 'none';
 
-    //adding the loop inside the removeStartButton function, so that to only allow the player to move, when the removeStartButton function is called; in other word, to only allow the player to move after the start button have been pressed and the start button have disappeared, because I am calling the removeStartButton function inside the startGame function. For reference: setTimeout(removeStartButton, 3000).
+    //adding the loop inside the removeStartButton function, so that to only allow the gamer to move, when the removeStartButton function is called; in other word, to only allow the gamer to move after the start button have been pressed and the start button have disappeared, because I am calling the removeStartButton function inside the startGame function. For reference: setTimeout(removeStartButton, 3000).
     for (let theenemyOfEnemies of alltheEnemies) {
         //looping through each enemy, and assigning each enemy to a variable, and calling that variable theenemyOfEnemies
         enemyMovement(theenemyOfEnemies); //calling the function for the random enemy movements, giving it the variable theenemyOfEnemies as a parameter
@@ -578,18 +600,18 @@ function restart() {
 
 
 function restartFunction() {
-    document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the player when the key is pressed 
+    document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the gamer when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
-    document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the player 
+    document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the gamer 
     main.innerHTML = ""; //clearing the previous maze that was used in the last 
 
-    mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the player at the starting cell where the player first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
+    mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the gamer at the starting cell where the gamer first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
 
-    player = document.querySelector('#player'); //reassign the variable player again to the the player by selecting through the player id 
+    gamer = document.querySelector('#gamer'); //reassign the variable gamer again to the the gamer by selecting through the gamer id 
     alltheEnemies = document.querySelectorAll('.enemy'); //selecting the enemies after creating a new maze, and reassigning the enemies to the variable alltheEnemies is the solution that I was missing to get the enemy movement finally working
-    playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player after creating a new maze, and reassigning the mouth of the player to the variable playerMouth is the solution that I was missing to get the player mouth displayed after the restart button is clicked
-    playerTop = 0;
-    playerLeft = 0;
+    gamerMouth = gamer.querySelector('.mouth'); //selecting the mouth of the gamer after creating a new maze, and reassigning the mouth of the gamer to the variable gamerMouth is the solution that I was missing to get the gamer mouth displayed after the restart button is clicked
+    gamerTop = 0;
+    gamerLeft = 0;
     lives = 3; //reesting the variable lives back to 3 
 
     Pscore.innerHTML = 0; //reseting the displaed and visible score counter back to 0 when the restart function is called
@@ -651,15 +673,15 @@ console.log(lives); //Output is 3
 
 
 
-//creating a function to stop the player from moving 
-function stopPlayerMovement() {
-    clearInterval(playerMoving); //clearing to stop the player from moving.
+//creating a function to stop the gamer from moving 
+function stopgamerMovement() {
+    clearInterval(gamerMoving); //clearing to stop the gamer from moving.
 }
 
-//creating a function for the player to go back and move again during a player's state of being in the same place
-function playerReturntoMove() {
-    clearInterval(playerMoving); //clearing to prevent the player from get faster with each key press. I am clearing the variable assigned to the setinterval(). This setInterval was calling the function for moving the player every 9th of a second.
-    callPlayertoMove(); //calling the function for the player to move 
+//creating a function for the gamer to go back and move again during a gamer's state of being in the same place
+function gamerReturntoMove() {
+    clearInterval(gamerMoving); //clearing to prevent the gamer from get faster with each key press. I am clearing the variable assigned to the setinterval(). This setInterval was calling the function for moving the gamer every 9th of a second.
+    callgamertoMove(); //calling the function for the gamer to move 
 }
 
 
@@ -680,7 +702,7 @@ function createlives() {
     ul.appendChild(li);
 }
 
-//calling the function three times to create three lives, refering to the player's health 
+//calling the function three times to create three lives, refering to the gamer's health 
 createlives();
 createlives();
 createlives();
@@ -713,28 +735,7 @@ function removelive() {
 
 
 
-// let colours = document.querySelectorAll('li');
 
-// for(let i = 0; i<10; i++) {
-//     colours[i].addEventListener('click', setColor);
-// }
-
-// function setColor() {
-//     player.style.backgroundColor = this.id;
-// }
-
-// let side = document.getElementById("side");
-// let closeside = document.getElementById("closeside");
-
-// // Show customizer when player is clicked
-// player.addEventListener("click", function() {
-//     side.style.transform = "translateX(0)";
-// });
-
-// // Hide customizer when "X" is clicked
-// closeside.addEventListener("click", function() {
-//     side.style.transform = "translateX(100%)";
-// });
 
 
 
@@ -747,17 +748,17 @@ function removelive() {
 
 
 function gameEnded() {
-    clearInterval(playerMovement);
+    clearInterval(gamerMovement);
     saveData();
-    clearInterval(callPlayertoMove);
+    clearInterval(callgamertoMove);
     restart();
-    clearInterval(playerMovement);
+    clearInterval(gamerMovement);
     startBttn.addEventListener("click", restartFunction);
 
-    upPressed = false; //reseting the player key presses and movements  
-    downPressed = false; //reseting the player key presses and movements 
-    leftPressed = false; //reseting the player key presses and movements 
-    rightPressed = false; //reseting the player key presses and movements 
+    upPressed = false; //reseting the gamer key presses and movements  
+    downPressed = false; //reseting the gamer key presses and movements 
+    leftPressed = false; //reseting the gamer key presses and movements 
+    rightPressed = false; //reseting the gamer key presses and movements 
 }
 
 
@@ -785,7 +786,7 @@ function enemyMovement(theenemyOfEnemies) {
         
         //first option is for moving upwards
         if (trajectory == 1) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
             let newUp = enemyPositionForNewUp.top - 1; //selectiing the next top position, and assigning it to the variable newUp
             // ecdul = enemyCollisionDetectionUpLeft
@@ -806,12 +807,12 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (eecdul.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            if (eecdul.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            // if (ecdur.classList.contains('player') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            // if (ecdur.classList.contains('gamer') == true) {
+            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             // }
         }
 
@@ -833,12 +834,12 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdbl.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            if (ecdbl.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            if (ecdbr.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            if (ecdbr.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
 
@@ -859,12 +860,12 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdlB.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            if (ecdlB.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            if (ecdlT.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            if (ecdlT.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
 
@@ -886,12 +887,12 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdrB.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            if (ecdrB.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            if (ecdrT.classList.contains('player') == true) {
-                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
+            if (ecdrT.classList.contains('gamer') == true) {
+                enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
 
@@ -1070,32 +1071,32 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-//function for the collision between the player and the enemy 
+//function for the collision between the gamer and the enemy 
 function enemyPLCol() {
     let allEnemies = document.querySelectorAll('.enemy'); //selcecting the enemies and assigning them to the variable allEnemies
-    let playerPosition = player.getBoundingClientRect(); //selecting the position of the player 
+    let gamerPosition = gamer.getBoundingClientRect(); //selecting the position of the gamer 
     //looping through every enemy 
     for (let enemeyONE of allEnemies) {
         let positionOfEnemies = enemeyONE.getBoundingClientRect(); //selecting the position of an enemy 
-        //chcecking if the psoition of the player overlaps with the position of the enemy 
+        //chcecking if the psoition of the gamer overlaps with the position of the enemy 
         if (
-            playerPosition.right > positionOfEnemies.left &&
-            playerPosition.left < positionOfEnemies.right &&
-            playerPosition.bottom > positionOfEnemies.top &&
-            playerPosition.top < positionOfEnemies.bottom
+            gamerPosition.right > positionOfEnemies.left &&
+            gamerPosition.left < positionOfEnemies.right &&
+            gamerPosition.bottom > positionOfEnemies.top &&
+            gamerPosition.top < positionOfEnemies.bottom
         ) {
-            removelive(); //the removelive function is called to remove a live from the player's lives.
+            removelive(); //the removelive function is called to remove a live from the gamer's lives.
             lives = lives - 1;
-            player.classList.add('hit');
-            stopPlayerMovement();
+            gamer.classList.add('hit');
+            stopgamerMovement();
             setTimeout(() => {
-                playerReturntoMove(); //calling the function that clears the interval for the movements of the player to stop the player from moving 
-                player.classList.remove('hit');
-            }, 1500); //stopping the player from moving for 1.5 seconds //1500 here equals 1.5 seconds, because intervals are measured in 1000ths of a second 
+                gamerReturntoMove(); //calling the function that clears the interval for the movements of the gamer to stop the gamer from moving 
+                gamer.classList.remove('hit');
+            }, 1500); //stopping the gamer from moving for 1.5 seconds //1500 here equals 1.5 seconds, because intervals are measured in 1000ths of a second 
 
             if (lives == 0) {
-                player.classList.remove('hit'); //removing the hit class from the player in case the player was down to only 1 and then the player has been hit by 2 enemies at the same exact time, so preventing errors in the console
-                player.classList.add('dead'); //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
+                gamer.classList.remove('hit'); //removing the hit class from the gamer in case the gamer was down to only 1 and then the gamer has been hit by 2 enemies at the same exact time, so preventing errors in the console
+                gamer.classList.add('dead'); //if that's true, and the gamer came in contact with an enemy, then add the dead animation to the gamer 
                 gameEnded();
                 createlives();
                 createlives();
@@ -1119,9 +1120,9 @@ function enemyPLCol() {
 
 
 
-//could not name this function player, the game crashes, I think because it is conflicting with the class player 
-function playerInfo(nameOfPlayer, scorePoints) {
-    localStorage.setItem(nameOfPlayer, scorePoints);//storing the parameter nameOfPlayer as the key, and the parameter Pscore as the value
+//could not name this function gamer, the game crashes, I think because it is conflicting with the class gamer 
+function gamerInfo(nameOfgamer, scorePoints) {
+    localStorage.setItem(nameOfgamer, scorePoints);//storing the parameter nameOfgamer as the key, and the parameter Pscore as the value
     //local storage to save the name of the user, and their score of points after they have died after losing all of their 3 lives 
 }
 
@@ -1130,9 +1131,9 @@ function leaderboardCreation() {
 
     //looping through each item in the local storage
         for (let i = 0; i < localStorage.length; i++) {
-            let playerName = localStorage.key(i);//assigning the key of each item in local storage to the variable playerName
-            let points = parseInt(localStorage.getItem(playerName));//assigning the value of each item in local storage to the variable points, and using parseInt() to convert the string to the closest whole number 
-            allResults.push([playerName, points]);// Storing the array of 2 variables into the arry allResults
+            let gamerName = localStorage.key(i);//assigning the key of each item in local storage to the variable gamerName
+            let points = parseInt(localStorage.getItem(gamerName));//assigning the value of each item in local storage to the variable points, and using parseInt() to convert the string to the closest whole number 
+            allResults.push([gamerName, points]);// Storing the array of 2 variables into the arry allResults
         }
     
         //sortting the scores descndingly from greatest to smallest number of points collected  
@@ -1150,13 +1151,13 @@ function leaderboardCreation() {
 
         //looping through each array inside the variable highestOnes, and assigning the value of the smaller array to the vatiable element. While element[0] and element[1] represent the values inisde the smallerr array.
         highestOnes.forEach(function(element) {
-            addPlayerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable playerName becuase playerName is the first parameter/argument of the function addPlayerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addPlayerInfoToLeaderboard. 
+            addgamerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable gamerName becuase gamerName is the first parameter/argument of the function addgamerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addgamerInfoToLeaderboard. 
         });
     }
     
-    function addPlayerInfoToLeaderboard(playerName, points) {
+    function addgamerInfoToLeaderboard(gamerName, points) {
         let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-        addlitoLeaderboard.innerHTML = `${playerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+        addlitoLeaderboard.innerHTML = `${gamerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
     
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
         listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
@@ -1168,12 +1169,12 @@ function leaderboardCreation() {
 
     
     function saveData() {
-        let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the player for the username, and assigning that username to the variable name 
+        let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the gamer for the username, and assigning that username to the variable name 
         let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
     
-        playerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfPlayer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that player has collected during that game.
+        gamerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfgamer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that gamer has collected during that game.
     
-        //the leader board were displaying duplicates after the saving the player info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
+        //the leader board were displaying duplicates after the saving the gamer info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
         listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list 
     
