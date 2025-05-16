@@ -318,7 +318,7 @@ function enemyEncounter() {
 
 
 
-const collisionUnit = 2; //setting the collision Unit to 2 while testing prevents the player from getting stuck into the wall
+const contactPortion = 2; //setting the collision Unit to 2 while testing prevents the player from getting stuck into the wall
 let player = document.querySelector('#player'); //selecting the player //const player to let player, why ? to be able to reassign the variable player again to the player by selecting through the player id 
 let playerMouth = player.querySelector('.mouth'); //selecting the mouth of the player //const playerMouth to let playerMouth, why ? to be able to reassign the variable playerMouth again to the playerMouth by selecting through the mouth of the player 
 let playerTop = 0; //initializing a variable
@@ -331,7 +331,7 @@ function playerMovement() {
     if (downPressed == true) {
         //the following 2 lines are just a way to see where the next movement for the player will be, but it is not responsible for moving the player. What you can do is You can use the console.log(newBottom), and you will get the predicted player next movement
         let currentPositon = player.getBoundingClientRect();
-        let newBottom = currentPositon.bottom + collisionUnit;
+        let newBottom = currentPositon.bottom + contactPortion;
         let playerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom);
         // console.log(currentPositon.left)
         let playerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom);
@@ -358,7 +358,7 @@ function playerMovement() {
 
     else if (upPressed == true) {
         let currentPositon = player.getBoundingClientRect();
-        let newUp = currentPositon.top - collisionUnit;
+        let newUp = currentPositon.top - contactPortion;
         // pcdul = playerCollisionDetectionUpLeft
         let pcdul = document.elementFromPoint(currentPositon.left, newUp);
         // pcdur = playerCollisionDetectionUpRight
@@ -390,7 +390,7 @@ function playerMovement() {
 
     else if (leftPressed == true) {
         let currentPositon = player.getBoundingClientRect();
-        let newLeft = currentPositon.left - collisionUnit;
+        let newLeft = currentPositon.left - contactPortion;
         // pcdld = playerCollisionDetectionLeftDownward
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom);
         // pcdlu = playerCollisionDetectionLeftUpward
@@ -417,7 +417,7 @@ function playerMovement() {
     else if (rightPressed == true) {
         // currentPLPositon = currentPlayerPositon
         let currentPLPositon = player.getBoundingClientRect(); //optimize
-        let newRight = currentPLPositon.right + collisionUnit; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
+        let newRight = currentPLPositon.right + contactPortion; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
         // pcdrd = playerCollisionDetectionRightDownward
         let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom);
         // pcdru = playerCollisionDetectionRightUpward
@@ -979,7 +979,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px';
             }
             else {
-                direction = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8);
             }
         };
 
