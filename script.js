@@ -376,6 +376,11 @@ function gamerMovement() {
             enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
+        if (downwardMiddle.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        }
+
         gamerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
@@ -406,6 +411,11 @@ function gamerMovement() {
 
         if (pcdur.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!')
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        }
+
+        if (upwardMiddle.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
@@ -441,6 +451,12 @@ function gamerMovement() {
             enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
 
+
+        if (leftMiddle.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        }
+
         gamerMouth.classList = 'left';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
@@ -471,6 +487,11 @@ function gamerMovement() {
         }
 
         if (pcdru.classList.contains('enemy') == true) {
+            // alert('An enemy has been encountered!!! game over!!!');
+            enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        }
+
+        if (rightMiddle.classList.contains('enemy') == true) {
             // alert('An enemy has been encountered!!! game over!!!');
             enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         }
@@ -1036,7 +1057,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
             // The next comment is an old insight during my work, and is not currently implemented // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving; that was because of the problem that the value of the variable eecdul was showing in the console as null.
-            if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdur.classList.contains('mazeBorders') == false) {
+            if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false && upwardMiddle.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdur.classList.contains('mazeBorders') == false && upwardMiddle.classList.contains('mazeBorders') == false) {
                 enemytop -= 1;
                 theenemyOfEnemies.style.top = enemytop + 'px';
                 // console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
@@ -1072,7 +1093,7 @@ function enemyMovement(theenemyOfEnemies) {
             
             // ecdbr = enemyCollisionDetectionBottomRight
             let ecdbr = document.elementFromPoint(enemyPositionForNewDown.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the bottom position of the enemy. 
-            if (ecdbl && ecdbr && ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdbr.classList.contains('mazeBorders') == false) {
+            if (ecdbl && ecdbr && ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false && downwardMiddle.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdbr.classList.contains('mazeBorders') == false && downwardMiddle.classList.contains('mazeBorders') == false) {
                 enemytop += 1; //incrementing the enemy position by 1, and assigning it to the variable enemytop
                 theenemyOfEnemies.style.top = enemytop + 'px'; //applying the changes and moving the enemy to the bottom 
             }
@@ -1105,7 +1126,7 @@ function enemyMovement(theenemyOfEnemies) {
 
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPositionForNewLeft.top);
-            if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false && ecdlT.classList.contains('mazeBorders') == false) {
+            if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false && leftMiddle.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false && ecdlT.classList.contains('mazeBorders') == false && leftMiddle.classList.contains('mazeBorders') == false) {
                 //one of the type mistakes I made is when typing the code for enemy wall collision detection is that I typed enemytop variable also for the right and left movement trajectory, however moments later I realized my mistake and changed the variable enemytop to the variable enemyleft, and now my enemy moves to the left and to the right.
                 enemyleft -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
@@ -1140,7 +1161,7 @@ function enemyMovement(theenemyOfEnemies) {
 
             // ecdrT = enemyCollisionDetectionRightTop
             let ecdrT = document.elementFromPoint(newRight, enemyPositionForNewRight.top);
-            if (ecdrB && ecdrT && ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false && ecdrT.classList.contains('mazeBorders') == false) {
+            if (ecdrB && ecdrT && ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false && rightMiddle.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false && ecdrT.classList.contains('mazeBorders') == false && rightMiddle.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
