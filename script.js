@@ -291,12 +291,12 @@ function keyDown(event) { //event here is a parameter inside the function
 
 
 
-
+//creating a function that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
 let encounteredEnemy = false; //initializing the variable encounteredEnemy with the boolean value false, which refers to a player that has not encountered an enemy
 function enemyEncounter() {
     //checking if the player has encounter an enemy, and if the player has not encountered an enemy, then the variable encounteredEnemy is false which refers to a player that has not encountered an enemy, and if the player has indeed encountered an enemy, then the variable encounteredEnemy is true
     if (encounteredEnemy == false) {
-        enemyColtemp(); //so after encountering an enemy, the enemyColtemp function is called to activate the animation and remove a live from the player 
+        enemyPLCol(); //so after encountering an enemy, the enemyPLCol function is called to activate the animation and remove a live from the player 
         encounteredEnemy = true; //then the variable encounteredEnemy is changed to true, meaning that the player has encounter an enemy
 
         //using the settimeout method to change the variable encounteredEnemy back to boolean value false, meaning that the player is in a state that not encountered the enemy recently, and can be encountered by the enemey again. 
@@ -305,7 +305,7 @@ function enemyEncounter() {
         setTimeout(() => {
             encounteredEnemy = false;
             player.classList = ''
-        }, 3000); //3000 here equals 3 seconds, because intervals are measured in 1000ths of a second 
+        }, 2500); //3000 here equals 2.5 seconds, because intervals are measured in 1000ths of a second 
     }
 }
 
@@ -782,6 +782,7 @@ function enemyMovement(theenemyOfEnemies) {
     MovementofEnemy = setInterval(function () {
         if (lives == 0) { direction = 0 }; //stopping the enemy movement 
         if (totalPoints == 50) { direction = 0 }; //stopping the enemy movement 
+        enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
         
         //first option is for moving upwards
         if (direction == 1) {
@@ -1040,8 +1041,8 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-
-function enemyColtemp() {
+//function for the collision between the player and the enemy 
+function enemyPLCol() {
     let allEnemies = document.querySelectorAll('.enemy'); //selcecting the enemies and assigning them to the variable allEnemies
     let playerPosition = player.getBoundingClientRect(); //selecting the position of the player 
     //looping through every enemy 
