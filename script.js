@@ -313,7 +313,7 @@ function keyDown(event) { //event here is a parameter inside the function
 
 
 
-//creating a function that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer
+//creating a function that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer
 let encounteredEnemy = false; //initializing the variable encounteredEnemy with the boolean value false, which refers to a gamer that has not encountered an enemy
 function enemyEncounter() {
     //checking if the gamer has encounter an enemy, and if the gamer has not encountered an enemy, then the variable encounteredEnemy is false which refers to a gamer that has not encountered an enemy, and if the gamer has indeed encountered an enemy, then the variable encounteredEnemy is true
@@ -327,7 +327,7 @@ function enemyEncounter() {
         setTimeout(() => {
             encounteredEnemy = false;
             gamer.classList = ''; //removing any class linked to the gamer varible, which represents the gamer that we selected by the gamer ID.
-        }, 3500); //3500 here equals 3.5 seconds, because intervals are measured in 1000ths of a second 
+        }, 3100); //3500 here equals 3.1 seconds, because intervals are measured in 1000ths of a second 
     }
 }
 
@@ -340,7 +340,7 @@ function enemyEncounter() {
 
 
 
-const contactPortion = 2; //setting the collision Unit to 2 while testing prevents the gamer from getting stuck into the wall
+const contactPortion = 1; //setting the collision Unit to 2 while testing prevents the gamer from getting stuck into the wall
 let gamer = document.querySelector('#gamer'); //selecting the gamer //const gamer to let gamer, why ? to be able to reassign the variable gamer again to the gamer by selecting through the gamer id 
 let gamerMouth = gamer.querySelector('.mouth'); //selecting the mouth of the gamer //const gamerMouth to let gamerMouth, why ? to be able to reassign the variable gamerMouth again to the gamerMouth by selecting through the mouth of the gamer 
 let gamerTop = 0; //initializing a variable
@@ -351,7 +351,7 @@ let gamerLeft = 0; //initializing a variable
 
 function gamerMovement() {
     if (downPressed == true) {
-        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         //the following 2 lines are just a way to see where the next movement for the gamer will be, but it is not responsible for moving the gamer. What you can do is You can use the console.log(newBottom), and you will get the predicted gamer next movement
         let currentPositon = gamer.getBoundingClientRect();
         let newBottom = currentPositon.bottom + contactPortion;
@@ -367,27 +367,12 @@ function gamerMovement() {
             gamer.style.top = gamerTop + 'px';
         }
 
-        // if (gamerCollisionDetectionBottomLeft.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-        // if (gamerCollisionDetectionBottomRight.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-        // if (downwardMiddle.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
         gamerMouth.classList = 'down';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
 
     else if (upPressed == true) {
-        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         let currentPositon = gamer.getBoundingClientRect();
         let newUp = currentPositon.top - contactPortion;
 
@@ -404,24 +389,6 @@ function gamerMovement() {
         }
 
 
-        // //checking if the gamer has came in contact with an enemy
-        // if (pcdul.classList.contains('enemy') == true) {
-        //     //if that's true, and the gamer came in contact with an enemy then display an alert 
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-        // if (pcdur.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!')
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-        // if (upwardMiddle.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-
         gamerMouth.classList = 'up';
         pointCollection(); //calling the function to collect the points when pressing the down arrow key on the key board 
         // one of the mistake I landed on when I was coding when I opted for copying, from where I coded this function before, the function for the point colllection, and a line of comment explaining it, but it seemed that I have also copied a closing bracket, and the result after pasting resulted in a disapearance of the whole maze. It took me time to figure it out, but I finally did figure it out 
@@ -429,7 +396,7 @@ function gamerMovement() {
 
 
     else if (leftPressed == true) {
-        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         let currentPositon = gamer.getBoundingClientRect();
         let newLeft = currentPositon.left - contactPortion;
         // pcdld = gamerCollisionDetectionLeftDownward
@@ -444,28 +411,12 @@ function gamerMovement() {
             gamer.style.left = gamerLeft + 'px';
         }
 
-        // if (pcdld.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-        // if (pcdlu.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-
-        // if (leftMiddle.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
         gamerMouth.classList = 'left';
         pointCollection() //calling the function to collect the points when pressing the down arrow key on the key board 
     }
 
     else if (rightPressed == true) {
-        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+        enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
         // currentPLPositon = currentgamerPositon
         let currentPLPositon = gamer.getBoundingClientRect(); //optimize
         let newRight = currentPLPositon.right + contactPortion; //we need to change the collision unit to 2, especially when moving to the right, instead of 1 
@@ -484,21 +435,6 @@ function gamerMovement() {
             gamer.style.left = gamerLeft + 'px';
             // console.log(gamerLeft);
         }
-
-        // if (pcdrd.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-        // if (pcdru.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
-
-        // if (rightMiddle.classList.contains('enemy') == true) {
-        //     // alert('An enemy has been encountered!!! game over!!!');
-        //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-        // }
 
 
 
@@ -540,7 +476,7 @@ function nextStage() {
 
 //function for calling the the gamer to move 
 function callgamertoMove() {
-    gamerMoving = setInterval(gamerMovement, 9); //assigning the setInterval to a variable gamerMoving. This setInterval is calling the function for moving the gamer every 9th of a second
+    gamerMoving = setInterval(gamerMovement, 20); //assigning the setInterval to a variable gamerMoving. This setInterval is calling the function for moving the gamer every 9th of a second
 }
 callgamertoMove(); //calling the function for the gamer to start moving 
 
@@ -1047,9 +983,9 @@ function enemyMovement(theenemyOfEnemies) {
         
         //first option is for moving upwards
         if (trajectory == 1) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
-            let newUp = enemyPositionForNewUp.top - 1; //selectiing the next top position, and assigning it to the variable newUp
+            let newUp = enemyPositionForNewUp.top - contactPortion; //selectiing the next top position, and assigning it to the variable newUp
 
             let upwardMiddle = document.elementFromPoint((enemyPositionForNewUp.left + enemyPositionForNewUp.right)/2, newUp);
 
@@ -1070,27 +1006,15 @@ function enemyMovement(theenemyOfEnemies) {
                 //if it contains a wall, then randomly change the trajectory
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (eecdul && eecdul.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-    
-            // if (ecdur && ecdur.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (upwardMiddle && upwardMiddle.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         }
 
 
         if (trajectory == 2) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewDown
 
             //why newBottom have to have +, and not - here ? is it because we are moving in a different trajectory. Because we are moving downwar, and addition pushes the enemy downwards. 
-            let newBottom = enemyPositionForNewDown.bottom + 1; //selecting the next new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
+            let newBottom = enemyPositionForNewDown.bottom + contactPortion; //selecting the next new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
             // ecdbl = enemyCollisionDetectionBottomLeft
             let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
             
@@ -1105,26 +1029,14 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (ecdbl && ecdbl.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-    
-            // if (ecdbr && ecdbr.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (downwardMiddle && downwardMiddle.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         };
 
 
 
         if (trajectory == 3) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewLeft = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewLeft
-            let newLeft = enemyPositionForNewLeft.left - 1; //selectiing the next left position, and assigning it to the variable newLeft
+            let newLeft = enemyPositionForNewLeft.left - contactPortion; //selectiing the next left position, and assigning it to the variable newLeft
             // ecdlB = enemyCollisionDetectionLeftBottom
             let ecdlB = document.elementFromPoint(newLeft, enemyPositionForNewLeft.bottom);
 
@@ -1139,27 +1051,15 @@ function enemyMovement(theenemyOfEnemies) {
             } else {
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (ecdlB && ecdlB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-    
-            // if (ecdlT && ecdlT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (leftMiddle && leftMiddle.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         };
 
 
 
         if (trajectory == 4) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewRight = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewRight
             //why newRight have to have +, and not - here ? is it because we are moving in a different trajectory. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left trajectory. 
-            let newRight = enemyPositionForNewRight.right + 1; //selectiing the next right position, and assigning it to the variable newRight
+            let newRight = enemyPositionForNewRight.right + contactPortion; //selectiing the next right position, and assigning it to the variable newRight
 
             // ecdrB = enemyCollisionDetectionRightBottom
             let ecdrB = document.elementFromPoint(newRight, enemyPositionForNewRight.bottom);
@@ -1174,19 +1074,6 @@ function enemyMovement(theenemyOfEnemies) {
             } else {
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (ecdrB && ecdrB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-    
-            // //checking for the element existance 
-            // if (ecdrT && ecdrT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (rightMiddle && rightMiddle.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         };
 
 
@@ -1196,10 +1083,10 @@ function enemyMovement(theenemyOfEnemies) {
         // more enemy collision diagonally
         // trajectory == 5 is for right-bottom collision detction
         if (trajectory == 5) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
-            let newRight = enemyPositionForDiagonalRightBottom.right + 1;
-            let newBottom = enemyPositionForDiagonalRightBottom.bottom + 1;
+            let newRight = enemyPositionForDiagonalRightBottom.right + contactPortion;
+            let newBottom = enemyPositionForDiagonalRightBottom.bottom + contactPortion;
 
 
             // ecdbr = enemyCollisionDetectionBottomRight
@@ -1220,28 +1107,16 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (ecdbr && ecdbr.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (DRB && DRB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (ecdrB && ecdrB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         };
 
 
 
         // trajectory == 6 is for right-upward collision detction
         if (trajectory == 6) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalRightUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightUpwards
-            let newRight = enemyPositionForDiagonalRightUpwards.right + 1;
-            let newUp = enemyPositionForDiagonalRightUpwards.top - 1;
+            let newRight = enemyPositionForDiagonalRightUpwards.right + contactPortion;
+            let newUp = enemyPositionForDiagonalRightUpwards.top - contactPortion;
 
             // ecdur = enemyCollisionDetectionUpRight
             let ecdur = document.elementFromPoint(enemyPositionForDiagonalRightUpwards.right, newUp);
@@ -1261,28 +1136,16 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (ecdur && ecdur.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (DRT && DRT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (ecdrT && ecdrT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         };
 
 
 
         // trajectory == 7 is for left-bottom collision detction
         if (trajectory == 7) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalLeftBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftBottom
-            let newLeft = enemyPositionForDiagonalLeftBottom.left - 1;
-            let newBottom = enemyPositionForDiagonalLeftBottom.bottom + 1;
+            let newLeft = enemyPositionForDiagonalLeftBottom.left - contactPortion;
+            let newBottom = enemyPositionForDiagonalLeftBottom.bottom + contactPortion;
 
             // ecdbl = enemyCollisionDetectionBottomLeft
             let ecdbl = document.elementFromPoint(enemyPositionForDiagonalLeftBottom.left, newBottom); 
@@ -1302,28 +1165,16 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (ecdbl && ecdbl.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (DLB && DLB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (ecdlB && ecdlB.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         };
 
 
 
         // trajectory == 8 is for left-upward collision detction
         if (trajectory == 8) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalLeftUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftUpwards
-            let newLeft = enemyPositionForDiagonalLeftUpwards.left - 1;
-            let newUp = enemyPositionForDiagonalLeftUpwards.top - 1;
+            let newLeft = enemyPositionForDiagonalLeftUpwards.left - contactPortion;
+            let newUp = enemyPositionForDiagonalLeftUpwards.top - contactPortion;
 
             // ecdul = enemyCollisionDetectionUpLeft
             let eecdul = document.elementFromPoint(enemyPositionForDiagonalLeftUpwards.left, newUp);
@@ -1342,18 +1193,6 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 trajectory = Math.ceil(Math.random() * 8);
             }
-
-            // if (eecdul && eecdul.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (DLU && DLU.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
-
-            // if (ecdlT && ecdlT.classList.contains('gamer') == true) {
-            //     enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
-            // }
         }
 
 
@@ -1361,7 +1200,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         // console.log(enemytop); //shhowing the enemy movement along the vertical line 
         // console.log(enemyleft); //shhowing the enemy movement along the horizontal line 
-    }, 10);
+    }, 20);
 }
 
 
@@ -1420,9 +1259,12 @@ function enemyMovement(theenemyOfEnemies) {
 function enemyPLCol() {
     let allEnemies = document.querySelectorAll('.enemy'); //selcecting the enemies and assigning them to the variable allEnemies
     let gamerPosition = gamer.getBoundingClientRect(); //selecting the position of the gamer 
+    console.log("will the gamer interacted with the enemy? let see the gamer's position: ", gamerPosition);
     //looping through every enemy 
     for (let enemeyONE of allEnemies) {
         let positionOfEnemies = enemeyONE.getBoundingClientRect(); //selecting the position of an enemy 
+        console.log("will the enemy interacted with the gamer? let's see the enemy's position: ", positionOfEnemies);
+        
         //chcecking if the psoition of the gamer overlaps with the position of the enemy 
         if (
             gamerPosition.right > positionOfEnemies.left &&
@@ -1430,6 +1272,9 @@ function enemyPLCol() {
             gamerPosition.bottom > positionOfEnemies.top &&
             gamerPosition.top < positionOfEnemies.bottom 
         ) {
+            //checking when they interacted 
+            console.log("the gamer interacted with the enemy: ", gamerPosition);
+            console.log("the enemy interacted with the gamer: ", positionOfEnemies);
             removelive(); //the removelive function is called to remove a live from the gamer's lives.
             lives = lives - 1; //removing 1 from the variable, and the variable lives was assigned to the length/number of the the lists that I have inside the unordered list inisde the div with the class live s
             gamer.classList.add('hit'); //adding the class hit to the gamer to display the hit animation
