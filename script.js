@@ -486,6 +486,10 @@ callgamertoMove(); //calling the function for the gamer to start moving
 
 
 
+
+let stages = document.querySelector('#CurrentStage'); //selecting the paragraph inisde the div with class levels, and that levels paragraph was initially set to 0, initially.
+let currentLevel = 1; //initializing the variable currentLevel to 1
+
 let Pscore = document.querySelector('#Pscore'); //selecting the paragraph inisde the div with class score, and that score paragraph was initially set to 0, initially.
 let totalPoints = 0; //initializing the variable totalPoints to 0
 
@@ -521,6 +525,8 @@ function pointCollection() {
                 for (let index = 0; index < lostlives; index++) {
                     createlives();
                 }
+                currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
+                stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
             }
         }
     }
@@ -575,8 +581,7 @@ function removeStartButton() {
 
 
 
-let stages = document.querySelector('#CurrentStage'); //selecting the paragraph inisde the div with class levels, and that levels paragraph was initially set to 0, initially.
-let currentLevel = 1; //initializing the variable currentLevel to 1
+
 
 //function to have a restart button to restart the game
 function restart() {
@@ -595,8 +600,6 @@ function restart() {
     createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
     // createWall();
     // createWall();
-    currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
-    stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
 }
 
 
