@@ -906,6 +906,29 @@ function restartFunction() {
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the gamer when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the gamer 
+    
+    
+    if (currentLevel == 13) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+        maze = [
+            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
+            [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
+            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], // 0 represents the points that the gamer should collect 
+            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there was an enemy here in the sixth column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4],
+            [4, 0, 0, 0, 0, 0, 0, 0, 0, 4], //there is an enemy in the second column in this row, but now after removing the manually added enemy, I am adding the enemy using a function, and I am adding it enemy in a any place where is a point 
+            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4] //the last row is also filled with only walls 
+        ];
+        createEnemy();
+        createEnemy();
+        createEnemy();
+        for (let index = 0; index < 10; index++) {
+            createWall();
+        }
+    }
+    
     main.innerHTML = ""; //clearing the previous maze that was used in the last 
 
     mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the gamer at the starting cell where the gamer first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
@@ -1110,11 +1133,11 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (eecdul.classList.contains('gamer') == true) {
+            if (eecdul && eecdul.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            if (ecdur.classList.contains('gamer') == true) {
+            if (ecdur && ecdur.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         }
@@ -1137,11 +1160,11 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdbl.classList.contains('gamer') == true) {
+            if (ecdbl && ecdbl.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            if (ecdbr.classList.contains('gamer') == true) {
+            if (ecdbr && ecdbr.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
@@ -1163,11 +1186,11 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdlB.classList.contains('gamer') == true) {
+            if (ecdlB && ecdlB.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            if (ecdlT.classList.contains('gamer') == true) {
+            if (ecdlT && ecdlT.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
@@ -1190,11 +1213,11 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdrB.classList.contains('gamer') == true) {
+            if (ecdrB && ecdrB.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
     
-            if (ecdrT.classList.contains('gamer') == true) {
+            if (ecdrT && ecdrT.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
@@ -1230,15 +1253,15 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdbr.classList.contains('gamer') == true) {
+            if (ecdbr && ecdbr.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (DRB.classList.contains('gamer') == true) {
+            if (DRB && DRB.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (ecdrB.classList.contains('gamer') == true) {
+            if (ecdrB && ecdrB.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
@@ -1270,15 +1293,15 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdur.classList.contains('gamer') == true) {
+            if (ecdur && ecdur.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (DRT.classList.contains('gamer') == true) {
+            if (DRT && DRT.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (ecdrT.classList.contains('gamer') == true) {
+            if (ecdrT && ecdrT.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
@@ -1310,15 +1333,15 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (ecdbl.classList.contains('gamer') == true) {
+            if (ecdbl && ecdbl.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (DLB.classList.contains('gamer') == true) {
+            if (DLB && DLB.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (ecdlB.classList.contains('gamer') == true) {
+            if (ecdlB && ecdlB.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         };
@@ -1349,15 +1372,15 @@ function enemyMovement(theenemyOfEnemies) {
                 trajectory = Math.ceil(Math.random() * 8);
             }
 
-            if (eecdul.classList.contains('gamer') == true) {
+            if (eecdul && eecdul.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (DLU.classList.contains('gamer') == true) {
+            if (DLU && DLU.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
 
-            if (ecdlT.classList.contains('gamer') == true) {
+            if (ecdlT && ecdlT.classList.contains('gamer') == true) {
                 enemyEncounter();//calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.5 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             }
         }
