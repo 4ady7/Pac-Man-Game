@@ -776,15 +776,15 @@ let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the ene
 console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
 
 function enemyMovement(theenemyOfEnemies) {
-    let direction = Math.ceil(Math.random() * 8);
+    let trajectory = Math.ceil(Math.random() * 8);
     let enemytop = 0;
     let enemyleft = 0;
     MovementofEnemy = setInterval(function () {
-        if (lives == 0) { direction = 0 }; //stopping the enemy movement 
-        if (totalPoints == 50) { direction = 0 }; //stopping the enemy movement 
+        if (lives == 0) { trajectory = 0 }; //stopping the enemy movement 
+        if (totalPoints == 50) { trajectory = 0 }; //stopping the enemy movement 
         
         //first option is for moving upwards
-        if (direction == 1) {
+        if (trajectory == 1) {
             enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
             let newUp = enemyPositionForNewUp.top - 1; //selectiing the next top position, and assigning it to the variable newUp
@@ -802,8 +802,8 @@ function enemyMovement(theenemyOfEnemies) {
                 // console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
             }
             else {
-                //if it contains a wall, then randomly change the direction
-                direction = Math.ceil(Math.random() * 8);
+                //if it contains a wall, then randomly change the trajectory
+                trajectory = Math.ceil(Math.random() * 8);
             }
 
             if (eecdul.classList.contains('player') == true) {
@@ -816,10 +816,10 @@ function enemyMovement(theenemyOfEnemies) {
         }
 
 
-        if (direction == 2) {
+        if (trajectory == 2) {
             let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewDown
 
-            //why newBottom have to have +, and not - here ? is it because we are moving in a different direction. Because we are moving downwar, and addition pushes the enemy downwards. 
+            //why newBottom have to have +, and not - here ? is it because we are moving in a different trajectory. Because we are moving downwar, and addition pushes the enemy downwards. 
             let newBottom = enemyPositionForNewDown.bottom + 1; //selecting the next new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
             // ecdbl = enemyCollisionDetectionBottomLeft
             let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
@@ -830,7 +830,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px'; //applying the changes and moving the enemy to the bottom 
             }
             else {
-                direction = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8);
             }
 
             if (ecdbl.classList.contains('player') == true) {
@@ -844,7 +844,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-        if (direction == 3) {
+        if (trajectory == 3) {
             let enemyPositionForNewLeft = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewLeft
             let newLeft = enemyPositionForNewLeft.left - 1; //selectiing the next left position, and assigning it to the variable newLeft
             // ecdlB = enemyCollisionDetectionLeftBottom
@@ -852,11 +852,11 @@ function enemyMovement(theenemyOfEnemies) {
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPositionForNewLeft.top);
             if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false && ecdlT.classList.contains('mazeBorders') == false) {
-                //one of the type mistakes I made is when typing the code for enemy wall collision detection is that I typed enemytop variable also for the right and left movement direction, however moments later I realized my mistake and changed the variable enemytop to the variable enemyleft, and now my enemy moves to the left and to the right.
+                //one of the type mistakes I made is when typing the code for enemy wall collision detection is that I typed enemytop variable also for the right and left movement trajectory, however moments later I realized my mistake and changed the variable enemytop to the variable enemyleft, and now my enemy moves to the left and to the right.
                 enemyleft -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
-                direction = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8);
             }
 
             if (ecdlB.classList.contains('player') == true) {
@@ -870,9 +870,9 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-        if (direction == 4) {
+        if (trajectory == 4) {
             let enemyPositionForNewRight = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewRight
-            //why newRight have to have +, and not - here ? is it because we are moving in a different direction. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left direction. 
+            //why newRight have to have +, and not - here ? is it because we are moving in a different trajectory. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left trajectory. 
             let newRight = enemyPositionForNewRight.right + 1; //selectiing the next right position, and assigning it to the variable newRight
 
             // ecdrB = enemyCollisionDetectionRightBottom
@@ -883,7 +883,7 @@ function enemyMovement(theenemyOfEnemies) {
                 enemyleft += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
-                direction = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8);
             }
 
             if (ecdrB.classList.contains('player') == true) {
@@ -900,8 +900,8 @@ function enemyMovement(theenemyOfEnemies) {
 
 
         //more enemy collision diagonally
-        //direction == 5 is for right-bottom collision detction
-        if (direction == 5) {
+        //trajectory == 5 is for right-bottom collision detction
+        if (trajectory == 5) {
             let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
             let newRight = enemyPositionForDiagonalRightBottom.right + 1;
             let newBottom = enemyPositionForDiagonalRightBottom.bottom + 1;
@@ -923,14 +923,14 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px';
             }
             else {
-                direction = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8);
             }
         };
 
 
 
-        // direction == 6 is for right-upward collision detction
-        if (direction == 6) {
+        // trajectory == 6 is for right-upward collision detction
+        if (trajectory == 6) {
             let enemyPositionForDiagonalRightUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightUpwards
             let newRight = enemyPositionForDiagonalRightUpwards.right + 1;
             let newUp = enemyPositionForDiagonalRightUpwards.top - 1;
@@ -951,14 +951,14 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px';
             }
             else {
-                direction = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8);
             }
         };
 
 
 
-        // direction == 7 is for left-bottom collision detction
-        if (direction == 7) {
+        // trajectory == 7 is for left-bottom collision detction
+        if (trajectory == 7) {
             let enemyPositionForDiagonalLeftBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftBottom
             let newLeft = enemyPositionForDiagonalLeftBottom.left - 1;
             let newBottom = enemyPositionForDiagonalLeftBottom.bottom + 1;
@@ -985,8 +985,8 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-        // direction == 8 is for left-upward collision detction
-        if (direction == 8) {
+        // trajectory == 8 is for left-upward collision detction
+        if (trajectory == 8) {
             let enemyPositionForDiagonalLeftUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftUpwards
             let newLeft = enemyPositionForDiagonalLeftUpwards.left - 1;
             let newUp = enemyPositionForDiagonalLeftUpwards.top - 1;
@@ -1006,7 +1006,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px';
             }
             else {
-                direction = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8);
             }
         }
 
