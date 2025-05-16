@@ -1151,16 +1151,16 @@ function leaderboardCreation() {
 
         //looping through each array inside the variable highestOnes, and assigning the value of the smaller array to the vatiable element. While element[0] and element[1] represent the values inisde the smallerr array.
         highestOnes.forEach(function(element) {
-            addgamerInfoToLeaderboard(element[0], element[1]); //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable gamerName becuase gamerName is the first parameter/argument of the function addgamerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addgamerInfoToLeaderboard. 
+            addgamerInfoToLeaderboard(element[0], element[1]); //calling the function addgamerInfoToLeaderboard to create a list inisde the order list inisde the div with the class leaderboard //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable gamerName becuase gamerName is the first parameter/argument of the function addgamerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addgamerInfoToLeaderboard. 
         });
     }
     
     function addgamerInfoToLeaderboard(gamerName, points) {
-        let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addedtoLeaderboard
-        addlitoLeaderboard.innerHTML = `${gamerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addtoLeaderboard
+        let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addlitoLeaderboard
+        addlitoLeaderboard.innerHTML = `${gamerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addlitoLeaderboard
     
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-        listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addedtoLeaderboard to the ordered list iniside the div tag with class leaderboard
+        listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addlitoLeaderboard to the ordered list iniside the div tag with class leaderboard
     }
     
 
@@ -1169,15 +1169,14 @@ function leaderboardCreation() {
 
     
     function saveData() {
-        let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the gamer for the username, and assigning that username to the variable name 
-        let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score 
+        let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the gamer for the username, and assigning that username to the variable gamerName 
+        let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score, and assigning its value to the variable pointsCollected
     
-        gamerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfgamer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that gamer has collected during that game.
+        gamerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfgamer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that gamer has collected during that game
     
         //the leader board were displaying duplicates after the saving the gamer info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
         listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list 
-    
         leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
     }
 
