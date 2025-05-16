@@ -527,6 +527,16 @@ function pointCollection() {
                 }
                 currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
                 stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
+                
+                //calling the createEnemy function one time to create one extra enemy
+                createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
+                // createEnemy();
+                // createEnemy();
+
+                //calling the createWall function one time to create one extra wall
+                createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
+                // createWall();
+                // createWall();
             }
         }
     }
@@ -590,16 +600,6 @@ function restart() {
     startBttn.innerHTML = 'Restart the game?';
     document.removeEventListener('keydown', keyDown);
     document.removeEventListener('keyup', keyUp);
-
-    //calling the createEnemy function one time to create one extra enemy
-    createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-    // createEnemy();
-    // createEnemy();
-
-    //calling the createWall function one time to create one extra wall
-    createWall(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
-    // createWall();
-    // createWall();
 }
 
 
