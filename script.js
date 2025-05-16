@@ -553,7 +553,7 @@ function startGame() {
     upButton.addEventListener('click', ubttnClicked);
     downButton.addEventListener('click', dbttnClicked);
 
-    setTimeout(removeStartButton, 3000)
+    setTimeout(removeStartButton, 3400)
 }
 
 //Reminder of old lessons 
