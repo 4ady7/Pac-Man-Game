@@ -785,7 +785,7 @@ function enemyMovement(theenemyOfEnemies) {
         
         //first option is for moving upwards
         if (direction == 1) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
             let newUp = enemyPositionForNewUp.top - 1; //selectiing the next top position, and assigning it to the variable newUp
             // ecdul = enemyCollisionDetectionUpLeft
@@ -809,7 +809,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
         if (direction == 2) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewDown
 
             //why newBottom have to have +, and not - here ? is it because we are moving in a different direction. Because we are moving downwar, and addition pushes the enemy downwards. 
@@ -830,7 +830,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
         if (direction == 3) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             let enemyPositionForNewLeft = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewLeft
             let newLeft = enemyPositionForNewLeft.left - 1; //selectiing the next left position, and assigning it to the variable newLeft
             // ecdlB = enemyCollisionDetectionLeftBottom
@@ -849,7 +849,7 @@ function enemyMovement(theenemyOfEnemies) {
 
 
         if (direction == 4) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             let enemyPositionForNewRight = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewRight
             //why newRight have to have +, and not - here ? is it because we are moving in a different direction. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left direction. 
             let newRight = enemyPositionForNewRight.right + 1; //selectiing the next right position, and assigning it to the variable newRight
@@ -873,6 +873,7 @@ function enemyMovement(theenemyOfEnemies) {
         //more enemy collision diagonally
         //direction == 5 is for right-bottom collision detction
         if (direction == 5) {
+            //enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
             let newRight = enemyPositionForDiagonalRightBottom.right + 1;
             let newBottom = enemyPositionForDiagonalRightBottom.bottom + 1;
@@ -902,6 +903,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         // direction == 6 is for right-upward collision detction
         if (direction == 6) {
+            //enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalRightUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightUpwards
             let newRight = enemyPositionForDiagonalRightUpwards.right + 1;
             let newUp = enemyPositionForDiagonalRightUpwards.top - 1;
@@ -930,6 +932,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         // direction == 7 is for left-bottom collision detction
         if (direction == 7) {
+            //enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalLeftBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftBottom
             let newLeft = enemyPositionForDiagonalLeftBottom.left - 1;
             let newBottom = enemyPositionForDiagonalLeftBottom.bottom + 1;
@@ -958,6 +961,7 @@ function enemyMovement(theenemyOfEnemies) {
 
         // direction == 8 is for left-upward collision detction
         if (direction == 8) {
+            //enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player //By grace period, I mean a time where the player and enemy, both will be unable to encounter each other
             let enemyPositionForDiagonalLeftUpwards = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalLeftUpwards
             let newLeft = enemyPositionForDiagonalLeftUpwards.left - 1;
             let newUp = enemyPositionForDiagonalLeftUpwards.top - 1;
@@ -1058,10 +1062,12 @@ function enemyPLCol() {
             removelive(); //the removelive function is called to remove a live from the player's lives.
             lives = lives - 1;
             player.classList.add('hit');
+            stopPlayerMovement();
             setTimeout(() => {
-                playerReturntoMove();
+                playerReturntoMove(); //calling the function that clears the interval for the movements of the player to stop the player from moving 
                 player.classList.remove('hit');
-            }, 1500);
+            }, 1500); //stopping the player from moving for 1.5 seconds //1500 here equals 1.5 seconds, because intervals are measured in 1000ths of a second 
+
             if (lives == 0) {
                 player.classList.add('dead'); //if that's true, and the player came in contact with an enemy, then add the dead animation to the player 
                 createlives();
