@@ -664,8 +664,8 @@ function ubttnClicked() {
 
 
 
-let ulSeclect = document.querySelectorAll('.lives ul li');
-lives = ulSeclect.length;
+let ulSeclect = document.querySelectorAll('.lives ul li'); //selecting the lists that I have inside the unordered list inisde the div with the class lives, and assigning it to the variable ulSeclect 
+lives = ulSeclect.length; //the variable lives was assigned to the length/number of the the lists that I have inside the unordered list inisde the div with the class lives
 console.log(lives); //Output is 3 
 
 
@@ -774,7 +774,7 @@ function gameEnded() {
 lives = 3
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
-console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
+// console.log("no of enemies: " + alltheEnemies.length) //showing the number of enemies, exactly 3; OUtpuut: 3
 
 function enemyMovement(theenemyOfEnemies) {
     let trajectory = Math.ceil(Math.random() * 8);
@@ -1086,12 +1086,12 @@ function enemyPLCol() {
             gamerPosition.top < positionOfEnemies.bottom
         ) {
             removelive(); //the removelive function is called to remove a live from the gamer's lives.
-            lives = lives - 1;
-            gamer.classList.add('hit');
-            stopgamerMovement();
+            lives = lives - 1; //removing 1 from the variable, and the variable lives was assigned to the length/number of the the lists that I have inside the unordered list inisde the div with the class live s
+            gamer.classList.add('hit'); //adding the class hit to the gamer to display the hit animation
+            stopgamerMovement(); //calling the function to stop the movement of the gamer
             setTimeout(() => {
                 gamerReturntoMove(); //calling the function that clears the interval for the movements of the gamer to stop the gamer from moving 
-                gamer.classList.remove('hit');
+                gamer.classList.remove('hit'); //removing the class hit from the gamer to hide the hit animation
             }, 1500); //stopping the gamer from moving for 1.5 seconds //1500 here equals 1.5 seconds, because intervals are measured in 1000ths of a second 
 
             if (lives == 0) {
