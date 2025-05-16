@@ -304,8 +304,8 @@ function enemyEncounter() {
         //why I am doing this? to give the player a grace period to get away from the enemy after encountering an enemy. 
         setTimeout(() => {
             encounteredEnemy = false;
-            player.classList = ''
-        }, 2500); //3000 here equals 2.5 seconds, because intervals are measured in 1000ths of a second 
+            player.classList = ''; //removing any class linked to the player varible, which represents the player that we selected by the player ID.
+        }, 2500); //2500 here equals 2.5 seconds, because intervals are measured in 1000ths of a second 
     }
 }
 
@@ -782,7 +782,6 @@ function enemyMovement(theenemyOfEnemies) {
     MovementofEnemy = setInterval(function () {
         if (lives == 0) { direction = 0 }; //stopping the enemy movement 
         if (totalPoints == 50) { direction = 0 }; //stopping the enemy movement 
-        enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
         
         //first option is for moving upwards
         if (direction == 1) {
@@ -808,6 +807,10 @@ function enemyMovement(theenemyOfEnemies) {
                 //if it contains a wall, then randomly change the direction
                 direction = Math.ceil(Math.random() * 8);
             }
+
+        if (eecdul.classList.contains('player') == false && ecdur.classList.contains('player')) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
+        }
         }
 
 
@@ -827,6 +830,10 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
+
+            if (ecdbl.classList.contains('player') == false && ecdbr.classList.contains('player')) {
+                enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
+            }
         };
 
 
@@ -844,6 +851,10 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
                 direction = Math.ceil(Math.random() * 8);
+            }
+
+            if (ecdlB.classList.contains('player') == false && ecdlT.classList.contains('player')) {
+                enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
             }
         };
 
@@ -863,6 +874,10 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
                 direction = Math.ceil(Math.random() * 8);
+            }
+
+            if (ecdrB.classList.contains('player') == false && ecdrT.classList.contains('player')) {
+                enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
             }
         };
 
