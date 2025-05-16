@@ -1259,11 +1259,11 @@ function enemyMovement(theenemyOfEnemies) {
 function enemyPLCol() {
     let allEnemies = document.querySelectorAll('.enemy'); //selcecting the enemies and assigning them to the variable allEnemies
     let gamerPosition = gamer.getBoundingClientRect(); //selecting the position of the gamer 
-    console.log("will the gamer interacted with the enemy? let see the gamer's position: ", gamerPosition);
+    // console.log("will the gamer interacted with the enemy? let see the gamer's position: ", gamerPosition);
     //looping through every enemy 
     for (let enemeyONE of allEnemies) {
         let positionOfEnemies = enemeyONE.getBoundingClientRect(); //selecting the position of an enemy 
-        console.log("will the enemy interacted with the gamer? let's see the enemy's position: ", positionOfEnemies);
+        // console.log("will the enemy interacted with the gamer? let's see the enemy's position: ", positionOfEnemies);
         
         //chcecking if the psoition of the gamer overlaps with the position of the enemy 
         if (
@@ -1273,8 +1273,8 @@ function enemyPLCol() {
             gamerPosition.top < positionOfEnemies.bottom 
         ) {
             //checking when they interacted 
-            console.log("the gamer interacted with the enemy: ", gamerPosition);
-            console.log("the enemy interacted with the gamer: ", positionOfEnemies);
+            // console.log("the gamer interacted with the enemy: ", gamerPosition);
+            // console.log("the enemy interacted with the gamer: ", positionOfEnemies);
             removelive(); //the removelive function is called to remove a live from the gamer's lives.
             lives = lives - 1; //removing 1 from the variable, and the variable lives was assigned to the length/number of the the lists that I have inside the unordered list inisde the div with the class live s
             gamer.classList.add('hit'); //adding the class hit to the gamer to display the hit animation
