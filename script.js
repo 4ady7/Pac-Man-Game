@@ -785,6 +785,7 @@ function enemyMovement(theenemyOfEnemies) {
         
         //first option is for moving upwards
         if (direction == 1) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
             const enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
             let newUp = enemyPositionForNewUp.top - 1; //selectiing the next top position, and assigning it to the variable newUp
             // ecdul = enemyCollisionDetectionUpLeft
@@ -794,10 +795,7 @@ function enemyMovement(theenemyOfEnemies) {
             // console.log("where are the 3 enemies: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
 
 
-
-
-
-            // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving; that was because of the problem that the value of the variable eecdul was showing in the console as null.
+            // The next comment is an old insight during my work, and is not currently implemented // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving; that was because of the problem that the value of the variable eecdul was showing in the console as null.
             if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdur.classList.contains('mazeBorders') == false) {
                 enemytop -= 1;
                 theenemyOfEnemies.style.top = enemytop + 'px';
@@ -807,14 +805,11 @@ function enemyMovement(theenemyOfEnemies) {
                 //if it contains a wall, then randomly change the direction
                 direction = Math.ceil(Math.random() * 8);
             }
-
-        if (eecdul.classList.contains('player') == false && ecdur.classList.contains('player')) {
-            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
-        }
         }
 
 
         if (direction == 2) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
             let enemyPositionForNewDown = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewDown
 
             //why newBottom have to have +, and not - here ? is it because we are moving in a different direction. Because we are moving downwar, and addition pushes the enemy downwards. 
@@ -830,15 +825,12 @@ function enemyMovement(theenemyOfEnemies) {
             else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            if (ecdbl.classList.contains('player') == false && ecdbr.classList.contains('player')) {
-                enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
-            }
         };
 
 
 
         if (direction == 3) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
             let enemyPositionForNewLeft = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewLeft
             let newLeft = enemyPositionForNewLeft.left - 1; //selectiing the next left position, and assigning it to the variable newLeft
             // ecdlB = enemyCollisionDetectionLeftBottom
@@ -852,15 +844,12 @@ function enemyMovement(theenemyOfEnemies) {
             } else {
                 direction = Math.ceil(Math.random() * 8);
             }
-
-            if (ecdlB.classList.contains('player') == false && ecdlT.classList.contains('player')) {
-                enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
-            }
         };
 
 
 
         if (direction == 4) {
+            enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
             let enemyPositionForNewRight = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewRight
             //why newRight have to have +, and not - here ? is it because we are moving in a different direction. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left direction. 
             let newRight = enemyPositionForNewRight.right + 1; //selectiing the next right position, and assigning it to the variable newRight
@@ -874,10 +863,6 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
                 direction = Math.ceil(Math.random() * 8);
-            }
-
-            if (ecdrB.classList.contains('player') == false && ecdrT.classList.contains('player')) {
-                enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the player a grace period of 2.5 seconds after the player encounters the enemy or the enemy encounters the player
             }
         };
 
