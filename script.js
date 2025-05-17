@@ -133,11 +133,6 @@ console.log(arrayofEnemies[2]);
 
 
 
-for(let i = 0; i < myArray.length; i++) {
-    for(let j = 0; j < myArray[i].length; j++) {
-    console.log(myArray[i][j]);
-    }
-}
 
 
 
@@ -186,9 +181,14 @@ for (let index = 0; index < 10; index++) {
 
 
 
-
-
-
+//function to check if I should create a wall or not, utilizing the ability to use nested array like how mazeCreation function has been created 
+function checkingWallCreationOptions() {
+    for (let row of myArray) {
+        for (let value of row) {
+            console.log(value);
+        }
+    }
+}
 
 
 //creating a function for creating and populating the maze
@@ -366,7 +366,7 @@ function gamerMovement() {
         let gamerCollisionDetectionBottomLeft = document.elementFromPoint(currentPositon.left, newBottom);
         // console.log(currentPositon.left)
 
-        let downwardMiddle = document.elementFromPoint((currentPositon.left + currentPositon.right)/2, newBottom);
+        let downwardMiddle = document.elementFromPoint((currentPositon.left + currentPositon.right) / 2, newBottom);
 
         let gamerCollisionDetectionBottomRight = document.elementFromPoint(currentPositon.right, newBottom);
         // console.log(gamerCollisionDetectionBottomLeft)
@@ -387,7 +387,7 @@ function gamerMovement() {
         // pcdul = gamerCollisionDetectionUpLeft
         let pcdul = document.elementFromPoint(currentPositon.left, newUp);
 
-        let upwardMiddle = document.elementFromPoint((currentPositon.left + currentPositon.right)/2, newUp);
+        let upwardMiddle = document.elementFromPoint((currentPositon.left + currentPositon.right) / 2, newUp);
 
         // pcdur = gamerCollisionDetectionUpRight
         let pcdur = document.elementFromPoint(currentPositon.right, newUp);
@@ -410,7 +410,7 @@ function gamerMovement() {
         // pcdld = gamerCollisionDetectionLeftDownward
         let pcdld = document.elementFromPoint(newLeft, currentPositon.bottom);
 
-        let leftMiddle = document.elementFromPoint(newLeft, (currentPositon.bottom + currentPositon.top)/2);
+        let leftMiddle = document.elementFromPoint(newLeft, (currentPositon.bottom + currentPositon.top) / 2);
 
         // pcdlu = gamerCollisionDetectionLeftUpward
         let pcdlu = document.elementFromPoint(newLeft, currentPositon.top);
@@ -431,7 +431,7 @@ function gamerMovement() {
         // pcdrd = gamerCollisionDetectionRightDownward
         let pcdrd = document.elementFromPoint(newRight, currentPLPositon.bottom);
 
-        let rightMiddle = document.elementFromPoint(newRight, (currentPLPositon.bottom + currentPLPositon.top)/2);
+        let rightMiddle = document.elementFromPoint(newRight, (currentPLPositon.bottom + currentPLPositon.top) / 2);
 
         // pcdru = gamerCollisionDetectionRightUpward
         let pcdru = document.elementFromPoint(newRight, currentPLPositon.top);
@@ -458,8 +458,8 @@ function gamerMovement() {
 function nextStage() {
     clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
     // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-    setTimeout(restart, 500) 
-    
+    setTimeout(restart, 500)
+
     gameEnded();
     lostlives = 3 - lives;
     for (let index = 0; index < lostlives; index++) {
@@ -467,7 +467,7 @@ function nextStage() {
     }
     currentLevel = currentLevel + 1; //increasing the value of the variable currentLevel by 1 for each time all the points have been collected 
     stages.innerHTML = currentLevel; //changing the level number and assigning it to the value of the variable currentLevel
-    
+
     //calling the createEnemy function one time to create one extra enemy
     createEnemy(); //I opted for increasing the difficulty by only creating one wall and not more every time the restart button is clicked 
     // createEnemy();
@@ -550,7 +550,7 @@ function pointCollection() {
                     nextStage();
                 }
             }
-            
+
 
             //enabling the user to be able to go to the next level, and by level 6 the player will be facing 8 enemies and there will be 15 walls 
             if (currentLevel == 6) {
@@ -637,7 +637,7 @@ function pointCollection() {
                     nextStage();
                 }
             }
-            
+
 
             //enabling the user to be able to go to the next level, and by stage 18 or stage 30 or stage 54 or stage 66 or stage 78, or stage 90 the player will be facing 8 enemies and there will be 15 walls, and will have to collect 40 points to go to the next 
             if (currentLevel == 18 && currentLevel == 30 && currentLevel == 42 && currentLevel == 54 && currentLevel == 66 && currentLevel == 78 && currentLevel == 90) {
@@ -780,8 +780,8 @@ function restartFunction() {
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the gamer when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
     document.addEventListener('keyup', keyUp); //the event keyup is the one responsible for the action of stopping an action when the key is released, and in this case it is the stoppage of movement of the gamer 
-    
-    
+
+
     //refreshing the maze so that by stage 13 or stage 25 or stage 37 or stage 49 or stage 61 or stage 73, the player will be facing 3 enemies and there will be 10 walls, and will have to collect 50 points to go to the next 
     if (currentLevel == 13) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
@@ -807,7 +807,7 @@ function restartFunction() {
     if (currentLevel == 97) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
         mazeRefereshed()
     }
-    
+
     main.innerHTML = ""; //clearing the previous maze that was used in the last 
 
     mazeCreation(); // now when start button (aka restart button, now) is clicked, make all the 50 points visible, and everything back as if you we just started the game, and place the gamer at the starting cell where the gamer first started previously, and restart button now is visible and clickable, but I am bringing back all the points when the restart button is clicked, because I am calling the function for creating the maze again. In other words, creating a new maze when the restart button is clicked.
@@ -988,14 +988,14 @@ function enemyMovement(theenemyOfEnemies) {
     MovementofEnemy = setInterval(function () {
         if (lives == 0) { trajectory = 0 }; //stopping the enemy movement 
         if (totalPoints == 50) { trajectory = 0 }; //stopping the enemy movement 
-        
+
         //first option is for moving upwards
         if (trajectory == 1) {
             enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
             let newUp = enemyPositionForNewUp.top - contactPortion; //selectiing the next top position, and assigning it to the variable newUp
 
-            let upwardMiddle = document.elementFromPoint((enemyPositionForNewUp.left + enemyPositionForNewUp.right)/2, newUp);
+            let upwardMiddle = document.elementFromPoint((enemyPositionForNewUp.left + enemyPositionForNewUp.right) / 2, newUp);
 
             // ecdul = enemyCollisionDetectionUpLeft
             let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp); //I was getting null for the value of the variable eecdul, so after I tried checking if it is true before moving the enemy, the problem was fixed, so I conclude that the enemy may have been trying to get off the screen or access an element that is not visible and is outside the borders of the maze.
@@ -1025,9 +1025,9 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPositionForNewDown.bottom + contactPortion; //selecting the next new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
             // ecdbl = enemyCollisionDetectionBottomLeft
             let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
-            
-            let downwardMiddle = document.elementFromPoint((enemyPositionForNewDown.left + enemyPositionForNewDown.right)/2, newBottom);
-            
+
+            let downwardMiddle = document.elementFromPoint((enemyPositionForNewDown.left + enemyPositionForNewDown.right) / 2, newBottom);
+
             // ecdbr = enemyCollisionDetectionBottomRight
             let ecdbr = document.elementFromPoint(enemyPositionForNewDown.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the bottom position of the enemy. 
             if (ecdbl && ecdbr && ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false && downwardMiddle.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdbr.classList.contains('mazeBorders') == false && downwardMiddle.classList.contains('mazeBorders') == false) {
@@ -1048,7 +1048,7 @@ function enemyMovement(theenemyOfEnemies) {
             // ecdlB = enemyCollisionDetectionLeftBottom
             let ecdlB = document.elementFromPoint(newLeft, enemyPositionForNewLeft.bottom);
 
-            let leftMiddle = document.elementFromPoint(newLeft, (enemyPositionForNewLeft.bottom + enemyPositionForNewLeft.top)/2);
+            let leftMiddle = document.elementFromPoint(newLeft, (enemyPositionForNewLeft.bottom + enemyPositionForNewLeft.top) / 2);
 
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPositionForNewLeft.top);
@@ -1072,7 +1072,7 @@ function enemyMovement(theenemyOfEnemies) {
             // ecdrB = enemyCollisionDetectionRightBottom
             let ecdrB = document.elementFromPoint(newRight, enemyPositionForNewRight.bottom);
 
-            let rightMiddle = document.elementFromPoint(newRight, (enemyPositionForNewRight.bottom + enemyPositionForNewRight.top)/2);
+            let rightMiddle = document.elementFromPoint(newRight, (enemyPositionForNewRight.bottom + enemyPositionForNewRight.top) / 2);
 
             // ecdrT = enemyCollisionDetectionRightTop
             let ecdrT = document.elementFromPoint(newRight, enemyPositionForNewRight.top);
@@ -1099,7 +1099,7 @@ function enemyMovement(theenemyOfEnemies) {
 
             // ecdbr = enemyCollisionDetectionBottomRight
             let ecdbr = document.elementFromPoint(enemyPositionForDiagonalRightBottom.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the next (+1) new bottom position that the enemy may move to. 
-            
+
             // DRB = DiagonallyRightBottom
             let DRB = document.elementFromPoint(newRight, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the next (+1) new bottom position of the enemy. That's means here that I have created a collision for the diagonally. A diagonal moves equals two new positions being updated at the same time to allow the movement of the enemy diagonally.
 
@@ -1156,8 +1156,8 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPositionForDiagonalLeftBottom.bottom + contactPortion;
 
             // ecdbl = enemyCollisionDetectionBottomLeft
-            let ecdbl = document.elementFromPoint(enemyPositionForDiagonalLeftBottom.left, newBottom); 
-            
+            let ecdbl = document.elementFromPoint(enemyPositionForDiagonalLeftBottom.left, newBottom);
+
             // DLB = DiagonallyLeftBottom
             let DLB = document.elementFromPoint(newLeft, newBottom);
 
@@ -1191,7 +1191,7 @@ function enemyMovement(theenemyOfEnemies) {
 
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPositionForDiagonalLeftUpwards.top);
-            
+
             if (DLU && DLU.classList.contains('wall') == false && DLU.classList.contains('mazeBorders') == false && eecdul.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdlT.classList.contains('wall') == false && ecdlT.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop -= 1;
@@ -1272,13 +1272,13 @@ function enemyPLCol() {
     for (let enemeyONE of allEnemies) {
         let positionOfEnemies = enemeyONE.getBoundingClientRect(); //selecting the position of an enemy 
         // console.log("will the enemy interacted with the gamer? let's see the enemy's position: ", positionOfEnemies);
-        
+
         //chcecking if the psoition of the gamer overlaps with the position of the enemy 
         if (
             gamerPosition.right > positionOfEnemies.left &&
             gamerPosition.left < positionOfEnemies.right &&
             gamerPosition.bottom > positionOfEnemies.top &&
-            gamerPosition.top < positionOfEnemies.bottom 
+            gamerPosition.top < positionOfEnemies.bottom
         ) {
             //checking when they interacted 
             // console.log("the gamer interacted with the enemy: ", gamerPosition);
@@ -1328,55 +1328,56 @@ function leaderboardCreation() {
     let allResults = [];//initializing a list, and assigning it to the variable allResults 
 
     //looping through each item in the local storage
-        for (let i = 0; i < localStorage.length; i++) {
-            let gamerName = localStorage.key(i);//assigning the key of each item in local storage to the variable gamerName
-            let points = parseInt(localStorage.getItem(gamerName));//assigning the value of each item in local storage to the variable points, and using parseInt() to convert the string to the closest whole number 
-            allResults.push([gamerName, points]);// Storing the array of 2 variables into the arry allResults
-        }
-    
-        //sortting the scores descndingly from greatest to smallest number of points collected  
-        allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points. [1] represents the second item of each array inside the array allResults, and it represents the variable points.
-    
-        //I needed to add this line of code after sorting the array allresults to slice from an array that has already been sorted desendingly
-        let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
-
-
-
-        //While I was testing, I proved that here in the forEach loop, the index, which is most represented by the charachter i, is the value of the length of my localStorage
-        highestOnes.forEach(function(_, element) {
-            console.log("Here is my index:" + element); });
-
-
-        //looping through each array inside the variable highestOnes, and assigning the value of the smaller array to the vatiable element. While element[0] and element[1] represent the values inisde the smallerr array.
-        highestOnes.forEach(function(element) {
-            addgamerInfoToLeaderboard(element[0], element[1]); //calling the function addgamerInfoToLeaderboard to create a list inisde the order list inisde the div with the class leaderboard //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable gamerName becuase gamerName is the first parameter/argument of the function addgamerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addgamerInfoToLeaderboard. 
-        });
+    for (let i = 0; i < localStorage.length; i++) {
+        let gamerName = localStorage.key(i);//assigning the key of each item in local storage to the variable gamerName
+        let points = parseInt(localStorage.getItem(gamerName));//assigning the value of each item in local storage to the variable points, and using parseInt() to convert the string to the closest whole number 
+        allResults.push([gamerName, points]);// Storing the array of 2 variables into the arry allResults
     }
-    
-    function addgamerInfoToLeaderboard(gamerName, points) {
-        let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addlitoLeaderboard
-        addlitoLeaderboard.innerHTML = `${gamerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addlitoLeaderboard
-    
-        let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-        listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addlitoLeaderboard to the ordered list iniside the div tag with class leaderboard
-    }
-    
+
+    //sortting the scores descndingly from greatest to smallest number of points collected  
+    allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points. [1] represents the second item of each array inside the array allResults, and it represents the variable points.
+
+    //I needed to add this line of code after sorting the array allresults to slice from an array that has already been sorted desendingly
+    let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
+
+
+
+    //While I was testing, I proved that here in the forEach loop, the index, which is most represented by the charachter i, is the value of the length of my localStorage
+    highestOnes.forEach(function (_, element) {
+        console.log("Here is my index:" + element);
+    });
+
+
+    //looping through each array inside the variable highestOnes, and assigning the value of the smaller array to the vatiable element. While element[0] and element[1] represent the values inisde the smallerr array.
+    highestOnes.forEach(function (element) {
+        addgamerInfoToLeaderboard(element[0], element[1]); //calling the function addgamerInfoToLeaderboard to create a list inisde the order list inisde the div with the class leaderboard //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable gamerName becuase gamerName is the first parameter/argument of the function addgamerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addgamerInfoToLeaderboard. 
+    });
+}
+
+function addgamerInfoToLeaderboard(gamerName, points) {
+    let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addlitoLeaderboard
+    addlitoLeaderboard.innerHTML = `${gamerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addlitoLeaderboard
+
+    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
+    listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addlitoLeaderboard to the ordered list iniside the div tag with class leaderboard
+}
 
 
 
 
-    
-    function saveData() {
-        let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the gamer for the username, and assigning that username to the variable gamerName 
-        let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score, and assigning its value to the variable pointsCollected
-    
-        gamerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfgamer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that gamer has collected during that game
-    
-        //the leader board were displaying duplicates after the saving the gamer info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
-        let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-        listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list 
-        leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
-    }
+
+
+function saveData() {
+    let gamerName = prompt("Game Over!!! Please Enter your name:"); //asking the gamer for the username, and assigning that username to the variable gamerName 
+    let pointsCollected = document.querySelector('.score p').innerHTML; //selecting the text added to the HTML and is stored in the paragraph inside the div tag with class score, and assigning its value to the variable pointsCollected
+
+    gamerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfgamer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that gamer has collected during that game
+
+    //the leader board were displaying duplicates after the saving the gamer info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
+    let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
+    listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list 
+    leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
+}
 
 
 
