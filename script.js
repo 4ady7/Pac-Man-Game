@@ -326,6 +326,20 @@ function keyDown(event) { //event here is a parameter inside the function
 
 
 
+function speedBoost() {
+    if (gamerSpeed == 2.45 && speedBoostAvalibality == 1) {
+        setTimeout(speedlevel5, 9000); //9000 here equals 9 seconds, because intervals are measured in 1000ths of a second 
+    }
+}
+
+function speedlevel5() {
+    gamerSpeed = 1.25 //level 5 speed 
+}
+
+setInterval(speedBoost, 10)
+
+
+
 
 
 //creating a function that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer
@@ -342,7 +356,7 @@ function enemyEncounter() {
         setTimeout(() => {
             encounteredEnemy = false;
             gamer.classList = ''; //removing any class linked to the gamer varible, which represents the gamer that we selected by the gamer ID.
-        }, 3100); //3500 here equals 3.1 seconds, because intervals are measured in 1000ths of a second 
+        }, 3100); //3100 here equals 3.1 seconds, because intervals are measured in 1000ths of a second 
     }
 }
 
