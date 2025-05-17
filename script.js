@@ -90,16 +90,16 @@ let maze = [
 
 let arrayofEnemies = []; //creating an array to contain the created enemies, and assigning the array to a variable, and calling the varibale arrayofEnemies. 
 
-console.log(maze.length); //Output: 10
+console.log(maze.length); //Output: 10, because it counts the number of inputs, in this case arrays inisde the array maze. Also, in this case, the maze.length represents the number of rows inside the maze
 console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
 
 //creating an enemy randomly after I have removed the enemy from the maze
 function createEnemy() {
     let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
-    let column = Math.floor(Math.random() * maze[row].length);
+    let column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, in this case
     //checking if the maze location is equal to 0, which represents the points.
     if (maze[row][column] == 0) {
-        //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in the maze. 
+        //if that's true, and it is the location 0, then add an enemy, which is represented by the location 3 in maze. The maze.length represents the number of columns inside the maze
         maze[row][column] = 3;
     }
     else {
@@ -138,7 +138,7 @@ let arrayofWalls = []; //creating an array to contain the created walls, and ass
 //creating an enemy randomly after I have removed the enemy from the maze
 function createWall() {
     let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
-    let column = Math.floor(Math.random() * maze[row].length);
+    let column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, in this case
     //checking if the maze location is equal to 0, which represents the points.
     if (maze[row][column] == 0) {
         //if that's true, and it is the location 0, then add a wall, which is represented by the location 1 in the maze. 
