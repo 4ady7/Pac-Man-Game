@@ -173,8 +173,11 @@ function createWall(row, column, wallPosition) {
 
 // optimizing how I am creating the walls into the maze
 for (let index = 0; index < 10; index++) {
-    createWall();
+    if((maze[row][column] == 1) < 11) {
+        createWall();
+    }
 }
+
 
 
 
@@ -187,10 +190,11 @@ for (let index = 0; index < 10; index++) {
 
 //function to check if I should create a wall or not, utilizing the ability to use nested array like how mazeCreation function has been created 
 function checkingWallCreationOptions() {
-    let yrow = Math.floor(Math.random() * maze.length);
-    let xcolumn = Math.floor(Math.random() * maze.length);
-    console.log(yrow); //Output betwenn 0 and 9 that has been assigned to the value of the variable yrow
-    console.log(xcolumn); //Output betwenn 0 and 9 that has been assigned to the value of the variable xcolumn
+    sixtyFourBlocks = (maze.length - 2);
+    row = Math.ceil(Math.random() * sixtyFourBlocks + 1);
+    column = Math.floor(Math.random() * maze.length);
+    console.log(row); //Output betwenn 0 and 9 that has been assigned to the value of the variable yrow
+    console.log(column); //Output betwenn 0 and 9 that has been assigned to the value of the variable xcolumn
 
     //creating a array to contain the classic direction of the movement. This array contains arrays of 2 elements.
     let trajectoryArray = [
@@ -201,17 +205,17 @@ function checkingWallCreationOptions() {
     ];
 
     //selecing a random element in the maze, and assigning to the location 1, which is the wall. In other words, assigning a wall to the randomly chosen location in the maze
-    maze[yrow][xcolumn] = 1;
+    maze[row][column] = 1;
 
     //the purspose of the this for loop is looping through each element inside the arrays that are inisde the array named trajectoryArray
     //the following line of code loops through each array inisde the array named trajectoryArray
     for (let i = 0; i < trajectoryArray.length; i++) {
         console.log(trajectoryArray[i]);
         everyYRow = trajectoryArray[i][0]; //iterating through every array of the arrays inside the array named trajectoryArray, and selecting the first element of the array iniside the array named trajectoryArray. Also, iterating through the trajectory array to check every location in correspondance to the randomly chosen location that was assigned a wall, which represents the location 1
-        yrowToBeMovedTo = yrow + everyYRow;
+        yrowToBeMovedTo = row + everyYRow;
 
         everyXColumn = trajectoryArray[i][1] //iterating through every array of the arrays inside the array named trajectoryArray, and selecting the second element of the array iniside the array named trajectoryArray. Also, iterating through the trajectory array to check every location in correspondance to the randomly chosen location that was assigned a wall, which represents the location 1
-        xcolumnToBeMovedTo = xcolumn + everyXColumn;
+        xcolumnToBeMovedTo = column + everyXColumn;
 
         //looping through each element inside the arrays that are inisde the array named trajectoryArray
         for (let j = 0; j < trajectoryArray[i].length; j++) {
@@ -235,29 +239,26 @@ function checkingWallCreationOptions() {
 
 
 function canPlaceWallHere(row, column) {
+    // sixtyFourBlocks = (maze.length - 2);
+    // console.log("sixtyFourBlocks is: " + sixtyFourBlocks);
     // Randomly pick a position inside the maze (excluding borders)
-    row = Math.floor(Math.random() * (maze.length - 2)) + 1;
-    column = Math.floor(Math.random() * (maze[0].length - 2)) + 1;
-
+    row = Math.floor(Math.random() * (maze.length - 4)) + 2;
+    column = Math.floor(Math.random() * (maze[0].length - 4)) + 2;
     // Return false if the tile is not empty
     if (maze[row][column] !== 0) {
         return false;
     }
-
     const directions = [
         [0, 1],   // right
         [1, 0],   // down
         [0, -1],  // left
         [-1, 0]   // up
     ];
-
     // Temporarily place a wall to test consequences
     maze[row][column] = 1;
-
     for (let i = 0; i < directions.length; i++) {
         const newRow = row + directions[i][0];
         const newCol = column + directions[i][1];
-
         // Skip if out of maze bounds
         if (
             newRow >= 0 && newRow < maze.length &&
@@ -266,21 +267,17 @@ function canPlaceWallHere(row, column) {
             // If the neighbor is a path or player, check its surroundings
             if (maze[newRow][newCol] === 0 || maze[newRow][newCol] === 2) {
                 let wallsAround = 0;
-
                 // Count walls or edges around the neighbor
                 for (let j = 0; j < directions.length; j++) {
                     const checkRow = newRow + directions[j][0];
                     const checkCol = newCol + directions[j][1];
-
                     if (
                         checkRow < 0 || checkRow >= maze.length ||
-                        checkCol < 0 || checkCol >= maze[0].length ||
-                        maze[checkRow][checkCol] === 1
+                        checkCol < 0 || checkCol >= maze[0].length 
                     ) {
                         wallsAround++;
                     }
                 }
-
                 // If the neighbor is boxed in, undo and reject placement
                 if (wallsAround >= 3) {
                     maze[row][column] = 0;
@@ -289,14 +286,15 @@ function canPlaceWallHere(row, column) {
             }
         }
     }
-
     if (maze[row][column] !== 0) {
+        canPlaceWallHere(row, column);
         return false;
     }
     else if (maze[row][column] = 0) {
         // Revert the test wall placement before returning
         return true;
     }
+    maze[row][column] = 0;
 }
 
 
