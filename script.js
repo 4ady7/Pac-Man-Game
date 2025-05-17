@@ -1345,7 +1345,7 @@ function leaderboardCreation() {
     
     function addgamerInfoToLeaderboard(gamerName, points) {
         let addlitoLeaderboard = document.createElement('li'); //creating a list and assigning it to the variable addlitoLeaderboard
-        addlitoLeaderboard.innerHTML = `${gamerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addlitoLeaderboard
+        addlitoLeaderboard.innerHTML = `${gamerName} ..... ${points}`; //adding the list format to the created list. That list was assigned to the variable addlitoLeaderboard //The value of the variable gamerName is equal to the value of the variable element[0], and the value of the variable points is equal to element[1]
     
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
         listofLeaderboard.appendChild(addlitoLeaderboard); //adding the created list assigned to the variable addlitoLeaderboard to the ordered list iniside the div tag with class leaderboard
@@ -1362,9 +1362,9 @@ function leaderboardCreation() {
     
         gamerInfo(gamerName, pointsCollected); //calling the function to save to local storage the name and pointsCollected. The name and pointsCollected are the arguments that I have passed to the function. name is parellel to the parameter/placeholder nameOfgamer, and pointsCollected is parellel to the parameter/placeholder scorePoints. Also, name is variable that gets and stores the inputted username by the user. While, pointsCollected is varibale that stores the number of points that is stores in the p tag, paragraph tag, iniside the div tag with class score. This number represents the current number of points that gamer has collected during that game
     
-        //the leader board were displaying duplicates after the saving the gamer info after the second, third, fourth, and fifth games, until I figured out that, and that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
+        //the leader board were displaying duplicates after the saving the gamer info after the second, third, fourth, and fifth games, until I figured out that was becauase I was creating a new li tags for each array I have inisde the array highestOnes.
         let listofLeaderboard = document.querySelector('.leaderboard ol'); //selecting the ordered list inside the div tag with class leaderboard
-        listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list 
+        listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list, so to clear the visiable leaderboard 
         leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
     }
 
