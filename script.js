@@ -91,10 +91,11 @@ let maze = [
 
 let arrayofEnemies = []; //creating an array to contain the created enemies, and assigning the array to a variable, and calling the varibale arrayofEnemies. 
 
+
 console.log(maze.length); //Output: 10, because it counts the number of inputs, in this case arrays inisde the array maze. Also, in this case, the maze.length represents the number of rows inside the maze
 console.log(Math.floor(Math.random() * maze.length)) //Output betwenn 0 and 9
 
-//creating an enemy randomly after I have removed the enemy from the maze
+//creating an enemy randomly after I have removed the enemy from the maze, and the function has two arguments/parameters 
 function createEnemy(row, column) {
     row = Math.floor(Math.random() * maze.length); //maze.length is equal to 10, and with floor we get the range from 0 to 9, unlike ceil where we get the range from 1 to 10, but in this case we are working with floor so 0 to 9, so muliplying by maze.length means that the maximum value for the variable row will not be more than 9, and will be in the range from 0 to 9 including 9
     column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, maze[0].length is equal to 10, and with floor we get the range from 0 to 9, unlike ceil where we get the range from 1 to 10, but in this case we are working with floor so 0 to 9, so muliplying by maze[row].length means that the maximum value for the variable column will not be more than 9, and will be in the range from 0 to 9 including 9
@@ -140,7 +141,7 @@ console.log(arrayofEnemies[2]);
 
 let arrayofWalls = []; //creating an array to contain the created walls, and assigning the array to a variable, and calling the varibale arrayofWalls. 
 
-//creating an enemy randomly after I have removed the enemy from the maze
+//creating a wall randomly, and the function has two arguments/parameters 
 function createWall(row, column) {
     //reassigning the value of row 
     row = Math.floor(Math.random() * (maze.length - 4)) + 2; //maze.length is equal to 10, subtracting 4 from 10 is equal to 6, and with floor we get the range from 0 to 5, unlike ceil where we get the range from 1 to 6, but in this case we are working with floor so 0 to 5, and then we add 2 to the range, resulting in a range from 2 to 7, so muliplying by maze.length means that the maximum value for the variable row will not be more than 7, and will be in the range from 2 to 7 including 7, that means that we are avoiding the first two columns which are represented by 0 and 1, and also avoiding the last 2 columns which are represents by 8 and 9, and I am so to protect the player from getting trapped
@@ -164,6 +165,9 @@ function createWall(row, column) {
     arrayofWalls.push(wallPosition); //adding the randomlyy chosen location of the wall to the list called arrayofWalls
     //using the push() method to add the eleent to the end of the array
 }
+
+
+
 
 //calling the function three times to create ten walls. I could also use a for loop instead.
 // createWall();
@@ -1123,7 +1127,7 @@ function enemyMovement(theenemyOfEnemies) {
             }
             else {
                 //if it contains a wall, then randomly change the trajectory
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         }
 
@@ -1146,7 +1150,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px'; //applying the changes and moving the enemy to the bottom 
             }
             else {
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         };
 
@@ -1168,7 +1172,7 @@ function enemyMovement(theenemyOfEnemies) {
                 enemyleft -= 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         };
 
@@ -1191,7 +1195,7 @@ function enemyMovement(theenemyOfEnemies) {
                 enemyleft += 1;
                 theenemyOfEnemies.style.left = enemyleft + 'px';
             } else {
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         };
 
@@ -1224,7 +1228,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step downwards 
             }
             else {
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         };
 
@@ -1253,7 +1257,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step upwards 
             }
             else {
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         };
 
@@ -1282,7 +1286,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step downwards 
             }
             else {
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         };
 
@@ -1310,7 +1314,7 @@ function enemyMovement(theenemyOfEnemies) {
                 theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step upwards 
             }
             else {
-                trajectory = Math.ceil(Math.random() * 8);
+                trajectory = Math.ceil(Math.random() * 8); //muliplying by with ceil we get the range from 1 to 8, unlike floor where we get the range from 0 to 7, but in this case we are working with ceil so 1 to 8, so muliplying by maze.length means that the maximum value for the variable row will not be more than 8, and will be in the range from 1 to 8 including 8. Also, each number from the range from 1 to 8 is equal to a direction for the enemy movement, so when a number is assigned to the value of the variable trajectory, the enemy moves in another direction instead of stopping 
             }
         }
 
