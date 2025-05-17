@@ -1337,7 +1337,7 @@ function leaderboardCreation() {
         let highestOnes = allResults.slice(0, 5); //now that the array is arranged desendingly, I can slice the first five array, which are the five arrays that have the highest scores. After slicing, I assigning the five arrays with the highest scores to the value of the variable highestOnes
 
 
-        //looping through each array inside the variable highestOnes, and assigning the value of the smaller array to the vatiable element. While element[0] and element[1] represent the values inisde the smallerr array.
+        //looping through each array inside the array value of the variable highestOnes, and assigning the value of the smaller array to the variable element. element[0] accesses the value of the first item inside the smaller array that is inide the array highestOnes, and element[1] accesses the value of the second item inside the smaller array that is inide the array highestOnes
         highestOnes.forEach(function(element) {
             addgamerInfoToLeaderboard(element[0], element[1]); //calling the function addgamerInfoToLeaderboard to create a list inisde the order list inisde the div with the class leaderboard //element[0] represents the first item of each array inside the array highestOnes, and it represents the variable gamerName becuase gamerName is the first parameter/argument of the function addgamerInfoToLeaderboard, while element[1] represents the second item of each array inside the array highestOnes, and it represents the variable points because points is the second parameter/argument of the function addgamerInfoToLeaderboard. 
         });
