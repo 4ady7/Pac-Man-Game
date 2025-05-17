@@ -453,6 +453,7 @@ function gamerMovement() {
 
 //function to have a start the next level button to start the next level of the game
 function promptNextLevel() {
+    confirm('Start the next level?')
     startBttn.style.opacity = 1; //allowing the visibility of the start button
     startBttn.style.display = 'block';
     startBttn.innerHTML = 'Start the next level?';
