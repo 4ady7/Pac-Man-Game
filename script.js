@@ -132,6 +132,13 @@ console.log(arrayofEnemies[2]);
 
 
 
+for(let i = 0; i < myArray.length; i++) {
+    for(let j = 0; j < myArray[i].length; j++) {
+    console.log(myArray[i][j]);
+    }
+}
+
+
 
 let arrayofWalls = []; //creating an array to contain the created walls, and assigning the array to a variable, and calling the varibale arrayofWalls. 
 
