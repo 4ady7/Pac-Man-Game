@@ -155,7 +155,7 @@ function createWall() {
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
     //if the maze location is equal to 1, which represents the wall.
-    if (canPlaceWallHere()) {
+    if (getValidWallPosition()) {
         maze[row][column] = 1;
         // wallPosition = { row, column } //then I am going to be assigning the randomly choosen location of the wall that consists of an x-axis and a y-axis to a variable, and calling the variable wallPosition
     }
@@ -238,65 +238,51 @@ function checkingWallCreationOptions() {
 
 
 
-function canPlaceWallHere() {
-    // Randomly pick a position inside the maze (excluding borders)
-    const row = Math.floor(Math.random() * (maze.length - 2)) + 1;
-    const col = Math.floor(Math.random() * (maze[0].length - 2)) + 1;
+function getValidWallPosition() {
+    for (let attempts = 0; attempts < 100; attempts++) {
+        const row = Math.floor(Math.random() * (maze.length - 2)) + 1;
+        const col = Math.floor(Math.random() * (maze[0].length - 2)) + 1;
 
-    // Return false if the tile is not empty
-    if (maze[row][col] !== 0) {
-        return false;
-    }
+        if (maze[row][col] !== 0) continue;
 
-    const directions = [
-        [0, 1],   // right
-        [1, 0],   // down
-        [0, -1],  // left
-        [-1, 0]   // up
-    ];
+        maze[row][col] = 1;
 
-    // Temporarily place a wall to test consequences
-    maze[row][col] = 1;
+        let valid = true;
+        const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
 
-    for (let i = 0; i < directions.length; i++) {
-        const newRow = row + directions[i][0];
-        const newCol = col + directions[i][1];
-
-        // Skip if out of maze bounds
-        if (
-            newRow >= 0 && newRow < maze.length &&
-            newCol >= 0 && newCol < maze[0].length
-        ) {
-            // If the neighbor is a path or player, check its surroundings
-            if (maze[newRow][newCol] === 0 || maze[newRow][newCol] === 2) {
+        for (const [dr, dc] of directions) {
+            const nr = row + dr;
+            const nc = col + dc;
+            if (
+                nr >= 0 && nr < maze.length &&
+                nc >= 0 && nc < maze[0].length &&
+                (maze[nr][nc] === 0 || maze[nr][nc] === 2)
+            ) {
                 let wallsAround = 0;
-
-                // Count walls or edges around the neighbor
-                for (let j = 0; j < directions.length; j++) {
-                    const checkRow = newRow + directions[j][0];
-                    const checkCol = newCol + directions[j][1];
-
+                for (const [dr2, dc2] of directions) {
+                    const cr = nr + dr2;
+                    const cc = nc + dc2;
                     if (
-                        checkRow < 0 || checkRow >= maze.length ||
-                        checkCol < 0 || checkCol >= maze[0].length ||
-                        maze[checkRow][checkCol] === 1
+                        cr < 0 || cr >= maze.length ||
+                        cc < 0 || cc >= maze[0].length ||
+                        maze[cr][cc] === 1
                     ) {
                         wallsAround++;
                     }
                 }
-
-                // If the neighbor is boxed in, undo and reject placement
                 if (wallsAround >= 3) {
-                    maze[row][col] = 0;
-                    return false;
+                    valid = false;
+                    break;
                 }
             }
         }
+
+        maze[row][col] = 0;
+
+        if (valid) return { row, col };
     }
 
-    // Revert the test wall placement before returning
-    maze[row][col] = 0;
-    return true;
+    return null;
 }
 
 
