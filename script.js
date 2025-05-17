@@ -451,7 +451,7 @@ function gamerMovement() {
 
 
 
-//function to have a restart button to restart the game
+//function to have a start the next level button to start the next level of the game
 function promptNextLevel() {
     startBttn.style.opacity = 1; //allowing the visibility of the start button
     startBttn.style.display = 'block';
