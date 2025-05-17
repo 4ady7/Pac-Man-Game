@@ -305,7 +305,7 @@ function keyDown(event) { //event here is a parameter inside the function
             gamerSpeed = 1.40 //level 8 speed 
             break;
         case '9':
-            gamerSpeed = 7.45 //speed-up boost feature 
+            gamerSpeed = 2.45 //speed-up boost feature 
             break;
     }
 }
