@@ -1339,7 +1339,7 @@ function leaderboardCreation() {
 
 
         //While I was testing, I proved that here in the forEach loop, the index, which is most represented by the charachter i, is the value of the length of my localStorage
-        allResults.forEach(function(element) {
+        highestOnes.forEach(function(element) {
             console.log("Here is my index:" + element); });
 
 
