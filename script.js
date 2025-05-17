@@ -68,7 +68,8 @@ let gamerSpeed = 1.25; // starting with a speed level 5 to allow the gamer to no
 let main = document.querySelector('main');
 
 
-//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+//Point = 0, gamer = 2, Wall = 1, mazeBorders = 4, Enemy was 3
+//this is initializing and creating an array that contains another array, and assiging the array to the value of the variable maze
 let maze = [
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], //the first row is filled with only walls 
     [4, 2, 0, 0, 0, 0, 0, 0, 0, 4], //the gamer is in the second column in this row, and there is an enemy in the ninth column in this row
