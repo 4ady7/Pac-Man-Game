@@ -1,7 +1,7 @@
 
 
 
-
+//In other words, selecting and iterating through every representation of yrow in the array iniside the array named trajectoryArray in accordance with the maze 
 
 
 
@@ -143,6 +143,8 @@ function createWall() {
     let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
     let column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, in this case
     //checking if the maze location is equal to 0, which represents the points.
+    console.log(row); //Output betwenn 0 and 9 that has been assigned to the value of the variable row
+    console.log(column); //Output betwenn 0 and 9 that has been assigned to the value of the variable column
     if (maze[row][column] == 0) {
         //if that's true, and it is the location 0, then add a wall, which is represented by the location 1 in the maze. 
         maze[row][column] = 1;
@@ -188,6 +190,11 @@ for (let index = 0; index < 10; index++) {
 
 //function to check if I should create a wall or not, utilizing the ability to use nested array like how mazeCreation function has been created 
 function checkingWallCreationOptions() {
+    let yrow = Math.floor(Math.random() * maze.length);
+    let xcolumn = Math.floor(Math.random() * maze.length);
+    console.log(yrow); //Output betwenn 0 and 9 that has been assigned to the value of the variable yrow
+    console.log(xcolumn); //Output betwenn 0 and 9 that has been assigned to the value of the variable xcolumn
+
     //creating a array to contain the classic direction of the movement. This array contains arrays of 2 elements.
     let trajectoryArray = [
         [-1, 0], //moving upwards 
@@ -196,11 +203,19 @@ function checkingWallCreationOptions() {
         [0, -1] //moving toward the left
         ];
 
+    //selecing a random element in the maze, and assigning to the location 1, which is the wall. In other words, assigning a wall to the randomly chosen location in the maze
+    maze[yrow][xcolumn] = 1;
 
     //the purspose of the this for loop is looping through each element inside the arrays that are inisde the array named trajectoryArray
     //the following line of code loops through each array inisde the array named trajectoryArray
     for(let i = 0; i < trajectoryArray.length; i++) {
         console.log(trajectoryArray[i]);
+        everyYRow = trajectoryArray[i][0]; //iterating through every array of the arrays inside the array named trajectoryArray, and selecting the first element of the array iniside the array named trajectoryArray. Also, iterating through the trajectory array to check every location in correspondance to the randomly chosen location that was assigned a wall, which represents the location 1
+        yrowToBeMovedTo = yrow + everyYRow;
+
+        everyXColumn = trajectoryArray[i][1] //iterating through every array of the arrays inside the array named trajectoryArray, and selecting the second element of the array iniside the array named trajectoryArray. Also, iterating through the trajectory array to check every location in correspondance to the randomly chosen location that was assigned a wall, which represents the location 1
+        xcolumnToBeMovedTo = xcolumn + everyXColumn; 
+
         //looping through each element inside the arrays that are inisde the array named trajectoryArray
         for(let j = 0; j < trajectoryArray[i].length; j++) {
         console.log(trajectoryArray[i][j]);
@@ -208,11 +223,12 @@ function checkingWallCreationOptions() {
     }
 
 
-    //checking 
+    //checking if the row is not equal to the location 0 which represents the points
     if(maze[yrow][xcolumn] != 0) {
         return false;
     }
     else {
+        //if the row is equal to location 0 which represents the points, then return true 
         return true;
     }
 }
