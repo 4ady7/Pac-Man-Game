@@ -589,14 +589,14 @@ function pointCollection() {
 
             //enabling the user to be able to go to the next level, and by level 11 the player will be facing 13 enemies and there will be 20 walls 
             if (currentLevel == 11) {
-                if (totalPoints == 32) {
+                if (totalPoints == 30) {
                     nextStage();
                 }
             }
 
             //enabling the user to be able to go to the next level, and by level 12 the player will be facing 14 enemies and there will be 21 walls 
             if (currentLevel == 12) {
-                if (totalPoints == 30) {
+                if (totalPoints == 28) {
                     nextStage();
                 }
             }
@@ -676,7 +676,7 @@ function pointCollection() {
 
             //enabling the user to be able to go to the next level, and by stage 23 or stage 35 or stage 47 or stage 71 or stage 83, or satge 95 the player will be facing 13 enemies and there will be 20 walls, and will have to collect 30 points to go to the next 
             if (currentLevel == 23 && currentLevel == 35 && currentLevel == 47 && currentLevel == 59 && currentLevel == 71 && currentLevel == 83 && currentLevel == 95) {
-                if (totalPoints == 32) {
+                if (totalPoints == 30) {
                     nextStage();
                 }
             }
