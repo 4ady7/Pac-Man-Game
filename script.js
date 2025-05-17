@@ -325,15 +325,16 @@ function keyDown(event) { //event here is a parameter inside the function
 
 
 
-
+// speedBoostAvalibility = 1
 function speedBoost() {
-    if (gamerSpeed == 2.45 && speedBoostAvalibality == 1) {
+    if (gamerSpeed == 2.45) {
         setTimeout(speedlevel5, 9000); //9000 here equals 9 seconds, because intervals are measured in 1000ths of a second 
     }
 }
 
 function speedlevel5() {
     gamerSpeed = 1.25 //level 5 speed 
+    //speedBoostAvalibility = 0
 }
 
 setInterval(speedBoost, 10)
