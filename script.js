@@ -133,15 +133,16 @@ console.log(arrayofEnemies[2]);
 
 
 
-
+let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
+let column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, in this case
 
 
 let arrayofWalls = []; //creating an array to contain the created walls, and assigning the array to a variable, and calling the varibale arrayofWalls. 
 
 //creating an enemy randomly after I have removed the enemy from the maze
-function createWall() {
-    let row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
-    let column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, in this case
+function createWall(row, column) {
+    row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
+    column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, in this case
     //checking if the maze location is equal to 0, which represents the points.
     console.log(row); //Output betwenn 0 and 9 that has been assigned to the value of the variable row
     console.log(column); //Output betwenn 0 and 9 that has been assigned to the value of the variable column
@@ -155,7 +156,7 @@ function createWall() {
         //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
     }
     //if the maze location is equal to 1, which represents the wall.
-    if (getValidWallPosition()) {
+    if (canPlaceWallHere()) {
         maze[row][column] = 1;
         // wallPosition = { row, column } //then I am going to be assigning the randomly choosen location of the wall that consists of an x-axis and a y-axis to a variable, and calling the variable wallPosition
     }
@@ -238,51 +239,69 @@ function checkingWallCreationOptions() {
 
 
 
-function getValidWallPosition() {
-    for (let attempts = 0; attempts < 100; attempts++) {
-        const row = Math.floor(Math.random() * (maze.length - 2)) + 1;
-        const col = Math.floor(Math.random() * (maze[0].length - 2)) + 1;
+function canPlaceWallHere(row, column) {
+    // Randomly pick a position inside the maze (excluding borders)
+    row = Math.floor(Math.random() * (maze.length - 2)) + 1;
+    column = Math.floor(Math.random() * (maze[0].length - 2)) + 1;
 
-        if (maze[row][col] !== 0) continue;
+    // Return false if the tile is not empty
+    if (maze[row][column] !== 0) {
+        return false;
+    }
 
-        maze[row][col] = 1;
+    const directions = [
+        [0, 1],   // right
+        [1, 0],   // down
+        [0, -1],  // left
+        [-1, 0]   // up
+    ];
 
-        let valid = true;
-        const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+    // Temporarily place a wall to test consequences
+    maze[row][column] = 1;
 
-        for (const [dr, dc] of directions) {
-            const nr = row + dr;
-            const nc = col + dc;
-            if (
-                nr >= 0 && nr < maze.length &&
-                nc >= 0 && nc < maze[0].length &&
-                (maze[nr][nc] === 0 || maze[nr][nc] === 2)
-            ) {
+    for (let i = 0; i < directions.length; i++) {
+        const newRow = row + directions[i][0];
+        const newCol = column + directions[i][1];
+
+        // Skip if out of maze bounds
+        if (
+            newRow >= 0 && newRow < maze.length &&
+            newCol >= 0 && newCol < maze[0].length
+        ) {
+            // If the neighbor is a path or player, check its surroundings
+            if (maze[newRow][newCol] === 0 || maze[newRow][newCol] === 2) {
                 let wallsAround = 0;
-                for (const [dr2, dc2] of directions) {
-                    const cr = nr + dr2;
-                    const cc = nc + dc2;
+
+                // Count walls or edges around the neighbor
+                for (let j = 0; j < directions.length; j++) {
+                    const checkRow = newRow + directions[j][0];
+                    const checkCol = newCol + directions[j][1];
+
                     if (
-                        cr < 0 || cr >= maze.length ||
-                        cc < 0 || cc >= maze[0].length ||
-                        maze[cr][cc] === 1
+                        checkRow < 0 || checkRow >= maze.length ||
+                        checkCol < 0 || checkCol >= maze[0].length ||
+                        maze[checkRow][checkCol] === 1
                     ) {
                         wallsAround++;
                     }
                 }
+
+                // If the neighbor is boxed in, undo and reject placement
                 if (wallsAround >= 3) {
-                    valid = false;
-                    break;
+                    maze[row][column] = 0;
+                    return false;
                 }
             }
         }
-
-        maze[row][col] = 0;
-
-        if (valid) return { row, col };
     }
 
-    return null;
+    if (maze[row][column] !== 0) {
+        return false;
+    }
+    else if (maze[row][column] = 0) {
+        // Revert the test wall placement before returning
+        return true;
+    }
 }
 
 
