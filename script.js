@@ -140,28 +140,23 @@ let column = Math.floor(Math.random() * maze[row].length); //maze[row].length ta
 let arrayofWalls = []; //creating an array to contain the created walls, and assigning the array to a variable, and calling the varibale arrayofWalls. 
 
 //creating an enemy randomly after I have removed the enemy from the maze
-function createWall(row, column) {
+function createWall(row, column, wallPosition) {
     row = Math.floor(Math.random() * maze.length); //muliplying by maze.length means that the maximum value for the variable row can not be more than 9, becasue we know that the value of maze.length is 10.
     column = Math.floor(Math.random() * maze[row].length); //maze[row].length takes a specific array inisde the array maze, and counts the number of inputs inside, and in this case all of our arrays, that are inside the array maze, contain 10 inputs. Also, in this case
     //checking if the maze location is equal to 0, which represents the points.
     console.log(row); //Output betwenn 0 and 9 that has been assigned to the value of the variable row
     console.log(column); //Output betwenn 0 and 9 that has been assigned to the value of the variable column
-    if (maze[row][column] == 0) {
+    if (canPlaceWallHere()) {
         //if that's true, and it is the location 0, then add a wall, which is represented by the location 1 in the maze. 
         maze[row][column] = 1;
     }
-    else {
-        //if the location is not location 0, and thus unsucessful to create a wall, so call the function again. 
-        createWall(); //calling the function to create a wall
-        //Because we are calling the function in the else statement, it will only call the function again if the if statement was unsuccessful to match the location to the location 0.
+
+    // if the maze location is equal to 1, which represents the wall.
+    if (maze[row][column] == 1) {
+        wallPosition = { row, column } //then I am going to be assigning the randomly choosen location of the wall that consists of an x-axis and a y-axis to a variable, and calling the variable wallPosition
     }
-    //if the maze location is equal to 1, which represents the wall.
-    if (canPlaceWallHere()) {
-        maze[row][column] = 1;
-        // wallPosition = { row, column } //then I am going to be assigning the randomly choosen location of the wall that consists of an x-axis and a y-axis to a variable, and calling the variable wallPosition
-    }
-    // arrayofWalls.push(wallPosition); //adding the randomlyy chosen location of the wall to the list called arrayofWalls
-    //using the push() method to add the eleent to the end of the array
+    arrayofWalls.push(wallPosition); //adding the randomlyy chosen location of the wall to the list called arrayofWalls
+    // using the push() method to add the eleent to the end of the array
 }
 
 //calling the function three times to create ten walls. I could also use a for loop instead.
@@ -203,30 +198,30 @@ function checkingWallCreationOptions() {
         [1, 0], //moving downwards
         [0, 1], //moving toward the right 
         [0, -1] //moving toward the left
-        ];
+    ];
 
     //selecing a random element in the maze, and assigning to the location 1, which is the wall. In other words, assigning a wall to the randomly chosen location in the maze
     maze[yrow][xcolumn] = 1;
 
     //the purspose of the this for loop is looping through each element inside the arrays that are inisde the array named trajectoryArray
     //the following line of code loops through each array inisde the array named trajectoryArray
-    for(let i = 0; i < trajectoryArray.length; i++) {
+    for (let i = 0; i < trajectoryArray.length; i++) {
         console.log(trajectoryArray[i]);
         everyYRow = trajectoryArray[i][0]; //iterating through every array of the arrays inside the array named trajectoryArray, and selecting the first element of the array iniside the array named trajectoryArray. Also, iterating through the trajectory array to check every location in correspondance to the randomly chosen location that was assigned a wall, which represents the location 1
         yrowToBeMovedTo = yrow + everyYRow;
 
         everyXColumn = trajectoryArray[i][1] //iterating through every array of the arrays inside the array named trajectoryArray, and selecting the second element of the array iniside the array named trajectoryArray. Also, iterating through the trajectory array to check every location in correspondance to the randomly chosen location that was assigned a wall, which represents the location 1
-        xcolumnToBeMovedTo = xcolumn + everyXColumn; 
+        xcolumnToBeMovedTo = xcolumn + everyXColumn;
 
         //looping through each element inside the arrays that are inisde the array named trajectoryArray
-        for(let j = 0; j < trajectoryArray[i].length; j++) {
-        console.log(trajectoryArray[i][j]);
+        for (let j = 0; j < trajectoryArray[i].length; j++) {
+            console.log(trajectoryArray[i][j]);
         }
     }
 
 
     //checking if the row is not equal to the location 0 which represents the points
-    if(maze[yrow][xcolumn] != 0) {
+    if (maze[yrow][xcolumn] != 0) {
         return false;
     }
     else {
