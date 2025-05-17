@@ -450,11 +450,22 @@ function gamerMovement() {
 
 
 
+
+//function to have a restart button to restart the game
+function promptNextLevel() {
+    startBttn.style.opacity = 1; //allowing the visibility of the start button
+    startBttn.style.display = 'block';
+    startBttn.innerHTML = 'Start the next level?';
+    document.removeEventListener('keydown', keyDown);
+    document.removeEventListener('keyup', keyUp);
+}
+
+
 //optimized my code by creating one function and then calling it several times instead of having this code be repeated over and over again 
 function nextStage() {
     clearInterval(gamerMovement); //if it is true, and all the 50 points have been collected, then stop the movement of the gamer.
     // alert('Game has ended! All points have been collected!'); //The next comment is an old insight during my work, and is not currently implemented //I thouht if I used setTimeout() then I would be able to delay the alert message until after the last point disappears from the screen, but that did not work. //However my setTimeout() is now fixed. I fixed it by learning that I can not use an alert() instead of the name of the function, so I created a function that contains the alert and then I added the name of the function. And Now I have done something different.
-    setTimeout(restart, 500) 
+    setTimeout(promptNextLevel, 500) 
     
     gameEnded();
     lostlives = 3 - lives;
@@ -474,6 +485,7 @@ function nextStage() {
     // createWall();
     // createWall();
 }
+
 
 
 
@@ -774,6 +786,9 @@ function pointCollection() {
         }
     }
 }
+
+
+
 
 
 
