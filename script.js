@@ -1002,8 +1002,8 @@ function enemyMovement(theenemyOfEnemies) {
 
             // The next comment is an old insight during my work, and is not currently implemented // This if else statement after being uncommented stopped the enemies from going upwards, so if an enemy was assigned upwards randomly at the begining of the game, then the enemy won't move at all, and if the enemy was assigned upwards after the enemy have hit a wall then the enemy will stop moving; that was because of the problem that the value of the variable eecdul was showing in the console as null.
             if (eecdul && ecdur && eecdul.classList.contains('wall') == false && ecdur.classList.contains('wall') == false && upwardMiddle.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdur.classList.contains('mazeBorders') == false && upwardMiddle.classList.contains('mazeBorders') == false) {
-                enemytop -= 1;
-                theenemyOfEnemies.style.top = enemytop + 'px';
+                enemytop -= 1; //decrementing the value of the variable enemytop by 1 
+                theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step upwards 
                 // console.log("enemies movement upward: " + enemyPositionForNewUp.left + "And" + enemyPositionForNewUp.right);
             }
             else {
@@ -1105,8 +1105,8 @@ function enemyMovement(theenemyOfEnemies) {
             if (DRB && DRB.classList.contains('wall') == false && DRB.classList.contains('mazeBorders') == false && ecdbr.classList.contains('wall') == false && ecdbr.classList.contains('mazeBorders') == false && ecdrB.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
                 enemytop += 1;
-                theenemyOfEnemies.style.left = enemyleft + 'px';
-                theenemyOfEnemies.style.top = enemytop + 'px';
+                theenemyOfEnemies.style.left = enemyleft + 'px'; //moving the enemy one step towards the right
+                theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step downwards 
             }
             else {
                 trajectory = Math.ceil(Math.random() * 8);
@@ -1133,9 +1133,9 @@ function enemyMovement(theenemyOfEnemies) {
 
             if (DRT && DRT.classList.contains('wall') == false && DRT.classList.contains('mazeBorders') == false && ecdur.classList.contains('wall') == false && ecdur.classList.contains('mazeBorders') == false && ecdrT.classList.contains('wall') == false && ecdrT.classList.contains('mazeBorders') == false) {
                 enemyleft += 1;
-                enemytop -= 1;
-                theenemyOfEnemies.style.left = enemyleft + 'px';
-                theenemyOfEnemies.style.top = enemytop + 'px';
+                enemytop -= 1; //decrementing the value of the variable enemytop by 1 
+                theenemyOfEnemies.style.left = enemyleft + 'px'; //moving the enemy one step towards the right 
+                theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step upwards 
             }
             else {
                 trajectory = Math.ceil(Math.random() * 8);
@@ -1163,8 +1163,8 @@ function enemyMovement(theenemyOfEnemies) {
             if (DLB && DLB.classList.contains('wall') == false && DLB.classList.contains('mazeBorders') == false && ecdbl.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdlB.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
                 enemytop += 1;
-                theenemyOfEnemies.style.left = enemyleft + 'px';
-                theenemyOfEnemies.style.top = enemytop + 'px';
+                theenemyOfEnemies.style.left = enemyleft + 'px'; //moving the enemy one step towards the left
+                theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step downwards 
             }
             else {
                 trajectory = Math.ceil(Math.random() * 8);
@@ -1190,9 +1190,9 @@ function enemyMovement(theenemyOfEnemies) {
             
             if (DLU && DLU.classList.contains('wall') == false && DLU.classList.contains('mazeBorders') == false && eecdul.classList.contains('wall') == false && eecdul.classList.contains('mazeBorders') == false && ecdlT.classList.contains('wall') == false && ecdlT.classList.contains('mazeBorders') == false) {
                 enemyleft -= 1;
-                enemytop -= 1;
-                theenemyOfEnemies.style.left = enemyleft + 'px';
-                theenemyOfEnemies.style.top = enemytop + 'px';
+                enemytop -= 1; //decrementing the value of the variable enemytop by 1
+                theenemyOfEnemies.style.left = enemyleft + 'px'; //moving the enemy one step towards the left
+                theenemyOfEnemies.style.top = enemytop + 'px'; //moving the enemy one step upwards 
             }
             else {
                 trajectory = Math.ceil(Math.random() * 8);
