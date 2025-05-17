@@ -181,14 +181,28 @@ for (let index = 0; index < 10; index++) {
 
 
 
+
+
+//creating a array to contain the classic direction of the movement. This array contains arrays of 2 elements.
+let trajectoryArray = [
+    [-1, 0], //moving upwards 
+    [1, 0], //moving downwards
+    [0, 1], //moving toward the right 
+    [0, -1] //moving toward the left
+    ];
+
+
 //function to check if I should create a wall or not, utilizing the ability to use nested array like how mazeCreation function has been created 
 function checkingWallCreationOptions() {
-    for (let row of myArray) {
+    for (let row of trajectoryArray) {
+        console.log(row);
         for (let value of row) {
             console.log(value);
         }
     }
 }
+
+checkingWallCreationOptions();
 
 
 //creating a function for creating and populating the maze
