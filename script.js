@@ -1331,10 +1331,10 @@ function leaderboardCreation() {
         }
     
         //sortting the scores descndingly from greatest to smallest number of points collected  
-        allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points. [1] represents the second item of each array inside the array allResults, and it represents the variable points.
+        allResults.sort((a, b) => b[1] - a[1]); //comparing the second item of each array inside the array allResults, which represents the variable points. [1] represents the second item of each array inside the array allResults, and it represents the variable points. In other words, I am arranging them in descending order according to the value of the second item of the array
     
-        //I needed to add this line of code after sorting the array allresults to slice from an array that has already been sorted desendingly
-        let highestOnes = allResults.slice(0, 5); //now that the array is sorted desendingly, I can slice the first five array, which will the highest five arrays, and assign the fist five highest arrays to the variable highestOnes
+        //I needed to add this line of code after sorting the array allresults to slice from an array that has already been arranged desendingly
+        let highestOnes = allResults.slice(0, 5); //now that the array is arranged desendingly, I can slice the first five array, which are the five arrays that have the highest scores. After slicing, I assigning the five arrays with the highest scores to the value of the variable highestOnes
 
 
 
