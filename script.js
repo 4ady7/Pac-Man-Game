@@ -1,61 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-// BrainStorming section (General)
-// I think I could allow the start button to be activate also not only by clicking on it, but also by pressing the enter key on my keyboard
-// idea to add later: 50 points and chris has 100 points that means that chris enabled a functionality where all the 50 points will appear a second time after the last point of the first 50 points has been collected.
-
-
-// BrainStorming section for CSS
-// I think I might need to use innerHTML when the pacman gets hit, so the lives get reduced by 1, or loses one heart
-
-
-
-
-
-
-// Adavnced secion notes
-// way to increase the level to be more harder is by changing the interval speed of the gamer movement from 10 to 9 like I did now, but and as we move lower in numbers the speed increases
-
-
-
-
-
-
-
-// let colours = document.querySelectorAll('li');
-
-// for(let i = 0; i<10; i++) {
-//     colours[i].addEventListener('click', setColor);
-// }
-
-// function setColor() {
-//     gamer.style.backgroundColor = this.id;
-// }
-
-// let side = document.getElementById("side");
-// let closeside = document.getElementById("closeside");
-
-// // Show customizer when gamer is clicked
-// gamer.addEventListener("click", function() {
-//     side.style.transform = "translateX(0)";
-// });
-
-// // Hide customizer when "X" is clicked
-// closeside.addEventListener("click", function() {
-//     side.style.transform = "translateX(100%)";
-// });
-
-
-
-
 let upPressed = false; //intializing the value of the variable upPressed to the boolean value false 
 let downPressed = false; //intializing the value of the variable downPressed to the boolean value false 
 let leftPressed = false; //intializing the value of the variable leftPressed to the boolean value false 
@@ -136,11 +78,6 @@ console.log(arrayofEnemies[2]);
 
 
 
-
-
-
-
-
 let arrayofWalls = []; //creating an array to contain the created walls, and assigning the array to a variable, and calling the varibale arrayofWalls. 
 
 //creating a wall randomly, and the function has two arguments/parameters 
@@ -196,8 +133,6 @@ for (let index = 0; index < 10; index++) {
 
 
 
-
-
 //creating a function for creating and populating the maze
 function mazeCreation() {
     for (let y of maze) {
@@ -240,8 +175,6 @@ mazeCreation(); //calling the function to create and populate the maze
 
 
 
-
-
 // the keyUp function is for stopping the movement when you stop pressing a certain direction key on the keyboard, and the scenario for not having this function will be: a gamer moving in a certain direction without stopping, and the only option you will have is just to change its direction to another direction as continues to go in the previous direction, but you will not be able to stop it from moveming once you initiated the movement. However, you might be able to create a zigZag movement if needed maybe when creating harder levels. 
 //gamer movement.
 function keyUp(event) { //event here is a parameter inside the function 
@@ -261,6 +194,8 @@ function keyUp(event) { //event here is a parameter inside the function
         rightPressed = false;
     }
 }
+
+
 
 
 
@@ -342,6 +277,8 @@ setInterval(speedBoost, 10)
 
 
 
+
+
 //creating a function that calls the function for the enemy collision but allows the gamer a grace period of 3.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer
 let encounteredEnemy = false; //initializing the variable encounteredEnemy with the boolean value false, which refers to a gamer that has not encountered an enemy
 function enemyEncounter() {
@@ -367,13 +304,13 @@ function enemyEncounter() {
 
 
 
-
-
 const contactPortion = 1; //setting the collision Unit to 2 while testing prevents the gamer from getting stuck into the wall
 let gamer = document.querySelector('#gamer'); //selecting the gamer //const gamer to let gamer, why ? to be able to reassign the variable gamer again to the gamer by selecting through the gamer id 
 let gamerMouth = gamer.querySelector('.mouth'); //selecting the mouth of the gamer //const gamerMouth to let gamerMouth, why ? to be able to reassign the variable gamerMouth again to the gamerMouth by selecting through the mouth of the gamer 
 let gamerTop = 0; //initializing a variable
 let gamerLeft = 0; //initializing a variable
+
+
 
 
 
@@ -901,6 +838,10 @@ function mazeRefereshed() {
 }
 
 
+
+
+
+
 function restartFunction() {
     document.addEventListener('keydown', keyDown); //the event keydown is the one responsible for the action of moving the gamer when the key is pressed 
     // How I understand the event keyUp is: keyup event is triggered when any key has been released after being pressed. And keydown event means that the keyboard key has been pressed 
@@ -959,13 +900,13 @@ function restartFunction() {
 
 
 
+
+
 //accidently I named the down button as the up button, and vice versa. I do not know how could I make such an error.
 let leftButton = document.querySelector('#lbttn');
 let rightButton = document.querySelector('#rbttn');
 let downButton = document.querySelector('#dbttn');
 let upButton = document.querySelector('#ubttn');
-
-
 
 
 function lbttnClicked() {
@@ -1026,9 +967,6 @@ function gamerReturntoMove() {
 
 
 
-
-
-
 //creating lives 
 function createlives() {
     //creating a list in HTML, and assigning to the variable li 
@@ -1048,10 +986,6 @@ createlives();
 
 
 
-
-
-
-
 //removing lives 
 function removelive() {
     //selecting a list inside the div with the class lives
@@ -1061,21 +995,6 @@ function removelive() {
     //removing the created list assigned to variable li from the unordered list iniside the div with the class lives
     ul.removeChild(li);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1102,12 +1021,6 @@ function gameEnded() {
 
 
 
-
-
-
-
-
-
 lives = 3
 //moving the enemy 
 let alltheEnemies = document.querySelectorAll('.enemy'); //selecting all the enemies using the class enemy and assigning them to a variable, and calling that variable alltheEnemies.
@@ -1126,9 +1039,7 @@ function enemyMovement(theenemyOfEnemies) {
             enemyEncounter(); //calling the function enemyEncounter that calls the function for the enemy collision but allows the gamer a grace period of 2.1 seconds after the gamer encounters the enemy or the enemy encounters the gamer //By grace period, I mean a time where the gamer and enemy, both will be unable to encounter each other
             let enemyPositionForNewUp = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewUp
             let newUp = enemyPositionForNewUp.top - contactPortion; //selectiing the next top position, and assigning it to the variable newUp
-
             let upwardMiddle = document.elementFromPoint((enemyPositionForNewUp.left + enemyPositionForNewUp.right)/2, newUp);
-
             // ecdul = enemyCollisionDetectionUpLeft
             let eecdul = document.elementFromPoint(enemyPositionForNewUp.left, newUp); //I was getting null for the value of the variable eecdul, so after I tried checking if it is true before moving the enemy, the problem was fixed, so I conclude that the enemy may have been trying to get off the screen or access an element that is not visible and is outside the borders of the maze.
             // ecdur = enemyCollisionDetectionUpRight
@@ -1157,9 +1068,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newBottom = enemyPositionForNewDown.bottom + contactPortion; //selecting the next new bottom postion of the enemy to be moved to, and assigning the value of that position to the variable enemyPosition
             // ecdbl = enemyCollisionDetectionBottomLeft
             let ecdbl = document.elementFromPoint(enemyPositionForNewDown.left, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbl. Here, The x represents the left position of the enemy, and here the y represents the bottom position of the enemy. 
-            
             let downwardMiddle = document.elementFromPoint((enemyPositionForNewDown.left + enemyPositionForNewDown.right)/2, newBottom);
-            
             // ecdbr = enemyCollisionDetectionBottomRight
             let ecdbr = document.elementFromPoint(enemyPositionForNewDown.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the bottom position of the enemy. 
             if (ecdbl && ecdbr && ecdbl.classList.contains('wall') == false && ecdbr.classList.contains('wall') == false && downwardMiddle.classList.contains('wall') == false && ecdbl.classList.contains('mazeBorders') == false && ecdbr.classList.contains('mazeBorders') == false && downwardMiddle.classList.contains('mazeBorders') == false) {
@@ -1179,9 +1088,7 @@ function enemyMovement(theenemyOfEnemies) {
             let newLeft = enemyPositionForNewLeft.left - contactPortion; //selectiing the next left position, and assigning it to the variable newLeft
             // ecdlB = enemyCollisionDetectionLeftBottom
             let ecdlB = document.elementFromPoint(newLeft, enemyPositionForNewLeft.bottom);
-
             let leftMiddle = document.elementFromPoint(newLeft, (enemyPositionForNewLeft.bottom + enemyPositionForNewLeft.top)/2);
-
             // ecdlT = enemyCollisionDetectionLeftTop
             let ecdlT = document.elementFromPoint(newLeft, enemyPositionForNewLeft.top);
             if (ecdlB && ecdlT && ecdlB.classList.contains('wall') == false && ecdlT.classList.contains('wall') == false && leftMiddle.classList.contains('wall') == false && ecdlB.classList.contains('mazeBorders') == false && ecdlT.classList.contains('mazeBorders') == false && leftMiddle.classList.contains('mazeBorders') == false) {
@@ -1200,12 +1107,9 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPositionForNewRight = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForNewRight
             //why newRight have to have +, and not - here ? is it because we are moving in a different trajectory. because we are moving toward the right and addition pushes the enemy toward the right, and away from the left trajectory. 
             let newRight = enemyPositionForNewRight.right + contactPortion; //selectiing the next right position, and assigning it to the variable newRight
-
             // ecdrB = enemyCollisionDetectionRightBottom
             let ecdrB = document.elementFromPoint(newRight, enemyPositionForNewRight.bottom);
-
             let rightMiddle = document.elementFromPoint(newRight, (enemyPositionForNewRight.bottom + enemyPositionForNewRight.top)/2);
-
             // ecdrT = enemyCollisionDetectionRightTop
             let ecdrT = document.elementFromPoint(newRight, enemyPositionForNewRight.top);
             if (ecdrB && ecdrT && ecdrB.classList.contains('wall') == false && ecdrT.classList.contains('wall') == false && rightMiddle.classList.contains('wall') == false && ecdrB.classList.contains('mazeBorders') == false && ecdrT.classList.contains('mazeBorders') == false && rightMiddle.classList.contains('mazeBorders') == false) {
@@ -1227,11 +1131,10 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
             let newRight = enemyPositionForDiagonalRightBottom.right + contactPortion;
             let newBottom = enemyPositionForDiagonalRightBottom.bottom + contactPortion;
-
-
+            
             // ecdbr = enemyCollisionDetectionBottomRight
             let ecdbr = document.elementFromPoint(enemyPositionForDiagonalRightBottom.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the next (+1) new bottom position that the enemy may move to. 
-            
+    
             // DRB = DiagonallyRightBottom
             let DRB = document.elementFromPoint(newRight, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdrB. Here, The x represents the next (+1) new right position of the enemy, and here the y represents the next (+1) new bottom position of the enemy. That's means here that I have created a collision for the diagonally. A diagonal moves equals two new positions being updated at the same time to allow the movement of the enemy diagonally.
 
@@ -1260,10 +1163,8 @@ function enemyMovement(theenemyOfEnemies) {
 
             // ecdur = enemyCollisionDetectionUpRight
             let ecdur = document.elementFromPoint(enemyPositionForDiagonalRightUpwards.right, newUp);
-
             // DRT = DiagonallyRightUp
             let DRT = document.elementFromPoint(newRight, newUp);
-
             // ecdrT = enemyCollisionDetectionRightTop
             let ecdrT = document.elementFromPoint(newRight, enemyPositionForDiagonalRightUpwards.top);
 
@@ -1289,10 +1190,8 @@ function enemyMovement(theenemyOfEnemies) {
 
             // ecdbl = enemyCollisionDetectionBottomLeft
             let ecdbl = document.elementFromPoint(enemyPositionForDiagonalLeftBottom.left, newBottom); 
-            
             // DLB = DiagonallyLeftBottom
             let DLB = document.elementFromPoint(newLeft, newBottom);
-
             // ecdlB = enemyCollisionDetectionLeftBottom
             let ecdlB = document.elementFromPoint(newLeft, enemyPositionForDiagonalLeftBottom.bottom);
 
@@ -1355,46 +1254,6 @@ function enemyMovement(theenemyOfEnemies) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //function for the collision between the gamer and the enemy 
 function enemyPLCol() {
     let allEnemies = document.querySelectorAll('.enemy'); //selcecting the enemies and assigning them to the variable allEnemies
@@ -1436,11 +1295,6 @@ function enemyPLCol() {
 
     }
 }
-
-
-
-
-
 
 
 
@@ -1509,16 +1363,6 @@ function leaderboardCreation() {
         listofLeaderboard.innerHTML = ''; //reseting and clearing the all the previously created lists inside the ordered list, so to clear the visiable leaderboard 
         leaderboardCreation(); //calling the function to create the leaderboard, because without it the leaderboard would not be visible 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
