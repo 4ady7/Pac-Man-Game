@@ -493,7 +493,7 @@ function pointCollection() {
             // onePoint.classList.remove('point'); //this line of code in assoiation with another line above creates a cool effect, removes one point only from the maze with every point that the gamer collects, so in total I am removing two points, one point that comes in contact with the gamer, and another does not. something like this could be added as power-up later on
             point[i].classList.remove('point');
             totalPoints = totalPoints + 1; //increasing the value of the variable totalPoints by 1 for each point collected 
-            Pscore.innerHTML = totalPoints; //changing the score number and assigning it to the value of the variable totalPoints
+            Pscore.innerHTML = totalPoints; //accessing the score number and assigning it to the value of the variable totalPoints
 
             //checking if all the fifty points have been collected, and if true then display
             if (totalPoints == 50) {
@@ -622,7 +622,7 @@ function pointCollection() {
             if (currentLevel % 12 == 2) {
                 if (totalPoints == 48) {
                     mazeRefereshed()
-                    // nextStage();
+                    nextStage();
                 }
             }
 
@@ -639,7 +639,7 @@ function pointCollection() {
             if (currentLevel % 12 == 3) {
                 if (totalPoints == 46) {
                     mazeRefereshed()
-                    // nextStage();
+                    nextStage();
                 }
             }
 
@@ -655,7 +655,7 @@ function pointCollection() {
             if (currentLevel % 12 == 4) {
                 if (totalPoints == 44) {
                     mazeRefereshed()
-                    // nextStage()
+                    nextStage()
                 }
             }
 
@@ -671,7 +671,7 @@ function pointCollection() {
             if (currentLevel % 12 == 5) {
                 if (totalPoints == 42) {
                     mazeRefereshed()
-                    // nextStage();
+                    nextStage();
                 }
             }
             
@@ -688,7 +688,7 @@ function pointCollection() {
             if (currentLevel % 12 == 6) {
                 if (totalPoints == 40) {
                     mazeRefereshed()
-                    // nextStage();
+                    nextStage();
                 }
             }
 
@@ -704,7 +704,7 @@ function pointCollection() {
             if (currentLevel % 12 == 7) {
                 if (totalPoints == 38) {
                     mazeRefereshed()
-                    // nextStage();
+                    nextStage();
                 }
             }
 
@@ -898,7 +898,7 @@ function restartFunction() {
         mazeRefereshed()
     }
     if (currentLevel == 37) {//if value of varibale current level is equal to 37
-        mazeRefereshed()
+        mazeRefereshed() 
     }
     if (currentLevel == 49) {//if value of varibale current level is equal to 49
         mazeRefereshed()
