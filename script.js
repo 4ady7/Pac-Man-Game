@@ -421,6 +421,10 @@ function promptNextLevel() {
     startBttn.innerHTML = 'Start the next level?';
     document.removeEventListener('keydown', keyDown);
     document.removeEventListener('keyup', keyUp);
+    leftButton.removeEventListener('click', lbttnClicked);
+    rightButton.removeEventListener('click', rbttnClicked);
+    upButton.removeEventListener('click', ubttnClicked);
+    downButton.removeEventListener('click', dbttnClicked);
 }
 
 
@@ -811,6 +815,10 @@ function restart() {
     startBttn.innerHTML = 'Restart the game?';
     document.removeEventListener('keydown', keyDown);
     document.removeEventListener('keyup', keyUp);
+    leftButton.removeEventListener('click', lbttnClicked);
+    rightButton.removeEventListener('click', rbttnClicked);
+    upButton.removeEventListener('click', ubttnClicked);
+    downButton.removeEventListener('click', dbttnClicked);
 }
 
 
@@ -1131,7 +1139,7 @@ function enemyMovement(theenemyOfEnemies) {
             let enemyPositionForDiagonalRightBottom = theenemyOfEnemies.getBoundingClientRect(); //selecting the current positiion of the enemy and assigning the value of that psoition to the varibale enemyPositionForDiagonalRightBottom
             let newRight = enemyPositionForDiagonalRightBottom.right + contactPortion;
             let newBottom = enemyPositionForDiagonalRightBottom.bottom + contactPortion;
-            
+
             // ecdbr = enemyCollisionDetectionBottomRight
             let ecdbr = document.elementFromPoint(enemyPositionForDiagonalRightBottom.right, newBottom); //selecting the x and y positions of the enemy, and assigning it to the variable ecdbr. Here, The x represents the right position of the enemy, and here the y represents the next (+1) new bottom position that the enemy may move to. 
     
