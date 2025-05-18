@@ -908,35 +908,35 @@ function restartFunction() {
     
     
     //refreshing the maze so that by stage 13 or stage 25 or stage 37 or stage 49 or stage 61 or stage 73, the player will be facing 3 enemies and there will be 10 walls, and will have to collect 50 points to go to the next 
-    if (currentLevel == 13) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 13) {//if value of varibale current level is equal to 13 
         mazeRefereshed()
     }
-    if (currentLevel == 25) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 25) {//if value of varibale current level is equal to 25
         mazeRefereshed()
     }
-    if (currentLevel == 37) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 37) {//if value of varibale current level is equal to 37
         mazeRefereshed()
     }
-    if (currentLevel == 49) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 49) {//if value of varibale current level is equal to 49
         mazeRefereshed()
     }
-    if (currentLevel == 61) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 61) {//if value of varibale current level is equal to 61
         mazeRefereshed()
     }
-    if (currentLevel == 73) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 73) {//if value of varibale current level is equal to 73
         mazeRefereshed()
     }
-    if (currentLevel == 85) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 85) {//if value of varibale current level is equal to 85
         mazeRefereshed()
     }
-    if (currentLevel == 97) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel == 97) {//if value of varibale current level is equal to 97
         mazeRefereshed()
     }
 
 
     //Optimized Way 
     //enabling the user to be able to go to the next level, and by stage 13 or stage 25 or stage 37 or stage 49 or stage 61 or stage 73, the player will be facing 3 enemies and there will be 10 walls, and will have to collect 50 points to go to the next 
-    if (currentLevel % 12 == 1) {//gamer = 2, Wall = 1, Enemy was 3, Point = 0, mazeBorders = 4
+    if (currentLevel % 12 == 1 && currentLevel != 1) {//if the value of currentLevel mod 12 equal to 1, and not the value of the variable current level is equal to 1, because I am all the other values of currentLevel that in the equation currentLevel mod 12 are equal to 1
         mazeRefereshed();
     }
     
