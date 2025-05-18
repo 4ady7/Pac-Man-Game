@@ -64,9 +64,9 @@ function createEnemy(row, column) {
 }
 
 //calling the function three times to create three enemies
-createEnemy(row, column);
-createEnemy(row, column);
-createEnemy(row, column);
+createEnemy(7, 8);
+createEnemy(2, 4);
+createEnemy(1, 6);
 
 //showing in the console the exact location of each created enemy, which is determined randomly and changes every game
 console.log(arrayofEnemies[0]);
@@ -124,7 +124,7 @@ function createWall(row, column) {
 
 // optimizing how I am creating the walls into the maze
 for (let index = 0; index < 10; index++) {
-    createWall(row, column);
+    createWall(5, 5);
 }
 
 
