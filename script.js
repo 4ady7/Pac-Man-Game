@@ -880,7 +880,7 @@ function restartFunction() {
     
     
     //I am aware that there are duplicate if statement in this function, and that some if statement could be commented or removed because they have been optimized, but becuase I do not have enough time to go through the testing process multiple times on multiple days to confirm that my code works perfectly, I am going to highlight which if statement are the ones that should be commented.
-    //all if statement from line 884 to line 907 should be commented becuase they have been optimized, and another if statement does the same thing already
+    //all if statement from line 885 to line 908 should be commented becuase they have been optimized, and another if statement does the same thing already
     //refreshing the maze so that by stage 13 or stage 25 or stage 37 or stage 49 or stage 61 or stage 73, the player will be facing 3 enemies and there will be 10 walls, and will have to collect 50 points to go to the next 
     if (currentLevel == 13) {//if value of varibale current level is equal to 13 
         mazeRefereshed()
